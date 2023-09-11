@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Staff Link</title>
 </head>
 <body>
-    
+    <nav class="vertical-menu-wrapper">
+        <div class="vertical-menu-logo">
+          <img src="./images/LOGO.png" style="width: 170px;;">
+          <!-- <span class="open-menu-btn"><hr><hr><hr></span> -->
+        </div>
+        <ul class="vertical-menu">
+            <li id="form">
+                <form class="search">
+                       <input name="home" type="text" placeholder="Home Location*" class="texBox"/>
+                       
+                       <input name="office" type="text" placeholder="Office Location*" class="texBox"/>
+                       
+                       <!-- <input name="password" type="password" placeholder="Password*" class="username"/> -->
+                    
+                    <button class="btn">Search</button>
+                 </form>
+            </li>
+        </ul>
+      </nav>
+      <div class="content-wrapper">
+        <div class="content">
+            <img src="./images/map.PNG">
+        </div>
+      </div>
 </body>
 </html>
