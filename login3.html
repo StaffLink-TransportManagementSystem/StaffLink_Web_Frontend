@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style3.css">
+    </head>
+    <body>
+        <div class="loginPageWrapper">
+            <div class="login-side">
+                <a href="#" title="Logo">
+                    <img class="logo" src="images/LOGO.png" alt="Logo">
+                </a>
+                <div class="my-form__wrapper">
+                    <div class="login-welcome-row">
+                        <h1>Welcome back</h1>
+                        <p>Please enter your details!</p>
+                    </div>
+                    <form class="my-form">
+                        <div class="text-field">
+                            <label for="email">Enter your Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            <img alt="emailIcon" src="images/email.svg">
+                        </div>
+                        <div class="text-field">
+                            <label for="password">Enter your Password:</label>
+                            <input id="password" type="password" name="password"
+                                placeholder="Your Password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+                            <img alt="Password Icon" src="images/password.svg">
+                        </div>
+                        <input type="submit" class="my-form__button" value="Login">
+                        <div class="my-form__actions">
+                            <div class="my-form__row">
+                                <span>Did you forget your password? </span>
+                                <a href="#" title="Reset Password">
+                                    Reset Password
+                                </a>
+                            </div>
+                            <div class="my-form__signup">
+                                <a href="#" title="Create Account">
+                                    Create Account
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="info-side">
+                <img src="images/login.jpg" alt="login">
+            </div>
+        </div>
+        <script src="loginScript.js"></script>
+    </body>
+</html>
+
