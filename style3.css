@@ -5,14 +5,14 @@
 :root {
     --primary: #ffeb0f;
     --primary-light: #f50808;
-    --secondary: #F4F1FF;
+    --secondary: #003566;
     --background: #F4F1FF;
-    --text: #0e0e0e;
+    --text: #003566;
 }
 
 body {
     font-size: 16px;
-    background-color: #0e0e0e;
+    background-color: #F4F1FF;
     /* background-image:url("https://images.unsplash.com/photo-1611095777413-4b9b7f4b9b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja2dyb3VuZCUyMGNvbnRyb2xsZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"); */
 }
 
@@ -21,6 +21,20 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: Mulish;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1.5rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    /* left: 260px; */
+    width: 100%;
+    height: fit-content ;
+    top: 0;
+    z-index: 1000;
+    transition: left 200ms;
 }
 
 .socials-row {
@@ -89,10 +103,12 @@ body {
 }
 
 .info-side {
-    height: 100vh;
-    /* padding: 84px 48px 48px 32px; */
+    /* height: 100vh; */
+    height:max-content;
+    width: auto;
+    margin: auto;
     color: #401B3D;
-    display: flex;
+    display: block;
     overflow: hidden;
     flex-direction: column;
     justify-content: start;
@@ -151,6 +167,7 @@ body {
 }
 
 .login-welcome-row {
+    color:#0e0e0e;
     display: flex;
     width: 100%;
     flex-direction: column;
