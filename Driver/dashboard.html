@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="dashboard.css">
+
+        
+    </head>
+
+
+    <body>
+        <input type="checkbox" id="nav-toggle">
+
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <img id="i1" src="https://drive.google.com/uc?export=download&id=15Ggni5qe-krnGvkI5SvP2tx95LNePuRp">
+                <h3>DRIVER</h3>
+            </div>
+
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="dashboard.html" class="active"><i class="material-icons">dashboard</i>
+                        <span>Dashboard</span></a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="passengers.html"><i class="material-icons">groups</i>
+                        <span>Passengers details</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="material-icons">local_taxi</i> 
+                        <span>Trips</span></a> 
+                    </li>
+                    <li>
+                        <a href="owners.html"><i class="material-icons">account_circle</i>
+                        <span>Profile</span></a>
+                    </li>
+                    <li>
+                        <a href="owners.html"><i class="material-icons">person</i>
+                        <span>Vehicle Owner</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="material-icons">contact_phone</i>
+                        <span>Help Center</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="material-icons">settings</i>
+                        <span>Settings</span></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            <header>
+                <h1>
+                    <label for="nav-toggle"><i class="material-icons">menu</i></label>
+                    Dashboard
+                </h1>
+
+                <div class="search-wrapper">
+                    <i class="material-icons">search</i>
+                    <input type="search" placeholder="Search here">
+                </div>
+
+                <div class="user-wrapper">
+                    <h4>driver's name</h4>
+                    <a href="#notifications"><i class="material-icons">notifications</i></a>
+                    <a href="#emails"><i class="material-icons">mail</i></a>
+                    <div class="dropdown">
+                        <button class="btn1"><i class="material-icons">account_circle</i></button>
+                        <div class="dropdown-content">
+                            <a href="#settings">Settings</a>
+                            <a href="#log-out">Log-out</a>
+                          </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <h1>25</h1>
+                            <span>NUMBER OF PASSENGERS Sheduled To Trip Today</span>
+                        </div>
+                        <div>
+                            <a href="passengers.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>0</h1>
+                            <span>NUMBER OF PASSENGERS LEFT FOR PICKUP</span>
+                        </div>
+                        <div>
+                            <a href="passengers.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>18</h1>
+                            <span>NUMBER OF PASSENGERS LEFT FOR DROP UP</span>
+                        </div>
+                        <div>
+                            <a href="passengers.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="map">
+                    <div class="Location_map">
+                        <h2>Lacations</h2>
+                        <h3>View pickup and drop up locations of passengers</h3><br>
+                    </div>
+
+                    <div class="buttons">
+                            <div class="button1">
+                                <button>Start Trip</button>
+                            </div>
+                            
+                            <div class="button2">
+                                <button> End   Trip </button>
+                            </div>
+                            
+                    </div>
+                </div>    
+            </main>
+        </div>
+             
+    </body>
+
+</html>
