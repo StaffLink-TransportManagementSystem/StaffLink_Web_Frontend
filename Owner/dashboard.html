@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="dashboard.css">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+
+
+    <body>
+        <input type="checkbox" id="nav-toggle">
+
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <img id="i1" src="https://drive.google.com/uc?export=download&id=15Ggni5qe-krnGvkI5SvP2tx95LNePuRp">    
+                <h3>Owner</h3>
+            </div>
+
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="dashboard.html" class="active"><i class="material-icons">dashboard</i>
+                        <span>Dashboard</span></a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="passengers.html"><i class="material-icons">groups</i>
+                        <span>Passengers</span></a>
+                    </li>
+                    <li>
+                        <a href="vehicles.html"><i class="material-icons">directions_bus</i>
+                        <span>Vehicles</span></a>
+                    </li>
+                    <li>
+                        <a href="drivers.html"><i class="material-icons">airline_seat_recline_normal</i>
+                        <span>Drivers</span></a>
+                    </li>
+                    <li>
+                        <a href="routes.html"><i class="material-icons">map</i>
+                        <span>Routes</span></a>
+                    </li>
+                    <li>
+                        <a href="revenue.html"><i class="material-icons">payments</i>
+                        <span>Financial</span></a>
+                    </li>
+                    <li>
+                        <a href="reports.html"><i class="material-icons">summarize</i>
+                        <span>Reports</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            <header>
+                <h1>
+                    <label for="nav-toggle"><i class="material-icons">menu</i></label>
+                    Dashboard
+                </h1>
+
+                <!-- <div class="search-wrapper">
+                    <i class="material-icons">search</i>
+                    <input type="search" placeholder="Search here">
+                </div> -->
+
+                <div class="user-wrapper">
+                    <h4>Owner Name</h4>
+                    <a href="#notifications"><i class="material-icons">notifications</i></a>
+                    <a href="#emails"><i class="material-icons">mail</i></a>
+                    <div class="dropdown">
+                        <button class="btn1"><i class="material-icons">account_circle</i></button>
+                        <div class="dropdown-content">
+                            <a href="#profile">View Profile</a>
+                            <a href="#log-out">Log-out</a>
+                          </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <h1>250</h1>
+                            <span>TOTAL NUMBER OF PASSENGERS</span>
+                        </div>
+                        <div>
+                            <a href="passengers.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>30</h1>
+                            <span>TOTAL NUMBER OF VEHICLES</span>
+                        </div>
+                        <div>
+                            <a href="vehicles.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>28</h1>
+                            <span>TOTAL REVENUE FOR THIS MONTH</span>
+                        </div>
+                        <div>
+                            <a href="revenue.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="charts">
+                    <div class="newreg">
+                        <h2>New Registrations</h2>
+                        <h3>New Passenger registrations in last 5 months</h3><br>
+                        
+                        <canvas id="chart1" height="180"></canvas><br>
+
+                        <div class="color-box" style="background-color: #003566; width: 25px; height: 18px;"></div>
+                        <p>&ensp;Passengers</p><br>
+                    </div>
+
+                    <div class="revenue">
+                        <h2>Monthly Revenue</h2>
+                        <h3>The monthly revenue in last 5 months</h3><br>
+
+                        <canvas id="chart2" height="180px"></canvas>  
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
+        <script src="newreg.js"></script>
+        <script src="revenue.js"></script>      
+    </body>
+
+</html>
