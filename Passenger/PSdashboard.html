@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="PSdashboard.css">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+
+
+    <body>
+        <input type="checkbox" id="nav-toggle">
+
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <img id="i1" src="https://drive.google.com/uc?export=download&id=15Ggni5qe-krnGvkI5SvP2tx95LNePuRp">    
+                <h3>USER PROFILE</h3>
+            </div>
+
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="dashboard.html" class="active"><i class="material-icons">dashboard</i>
+                        <span>Dashboard</span></a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="passengers.html"><i class="material-icons">groups</i>
+                        <span>Passengers</span></a>
+                    </li>
+                    <li>
+                        <a href="vehicles.html"><i class="material-icons">directions_bus</i>
+                        <span>Vehicles</span></a>
+                    </li>
+                    <li>
+                        <a href="owners.html"><i class="material-icons">person</i>
+                        <span>Vehicle Owners</span></a>
+                    </li>
+                    <li>
+                        <a href="drivers.html"><i class="material-icons">airline_seat_recline_normal</i>
+                        <span>Drivers</span></a>
+                    </li>
+                    <li>
+                        <a href="routes.html"><i class="material-icons">map</i>
+                        <span>Routes</span></a>
+                    </li>
+                    <li>
+                        <a href="reports.html"><i class="material-icons">summarize</i>
+                        <span>Reports</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            <header>
+                <h1>
+                    <label for="nav-toggle"><i class="material-icons">menu</i></label>
+                    Dashboard
+                </h1>
+
+                <!-- <div class="search-wrapper">
+                    <i class="material-icons">search</i>
+                    <input type="search" placeholder="Search here">
+                </div> -->
+
+                <div class="user-wrapper">
+                    <h4><a href="#User-dashboard">User</a> <!-- User name here --></h4>
+                    <a href="#notifications"><i class="material-icons">notifications</i></a>
+                    <a href="#emails"><i class="material-icons">mail</i></a>
+                    <div class="dropdown">
+                        <button class="btn1"><i class="material-icons">account_circle</i></button>
+                        <div class="dropdown-content">
+                            <a href="#profile">View Profile</a>
+                            <a href="#log-out">Log-out</a>
+                          </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <h1>13</h1>
+                            <span>RESERVATION DEU</span>
+                        </div>
+                        <div>
+                            <a href="Reservation.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>Rs:3500.00</h1>
+                            <span>LAST PAYMENT</span>
+                        </div>
+                        <div>
+                            <a href="Payments.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div class="other">
+                        <div>
+                            <h1>PAY FROM HERE</h1>
+                        </div>
+                        <div>
+                            <a href="Payment.html"><i class="material-icons">navigate_next</i></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="charts">
+
+                    <div class="map">
+                        <h2>Live Location</h2><br>
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=myMap"></script>
+                        <script type="text/javascript">
+                            google.charts.load("current", {
+                              "packages":["map"],
+                              // Note: you will need to get a mapsApiKey for your project.
+                              // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                              "mapsApiKey": "" //your own api
+                            });
+                            google.charts.setOnLoadCallback(drawChart);
+                            function drawChart() {
+                              var data = google.visualization.arrayToDataTable([
+                                ['Lat', 'Long', 'Name'],
+                                [37.4232, -122.0853, 'Work'],
+                                [37.4289, -122.1697, 'University'],
+                                [37.6153, -122.3900, 'Airport'],
+                                [37.4422, -122.1731, 'Shopping']
+                              ]);
+                      
+                              var map = new google.visualization.Map(document.getElementById('map_div'));
+                              map.draw(data, {
+                                showTooltip: true,
+                                showInfoWindow: true
+                              });
+                            }
+                      
+                          </script>
+                          <div id="map_div" style="width: 720px; height: 460px"></div>
+    
+                    </div>
+                    
+                        <div class="reservation-section">
+                            <h2>My Reservations</h2><br>
+                            <!-- Add dynamic content for reservations here -->
+                            <div class="reservation">
+                                <h3>Reservation #1</h3>
+                                <p>Service Provider: XYZ Transportation</p><br>
+                                <p>Date: [Reservation Date]</p><br>
+                                <p>Status: [Reservation Status]</p><br>
+                                <a href="#" class="edit-button">Edit</a>
+                                <a href="#" class="cancel-button">Cancel</a>
+                            </div>
+        
+                            <div class="reservation">
+                                <h3>Reservation #1</h3>
+                                <p>Service Provider: XYZ Transportation</p><br>
+                                <p>Date: [Reservation Date]</p><br>
+                                <p>Status: [Reservation Status]</p><br>
+                                <a href="#" class="edit-button">Edit</a>
+                                <a href="#" class="cancel-button">Cancel</a>
+                            </div>
+                        </div>
+                        
+                            <!-- Repeat for each reservation -->
+                    </div>
+                </div>
+
+                
+            </main>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
+        <script src="newreg.js"></script>
+        <script src="revenue.js"></script>  
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+     
+    </body>
+
+</html>
