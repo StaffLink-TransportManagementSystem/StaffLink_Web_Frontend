@@ -347,7 +347,7 @@ table {
 }
 
 
-thead th {
+/* thead th {
     position: sticky;
     top: 0;
     background-color: #e7f2fe;
@@ -414,4 +414,138 @@ tbody button {
 
 #h11 {
     width: 90px;
+} */
+
+/* ---------------------------------------------- */
+    /* .table-container {
+        padding: 0 10%;
+        margin: 10px auto 0;
+    }
+    .table{
+        width: 100%;
+        border-collapse: collapse;
+    }*/
+.table thead th{
+    font-size: 16px;
+    color: #003566;
+    font-weight: 600;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.table thead tr th{
+    font-size: 14px;
+    font-weight: medium;
+    letter-spacing: 0.35px;
+    color: #003566;
+    opacity: 1;
+    padding: 12px;
+    vertical-align: top;
+    max-width: 150px;
+    border: 1px solid #DAA600;
+}
+
+.table tbody tr td{
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.35px;
+    color: black;
+    background-color: azure;
+    padding: 8px;
+    text-align: center;
+    max-width: 150px;
+    border: 1px solid #DAA600;
+}
+
+.table tbody tr td .btn{
+    width: 130px;
+    text-decoration: none;
+    line-height: 35px;
+    display: inline-block;
+    background-color: #003566;
+    color: #ddd;
+    font-weight: medium;
+    text-align: center;
+    border-radius: 5px;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    opacity: 1;
+} 
+
+
+/* -------------------------------- */
+.btn-one {
+    width: 100%;
+    margin-top: 5px;
+    color: #FFF;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .btn-one span {
+    transition: all 0.3s;
+  }
+  .btn-one::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgba(255,255,255,0.5);
+    border-bottom-color: rgba(255,255,255,0.5);
+    transform: scale(0.1, 1);
+  }
+  .btn-one:hover span {
+    letter-spacing: 2px;
+  }
+  .btn-one:hover::before {
+    opacity: 1; 
+    transform: scale(1, 1); 
+  }
+  .btn-one::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+    background-color: rgba(255,255,255,0.1);
+  }
+  .btn-one:hover::after {
+    opacity: 0; 
+    transform: scale(0.1, 1);
+  }
+  
+
+@media (max-width: 768px) {
+    .table thead{
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td{
+        display: flex;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 15px;
+    }   
+    .table tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .table tbody tr td .btn{
+        width: 100px;
+        font-size: 12px;
+    }
 }
