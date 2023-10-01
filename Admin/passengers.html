@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="passengers.css">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+
+
+    <body>
+        <input type="checkbox" id="nav-toggle">
+
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <img id="i1" src="https://drive.google.com/uc?export=download&id=15Ggni5qe-krnGvkI5SvP2tx95LNePuRp">    
+                <h3>ADMIN PANEL</h3>
+            </div>
+
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="dashboard.html" class="active"><i class="material-icons">dashboard</i>
+                        <span>Dashboard</span></a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="passengers.html"><i class="material-icons">groups</i>
+                        <span>Passengers</span></a>
+                    </li>
+                    <li>
+                        <a href="vehicles.html"><i class="material-icons">directions_bus</i>
+                        <span>Vehicles</span></a>
+                    </li>
+                    <li>
+                        <a href="owners.html"><i class="material-icons">person</i>
+                        <span>Vehicle Owners</span></a>
+                    </li>
+                    <li>
+                        <a href="drivers.html"><i class="material-icons">airline_seat_recline_normal</i>
+                        <span>Drivers</span></a>
+                    </li>
+                    <li>
+                        <a href="routes.html"><i class="material-icons">map</i>
+                        <span>Routes</span></a>
+                    </li>
+                    <li>
+                        <a href="reports.html"><i class="material-icons">summarize</i>
+                        <span>Reports</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            <header>
+                <h1>
+                    <label for="nav-toggle"><i class="material-icons">menu</i></label>
+                    Dashboard
+                </h1>
+
+                <!-- <div class="search-wrapper">
+                    <i class="material-icons">search</i>
+                    <input type="search" placeholder="Search here">
+                </div> -->
+
+                <div class="user-wrapper">
+                    <h4>admin</h4>
+                    <a href="#notifications"><i class="material-icons">notifications</i></a>
+                    <a href="#emails"><i class="material-icons">mail</i></a>
+                    <div class="dropdown">
+                        <button class="btn1"><i class="material-icons">account_circle</i></button>
+                        <div class="dropdown-content">
+                            <a href="#profile">View Profile</a>
+                            <a href="#log-out">Log-out</a>
+                          </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <span>ADD</span>
+                            <h1>Create Record</h1>
+                        </div>
+                        <div>
+                            <a href="passengers.html"><i class="material-icons">add</i></a>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <span>NUMBER OF PASSENGERS</span>
+                            <h1>250</h1>
+                        </div>
+                        <div>
+                            <a href="vehicles.html"><i class="material-icons">table_view</i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="searchpass">
+                    <p>Passenger Details</p>
+
+                    <div>
+                        <input placeholder="Passenger" class="ph">
+                        <button class="add-new">+ Add New</button>
+                    </div>
+                </div>
+
+              
+                <table class="passtable">
+                    <thead>
+                        <tr>
+                            <th scope="col">P ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">NIC</th>
+                            <th scope="col">Telephone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">To Office</th>
+                            <th scope="col">To Home</th>
+                            <th scope="col">Home Location</th>
+                            <th scope="col">Office Location</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td scope="row" data-label="P ID">p01</td>
+                            <td data-label="Name">Kamal Perera</td>
+                            <td data-label="Address">15, Gamunu Mawatha, Nugegoda</td>
+                            <td data-label="NIC">955497721V</td>
+                            <td data-label="Telephone">0713745598</td>
+                            <td data-label="Email">kamal@gmail.com</td>
+                            <td data-label="To Office">KD 3456</td>
+                            <td data-label="To Home">KD 3456</td>
+                            <td data-label="Home Location">https://maps.app.goo.gl/mF6d5KxWv9SjSeHE8</td>
+                            <td data-label="Office Location">https://maps.app.goo.gl/dvAgXeP2GtBZ2pRJ8</td>
+                            <td data-label="Action">
+                                <button><i class="material-icons">edit</i></button>
+                                <button><i class="material-icons">delete</i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>                    
+               
+
+
+            </main>
+        </div>
+              
+    </body>
+
+</html>
