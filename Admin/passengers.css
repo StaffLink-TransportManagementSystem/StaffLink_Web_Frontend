@@ -385,6 +385,7 @@ td button{
 td button:hover {
     color:#DAA600;
     background-color: white;
+    border: #003566 solid 1px;
     font-weight: 600;
 }
 
