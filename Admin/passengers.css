@@ -42,7 +42,7 @@
 
 
 .sidebar-menu {
-    margin-top: 1rem;
+    margin-top: 9rem;
 }
 
 
@@ -63,7 +63,6 @@
 
 .sidebar-menu a.active {
     font-weight: 700;
-    margin-top: 9rem;
     color: #DAA600;
 }
 
@@ -125,9 +124,7 @@
 
 
 hr {
-    margin-bottom: 2rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 2rem 1rem;
     height: 0.25rem;
     background-color: white;
 }
@@ -338,7 +335,7 @@ input {
 
 
 table {
-    width: max-content;
+    width: 100%;
     overflow: auto;
     table-layout: fixed;
     min-width: 1000px;
@@ -346,6 +343,7 @@ table {
     margin-top: 2rem;
     margin-left: -2rem;
     border-left: 1px solid #dddddd;
+    table-layout: auto;
 }
 
 
@@ -371,6 +369,23 @@ tr:hover td {
     color: #DAA600;
     cursor: pointer;
     background-color: #e7f2fe;
+}
+
+
+td button{
+    color: white;
+    background-color: #003566;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+td button:hover {
+    color:#DAA600;
+    background-color: white;
+    font-weight: 600;
 }
 
 

@@ -23,12 +23,12 @@
             <div class="sidebar-menu">
                 <ul>
                     <li>
-                        <a href="dashboard.html" class="active"><i class="material-icons">dashboard</i>
+                        <a href="dashboard.html"><i class="material-icons">dashboard</i>
                         <span>Dashboard</span></a>
                     </li>
                     <hr>
                     <li>
-                        <a href="passengers.html"><i class="material-icons">groups</i>
+                        <a href="passengers.html" class="active"><i class="material-icons">groups</i>
                         <span>Passengers</span></a>
                     </li>
                     <li>
@@ -119,16 +119,12 @@
                     <thead>
                         <tr>
                             <th scope="col">P ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">ADDRESS</th>
                             <th scope="col">NIC</th>
-                            <th scope="col">Telephone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">To Office</th>
-                            <th scope="col">To Home</th>
-                            <th scope="col">Home Location</th>
-                            <th scope="col">Office Location</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">TELEPHONE</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">ACTION</th>
                         </tr>
                     </thead>
 
@@ -140,13 +136,10 @@
                             <td data-label="NIC">955497721V</td>
                             <td data-label="Telephone">0713745598</td>
                             <td data-label="Email">kamal@gmail.com</td>
-                            <td data-label="To Office">KD 3456</td>
-                            <td data-label="To Home">KD 3456</td>
-                            <td data-label="Home Location">https://maps.app.goo.gl/mF6d5KxWv9SjSeHE8</td>
-                            <td data-label="Office Location">https://maps.app.goo.gl/dvAgXeP2GtBZ2pRJ8</td>
                             <td data-label="Action">
-                                <button><i class="material-icons">edit</i></button>
-                                <button><i class="material-icons">delete</i></button>
+                                <a href="#moredetails"><button class="moredetails">MORE DETAILS</button></a>
+                                <a href="#edit"></a><button class="edit">EDIT</button></a>
+                                <a href="#delete"></a><button class="delete">DELETE</button></a>
                             </td>
                         </tr>
                     </tbody>
