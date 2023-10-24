@@ -58,7 +58,7 @@ body{
 }
 
 .container.active .forms{
-    height: 600px;
+    height: fit-content;
 }
 .container .form .title{
     position: relative;
@@ -125,8 +125,8 @@ body{
 
 .form .checkbox-text{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: right;
+    justify-content:right;
     margin-top: 20px;
 }
 
@@ -139,6 +139,35 @@ body{
     margin-right: 10px;
     accent-color: #0A2558;
 }
+
+
+/* ------------------------ */
+.form .checkbox-text-terms{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin-top: 20px;
+}
+
+.checkbox-text-terms .checkbox-content-terms{
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-content-terms input{
+    margin-right: 10px;
+    accent-color: #0A2558;
+}
+
+.checkbox-content-terms a{
+    text-decoration: none;
+}
+
+.checkbox-content-terms a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+/* ------------------------ */
 
 .form .text{
     color: #333;
@@ -154,7 +183,7 @@ body{
 }
 
 .form .button{
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
 .form .button input{
