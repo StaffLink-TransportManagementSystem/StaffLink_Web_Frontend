@@ -170,3 +170,54 @@ header {
   .btn:hover span {
     transform: translateX(5px);
   }
+
+  /* transport css */
+  .transport {
+    background-color: var(--black);
+  }
+  .transport_container {
+    display: grid;
+    grid-template-columns: repeat(2, 60% 40%);
+    gap: 5rem;
+  }
+  .transport_content .section__header {
+    margin-bottom: 1rem;
+  }
+  
+  .transport_content .para {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+  }
+  
+  .transport_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .transport_card span {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+  }
+  
+  .transport_card h4 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .transport_card p {
+    font-weight: 500;
+  }
+  
+  .transport_image {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .transport_image img {
+    max-width: 450px;
+    max-height: 250px;
+    margin: auto;
+    border-radius: 5px;
+    /* border: 1px solid var(--primary-color); */
+  }
