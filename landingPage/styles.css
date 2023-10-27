@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+    --primary-color: #ffd302;
+    --secondary-color: #111111;
+    --secondary-color-light: #232220;
+    --text-light: #a3a3a3;
+    --white: #ffffff;
+    --black: #000000;
+    --max-width: 1200px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    color: var(--white);
+}
+
+/* nav bar css */
+nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.nav_logo a{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.nav_links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.link a {
+    padding: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    transition: 0.3s;
+}
+
+.link a:hover {
+    color: var(--primary-color);
+}
+
+/* section css */
+.section_container {
+    max-width: 90%;
+    margin: auto;
+    padding: 5rem 1rem;
+}
+
+.section_header {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+
+/* header css */
+header {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.8)
+      ),
+      url("../images/login.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+.header_container {
+    padding-block: 5rem 12rem;
+}
+
+.header_container h1 {
+    max-width: 900px;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.header_container .btn {
+    align-items: center;
+    margin: 10px;
+}
+
+.section_container {
+    max-width: 90%;
+    margin: auto;
+    padding: 5rem 1rem;
+}
+
+.section_header {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.section_subheader {
+    position: relative;
+    isolation: isolate;
+    margin-bottom: 1rem;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.section_subheader::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 45px;
+    aspect-ratio: 1;
+    background-color: var(--primary-color);
+    z-index: -1;
+}
+
+.btn {
+    display: flexbox;
+    align-items: center;
+    gap: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 0.75rem 1.5rem;
+    outline: none;
+    font-size: 1rem;
+    color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn_secondary {
+    background-color: transparent;
+    border: 1px solid var(--white);
+  }
+  
+  .btn_primary {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+  }
+  
+  .btn span {
+    font-size: 1.2rem;
+    transition: 0.3s;
+  }
+  
+  .btn:hover span {
+    transform: translateX(5px);
+  }
