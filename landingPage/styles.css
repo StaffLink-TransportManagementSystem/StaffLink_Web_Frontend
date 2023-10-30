@@ -15,6 +15,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+}
 
 html {
     scroll-behavior: smooth;
@@ -220,4 +223,63 @@ header {
     margin: auto;
     border-radius: 5px;
     /* border: 1px solid var(--primary-color); */
+  }
+
+
+
+
+
+
+  /* ------------------------- */
+  .banner1 {
+    height: 100vh;
+    vertical-align: middle;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ),
+      url("../images/transport1\ \(1\).jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .banner_container {
+    
+    vertical-align: middle;
+    max-width: 80%;
+    /* margin: auto; */
+  }
+  .banner_content{
+    margin-bottom: 1rem;
+    /* padding-bottom: 1rem; */
+  }
+  
+  .banner_content .para {
+    /* max-width: 600px; */
+    /* padding-bottom: 1rem; */
+    margin-bottom: 2rem;
+  }
+  
+  .banner_btns {
+    display: flex;
+    align-items: left;
+    gap: 2rem;
+  }
+
+
+
+  .banner2 {
+    height: 100vh;
+    vertical-align: middle;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ),
+      url("../images/transport1\ \(2\).jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
