@@ -38,6 +38,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
+    /* position: fi; */
 }
 
 .nav_logo a{
@@ -270,7 +271,7 @@ header {
 
 
 
-  .banner2 {
+  .banner3 {
     height: 100vh;
     vertical-align: middle;
     background-image: linear-gradient(
@@ -282,6 +283,12 @@ header {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+
+
+  .banner2 {
+    height: 100vh;
+    background-color: #000000;
   }
 
 
