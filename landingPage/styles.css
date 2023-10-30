@@ -283,3 +283,56 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+
+
+
+
+
+  /* -----------------------------contatct us css----------------------- */
+  .contact {
+    background-color: #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .contact_container {
+    max-width: 80%;
+    text-align: center;
+  }
+  
+  .contact_container .section_subheader{
+    align-items: center;
+    max-width: fit-content;
+    margin-inline: auto;
+  }
+  
+  .contact_container form {
+    margin-block: 2rem 1rem;
+    display: block;
+    align-items: center;
+    gap: 1rem;
+    width: 60%;
+  }
+  
+  .contact_container input {
+    /* flex: 1; */
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+  }
+  
+  .contact_container .btn {
+    /* flex: 1; */
+    justify-content: center;
+  }
+  
+  .contact_container .para a {
+    color: var(--primary-color);
+  }
