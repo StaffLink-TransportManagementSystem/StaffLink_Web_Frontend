@@ -75,11 +75,11 @@
 }
 .home-section{
   position: relative;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   min-height: 100vh;
   width: calc(100% - 240px);
   left: 240px;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease;    
 }
 .sidebar.active ~ .home-section{
   width: calc(100% - 60px);
@@ -363,6 +363,41 @@ nav .profile-details i{
 .detail-boxes .box .button a:hover{
   background:  #0d3073;
 }
+.charts {
+    display: grid;
+    grid-template-columns:50% 50%;
+    grid-template-areas: "left right";
+    grid-gap: 1rem;
+    margin-top: 5rem;
+    margin-right: 1rem;
+    margin-left:1rem;
+}
+
+.newreg{
+    /* width: 100%; */
+    grid-area: "left";
+}
+
+.revenue{
+    grid-area: "right";
+}
+
+.charts h2{
+    font-weight: 400;
+}
+
+
+.charts h3{
+    font-weight: 400;
+    color: #727171;
+    line-height: 3rem;
+}
+
+
+.newreg .color-box, p {
+    display: inline-block;
+}
+
 /* Responsive Media Query */
 @media (max-width: 1240px) {
   .sidebar{
@@ -456,3 +491,19 @@ nav .profile-details i{
     width: calc(100% - 60px);
   }
 }
+
+@media only screen and (max-device-width: 1260px) {
+
+     .charts {
+        display: grid;
+        /* grid-template-columns: auto auto; */
+        grid-template-columns:50% 50%;
+        grid-template-areas: "left right";
+        /* grid-gap: 1rem; */
+        margin-top: 5rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+  }

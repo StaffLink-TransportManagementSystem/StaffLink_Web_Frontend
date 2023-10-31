@@ -5,7 +5,7 @@
     <title>User Dashboard</title>
     <link rel="stylesheet" href="dashboardStyle.css" />
     <!-- Boxicons CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
@@ -18,49 +18,37 @@
         <li>
           <a href="#" class="active">
             <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
+            <span class="links_name">Passengers</span>
           </a>
         </li>
         <li>
           <a href="#">
             <i class="bx bx-search"></i>
-            <span class="links_name">Find Transport</span>
+            <span class="links_name">Vehicles</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="bx bx-list-ul"></i>
-            <span class="links_name">Reservations</span>
+            <i class='bx bxs-traffic'></i>
+            <span class="links_name">Drivers</span>
           </a>
         </li>
         <li>
           <a href="#">
             <i class="bx bx-coin-stack"></i>
-            <span class="links_name">Payments</span>
+            <span class="links_name">Routes</span>
           </a>
         </li>
         <li>
           <a href="#">
             <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="links_name">Financial</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
             <span class="links_name">Reports</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-message"></i>
-            <span class="links_name">Notifications</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-help-circle"></i>
-            <span class="links_name">Help</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-cog"></i>
-            <span class="links_name">Settings</span>
           </a>
         </li>
         <li class="log_out">
@@ -92,144 +80,76 @@
         <div class="overview-boxes">
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Total resv</div>
-              <div class="number">40</div>
-              <div class="indicator">
+              <div class="box-topic">Total Passengers</div>
+              <div class="number">50</div>
+              <!-- <div class="indicator">
                 <i class="bx bx-up-arrow-alt"></i>
                 <span class="text">Up from yesterday</span>
-              </div>
+              </div> -->
             </div>
             <i class="bx bx-add-to-queue cart"></i>
           </div>
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Last Payment</div>
-              <div class="number">Rs.3,500</div>
-              <div class="indicator">
+              <div class="box-topic">Balance</div>
+              <div class="number">Rs.-3,500</div>
+              <!-- <div class="indicator">
                 <i class="bx bx-up-arrow-alt"></i>
                 <span class="text">Up from previous week</span>
-              </div>
+              </div> -->
             </div>
             <i class="bx bx-money cart two"></i>
           </div>
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Total Trips</div>
-              <div class="number">230</div>
-              <div class="indicator">
+              <div class="box-topic">Total Vehicals</div>
+              <div class="number">3</div>
+              <!-- <div class="indicator">
                 <i class="bx bx-up-arrow-alt"></i>
                 <span class="text">Up from yesterday</span>
-              </div>
+              </div> -->
             </div>
             <i class="bx bx-bus cart three"></i>
           </div>
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Trip left</div>
+              <div class="box-topic">Revenue</div>
               <div class="number">5</div>
               <div class="indicator">
-                <i class="bx bx-down-arrow-alt down"></i>
-                <span class="text">Down From Today</span>
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">For this</span>
               </div>
             </div>
-            <i class="bx bx-minus bx-fade-left cart four"></i>
+            <i class="bx bx-money cart two"></i>
           </div>
         </div>
 
-        <div class="detail-boxes">
-          <div class="recent-res box">
-            <div class="title">Reservations</div>
-            <div class="res-details">
-              <ul class="details">
-                <li class="topic">Date</li>
-                <li><a href="#">02 Jan 2024</a></li>
-                <li><a href="#">03 Jan 2024</a></li>
-                <li><a href="#">04 Jan 2024</a></li>
-                <li><a href="#">05 Jan 2024</a></li>
-                <li><a href="#">06 Jan 2024</a></li>
-                <li><a href="#">07 Jan 2024</a></li>
-                <li><a href="#">08 Jan 2024</a></li>
-                <li><a href="#">08 Jan 2024</a></li>
-                <li><a href="#">08 Jan 2024</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Service Provider</li>
-                <li><a href="#">Alex Doe</a></li>
-                <li><a href="#">David Mart</a></li>
-                <li><a href="#">Roe Parter</a></li>
-                <li><a href="#">Diana Penty</a></li>
-                <li><a href="#">Martin Paw</a></li>
-                <li><a href="#">Doe Alex</a></li>
-                <li><a href="#">Aiana Lexa</a></li>
-                <li><a href="#">Rexel Mags</a></li>
-                <li><a href="#">Tiana Loths</a></li>
-              </ul>
-              <ul class="Status">
-                <li class="topic">Sales</li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Closed</a></li>
-                <li><a href="#">Closed</a></li>
-                <li><a href="#">Closed</a></li>
-                <li><a href="#">Closed</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Destination</li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Maharagama</a></li>
-              </ul>
+        <div class="charts">
+            <div class="newreg">
+                <h2>New Registrations</h2>
+                <h3>New Passenger registrations in last 5 months</h3><br>
+                
+                <canvas id="chart1" height="180"></canvas><br>
+
+                <div class="color-box" style="background-color: #003566; width: 25px; height: 18px;"></div>
+                <p>&ensp;Passengers</p><br>
             </div>
-            <div class="button">
-              <a href="#">See All</a>
+
+            <div class="revenue">
+                <h2>Monthly Revenue</h2>
+                <h3>The monthly revenue in last 5 months</h3><br>
+
+                <canvas id="chart2" height="180px"></canvas>  
             </div>
-          </div>
-          <div class="recent-payments box">
-            <div class="title">Payments</div>
-            <div class="payment-details">
-              <ul class="Status">
-                <li class="topic">Date</li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Amount</li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.4,300</a></li>
-                <li><a href="#">Rs.6,900</a></li>
-              </ul>
-            </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
-
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
+        <script src="newreg.js"></script>
+        <script src="revenue.js"></script>
     <script>
+        
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
