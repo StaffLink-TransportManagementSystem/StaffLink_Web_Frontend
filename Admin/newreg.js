@@ -7,17 +7,17 @@ const chart1 = new Chart(ctx, {
             {
                 label: 'Owners',
                 data: [13, 11, 8, 15, 10],
-                backgroundColor: '#003566',
+                backgroundColor: '#cce5ff',
             },
             {
                 label: 'Vehicles',
                 data: [11, 15, 7, 17, 10],
-                backgroundColor: '#DAA600',
+                backgroundColor: '#ffe8b3',
             },
             {
                 label: 'Passengers',
                 data: [20, 25, 27, 24, 32],
-                backgroundColor: '#000',
+                backgroundColor: '#C0F2D8',
             }
         ]
       },

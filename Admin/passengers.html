@@ -1,155 +1,157 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Passengers</title>
+    <link rel="stylesheet" href="passengers.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-bus"></i>
+        <span class="logo_name">StaffLink</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-group"></i>
+            <span class="links_name">Passengers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-bus"></i>
+            <span class="links_name">Vehicles</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Vehicle Owners</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-trip"></i>
+            <span class="links_name">Drivers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-map-alt"></i>
+            <span class="links_name">Routes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-line-chart-down"></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-message"></i>
+            <span class="links_name">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-help-circle"></i>
+            <span class="links_name">Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Passengers</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <i class="bx bxs-user"></i>
+          <span class="user_name">Admin</span>
+        </div>
+      </nav>
 
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="passengers.css">
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <p>Passenger Details</p>
+                <div>
+                    <input placeholder="Passenger" class="ph">
+                    <button class="add-new">+ Add New</button>
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    </head>
-
-
-    <body>
-        <input type="checkbox" id="nav-toggle">
-
-        <div class="sidebar">
-            <div class="sidebar-brand">
-                <img id="i1" src="https://drive.google.com/uc?export=download&id=15Ggni5qe-krnGvkI5SvP2tx95LNePuRp">    
-                <h3>ADMIN PANEL</h3>
-            </div>
-
-            <div class="sidebar-menu">
-                <ul>
-                    <li>
-                        <a href="dashboard.html"><i class="material-icons">dashboard</i>
-                        <span>Dashboard</span></a>
-                    </li>
-                    <hr>
-                    <li>
-                        <a href="passengers.html" class="active"><i class="material-icons">groups</i>
-                        <span>Passengers</span></a>
-                    </li>
-                    <li>
-                        <a href="vehicles.html"><i class="material-icons">directions_bus</i>
-                        <span>Vehicles</span></a>
-                    </li>
-                    <li>
-                        <a href="owners.html"><i class="material-icons">person</i>
-                        <span>Vehicle Owners</span></a>
-                    </li>
-                    <li>
-                        <a href="drivers.html"><i class="material-icons">airline_seat_recline_normal</i>
-                        <span>Drivers</span></a>
-                    </li>
-                    <li>
-                        <a href="routes.html"><i class="material-icons">map</i>
-                        <span>Routes</span></a>
-                    </li>
-                    <li>
-                        <a href="reports.html"><i class="material-icons">summarize</i>
-                        <span>Reports</span></a>
-                    </li>
-                </ul>
-            </div>
+                </div>
+          </div>
         </div>
 
+        <table class="passtable">
+            <thead>
+                <tr>
+                    <th scope="col">P ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">ADDRESS</th>
+                    <th scope="col">NIC</th>
+                    <th scope="col">TELEPHONE</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
 
-        <div class="main-content">
-            <header>
-                <h1>
-                    <label for="nav-toggle"><i class="material-icons">menu</i></label>
-                    Dashboard
-                </h1>
+            <tbody>
+                <tr>
+                    <td scope="row" data-label="P ID">p01</td>
+                    <td data-label="Name">Kamal Perera</td>
+                    <td data-label="Address">15, Gamunu Mawatha, Nugegoda</td>
+                    <td data-label="NIC">955497721V</td>
+                    <td data-label="Telephone">0713745598</td>
+                    <td data-label="Email">kamal@gmail.com</td>
+                    <td data-label="Action">
+                        <a href="#moredetails"><button class="moredetails">MORE DETAILS</button></a>
+                        <a href="#edit"></a><button class="edit">EDIT</button></a>
+                        <a href="#delete"></a><button class="delete">DELETE</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+      </div>
+    </section>
 
-                <!-- <div class="search-wrapper">
-                    <i class="material-icons">search</i>
-                    <input type="search" placeholder="Search here">
-                </div> -->
-
-                <div class="user-wrapper">
-                    <h4>admin</h4>
-                    <a href="#notifications"><i class="material-icons">notifications</i></a>
-                    <a href="#emails"><i class="material-icons">mail</i></a>
-                    <div class="dropdown">
-                        <button class="btn1"><i class="material-icons">account_circle</i></button>
-                        <div class="dropdown-content">
-                            <a href="#profile">View Profile</a>
-                            <a href="#log-out">Log-out</a>
-                          </div>
-                    </div>
-                </div>
-            </header>
-
-            <main>
-                <div class="cards">
-                    <div class="card-single">
-                        <div>
-                            <span>ADD</span>
-                            <h1>Create Record</h1>
-                        </div>
-                        <div>
-                            <a href="passengers.html"><i class="material-icons">add</i></a>
-                        </div>
-                    </div>
-                    <div class="card-single">
-                        <div>
-                            <span>NUMBER OF PASSENGERS</span>
-                            <h1>250</h1>
-                        </div>
-                        <div>
-                            <a href="vehicles.html"><i class="material-icons">table_view</i></a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="searchpass" style="width: 100%;">
-                    <p>Passenger Details</p>
-
-                    <div>
-                        <input placeholder="Search Passenger" class="ph">
-                        <button class="add-new">+ Add New</button>
-                    </div>
-                </div>
-
-              
-                <table class="passtable">
-                    <thead>
-                        <tr>
-                            <th scope="col">P ID</th>
-                            <th scope="col">NAME</th>
-                            <th scope="col">ADDRESS</th>
-                            <th scope="col">NIC</th>
-                            <th scope="col">TELEPHONE</th>
-                            <th scope="col">EMAIL</th>
-                            <th scope="col">ACTION</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td scope="row" data-label="P ID">p01</td>
-                            <td data-label="Name">Kamal Perera</td>
-                            <td data-label="Address">15, Gamunu Mawatha, Nugegoda</td>
-                            <td data-label="NIC">955497721V</td>
-                            <td data-label="Telephone">0713745598</td>
-                            <td data-label="Email">kamal@gmail.com</td>
-                            <td data-label="Action">
-                                <a href="#moredetails"><button class="moredetails">MORE DETAILS</button></a>
-                                <a href="#edit"></a><button class="edit">EDIT</button></a>
-                                <a href="#delete"></a><button class="delete">DELETE</button></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>                    
-               
-
-
-            </main>
-        </div>
-              
-    </body>
-
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+  </body>
 </html>
