@@ -397,6 +397,22 @@ nav .profile-details i{
       z-index: 999;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+
+    .toggle-button {
+      background-color: #0A2558;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Red color when active class is applied */
+    .toggle-button.active {
+      background-color: #9ff758;
+    }
+    
 /* Responsive Media Query */
 @media (max-width: 1240px) {
   .sidebar{
