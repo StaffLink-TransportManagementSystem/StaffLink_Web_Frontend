@@ -456,3 +456,24 @@ nav .profile-details i{
     width: calc(100% - 60px);
   }
 }
+
+
+.button{
+  margin-top: 25px;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: #0A2558;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button{
+  
+}
+
+.button input:hover{
+  background-color: #265df2;
+}

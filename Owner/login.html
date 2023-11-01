@@ -23,12 +23,17 @@
                     <div class="input-field">
                         <input type="text" placeholder="Enter your email" required>
                         <i class="uil uil-envelope icon"></i>
+                        
+
                     </div>
+                    <div class="email-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
                         <input type="password" class="password" placeholder="Enter your password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
+                    <div class="password-error-message" style="display: none; color: red;"></div>
+
 
                     <div class="checkbox-text" style="text-align: right;">
                         <!-- <div class="checkbox-content">
@@ -38,9 +43,9 @@
 
                         <a href="#" class="text">Forgot password?</a>
                     </div>
-
+                    
                     <div class="input-field button">
-                        <input type="button" value="Login">
+                        <input type="button" value="Login" onclick="validate()"></a>
                     </div>
                 </form>
 
@@ -64,19 +69,23 @@
                         <input type="text" placeholder="Enter your email" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
+                    <div class="email-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
                         <input type="text" placeholder="Enter your NIC number" required>
                         <i class="uil uil-postcard icon"></i>
                     </div>
+                    <div class="nic-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
                         <input type="password" class="password" placeholder="Create a password" required>
                         <i class="uil uil-lock icon"></i>
                     </div>
+                    <div class="password-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
                         <input type="password" class="password" placeholder="Confirm a password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
+                    <div class="confirm-error-message" style="display: none; color: red;"></div>
 
                     <div class="checkbox-text-terms">
                         <div class="checkbox-content-terms">
@@ -88,7 +97,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="button" value="Signup">
+                        <input type="button" value="Signup" onclick="validate()">
                     </div>
                 </form>
 
