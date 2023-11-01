@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="dbstyle.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-bus"></i>
+        <span class="logo_name">StaffLink</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-search"></i>
+            <span class="links_name">Find Transport</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-list-ul"></i>
+            <span class="links_name">Reservations</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-coin-stack"></i>
+            <span class="links_name">Payments</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-message"></i>
+            <span class="links_name">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-help-circle"></i>
+            <span class="links_name">Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
+          <span class="user_name">Madhushan</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total resv</div>
+              <div class="number">40</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div>
+            </div>
+            <i class="bx bx-add-to-queue cart"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Last Payment</div>
+              <div class="number">Rs.3,500</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from previous week</span>
+              </div>
+            </div>
+            <i class="bx bx-money cart two"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total Trips</div>
+              <div class="number">230</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div>
+            </div>
+            <i class="bx bx-bus cart three"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Trip left</div>
+              <div class="number">5</div>
+              <div class="indicator">
+                <i class="bx bx-down-arrow-alt down"></i>
+                <span class="text">Down From Today</span>
+              </div>
+            </div>
+            <i class="bx bx-minus bx-fade-left cart four"></i>
+          </div>
+        </div>
+
+        <div class="detail-boxes">
+          <div class="recent-res box">
+            <div class="title">Reservations</div>
+            <div class="res-details">
+              <ul class="details">
+                <li class="topic">Date</li>
+                <li><a href="#">02 Jan 2024</a></li>
+                <li><a href="#">03 Jan 2024</a></li>
+                <li><a href="#">04 Jan 2024</a></li>
+                <li><a href="#">05 Jan 2024</a></li>
+                <li><a href="#">06 Jan 2024</a></li>
+                <li><a href="#">07 Jan 2024</a></li>
+                <li><a href="#">08 Jan 2024</a></li>
+                <li><a href="#">08 Jan 2024</a></li>
+                <li><a href="#">08 Jan 2024</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Service Provider</li>
+                <li><a href="#">Alex Doe</a></li>
+                <li><a href="#">David Mart</a></li>
+                <li><a href="#">Roe Parter</a></li>
+                <li><a href="#">Diana Penty</a></li>
+                <li><a href="#">Martin Paw</a></li>
+                <li><a href="#">Doe Alex</a></li>
+                <li><a href="#">Aiana Lexa</a></li>
+                <li><a href="#">Rexel Mags</a></li>
+                <li><a href="#">Tiana Loths</a></li>
+              </ul>
+              <ul class="Status">
+                <li class="topic">Sales</li>
+                <li><a href="#">Pending</a></li>
+                <li><a href="#">Pending</a></li>
+                <li><a href="#">Pending</a></li>
+                <li><a href="#">Pending</a></li>
+                <li><a href="#">Pending</a></li>
+                <li><a href="#">Closed</a></li>
+                <li><a href="#">Closed</a></li>
+                <li><a href="#">Closed</a></li>
+                <li><a href="#">Closed</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Destination</li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Nugegoda</a></li>
+                <li><a href="#">Maharagama</a></li>
+              </ul>
+            </div>
+            <div class="button">
+              <a href="#">See All</a>
+            </div>
+          </div>
+          <div class="recent-payments box">
+            <div class="title">Payments</div>
+            <div class="payment-details">
+              <ul class="Status">
+                <li class="topic">Date</li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+                <li><a href="#">jan 2</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Amount</li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.3,500</a></li>
+                <li><a href="#">Rs.4,300</a></li>
+                <li><a href="#">Rs.6,900</a></li>
+              </ul>
+            </div>
+            <div class="button">
+              <a href="#">See All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+.resizable-image {
+    width: 100%; 
+    height: auto; 
+  }
+  
+  .center-button {
+    text-align: right;
+  }
+  
+  button {
+    background-color: #043462;
+    color: white; 
+    padding: 10px 60px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+  }
+  
+  .container {
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  
+  body {
+    background-color: #043462;
+  }
+  
+  .X1 {
+    background-color: #CDD5E0; 
+    padding-right: 30px;
+    padding-left: 50px; 
+    margin-bottom: 20px; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+  }
+  
+  .left {
+    width: 1000px;
+  }
+  
+  .right {
+    width: 50px;
+  }
+  

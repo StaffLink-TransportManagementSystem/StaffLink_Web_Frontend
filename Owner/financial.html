@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="financial.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+        <div class="logo-details">
+          <i class="bx bxs-bus"></i>
+          <span class="logo_name">StaffLink</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+              <a href="./ownerDashboard.html" class="">
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+            </li>
+          <li>
+            <a href="./passengerLIst.html" class="">
+              <i class='bx bxs-briefcase-alt-2'></i>
+              <span class="links_name">Passengers</span>
+            </a>
+          </li>
+          <li>
+            <a href="./vehicles.html" class="">
+              <i class="bx bx-search"></i>
+              <span class="links_name">Vehicles</span>
+            </a>
+          </li>
+          <li>
+            <a href="./drivers.html" class="">
+              <i class='bx bxs-traffic'></i>
+              <span class="links_name">Drivers</span>
+            </a>
+          </li>
+          <li>
+            <a href="./routes.html">
+              <i class="bx bx-coin-stack"></i>
+              <span class="links_name">Routes</span>
+            </a>
+          </li>
+          <li>
+            <a href="./financial.html" class="active">
+              <i class="bx bx-pie-chart-alt-2"></i>
+              <span class="links_name">Financial</span>
+            </a>
+          </li>
+          <li>
+            <a href="./reports.html">
+              <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
+              <span class="links_name">Reports</span>
+            </a>
+          </li>
+          <li class="log_out">
+            <a href="#">
+              <i class="bx bx-log-out"></i>
+              <span class="links_name">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Financial</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
+          <span class="user_name">Ravindu</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Passengers</div>
+                <div class="number">50</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-add-to-queue cart"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Balance</div>
+                <div class="number">Rs.-3,500</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from previous week</span>
+                </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Vehicals</div>
+                <div class="number">3</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-bus cart three"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Revenue</div>
+                <div class="number">5</div>
+                <!-- <div class="indicator"> 
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">For this month</span>
+                </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+          </div>
+
+        
+        <div class="detail-boxes" style="margin-top: 2rem;">
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Customer Payments</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <!-- <td>Price</td> -->
+                                <td>Payment</td>
+                                <td>Method</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Alex Doe</td>
+                                <td>Rs10,000</td>
+                                <td>Card</td>
+                                <td><span class="status delivered">Paid</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>David Mart</td>
+                                <td>Rs10,000</td>
+                                <td>To Driver</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Roe Parter</td>
+                                <td>Rs10,000</td>
+                                <td>To Driver</td>
+                                <td><span class="status delivered">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>Roe Parter</td>
+                                <td>Rs10,000</td>
+                                <td>To Driver</td>
+                                <td><span class="status delivered">Paid</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Alex Doe</td>
+                                <td>Rs10,000</td>
+                                <td>Card</td>
+                                <td><span class="status delivered">Paid</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>David Mart</td>
+                                <td>Rs10,000</td>
+                                <td>To Driver</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Payment Breakdown</h2>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Payment</td>
+                                <td>Amount</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Monthly Income (card)</td>
+                                <td>Rs 103,000</td>
+                            </tr>
+
+                            <tr>
+                                <td>Monthly Income(cash)</td>
+                                <td>Rs 100,000</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly Subscription</td>
+                                <td>(Rs 50,000)</td>
+                            </tr>
+                            <tr>
+                                <td><b>Balance</b></td>
+                                <td><b>Rs 153,000</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="dashboardStyle.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-bus"></i>
+        <span class="logo_name">StaffLink</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+            <a href="#" class="active">
+              <i class="bx bx-grid-alt"></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+          </li>
+        <li>
+          <a href="./passengerLIst.html" class="">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            <span class="links_name">Passengers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-search"></i>
+            <span class="links_name">Vehicles</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-traffic'></i>
+            <span class="links_name">Drivers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-coin-stack"></i>
+            <span class="links_name">Routes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="links_name">Financial</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
+          <span class="user_name">Ravindu</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total Passengers</div>
+              <div class="number">50</div>
+              <!-- <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div> -->
+            </div>
+            <i class="bx bx-add-to-queue cart"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Balance</div>
+              <div class="number">Rs.-3,500</div>
+              <!-- <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from previous week</span>
+              </div> -->
+            </div>
+            <i class="bx bx-money cart two"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total Vehicals</div>
+              <div class="number">3</div>
+              <!-- <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div> -->
+            </div>
+            <i class="bx bx-bus cart three"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Revenue</div>
+              <div class="number">50,000</div>
+              <!-- <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">For this</span>
+              </div> -->
+            </div>
+            <i class="bx bx-money cart two"></i>
+          </div>
+        </div>
+
+        <div class="charts">
+            <div class="newreg">
+                <h2>New Registrations</h2>
+                <h3>New Passenger registrations in last 5 months</h3><br>
+                
+                <canvas id="chart1" height="180"></canvas><br>
+
+                <div class="color-box" style="background-color: #003566; width: 25px; height: 18px;"></div>
+                <p>&ensp;Passengers</p><br>
+            </div>
+
+            <div class="revenue">
+                <h2>Monthly Revenue</h2>
+                <h3>The monthly revenue in last 5 months</h3><br>
+
+                <canvas id="chart2" height="180px"></canvas>  
+            </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
+        <script src="newreg.js"></script>
+        <script src="revenue.js"></script>
+    <script>
+        
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+  </body>
+</html>

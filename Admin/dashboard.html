@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-bus"></i>
+        <span class="logo_name">StaffLink</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-group"></i>
+            <span class="links_name">Passengers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-bus"></i>
+            <span class="links_name">Vehicles</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Vehicle Owners</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-trip"></i>
+            <span class="links_name">Drivers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-map-alt"></i>
+            <span class="links_name">Routes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-line-chart-down"></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-message"></i>
+            <span class="links_name">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-help-circle"></i>
+            <span class="links_name">Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <i class="bx bxs-user"></i>
+          <span class="user_name">Admin</span>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total no of passengers</div>
+              <div class="number">400</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div>
+            </div>
+            <i class="bx bx-add-to-queue cart"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total no of vehicles</div>
+              <div class="number">30</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from previous week</span>
+              </div>
+            </div>
+            <i class="bx bx-bus cart three"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total no of vehicle owners</div>
+              <div class="number">23</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div>
+            </div>
+            <i class="bx bx-user cart four"></i>
+          </div>
+        </div>
+
+        <div class="detail-boxes">
+          <div class="recent-res box">
+            <div class="title">New Registrations</div>
+            <div class="desc">New Owner, Vehicle, and Passenger registrations in last 5 months</div>
+            
+            <canvas id="chart1" height="180"></canvas><br>
+          </div>
+          <div class="recent-payments box">
+            <div class="title">Monthly Revenue</div>
+            <div class="desc">The monthly revenue in last 5 months</div>
+            
+            <canvas id="chart2" height="180px"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
+    <script src="newreg.js"></script>
+    <script src="revenue.js"></script> 
+  </body>
+</html>

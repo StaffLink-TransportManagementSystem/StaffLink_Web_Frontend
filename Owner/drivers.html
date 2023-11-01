@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="drivers.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+        <div class="logo-details">
+          <i class="bx bxs-bus"></i>
+          <span class="logo_name">StaffLink</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+              <a href="./ownerDashboard.html" class="">
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+            </li>
+          <li>
+            <a href="./passengerLIst.html" class="">
+              <i class='bx bxs-briefcase-alt-2'></i>
+              <span class="links_name">Passengers</span>
+            </a>
+          </li>
+          <li>
+            <a href="./vehicles.html" class="">
+              <i class="bx bx-search"></i>
+              <span class="links_name">Vehicles</span>
+            </a>
+          </li>
+          <li>
+            <a href="./drivers.html" class="active">
+              <i class='bx bxs-traffic'></i>
+              <span class="links_name">Drivers</span>
+            </a>
+          </li>
+          <li>
+            <a href="./routes.html">
+              <i class="bx bx-coin-stack"></i>
+              <span class="links_name">Routes</span>
+            </a>
+          </li>
+          <li>
+            <a href="./financial.html">
+              <i class="bx bx-pie-chart-alt-2"></i>
+              <span class="links_name">Financial</span>
+            </a>
+          </li>
+          <li>
+            <a href="./reports.html">
+              <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
+              <span class="links_name">Reports</span>
+            </a>
+          </li>
+          <li class="log_out">
+            <a href="#">
+              <i class="bx bx-log-out"></i>
+              <span class="links_name">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Drivers</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
+          <span class="user_name">Ravindu</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Passengers</div>
+                <div class="number">50</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-add-to-queue cart"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Balance</div>
+                <div class="number">Rs.-3,500</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from previous week</span>
+                </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Vehicals</div>
+                <div class="number">3</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-bus cart three"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Revenue</div>
+                <div class="number">5</div>
+                <!-- <div class="indicator"> 
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">For this month</span>
+                </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+          </div>
+
+        
+        <div class="detail-boxes" style="margin-top: 2rem;">
+          <div class="recent-res box">
+            <div class="title">
+                Drivers
+                <!-- <div class="button">
+                    <a href="#">Add New Driver</a>
+                  </div>
+                </div> -->
+            <div class="res-details">
+                <ul class="details">
+                    <li class="topic">Name</li>
+                    <li><a href="#">Alex Doe</a></li>
+                    <li><a href="#">David Mart</a></li>
+                    <li><a href="#">Roe Parter</a></li>
+                    <li><a href="#">Diana Penty</a></li>
+                    <li><a href="#">Martin Paw</a></li>
+                    <li><a href="#">Doe Alex</a></li>
+                    <li><a href="#">Aiana Lexa</a></li>
+                    <li><a href="#">Rexel Mags</a></li>
+                    <li><a href="#">Tiana Loths</a></li>
+                  </ul>
+                  <ul class="Date">
+                    <li class="topic">Age</li>
+                    <li><a href="#">20</a></li>
+                    <li><a href="#">23</a></li>
+                    <li><a href="#">30</a></li>
+                    <li><a href="#">24</a></li>
+                    <li><a href="#">20</a></li>
+                    <li><a href="#">22</a></li>
+                    <li><a href="#">21</a></li>
+                    <li><a href="#">23</a></li>
+                    <li><a href="#">20</a></li>
+                  </ul>
+                  <ul class="details">
+                    <li class="topic">Contact No</li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                    <li><a href="#">077 2345678</a></li>
+                  </ul>
+                  <ul class="details">
+                    <li class="topic">Assigned Vehicle</li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                    <li><a href="#">NB-2332</a></li>
+                  </ul>
+                  <ul class="details">
+                    <li class="topic">Update Details</li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>   
+
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Update Driver</a>
+                          </div>
+                    </li>
+
+                    
+                  </ul>
+                  <ul class="details">
+                    <li class="topic">Remove Driver</li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    <li>
+                        <div class="button">
+                            <a href="#">Remove Driver</a>
+                          </div>
+                    </li>
+                    
+                  </ul>
+              
+              
+            </div>
+            <div class="button" style="margin-top: 1rem;">
+              <a href="#">Add New Driver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+  </body>
+</html>

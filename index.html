@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Staff Link</title>
 </head>
 <body>
-    
+    <nav class="vertical-menu-wrapper">
+        <div class="vertical-menu-logo">
+          <img src="./images/LOGO.png" style="width: 170px;;">
+          <!-- <span class="open-menu-btn"><hr><hr><hr></span> -->
+        </div>
+        <ul class="vertical-menu">
+            <li id="form">
+                <form class="search">
+                       <input name="home" type="text" placeholder="Home Location*" class="texBox"/>
+                       
+                       <input name="office" type="text" placeholder="Office Location*" class="texBox"/>
+                       
+                       <!-- <input name="password" type="password" placeholder="Password*" class="username"/> -->
+                    
+                    <button class="btn">Search</button>
+                 </form>
+            </li>
+        </ul>
+      </nav>
+      <div class="content-wrapper" style="margin: 0;padding: 0;">
+        <div class="content">
+            <!-- <img src="./images/map.PNG"> -->
+            <iframe style="height: 100vh; width: 100%;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=<?=$result_array['lat']?>,<?=$result_array['long']?>&amp;aq=&amp;sll=<?=$result_array['lat']?>,<?=$result_array['long']?>&amp;sspn=0.000647,0.001246&amp;t=m&amp;gl=us&amp;ie=UTF8&amp;ll=<?=$result_array['lat']?>,<?=$result_array['long']?>&amp;spn=0.011505,0.018239&amp;z=15&amp;output=embed"></iframe>
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.2649227453544!2d79.90938187483793!3d6.858818519176202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25bde3dca22bf%3A0x73f3c3a6a94304dc!2skORzix!5e0!3m2!1sen!2slk!4v1694455446701!5m2!1sen!2slk" style="border:0;width: 100%; height: 100vh;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </div>
+      </div>
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style3.css">
+    </head>
+    <body>
+        <header style="height: 80px;">
+            <a href="#" title="Logo" >
+                <img class="logo" src="images/LOGO.png" alt="Logo">
+            </a>
+             <h1>
+                <!-- <label for="nav-toggle"><i class="material-icons">menu</i></label> -->
+                Passenger Login
+            </h1>
+            <!--
+            <div class="search-wrapper">
+                <i class="material-icons">search</i>
+                <input type="search" placeholder="Search here">
+            </div>
+
+            <div class="user-wrapper">
+                <h4>admin</h4>
+                <a href="#notifications"><i class="material-icons">notifications</i></a>
+                <a href="#emails"><i class="material-icons">mail</i></a>
+                <div class="dropdown">
+                    <button class="btn1"><i class="material-icons">account_circle</i></button>
+                    <div class="dropdown-content">
+                        <a href="#profile">View Profile</a>
+                        <a href="#log-out">Log-out</a>
+                      </div>
+                </div>
+            </div> -->
+        </header>
+        <div class="loginPageWrapper">
+            <div class="info-side">
+                <img src="images/LOGO.png" alt="login">
+            </div>
+            <div class="login-side">
+                <!-- <a href="#" title="Logo">
+                    <img class="logo" src="images/LOGO.png" alt="Logo">
+                </a> -->
+                <div class="my-form__wrapper">
+                    <div class="login-welcome-row">
+                        <h1>Welcome back</h1>
+                        <p>Please enter your details!</p>
+                    </div>
+                    <form class="my-form">
+                        <div class="text-field">
+                            <label for="email">Enter your Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            <img alt="emailIcon" src="images/email.svg">
+                        </div>
+                        <div class="text-field">
+                            <label for="password">Enter your Password:</label>
+                            <input id="password" type="password" name="password"
+                                placeholder="Your Password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+                            <img alt="Password Icon" src="images/password.svg">
+                        </div>
+                        <input type="submit" class="my-form__button" value="Login">
+                        <div class="my-form__actions">
+                            <div class="my-form__row">
+                                <span>Did you forget your password? </span>
+                                <a href="#" title="Reset Password">
+                                    Reset Password
+                                </a>
+                            </div>
+                            <div class="my-form__signup">
+                                <a href="#" title="Create Account">
+                                    Create Account
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- <div class="info-side">
+                <img src="images/LOGO.png" alt="login">
+            </div> -->
+        </div>
+        <script src="loginScript.js"></script>
+    </body>
+</html>
+
