@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Find Transport</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-bus"></i>
+        <span class="logo_name">StaffLink</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-search"></i>
+            <span class="links_name">Find Transport</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-list-ul"></i>
+            <span class="links_name">Reservations</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-coin-stack"></i>
+            <span class="links_name">Payments</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-message"></i>
+            <span class="links_name">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-help-circle"></i>
+            <span class="links_name">Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Find Transport</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
+          <span class="user_name">Madhushan</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+          <div class="home-content">
+          <form id="search-form">
+              <div class="location">
+                <input type="text" placeholder="Home Location" id="start-location" name="startLocation" required>
+                <input type="text" placeholder="Office Location" id="end-location" name="endLocation" required>
+              </div>
+              <div class="inputlabel">
+                <div class="stime">
+                  <label for="start-time">Work Starting Time:</label>
+                  <input type="time" placeholder="Work Starting Time" id="start-time" name="startTime" required>
+                </div>
+                <div class="otime">
+                  <label for="off-time">Work Off Time:</label>
+                  <input type="time" placeholder="Work Off Time" id="off-time" name="offTime" required>
+                </div>
+              </div>
+              <button type="submit">Search</button>
+          </form>
+      
+          <div id="results">
+              <!-- Search results will be displayed here -->
+          </div>
+        </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+
+      const form = document.getElementById('search-form');
+        const resultsDiv = document.getElementById('results');
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const startLocation = document.getElementById('start-location').value;
+          const endLocation = document.getElementById('end-location').value;
+          const startTime= document.getElementById('start-time').value;
+          const offTime = document.getElementById('off-time').value;
+      
+          // Perform search based on user input
+          // You would need to send a request to your backend API here to get the search results
+          // and update the resultsDiv with the received data.
+          // Example: Use fetch() to send a request to your backend API endpoint.
+      
+          // For demonstration purposes, let's assume you receive a JSON response like this:
+          const searchResults = [
+              {
+                  ownerName: 'Owner Name',
+                  vehicleNumber: 'NB 1424',
+                  vehicleType: 'Bus',
+                  features: 'AC',
+                  startingLocation: 'Kaluthara',
+                  departureTime: '6.00 AM',
+                  endingLocation: 'University of Colombo',
+                  arrivalTime: '8.00 AM',
+                  price: 'RS. 15000/=',
+                  imageSrc: '20769-4-coach-bus.png'
+              }
+          ];
+      
+          // Display search results
+          resultsDiv.innerHTML = '';
+          if (searchResults.length > 0) {
+              searchResults.forEach(result => {
+                  const container = document.createElement('div');
+                  container.classList.add('container');
+      
+                  const X1Div = document.createElement('div');
+                  X1Div.classList.add('X1');
+      
+                  const table = document.createElement('table');
+                  const tableRow = document.createElement('tr');
+      
+                  const leftCell = document.createElement('td');
+                  leftCell.classList.add('left');
+                  const rightCell = document.createElement('td');
+                  rightCell.classList.add('right');
+      
+                  // Populate left cell content
+                  const ownerNameHeading = document.createElement('h2');
+                  ownerNameHeading.textContent = result.ownerName;
+      
+                  const vehicleInfo = document.createElement('p');
+                  vehicleInfo.innerHTML = `<h5></h5>${result.vehicleNumber} | ${result.vehicleType} | ${result.features}
+                  <br>${result.startingLocation} | ${result.departureTime}
+                  <br>${result.endingLocation} | ${result.arrivalTime}
+                  <br>${result.price}`;
+      
+                  leftCell.appendChild(ownerNameHeading);
+                  leftCell.appendChild(vehicleInfo);
+      
+                  // Populate right cell content
+                  const vehicleImage = document.createElement('img');
+                  vehicleImage.src = result.imageSrc;
+                  vehicleImage.alt = 'Your Image Description';
+                  vehicleImage.classList.add('resizable-image');
+      
+                  const centerButtonDiv = document.createElement('div');
+                  centerButtonDiv.classList.add('center-button');
+      
+                  const requestButton = document.createElement('button');
+                  requestButton.textContent = 'Request';
+      
+                  centerButtonDiv.appendChild(requestButton);
+                  rightCell.appendChild(vehicleImage);
+                  rightCell.appendChild(centerButtonDiv);
+      
+                  // Assemble the table
+                  tableRow.appendChild(leftCell);
+                  tableRow.appendChild(rightCell);
+                  table.appendChild(tableRow);
+                  X1Div.appendChild(table);
+                  container.appendChild(X1Div);
+                  resultsDiv.appendChild(container);
+              });
+          } else {
+              resultsDiv.innerHTML = '<p>No suitable transportation options found.</p>';
+          }
+      });
+    </script>
+  </body>
+</html>
