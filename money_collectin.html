@@ -98,7 +98,8 @@
                     <td data-label="Name">Kamal Perera</td>
                     <td data-label="Amount">Rs.3900 </td>
                     <td data-label="Action">
-                        <a href="#moredetails"><button class="moredetails">Collected</button></a>
+                        <!-- <a href="#moredetails"><button class="moredetails">Collected</button></a> -->
+                        <button class="toggle-button">Collected</button>
 
                     </td>
                 </tr>
@@ -118,6 +119,15 @@
           sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+      
+    // Get the button element
+    const toggleButton = document.querySelector('.toggle-button');
+
+    // Toggle active class when the button is clicked
+    toggleButton.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
     </script>
   </body>
 </html>
