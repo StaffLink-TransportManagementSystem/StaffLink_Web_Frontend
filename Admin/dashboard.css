@@ -114,38 +114,6 @@ nav .sidebar-button i{
   font-size: 35px;
   margin-right: 10px;
 }
-.home-section nav .search-box{
-  position: relative;
-  height: 50px;
-  max-width: 550px;
-  width: 100%;
-  margin: 0 20px;
-}
-nav .search-box input{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  background: #F5F6FA;
-  border: 2px solid #EFEEF1;
-  border-radius: 6px;
-  font-size: 18px;
-  padding: 0 15px;
-}
-nav .search-box .bx-search{
-  position: absolute;
-  height: 40px;
-  width: 40px;
-  background: #2697FF;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 4px;
-  line-height: 40px;
-  text-align: center;
-  color: #fff;
-  font-size: 22px;
-  transition: all 0.4 ease;
-}
 .home-section nav .profile-details{
   display: flex;
   align-items: center;
@@ -155,6 +123,34 @@ nav .search-box .bx-search{
   height: 50px;
   min-width: 100px;
   padding: 0 2px 0 2px;
+}
+.home-section nav .profile-details{
+  cursor: pointer;
+}
+.home-section nav .profile-details ul li{
+  display: block;
+}
+.home-section nav .profile-details .dropdown-list{
+  width: 10%;
+  position: absolute;
+  z-index: 999;
+  display: none;
+  margin-top: 135px;
+  margin-right: 180px;
+  background: #F5F6FA;
+  border-radius: 10px;
+  margin-left: -4px;
+}
+.home-section nav .profile-details .dropdown-list li a{
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding-left: 5px;
+}
+.home-section nav .profile-details:hover ul.dropdown-list{
+  display: block;
 }
 nav .profile-details img{
   height: 40px;
@@ -197,34 +193,13 @@ nav .profile-details i{
 .overview-boxes .box-topic{
   font-size: 20px;
   font-weight: 500;
-  margin-right: 10px;
+  margin-right: 50px;
 }
 .home-content .box .number{
   display: inline-block;
   font-size: 35px;
   margin-top: -6px;
   font-weight: 500;
-}
-.home-content .box .indicator{
-  display: flex;
-  align-items: center;
-}
-.home-content .box .indicator i{
-  height: 20px;
-  width: 20px;
-  background: #8FDACB;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  margin-right: 5px;
-}
-.box .indicator i.down{
-  background: #e87d88;
-}
-.home-content .box .indicator .text{
-  font-size: 12px;
 }
 .home-content .box .cart{
   display: inline-block;
