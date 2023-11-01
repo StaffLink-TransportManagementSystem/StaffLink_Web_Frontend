@@ -153,7 +153,7 @@ nav .search-box .bx-search{
   border: 2px solid #EFEEF1;
   border-radius: 6px;
   height: 50px;
-  min-width: 190px;
+  min-width: 100px;
   padding: 0 15px 0 2px;
 }
 nav .profile-details img{
@@ -506,4 +506,44 @@ nav .profile-details i{
         display: flex;
         flex-wrap: wrap;
     }
+  }
+
+
+
+
+  .home-section nav .profile-details{
+    cursor: pointer;
+  }
+  .home-section nav .profile-details ul li{
+    display: block;
+  }
+  .home-section nav .profile-details .dropdown-list{
+    width: 10%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+    margin-top: 135px;
+    margin-right: 180px;
+    background: #F5F6FA;
+    border-radius: 10px;
+    margin-left: -4px;
+  }
+  .home-section nav .profile-details .dropdown-list li a{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    padding-left: 5px;
+  }
+  .home-section nav .profile-details:hover ul.dropdown-list{
+    display: block;
+  }
+
+  .dropdown-list li :hover{
+    /* color: #fff; */
+    /* text-decoration-color: #fff;
+    color: #fff;
+    background: #bfbfbf; */
+    
   }

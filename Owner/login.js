@@ -43,6 +43,7 @@ const container = document.querySelector(".container"),
 
 // validation javascript
     function validate() {
+        console.log("validate function called");
         // Get the email and password input values
         const emailInput = document.querySelector(".form.login input[type='text']");
         const passwordInput = document.querySelector(".form.login input.password");
@@ -89,5 +90,27 @@ const container = document.querySelector(".container"),
             signUpErrorMessage2.style.display = "block";
             return;
         }
+
+        getData();
     }
     
+
+
+
+    function getData() {
+        fetch('http://localhost:8080/try2_war_exploded/ownerLogin',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message)
+                // document.getElementById("demo").innerHTML = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    
+    getData()
