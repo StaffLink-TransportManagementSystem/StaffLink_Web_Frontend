@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="vehicleList.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+        <div class="logo-details">
+          <i class="bx bxs-bus"></i>
+          <span class="logo_name">StaffLink</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+              <a href="./ownerDashboard.html" class="">
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+            </li>
+          <li>
+            <a href="./passengerLIst.html" class="">
+              <i class='bx bxs-briefcase-alt-2'></i>
+              <span class="links_name">Passengers</span>
+            </a>
+          </li>
+          <li>
+            <a href="./vehicleList.html" class="active">
+              <i class="bx bx-search"></i>
+              <span class="links_name">Vehicles</span>
+            </a>
+          </li>
+          <li>
+            <a href="./drivers.html">
+              <i class='bx bxs-traffic'></i>
+              <span class="links_name">Drivers</span>
+            </a>
+          </li>
+          <li>
+            <a href="./routes.html">
+              <i class="bx bx-coin-stack"></i>
+              <span class="links_name">Routes</span>
+            </a>
+          </li>
+          <li>
+            <a href="./financial.html">
+              <i class="bx bx-pie-chart-alt-2"></i>
+              <span class="links_name">Financial</span>
+            </a>
+          </li>
+          <li>
+            <a href="./reports.html">
+              <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
+              <span class="links_name">Reports</span>
+            </a>
+          </li>
+          <li class="log_out">
+            <a href="#">
+              <i class="bx bx-log-out"></i>
+              <span class="links_name">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Vehicles</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <i class="bx bxs-user"></i>
+          <span class="user_name">Ravindu</span>
+          <i class="bx bx-chevron-down"></i>
+          <ul class="dropdown-list">
+            <li><a href="#" class="link">Your Profile</a></li>
+            <li><a href="#" class="link">Notifications</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Passengers</div>
+                <div class="number">50</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-add-to-queue cart"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Balance</div>
+                <div class="number">Rs.-3,500</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from previous week</span>
+                </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Vehicals</div>
+                <div class="number">3</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-bus cart three"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Revenue</div>
+                <div class="number">5</div>
+                    <!-- <div class="indicator"> 
+                    <i class="bx bx-up-arrow-alt"></i>
+                    <span class="text">For this month</span>
+                    </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+          </div>
+          <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
+            <a href="./addVehical.html">Add New Vehicle</a>
+          </div>
+
+          <div class="vehicle-card-container">
+            
+            <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">Owner Email</th>
+                        <th scope="col">Vehicle No</th>
+                        <th scope="col">Reg. No</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Driver Email</th>
+                        <th scope="col">Seats Count</th>
+                        <th scope="col">Trips</th>
+                        <th scope="col">Starting Point</th>
+                        <th scope="col">Ending Point</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr>
+                        <td scope="owner" data-label="P ID">p01</td>
+                        <td class="Name">Kamal Perera</td>
+                        <td class="Address">15, Gamunu Mawatha, Nugegoda</td>
+                        <td class="NIC">955497721V</td>
+                        <td class="Telephone">0713745598</td>
+                        <td class="Email">kamal@gmail.com</td>
+                        <td class="Telephone">0713745598</td>
+                        <td class="Email">kamal@gmail.com</td>
+                        <td class="Email">kamal@gmail.com</td>
+                        <td class="Action">
+                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
+                            <a href="#edit"></a><button class="edit">EDIT</button></a>
+                            <a href="#delete"></a><button class="delete">DELETE</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+            
+        </div>
+      </div>
+      
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+    <script src="./vehicleList.js"></script>
+    
+  </body>
+</html>

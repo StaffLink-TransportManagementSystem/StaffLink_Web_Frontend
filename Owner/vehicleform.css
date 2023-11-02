@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #0A2558;
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: #0A2558;
+}
+
+.container form .vehicle-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .vehicle-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 17px;
+}
+
+.vehicle-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 15px;
+}
+
+.vehicle-details .input-box input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.vehicle-details .input-box select{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.vehicle-details .input-box .photo{
+    border: none;
+}
+
+.vehicle-details .input-box input:focus{
+    border-color: #0A2558;
+}
+
+form .button{
+    height: 38px;
+    margin: 15px 0 -10px 0;
+}
+
+form .button input{
+    height: 100%;
+    width: 130px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #0A2558;
+}
+
+form .button input:hover{
+    color: #DAA600;
+}
+
+@media (max-width: 584px) {
+    .container{
+        max-width: 100%;
+    }
+
+    form .vehicle-details .input-box{
+        width: 100%;
+        margin-bottom: 17px;
+    }
+
+    .container form .vehicle-details{
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .vehicle-details::-webkit-scrollbar{
+        width: 0;
+    }
+}
