@@ -247,45 +247,40 @@ button:hover {
   background-color: #16449a;
 }
 
-.container {
-  margin-bottom: 20px;
-  padding: 10px;
+#results {
+  margin-top: 20px;
+}
+
+.result-item {
+  background-color: #ffffff;
   border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.result-buttons {
+  display: flex;
+  flex-direction: column; /* Display buttons vertically */
+  align-items: flex-end; /* Align buttons to the right */
+  margin-top: 15px;
+}
+
+.request-button,
+.details-button {
+  padding: 5px 10px;
+  background-color: #0A2558;
+  color: white;
+  border: none;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Style for left cell content */
-.left {
-  width: 50%;
-  padding: 10px;
-}
-
-h2 {
-  margin: 0 0 10px;
-  font-size: 18px;
-}
-
-/* Style for right cell content */
-.right {
-  width: 50%;
-  text-align: center;
-}
-
-.resizable-image {
-  max-width: 100px;
-  max-height: 100px;
-  margin-bottom: 10px;
-}
-
-.center-button {
-  margin-top: 10px;
-}
-
-/* Style for when no suitable transportation options are found */
-#results p {
-  font-style: italic;
-  color: #999;
+.request-button:hover,
+.details-button:hover {
+  background-color: #16449a;
 }
 /* Responsive Media Query */
 @media (max-width: 1240px) {
