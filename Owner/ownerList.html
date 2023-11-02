@@ -16,13 +16,13 @@
         </div>
         <ul class="nav-links">
           <li>
-              <a href="./ownerDashboard.html" class="">
+              <a href="./ownerDashboard.html" class="active">
                 <i class="bx bx-grid-alt"></i>
                 <span class="links_name">Dashboard</span>
               </a>
             </li>
           <li>
-            <a href="./passengerLIst.html" class="active">
+            <a href="./passengerLIst.html" class="">
               <i class='bx bxs-briefcase-alt-2'></i>
               <span class="links_name">Passengers</span>
             </a>
@@ -134,7 +134,7 @@
             </div>
           </div>
           <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
-            <a href="./addPassenger.html">Add New Passenger</a>
+            <a href="./addOwner.html">Add New Owner</a>
           </div>
 
           <div class="vehicle-card-container" style="width: 100%;">
@@ -142,12 +142,14 @@
             <table class="passtable">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Name</th>
                         <th scope="col">NIC</th>
+                        <th scope="col">Contact No</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
+    
                 <tbody class="tbody"></tbody>
             </table>  
             
@@ -166,8 +168,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
-    <script src="./passengerList.js"></script>
-    
+    <script src="./ownerList.js"></script>
     
   </body>
 </html>

@@ -9,17 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = form.querySelector('.email').value;
       const name = form.querySelector('.name').value;
       const NIC = form.querySelector('.NIC').value;
-      const age = form.querySelector('.age').value;
       const contact = form.querySelector('.contact').value;
-      const ownerEmail = form.querySelector('.ownerEmail').value;
       const password = form.querySelector('.password').value;
-    //   const vehicleModel = form.querySelector('.vehicleModel').value;
-    //   const regNumber = form.querySelector('.vehicleRegNo').value;
-    //   const driverEmail = form.querySelector('.driverEmail').value;
-    //   const seatCount = form.querySelector('.seatCount').value;
-    //   const startingLocation = form.querySelector('.startingLocation').value;
-    //   const endLocation = form.querySelector('.endLocation').value;
-    //   const vehicleTrips = form.querySelector('.vehicle-trips').value;
+      
 
         
 
@@ -34,18 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
       else if(!NIC){
         alert("Please fill in all required fields.");
       }
-      else if(!age){
-        alert("Please fill in all required fields.");
-      }
       else if(!contact){
         alert("Please fill in all required fields.");
       }
-      else if(!ownerEmail){
-        alert("Please fill in all required fields.");
-      }
-      else if(!password){
-        alert("Please fill in all required fields.");
-      }
+        else if(!password){
+            alert("Please fill in all required fields.");
+        }
+        
         else {
             // All form data are valid, so submit to the server
            
@@ -55,14 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
         email:email,
         name:name,
         NIC:NIC,
-        age:age,
         contact:contact,
-        ownerEmail:ownerEmail,
         password:password,
+        
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/driverRegister',{
+      fetch('http://localhost:8080/try2_war_exploded/ownerRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
