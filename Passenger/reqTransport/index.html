@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Reports</title>
-    <link rel="stylesheet" href="reports.css" />
+    <title>Request Transport</title>
+    <link rel="stylesheet" href="style.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
           </a>
         </li>
         <li>
-          <a href="../reqTransport/index.html">
+          <a href="index.html" class="active">
             <i class='bx bx-plus-circle' ></i>
             <span class="links_name">Request Transport</span>
           </a>
@@ -46,7 +46,7 @@
           </a>
         </li>
         <li>
-          <a href="reports.html" class="active">
+          <a href="../Reports/reports.html">
             <i class="bx bx-pie-chart-alt-2"></i>
             <span class="links_name">Reports</span>
           </a>
@@ -81,7 +81,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Reports</span>
+          <span class="dashboard">Request Transport</span>
         </div>
         <!-- <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -94,69 +94,45 @@
         </div>
       </nav>
 
-      <div class="home-content">
-        <div class="overview-boxes">
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total resv</div>
-              <div class="number">40</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div>
-            </div>
-            <i class="bx bx-add-to-queue cart"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Last Payment</div>
-              <div class="number">Rs.3,500</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from previous week</span>
-              </div>
-            </div>
-            <i class="bx bx-money cart two"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total Trips</div>
-              <div class="number">230</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div>
-            </div>
-            <i class="bx bx-bus cart three"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Trip left</div>
-              <div class="number">5</div>
-              <div class="indicator">
-                <i class="bx bx-down-arrow-alt down"></i>
-                <span class="text">Down From Today</span>
-              </div>
-            </div>
-            <i class="bx bx-minus bx-fade-left cart four"></i>
-          </div>
+          <div class="home-content">
+            <div class="container">
+              <form action="#">
+                  <div class="req-transport">
+                      <div class="input-box">
+                      <span class="details">Service provider</span>
+                      <input type="text" placeholder="Enter prefered service provider" required>
+                      </div>
+                      <div class="input-box">
+                        <span class="details">Vehicle Type</span>
+                        <select name="vehicle-type" id="vehicle-type">
+                            <option class="default" value>Select the vehicle type</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                        </select>
+                    </div>
+                      <div class="input-box">
+                          <span class="details">Home Location</span>
+                          <input type="text" placeholder="Enter your starting location" required>
+                      </div>
+                      <div class="input-box">
+                          <span class="details">Office Location</span>
+                          <input type="text" placeholder="Enter your destination" required>
+                      </div>
+                      <div class="input-box">
+                          <span class="details">Work starting time</span>
+                          <input type="time" placeholder="Enter work starting time" required>
+                      </div>
+                      <div class="input-box">
+                          <span class="details">Work off time</span>
+                          <input type="time" placeholder="Enter work end time" required>
+                      </div>
+                      <div class="button">
+                          <input type="submit" value="Request">
+                      </div>
+  
+                  </div>
+              </form>
         </div>
-
-        <div class="detail-boxes">
-          <div class="recent-res box">
-            <div class="title">Trips</div>
-            <div class="desc">overview of trip count in last 5 months</div>
-            
-            <canvas id="chart1" height="180"></canvas><br>
-          </div>
-          <div class="recent-payments box">
-            <div class="title">Monthly payment</div>
-            <div class="desc">overview of payments in last 5 months</div>
-            
-            <canvas id="chart2" height="180px"></canvas>
-          </div>
-        </div>
-      </div>
     </section>
 
     <script>
@@ -167,11 +143,7 @@
         if (sidebar.classList.contains("active")) {
           sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-      };
+    };
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
-    <script src="newreg.js"></script>
-    <script src="revenue.js"></script> 
   </body>
 </html>
