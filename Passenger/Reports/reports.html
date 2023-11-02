@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Find Transport</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Reports</title>
+    <link rel="stylesheet" href="reports.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="active">
+          <a href="#">
             <i class="bx bx-search"></i>
             <span class="links_name">Find Transport</span>
           </a>
@@ -40,7 +40,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="#" class="active">
             <i class="bx bx-pie-chart-alt-2"></i>
             <span class="links_name">Reports</span>
           </a>
@@ -75,7 +75,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Find Transport</span>
+          <span class="dashboard">Reports</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -88,29 +88,69 @@
         </div>
       </nav>
 
-          <div class="home-content">
-          <form id="search-form">
-              <div class="location">
-                <input type="text" placeholder="Home Location" id="start-location" name="startLocation" required>
-                <input type="text" placeholder="Office Location" id="end-location" name="endLocation" required>
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total resv</div>
+              <div class="number">40</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
               </div>
-              <div class="inputlabel">
-                <div class="stime">
-                  <label for="start-time">Work Starting Time:</label>
-                  <input type="time" placeholder="Work Starting Time" id="start-time" name="startTime" required>
-                </div>
-                <div class="otime">
-                  <label for="off-time">Work Off Time:</label>
-                  <input type="time" placeholder="Work Off Time" id="off-time" name="offTime" required>
-                </div>
+            </div>
+            <i class="bx bx-add-to-queue cart"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Last Payment</div>
+              <div class="number">Rs.3,500</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from previous week</span>
               </div>
-              <button type="submit">Search</button>
-          </form>
-      
-          <div id="results">
-              <!-- Search results will be displayed here -->
+            </div>
+            <i class="bx bx-money cart two"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Total Trips</div>
+              <div class="number">230</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+              </div>
+            </div>
+            <i class="bx bx-bus cart three"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Trip left</div>
+              <div class="number">5</div>
+              <div class="indicator">
+                <i class="bx bx-down-arrow-alt down"></i>
+                <span class="text">Down From Today</span>
+              </div>
+            </div>
+            <i class="bx bx-minus bx-fade-left cart four"></i>
           </div>
         </div>
+
+        <div class="detail-boxes">
+          <div class="recent-res box">
+            <div class="title">Trips</div>
+            <div class="desc">overview of trip count in last 5 months</div>
+            
+            <canvas id="chart1" height="180"></canvas><br>
+          </div>
+          <div class="recent-payments box">
+            <div class="title">Monthly payment</div>
+            <div class="desc">overview of payments in last 5 months</div>
+            
+            <canvas id="chart2" height="180px"></canvas>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script>
@@ -122,45 +162,10 @@
           sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
-
-
-      document.getElementById("search-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-      
-        // Demo search result (replace this with your actual search logic)
-        const demoResult = [
-          { serviceprovider: "xyz traport", transportType: "Bus-24 seats", departureTime: "08:00 AM", arrivalTime: "09:00 AM" },
-          { serviceprovider: "xyz traport", transportType: "van-12 seats", departureTime: "09:30 AM", arrivalTime: "10:30 AM" }
-        ];
-      
-        const resultsContainer = document.getElementById("results");
-        resultsContainer.innerHTML = "";
-      
-        demoResult.forEach(result => {
-          const resultDiv = document.createElement("div");
-          resultDiv.classList.add("result-item");
-          resultDiv.innerHTML = `<p>Transport Type: ${result.serviceprovider}</p>
-                                 <p>Transport Type: ${result.transportType}</p>
-                                 <p>Departure Time: ${result.departureTime}</p>
-                                 <p>Arrival Time: ${result.arrivalTime}</p>`;
-          
-          // Add request and details buttons
-          const buttonsDiv = document.createElement("div");
-          buttonsDiv.classList.add("result-buttons");
-          const requestButton = document.createElement("button");
-          requestButton.classList.add("request-button");
-          requestButton.innerText = "Request";
-          const detailsButton = document.createElement("button");
-          detailsButton.classList.add("details-button");
-          detailsButton.innerText = "More Details";
-      
-          buttonsDiv.appendChild(requestButton);
-          buttonsDiv.appendChild(detailsButton);
-          resultDiv.appendChild(buttonsDiv);
-      
-          resultsContainer.appendChild(resultDiv);
-        });
-      });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
+    <script src="newreg.js"></script>
+    <script src="revenue.js"></script> 
   </body>
 </html>
