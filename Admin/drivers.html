@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css" />
+    <title>Admin Drivers</title>
+    <link rel="stylesheet" href="drivers.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="dashboard.html" class="active">
+          <a href="dashboard.html">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -40,7 +40,7 @@
           </a>
         </li>
         <li>
-          <a href="drivers.html">
+          <a href="drivers.html" class="active">
             <i class="bx bx-trip"></i>
             <span class="links_name">Drivers</span>
           </a>
@@ -69,7 +69,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Drivers</span>
         </div>
         <div class="profile-details">
           <i class="bx bxs-user"></i>
@@ -85,42 +85,44 @@
       <div class="home-content">
         <div class="overview-boxes">
           <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total no of passengers</div>
-              <div class="number">400</div>
-            </div>
-            <i class="bx bx-add-to-queue cart"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total no of vehicles</div>
-              <div class="number">30</div>
-            </div>
-            <i class="bx bx-bus cart three"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total no of vehicle owners</div>
-              <div class="number">23</div>
-            </div>
-            <i class="bx bx-user cart four"></i>
+            <p>Driver Details</p>
+                <div>
+                    <input placeholder="Driver" class="ph">
+                    <button class="add-new">+ Add New</button>
+
+                </div>
           </div>
         </div>
 
-        <div class="detail-boxes">
-          <div class="recent-res box">
-            <div class="title">New Registrations</div>
-            <div class="desc">New Owner, Vehicle, and Passenger registrations in last 5 months</div>
-            
-            <canvas id="chart1" height="180"></canvas><br>
-          </div>
-          <div class="recent-payments box">
-            <div class="title">Monthly Revenue</div>
-            <div class="desc">The monthly revenue in last 5 months</div>
-            
-            <canvas id="chart2" height="180px"></canvas>
-          </div>
-        </div>
+        <table class="passtable">
+            <thead>
+                <tr>
+                    <th scope="col">D ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">OWNER NAME</th>
+                    <th scope="col">NIC</th>
+                    <th scope="col">TELEPHONE</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td scope="row" data-label="P ID">o01</td>
+                    <td data-label="Name">Kamal Gunawardhana</td>
+                    <td data-label="Name">Sunil Silva</td>
+                    <td data-label="NIC">955497721V</td>
+                    <td data-label="Telephone">0713745598</td>
+                    <td data-label="Email">kamal@gmail.com</td>
+                    <td data-label="Action">
+                        <!-- <a href="#moredetails"><button class="moredetails">MORE DETAILS</button></a> -->
+                        <a href="#edit"></a><button class="edit">EDIT</button></a>
+                        <a href="#delete"></a><button class="delete">DELETE</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
       </div>
     </section>
 
@@ -134,9 +136,5 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
-    <script src="newreg.js"></script>
-    <script src="revenue.js"></script> 
   </body>
 </html>

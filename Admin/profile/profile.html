@@ -17,6 +17,11 @@
                 <div class="title">Passenger Profile</div>
                 <button class="del">Delete Account</button>
             </div>
+
+            <div class="profile-pic-div">
+                <img src="" alt="">
+            </div>
+
             <form action="#">
                 <div class="sub-title">Account</div>
                 <div class="pass-details">
@@ -51,9 +56,22 @@
         </div>
 
         <div class="overlay" id="change-pass">
-            <div class="wrapper">
-                <h2>Please Fill up the Form</h2>
-                <a href="#" class="close">&times;</a>
+            <div class="otp">
+                <h2>Enter OTP Code</h2>
+                <form action="#">
+                    <div class="otp-card-inputs">
+                        <input type="number"/>
+                        <input type="number" disabled/>
+                        <input type="number" disabled/>
+                        <input type="number" disabled/>
+                        <input type="number" disabled/>
+                    </div>
+                </form>
+                <p>Didn't get the OTP<a href="#">Resend</a></p>
+                <button>Next</button>
+
+
+                <!-- <a href="#" class="close">&times;</a>
                 <div class="content">
                     <div class="contain">
                         <form>
@@ -67,8 +85,10 @@
                             <input type="password" placeholder="********">
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
+
+        <script src="profile.js"></script>
     </body>
 </html>

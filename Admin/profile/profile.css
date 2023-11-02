@@ -192,6 +192,64 @@ form .password button{
     cursor: pointer;
 }
 
+.otp-card-inputs{
+    margin: 30px 0;
+    display: grid;
+    gap: 12px;
+    justify-content: center;
+    grid-template-columns: repeat(5, auto);
+}
+
+.overlay h2{
+    font-weight: 400;
+    color: #fff;
+}
+
+.otp-card-inputs input{
+    width: 33px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.otp-card-inputs input:focus{
+    outline: 2px solid #0A2558;
+    border-color: transparent;
+}
+
+.otp-card-inputs input::-webkit-inner-spin-button,
+.otp-card-inputs input::-webkit-outer-spin-button{
+    display: none;
+}
+
+.otp button{
+    display: flex;
+    float: right;
+    width: 110px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #DAA600;
+    padding: 8px 8px;
+    justify-content: center;
+}
+
+.otp button.active{
+    color: aqua;
+    pointer-events: auto;
+}
+
+.otp button:hover{
+    color: aqua;
+    cursor: pointer;
+}
+
 @media (max-width: 584px) {
     .container{
         max-width: 100%;
