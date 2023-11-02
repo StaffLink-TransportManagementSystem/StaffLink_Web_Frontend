@@ -21,14 +21,14 @@
 
                 <form action="#">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="text" class="username" id="lusername" placeholder="Enter your email" required>
                         <i class="uil uil-envelope icon"></i>
                         
 
                     </div>
                     <div class="email-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" class="password" id="lpassword" placeholder="Enter your password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -43,10 +43,11 @@
 
                         <a href="#" class="text">Forgot password?</a>
                     </div>
-                    
+                    <!-- <a href="./ownerDashboard.html" > -->
                     <div class="input-field button">
                         <input type="button" value="Login" onclick="validate()"></a>
                     </div>
+                <!-- </a> -->
                 </form>
 
                 <div class="login-signup">
@@ -62,26 +63,26 @@
 
                 <form action="#">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your name" required>
+                        <input type="text" class ="name" id="sname" placeholder="Enter your name" required>
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="text" class="email" id="semail" placeholder="Enter your email" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="email-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your NIC number" required>
+                        <input type="text" class ="nic" id="snic" placeholder="Enter your NIC number" required>
                         <i class="uil uil-postcard icon"></i>
                     </div>
                     <div class="nic-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Create a password" required>
+                        <input type="password" class="password" id="spassword" placeholder="Create a password" required>
                         <i class="uil uil-lock icon"></i>
                     </div>
                     <div class="password-error-message" style="display: none; color: red;"></div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Confirm a password" required>
+                        <input type="password" class="cpassword" id="scpassword" placeholder="Confirm a password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -95,10 +96,11 @@
                             </a>
                         </div>
                     </div>
-
+                    <!-- <a href="./ownerDashboard.html" > -->
                     <div class="input-field button">
-                        <input type="button" value="Signup" onclick="validate()">
+                        <input type="button" value="Signup" onclick="validateSignup()">
                     </div>
+                <!-- </a> -->
                 </form>
 
                 <div class="login-signup">

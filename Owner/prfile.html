@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="profile.css">
+
+        <title>Passenger Profile</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="topic">
+                <div class="title">Owner Profile</div>
+                <button class="del">Delete Account</button>
+            </div>
+            <form action="#">
+                <div class="sub-title">Account</div>
+                <div class="pass-details">
+                    <div class="input-box">
+                        <span class="details">Passenger Name</span>
+                        <input disabled type="text" value name="passengerID">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">NIC No</span>
+                        <input disabled type="text" value name="NIC">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input disabled type="email" value name="email">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Telephone</span>
+                        <input disabled type="number" value name="passengerID">
+                    </div>
+                    <button>Edit</button>
+                </div>
+
+                <div class="sub-title">Password</div>
+                <div class="password">
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input disabled type="password" value name="password">
+                    </div>
+                    <a href="#change-pass"><button>Change</button></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="overlay" id="change-pass">
+            <div class="wrapper">
+                <h2>Please Fill up the Form</h2>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                    <div class="contain">
+                        <form>
+                            <label>Current Password</label>
+                            <input type="password" placeholder="********">
+
+                            <label>New Password</label>
+                            <input type="password" placeholder="********">
+
+                            <label>Confirm Password</label>
+                            <input type="password" placeholder="********">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

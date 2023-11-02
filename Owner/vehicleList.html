@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="financial.css" />
+    <link rel="stylesheet" href="vehicleList.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,13 +28,13 @@
             </a>
           </li>
           <li>
-            <a href="./vehicles.html" class="">
+            <a href="./vehicleList.html" class="active">
               <i class="bx bx-search"></i>
               <span class="links_name">Vehicles</span>
             </a>
           </li>
           <li>
-            <a href="./drivers.html" class="">
+            <a href="./drivers.html">
               <i class='bx bxs-traffic'></i>
               <span class="links_name">Drivers</span>
             </a>
@@ -46,7 +46,7 @@
             </a>
           </li>
           <li>
-            <a href="./financial.html" class="active">
+            <a href="./financial.html">
               <i class="bx bx-pie-chart-alt-2"></i>
               <span class="links_name">Financial</span>
             </a>
@@ -69,7 +69,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Financial</span>
+          <span class="dashboard">Vehicles</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -125,115 +125,56 @@
               <div class="right-side">
                 <div class="box-topic">Revenue</div>
                 <div class="number">5</div>
-                <!-- <div class="indicator"> 
-                  <i class="bx bx-up-arrow-alt"></i>
-                  <span class="text">For this month</span>
-                </div> -->
+                    <!-- <div class="indicator"> 
+                    <i class="bx bx-up-arrow-alt"></i>
+                    <span class="text">For this month</span>
+                    </div> -->
               </div>
               <i class="bx bx-money cart two"></i>
             </div>
           </div>
-
-        
-        <div class="detail-boxes" style="margin-top: 2rem;">
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Customer Payments</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <!-- <td>Price</td> -->
-                                <td>Payment</td>
-                                <td>Method</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Alex Doe</td>
-                                <td>Rs10,000</td>
-                                <td>Card</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>David Mart</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Roe Parter</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>Roe Parter</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Alex Doe</td>
-                                <td>Rs10,000</td>
-                                <td>Card</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>David Mart</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Payment Breakdown</h2>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Payment</td>
-                                <td>Amount</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Monthly Income (card)</td>
-                                <td>Rs 103,000</td>
-                            </tr>
-
-                            <tr>
-                                <td>Monthly Income(cash)</td>
-                                <td>Rs 100,000</td>
-                            </tr>
-                            <tr>
-                                <td>Monthly Subscription</td>
-                                <td>(Rs 50,000)</td>
-                            </tr>
-                            <tr>
-                                <td><b>Balance</b></td>
-                                <td><b>Rs 153,000</b></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+          <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
+            <a href="./addVehical.html">Add New Vehicle</a>
           </div>
+
+          <div class="vehicle-card-container">
+            
+            <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">Owner Email</th>
+                        <th scope="col">Vehicle No</th>
+                        <th scope="col">Reg. No</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Driver Email</th>
+                        <th scope="col">Seats Count</th>
+                        <th scope="col">Trips</th>
+                        <th scope="col">Starting Point</th>
+                        <th scope="col">Ending Point</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr>
+                        <td scope="owner" data-label="P ID">p01</td>
+                        <td class="Name">Kamal Perera</td>
+                        <td class="Address">15, Gamunu Mawatha, Nugegoda</td>
+                        <td class="NIC">955497721V</td>
+                        <td class="Telephone">0713745598</td>
+                        <td class="Email">kamal@gmail.com</td>
+                        <td class="Telephone">0713745598</td>
+                        <td class="Email">kamal@gmail.com</td>
+                        <td class="Email">kamal@gmail.com</td>
+                        <td class="Action">
+                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
+                            <a href="#edit"></a><button class="edit">EDIT</button></a>
+                            <a href="#delete"></a><button class="delete">DELETE</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+            
         </div>
       </div>
       
@@ -249,5 +190,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
+    <script src="./vehicleList.js"></script>
+    
   </body>
 </html>

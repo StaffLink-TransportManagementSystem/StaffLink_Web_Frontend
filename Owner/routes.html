@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="financial.css" />
+    <title>Routes</title>
+    <link rel="stylesheet" href="routes.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,25 +28,25 @@
             </a>
           </li>
           <li>
-            <a href="./vehicles.html" class="">
+            <a href="./vehicleList.html" class="">
               <i class="bx bx-search"></i>
               <span class="links_name">Vehicles</span>
             </a>
           </li>
           <li>
-            <a href="./drivers.html" class="">
+            <a href="./drivers.html">
               <i class='bx bxs-traffic'></i>
               <span class="links_name">Drivers</span>
             </a>
           </li>
           <li>
-            <a href="./routes.html">
+            <a href="./routes.html" class="active">
               <i class="bx bx-coin-stack"></i>
               <span class="links_name">Routes</span>
             </a>
           </li>
           <li>
-            <a href="./financial.html" class="active">
+            <a href="./financial.html">
               <i class="bx bx-pie-chart-alt-2"></i>
               <span class="links_name">Financial</span>
             </a>
@@ -69,7 +69,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Financial</span>
+          <span class="dashboard">Vehicles</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -125,115 +125,21 @@
               <div class="right-side">
                 <div class="box-topic">Revenue</div>
                 <div class="number">5</div>
-                <!-- <div class="indicator"> 
-                  <i class="bx bx-up-arrow-alt"></i>
-                  <span class="text">For this month</span>
-                </div> -->
+                    <!-- <div class="indicator"> 
+                    <i class="bx bx-up-arrow-alt"></i>
+                    <span class="text">For this month</span>
+                    </div> -->
               </div>
               <i class="bx bx-money cart two"></i>
             </div>
           </div>
 
-        
-        <div class="detail-boxes" style="margin-top: 2rem;">
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Customer Payments</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <!-- <td>Price</td> -->
-                                <td>Payment</td>
-                                <td>Method</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Alex Doe</td>
-                                <td>Rs10,000</td>
-                                <td>Card</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>David Mart</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Roe Parter</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>Roe Parter</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Alex Doe</td>
-                                <td>Rs10,000</td>
-                                <td>Card</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>David Mart</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Payment Breakdown</h2>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Payment</td>
-                                <td>Amount</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Monthly Income (card)</td>
-                                <td>Rs 103,000</td>
-                            </tr>
-
-                            <tr>
-                                <td>Monthly Income(cash)</td>
-                                <td>Rs 100,000</td>
-                            </tr>
-                            <tr>
-                                <td>Monthly Subscription</td>
-                                <td>(Rs 50,000)</td>
-                            </tr>
-                            <tr>
-                                <td><b>Balance</b></td>
-                                <td><b>Rs 153,000</b></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-          </div>
+          <div class="vehicle-card-container">
+            <h1 style="align-items: center;">Not yet implemented<br>Loading...</h1>
+            
+        </div>
+            
+            
         </div>
       </div>
       

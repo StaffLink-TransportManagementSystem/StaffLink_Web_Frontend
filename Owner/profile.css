@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #0A2558;
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .topic button{
+    display: inline;
+    right: 5px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    display: inline;
+}
+
+.container .sub-title{
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    color: #0A2558;
+    margin-top: 23px;
+}
+
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: #0A2558;
+}
+
+.container form .pass-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 15px 0 12px 0;
+}
+
+form .pass-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 17px;
+}
+
+.pass-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 15px;
+}
+
+.container form .password{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 15px 0 12px 0;
+}
+
+.password .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 15px;
+}
+
+.password .input-box input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+form .password .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 17px;
+}
+
+.pass-details .input-box input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.pass-details .input-box select{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.vehicle-details .input-box .photo{
+    border: none;
+}
+
+.vehicle-details .input-box input:focus{
+    border-color: #0A2558;
+}
+
+form button{
+    height: 38px;
+    margin: 0 0 5px 0;
+}
+
+form button{
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #0A2558;
+}
+
+.password button{
+    padding: 6px 0 6px 0;
+    width: 100px;
+}
+
+.pass-details button{
+    padding: 6px 0 6px 0;
+    width: 80px;
+}
+
+form button:hover{
+    color: #DAA600;
+    cursor: pointer;
+}
+
+form .password button{
+    margin-top: 27px;
+    margin-right: 130px;
+}
+
+.del{
+    display: flex;
+    float: right;
+    width: 160px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #0A2558;
+    padding: 8px 8px;
+    justify-content: center;
+}
+
+.del:hover{
+    color: #DAA600;
+    cursor: pointer;
+}
+
+@media (max-width: 584px) {
+    .container{
+        max-width: 100%;
+    }
+
+    form .vehicle-details .input-box{
+        width: 100%;
+        margin-bottom: 17px;
+    }
+
+    .container form .vehicle-details{
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .vehicle-details::-webkit-scrollbar{
+        width: 0;
+    }
+}

@@ -8,11 +8,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-a{
-    text-decoration: none;
-    color: white;
-}
-
 .sidebar {
     position: fixed;
     height: 100%;
@@ -1167,42 +1162,3 @@ body {
     background: #bfbfbf; */
     
   }
-
-
-
-
-  .home-content table{
-    width: 100%;
-    overflow: auto;
-    table-layout: auto;
-    border-collapse: collapse;
-   
-    margin-top: 5rem;
-}
-td button{
-    color: white;
-    background-color: #003566;
-    padding: 5px 7px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-td button:hover {
-    color:#DAA600;
-}
-thead th {
-    position: sticky;
-    top: 0;
-    background-color: #e7f2fe;
-    color: #000;
-    border-top: 1px solid #dddddd;
-}
-th, td {
-    border-bottom: 1px solid #dddddd;
-    border-right: 1px solid #dddddd;
-    border-left: 1px solid #dddddd;
-    padding: 10px 8px;
-    word-break: break-all;
-    text-align: center;
-    font-size: 15px;
-}
