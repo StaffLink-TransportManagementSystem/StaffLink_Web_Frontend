@@ -1,50 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-    const vehicleNo = window.location.href.split("=")[1];
-
-    // console.log(window.location.href.split("=")[1]);
-    
-  
-    fetch("http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo=" + vehicleNo ,{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },})
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.vehicle) 
-                form.querySelector('.ownerEmail').value = data.vehicle.ownerEmail;  
-                form.querySelector('.vehicleNumber').value = data.vehicle.vehicleNo;
-                form.querySelector('.vehicle-type').value = data.vehicle.type;
-                form.querySelector('.vehicleBrand').value = data.vehicle.vehicleBrand;
-                form.querySelector('.vehicleModel').value = data.vehicle.model;
-                form.querySelector('.vehicleRegNo').value = data.vehicle.regNo;
-                form.querySelector('.driverEmail').value = data.vehicle.driverEmail;
-                form.querySelector('.seatCount').value = data.vehicle.seatsCount;
-                form.querySelector('.startingLocation').value = data.vehicle.startingPoint;
-                form.querySelector('.endLocation').value = data.vehicle.endingPoint;
-                form.querySelector('.vehicle-trips').value = data.vehicle.trips;
-                // form.querySelector('.vehicleTrips').value = data.vehicle.trips;
-                
-
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-            
-    
-  });
-
-
-  
-  function updatefunction() {
-
     const form = document.querySelector("form"),
      sub = document.querySelector(".sub");
   
     sub.addEventListener("click", () => {
     //   event.preventDefault(); // Prevent the default form submission
-        console.log("update form submitted");
+        console.log("form submitted");
       // Get form elements
       const ownerEmail = form.querySelector('.ownerEmail').value;
       const vehicleNumber = form.querySelector('.vehicleNumber').value;
@@ -115,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/vehicleEdit',{
+      fetch('http://localhost:8080/try2_war_exploded/vehicleRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -123,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Admin/vehicleList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -132,42 +92,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-  };
-
-  function deletefunction() {
-
-    const form = document.querySelector("form"),
-     sub = document.querySelector(".sub");
-  
-    sub.addEventListener("click", () => {
-    //   event.preventDefault(); // Prevent the default form submission
-        console.log("update form submitted");
-
-      const vehicleNumber = form.querySelector('.vehicleNumber').value;
-      
-      const data = {
-        vehicleNo:vehicleNumber,}
-
-  
-      // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/vehicleDelete',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
-                // document.getElementById("demo").innerHTML = data.message;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-      }
-    );
-  };
-
-
-
+  });
   

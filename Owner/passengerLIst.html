@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="passengerList.css" />
+    <link rel="stylesheet" href="vehicleList.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
             </a>
           </li>
           <li>
-            <a href="./vehicles.html">
+            <a href="./vehicles.html" class="">
               <i class="bx bx-search"></i>
               <span class="links_name">Vehicles</span>
             </a>
@@ -69,7 +69,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Passengers</span>
+          <span class="dashboard">Vehicles</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -125,248 +125,32 @@
               <div class="right-side">
                 <div class="box-topic">Revenue</div>
                 <div class="number">5</div>
-                <!-- <div class="indicator"> 
-                  <i class="bx bx-up-arrow-alt"></i>
-                  <span class="text">For this month</span>
-                </div> -->
+                    <!-- <div class="indicator"> 
+                    <i class="bx bx-up-arrow-alt"></i>
+                    <span class="text">For this month</span>
+                    </div> -->
               </div>
               <i class="bx bx-money cart two"></i>
             </div>
           </div>
+          <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
+            <a href="./addPassenger.html">Add New Passenger</a>
+          </div>
 
-        <div class="detail-boxes">
-          <div class="recent-res box">
-            <div class="title">Monthly Passengers</div>
-            <div class="res-details">
-                <ul class="details">
-                    <li class="topic">Name</li>
-                    <li><a href="#">Alex Doe</a></li>
-                    <li><a href="#">David Mart</a></li>
-                    <li><a href="#">Roe Parter</a></li>
-                    <li><a href="#">Diana Penty</a></li>
-                    <li><a href="#">Martin Paw</a></li>
-                    <li><a href="#">Doe Alex</a></li>
-                    <li><a href="#">Aiana Lexa</a></li>
-                    <li><a href="#">Rexel Mags</a></li>
-                    <li><a href="#">Tiana Loths</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Home Lcation</li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Maharagama</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Time</li>
-                    <li><a href="#">6:00 AM</a></li>
-                    <li><a href="#">6:15 AM</a></li>
-                    <li><a href="#">6:30 AM</a></li>
-                    <li><a href="#">6:45 AM</a></li>
-                    <li><a href="#">6:50 AM</a></li>
-                    <li><a href="#">7:00 AM</a></li>
-                    <li><a href="#">7:00 AM</a></li>
-                    <li><a href="#">7:10 AM</a></li>
-                    <li><a href="#">7:20 AM</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Office Location</li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Maharagama</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Time</li>
-                    <li><a href="#">5:00 PM</a></li>
-                    <li><a href="#">5:15 PM</a></li>
-                    <li><a href="#">4:30 PM</a></li>
-                    <li><a href="#">4:45 PM</a></li>
-                    <li><a href="#">4:50 PM</a></li>
-                    <li><a href="#">4:00 PM</a></li>
-                    <li><a href="#">4:00 PM</a></li>
-                    <li><a href="#">4:10 PM</a></li>
-                    <li><a href="#">5:20 PM</a></li>
-                  </ul>
-              <ul class="details">
-                <li class="topic">Payment</li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-              </ul>
-              <ul class="Status">
-                <li class="topic">Status</li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Paid</a></li>
-                <li><a href="#">Paid</a></li>
-                <li><a href="#">Paid</a></li>
-                <li><a href="#">Paid</a></li>
-              </ul>
-              
-            </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div>
-          </div>
-          <!-- <div class="recent-payments box">
-            <div class="title">Payments</div>
-            <div class="payment-details">
-              <ul class="Status">
-                <li class="topic">Date</li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Amount</li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.4,300</a></li>
-                <li><a href="#">Rs.6,900</a></li>
-              </ul>
-            </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div>
-          </div> -->
-        </div>
-        <div class="detail-boxes" style="margin-top: 2rem;">
-          <div class="recent-res box">
-            <div class="title">Daily Based Passengers</div>
-            <div class="res-details">
-                <ul class="details">
-                    <li class="topic">Name</li>
-                    <li><a href="#">Alex Doe</a></li>
-                    <li><a href="#">David Mart</a></li>
-                    <li><a href="#">Roe Parter</a></li>
-                    <li><a href="#">Diana Penty</a></li>
-                    <li><a href="#">Martin Paw</a></li>
-                    <li><a href="#">Doe Alex</a></li>
-                    <li><a href="#">Aiana Lexa</a></li>
-                    <li><a href="#">Rexel Mags</a></li>
-                    <li><a href="#">Tiana Loths</a></li>
-                  </ul>
-                  <ul class="Date">
-                    <li class="topic">Date</li>
-                    <li><a href="#">20/10/2023</a></li>
-                    <li><a href="#">23/10/2023</a></li>
-                    <li><a href="#">02/10/2023</a></li>
-                    <li><a href="#">25/10/2023</a></li>
-                    <li><a href="#">20/10/2023</a></li>
-                    <li><a href="#">22/10/2023</a></li>
-                    <li><a href="#">21/10/2023</a></li>
-                    <li><a href="#">23/10/2023</a></li>
-                    <li><a href="#">20/10/2023</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Home Lcation</li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Maharagama</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Time</li>
-                    <li><a href="#">6:00 AM</a></li>
-                    <li><a href="#">6:15 AM</a></li>
-                    <li><a href="#">6:30 AM</a></li>
-                    <li><a href="#">6:45 AM</a></li>
-                    <li><a href="#">6:50 AM</a></li>
-                    <li><a href="#">7:00 AM</a></li>
-                    <li><a href="#">7:00 AM</a></li>
-                    <li><a href="#">7:10 AM</a></li>
-                    <li><a href="#">7:20 AM</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Office Location</li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Nugegoda</a></li>
-                    <li><a href="#">Maharagama</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Time</li>
-                    <li><a href="#">5:00 PM</a></li>
-                    <li><a href="#">5:15 PM</a></li>
-                    <li><a href="#">4:30 PM</a></li>
-                    <li><a href="#">4:45 PM</a></li>
-                    <li><a href="#">4:50 PM</a></li>
-                    <li><a href="#">4:00 PM</a></li>
-                    <li><a href="#">4:00 PM</a></li>
-                    <li><a href="#">4:10 PM</a></li>
-                    <li><a href="#">5:20 PM</a></li>
-                  </ul>
-              <ul class="details">
-                <li class="topic">Payment</li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-                <li><a href="#">Rs10,000</a></li>
-              </ul>
-              <ul class="Status">
-                <li class="topic">Status</li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Paid</a></li>
-                <li><a href="#">Paid</a></li>
-                <li><a href="#">Paid</a></li>
-                <li><a href="#">Paid</a></li>
-              </ul>
-              
-            </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div>
-          </div>
+          <div class="vehicle-card-container" style="width: 100%;">
+            
+            <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">NIC</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody"></tbody>
+            </table>  
+            
         </div>
       </div>
       
@@ -382,5 +166,8 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
+    <script src="./passengerList.js"></script>
+    
+    
   </body>
 </html>

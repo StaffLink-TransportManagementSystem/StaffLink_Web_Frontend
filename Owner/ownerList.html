@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Routes</title>
-    <link rel="stylesheet" href="routes.css" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="vehicleList.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
         </div>
         <ul class="nav-links">
           <li>
-              <a href="./ownerDashboard.html" class="">
+              <a href="./ownerDashboard.html" class="active">
                 <i class="bx bx-grid-alt"></i>
                 <span class="links_name">Dashboard</span>
               </a>
@@ -28,7 +28,7 @@
             </a>
           </li>
           <li>
-            <a href="./vehicles.html" class="">
+            <a href="./vehicleList.html" class="">
               <i class="bx bx-search"></i>
               <span class="links_name">Vehicles</span>
             </a>
@@ -40,7 +40,7 @@
             </a>
           </li>
           <li>
-            <a href="./routes.html" class="active">
+            <a href="./routes.html">
               <i class="bx bx-coin-stack"></i>
               <span class="links_name">Routes</span>
             </a>
@@ -133,12 +133,25 @@
               <i class="bx bx-money cart two"></i>
             </div>
           </div>
+          <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
+            <a href="./addOwner.html">Add New Owner</a>
+          </div>
 
-          <div class="vehicle-card-container">
-            <h1 style="align-items: center;">Not yet implemented<br>Loading...</h1>
+          <div class="vehicle-card-container" style="width: 100%;">
             
-        </div>
-            
+            <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">NIC</th>
+                        <th scope="col">Contact No</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+    
+                <tbody class="tbody"></tbody>
+            </table>  
             
         </div>
       </div>
@@ -155,5 +168,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
+    <script src="./ownerList.js"></script>
+    
   </body>
 </html>

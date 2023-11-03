@@ -6,46 +6,27 @@ document.addEventListener("DOMContentLoaded", function () {
     //   event.preventDefault(); // Prevent the default form submission
         console.log("form submitted");
       // Get form elements
-      const email = form.querySelector('.email').value;
       const name = form.querySelector('.name').value;
+      const email = form.querySelector('.email').value;
       const NIC = form.querySelector('.NIC').value;
-      const age = form.querySelector('.age').value;
-      const contact = form.querySelector('.contact').value;
-      const ownerEmail = form.querySelector('.ownerEmail').value;
       const password = form.querySelector('.password').value;
-    //   const vehicleModel = form.querySelector('.vehicleModel').value;
-    //   const regNumber = form.querySelector('.vehicleRegNo').value;
-    //   const driverEmail = form.querySelector('.driverEmail').value;
-    //   const seatCount = form.querySelector('.seatCount').value;
-    //   const startingLocation = form.querySelector('.startingLocation').value;
-    //   const endLocation = form.querySelector('.endLocation').value;
-    //   const vehicleTrips = form.querySelector('.vehicle-trips').value;
-
-        
+ 
 
   
       // Validate form data (You can add more validation as needed)
-      if (!email ) {
+      if (!name) {
         alert("Please fill in all required fields.");
       }
-      else if (!name) {
+      else if (!email) {
         alert("Please fill in all required fields.");
       }
       else if(!NIC){
         alert("Please fill in all required fields.");
       }
-      else if(!age){
-        alert("Please fill in all required fields.");
-      }
-      else if(!contact){
-        alert("Please fill in all required fields.");
-      }
-      else if(!ownerEmail){
-        alert("Please fill in all required fields.");
-      }
       else if(!password){
         alert("Please fill in all required fields.");
-      }
+        }
+      
         else {
             // All form data are valid, so submit to the server
            
@@ -55,14 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
         email:email,
         name:name,
         NIC:NIC,
-        age:age,
-        contact:contact,
-        ownerEmail:ownerEmail,
-        password:password,
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/driverRegister',{
+      fetch('http://localhost:8080/try2_war_exploded/passengerRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

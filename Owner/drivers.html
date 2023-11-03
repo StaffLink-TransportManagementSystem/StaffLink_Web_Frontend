@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="drivers.css" />
+    <link rel="stylesheet" href="vehicleList.css" />
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,7 +69,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Drivers</span>
+          <span class="dashboard">Vehicles</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -125,225 +125,36 @@
               <div class="right-side">
                 <div class="box-topic">Revenue</div>
                 <div class="number">5</div>
-                <!-- <div class="indicator"> 
-                  <i class="bx bx-up-arrow-alt"></i>
-                  <span class="text">For this month</span>
-                </div> -->
+                    <!-- <div class="indicator"> 
+                    <i class="bx bx-up-arrow-alt"></i>
+                    <span class="text">For this month</span>
+                    </div> -->
               </div>
               <i class="bx bx-money cart two"></i>
             </div>
           </div>
-
-        
-        <div class="detail-boxes" style="margin-top: 2rem;">
-          <div class="recent-res box">
-            <div class="title">
-                Drivers
-                <!-- <div class="button">
-                    <a href="#">Add New Driver</a>
-                  </div>
-                </div> -->
-            <div class="res-details">
-                <!-- <ul class="details">
-                    <li class="topic">Name</li>
-                    <li><a href="#">Alex Doe</a></li>
-                    <li><a href="#">David Mart</a></li>
-                    <li><a href="#">Roe Parter</a></li>
-                    <li><a href="#">Diana Penty</a></li>
-                    <li><a href="#">Martin Paw</a></li>
-                    <li><a href="#">Doe Alex</a></li>
-                    <li><a href="#">Aiana Lexa</a></li>
-                    <li><a href="#">Rexel Mags</a></li>
-                    <li><a href="#">Tiana Loths</a></li>
-                  </ul>
-                  <ul class="Date">
-                    <li class="topic">Age</li>
-                    <li><a href="#">20</a></li>
-                    <li><a href="#">23</a></li>
-                    <li><a href="#">30</a></li>
-                    <li><a href="#">24</a></li>
-                    <li><a href="#">20</a></li>
-                    <li><a href="#">22</a></li>
-                    <li><a href="#">21</a></li>
-                    <li><a href="#">23</a></li>
-                    <li><a href="#">20</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Contact No</li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                    <li><a href="#">077 2345678</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Assigned Vehicle</li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                    <li><a href="#">NB-2332</a></li>
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Update Details</li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>   
-
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Update Driver</a>
-                          </div>
-                    </li>
-
-                    
-                  </ul>
-                  <ul class="details">
-                    <li class="topic">Remove Driver</li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    <li>
-                        <div class="button">
-                            <a href="#">Remove Driver</a>
-                          </div>
-                    </li>
-                    
-                  </ul>
-              
-              
-            </div> -->
-            <table class="passtable">
-              <thead>
-                  <tr>
-                      <th scope="col">Driver Email</th>
-                      <th scope="col">Vehicle No</th>
-                      <th scope="col">Age</th>
-                      <th scope="col">Owner Email</th>
-                      <th scope="col">Actions</th>
-                      <!-- <th scope="col">Driver Email</th>
-                      <th scope="col">Seats Count</th>
-                      <th scope="col">Trips</th>
-                      <th scope="col">Starting Point</th>
-                      <th scope="col">Ending Point</th> -->
-                  </tr>
-              </thead>
-  
-              <tbody>
-                  <tr>
-                      <!-- <td scope="row" data-label="P ID">p01</td> -->
-                      <td data-label="Name">Kamal@gmail.com</td>
-                      <td data-label="Address">NB-1222</td>
-                      <td data-label="NIC">34</td>
-                      <td data-label="Address">15, Gamunu Mawatha, Nugegoda</td>
-                      <!-- <td data-label="Telephone">0713745598</td>
-                      <td data-label="Email">kamal@gmail.com</td> -->
-                      <td data-label="Action">
-                          <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                          <a href="#edit"></a><button class="edit">EDIT</button></a>
-                          <a href="#delete"></a><button class="delete">DELETE</button></a>
-                      </td>
-                  </tr>
-              </tbody>
-          </table> 
-            
-          </div>
-          <div class="button" style="margin-top: 1rem;">
+          <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
             <a href="./addDriver.html">Add New Driver</a>
           </div>
+
+          <div class="vehicle-card-container" style="width: 100%;">
+            
+            <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">NIC</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Contact No</th>
+                        <th scope="col">Owner Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+    
+                <tbody class="tbody"></tbody>
+            </table>  
+            
         </div>
       </div>
       
@@ -359,5 +170,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
+    <script src="./driverList.js"></script>
+    
   </body>
 </html>

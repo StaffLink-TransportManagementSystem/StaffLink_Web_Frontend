@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,32 +13,39 @@
 
     <body>
         <div class="container">
-            <div class="title">Vehicle Update</div>
+            <div class="title">Driver Registration</div>
             <form action="#">
                 <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Driver Email</span>
+                        <input type="text" class="email" placeholder="Enter driver email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Driver Name</span>
+                        <input type="text" class="name" placeholder="Enter your driver name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Driver NIC</span>
+                        <input type="text" class="NIC" placeholder="Enter your driver NIC" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Driver Age</span>
+                        <input type="text" class="age" placeholder="Enter your driver age" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Driver Contact</span>
+                        <input type="text" class="contact" placeholder="Enter your driver contact" required>
+                    </div>
                     <div class="input-box">
                         <span class="details">Owner Email</span>
                         <input type="text" class="ownerEmail" placeholder="Enter your owner email" required>
                     </div>
                     <div class="input-box">
-                        <span class="details">Vehicle Number</span>
-                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" required>
+                        <span class="details">Set Password</span>
+                        <input type="text" class="password" placeholder="Enter your password" required>
                     </div>
-                    <div class="input-box">
-                        <span class="details">Vehicle Type</span>
-                        <select class="vehicle-type" id="vehicle-type">
-                            <option class="default" value>Select the vehicle type</option>
-                            <option value="Van">Van</option>
-                            <option value="Bus">Bus</option>
-                            <option value="Car">Car</option>
-                        </select>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Vehicle Brand</span>
-                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Vehicle Model</span>
+                    <!-- <div class="input-box">
+                        <span class="details">Vehicle No</span>
                         <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>
                     </div>
                     <div class="input-box">
@@ -68,19 +75,19 @@
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
                             <option value="Both">Both</option>
-                        </select>
-                    </div>
+                        </select> -->
+                    <!-- </div>
                     <div class="input-box">
                         <span class="details">Photo of the Vehicle</span>
                         <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
                     </div>
                     <div class="button">
-                    </div>
+                    </div> -->
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+            <input type="submit" class="sub" value="Register" onclick="">
         </div>
-        <script src="vehicleEditForm.js"></script>
+        <script src="driverForm.js"></script>
     </body>
 </html>

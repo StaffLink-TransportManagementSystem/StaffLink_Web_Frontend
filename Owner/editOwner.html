@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Owner Update</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Owner Update</div>
+            <form action="#">
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Owner Email</span>
+                        <input type="text" class="email" placeholder="Enter owner email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Owner Name</span>
+                        <input type="text" class="name" placeholder="Enter owner namer" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Owner NIC</span>
+                        <input type="text" class="NIC" placeholder="Enter owner NIC" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Owner coontact No</span>
+                        <input type="text" class="contact" placeholder="Enter owner contact number" required>
+                    </div>
+                    
+                    <div class="button">
+                    </div>
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+        </div>
+        <script src="ownerEditForm.js"></script>
+    </body>
+</html>
