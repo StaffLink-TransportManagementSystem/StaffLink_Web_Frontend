@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = form.querySelector('.email').value;
       const name = form.querySelector('.name').value;
       const NIC = form.querySelector('.NIC').value;
-      const contact = form.querySelector('.contact').value;
-      const password = form.querySelector('.password').value;
+      // const contact = form.querySelector('.contact').value;
+
       
 
         
@@ -26,12 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
       else if(!NIC){
         alert("Please fill in all required fields.");
       }
-      else if(!contact){
-        alert("Please fill in all required fields.");
-      }
-        else if(!password){
-            alert("Please fill in all required fields.");
-        }
+      // else if(!contact){
+      //   alert("Please fill in all required fields.");
+      // }
+
         
         else {
             // All form data are valid, so submit to the server
@@ -42,8 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         email:email,
         name:name,
         NIC:NIC,
-        contact:contact,
-        password:password,
         
       };
   

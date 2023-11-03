@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td scope="email" data-label="P ID">`+ owner.email +`</td>
                         <td class="Name">`+ owner.name +`</td>
                         <td class="NIC">`+ owner.NIC +`</td>
-                        <td class="contact">`+ owner.contact +`</td>
+                        
                         
                         <td class="Action">
                             <a href="#moredetails"><button class="moredetails">MORE</button></a>

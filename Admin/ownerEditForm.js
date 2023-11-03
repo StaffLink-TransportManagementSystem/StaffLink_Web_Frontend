@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
-    const vehicleNo = window.location.href.split("=")[1];
+    const email = window.location.href.split("=")[1];
 
     // console.log(window.location.href.split("=")[1]);
     
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.querySelector('.email').value = data.owner.email;  
                 form.querySelector('.name').value = data.owner.name;
                 form.querySelector('.NIC').value = data.owner.NIC;
-                form.querySelector('.contact').value = data.owner.contact;
+                // form.querySelector('.contact').value = data.owner.contact;
                 
                 
 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = form.querySelector('.email').value;
       const name = form.querySelector('.name').value;
       const NIC = form.querySelector('.NIC').value;
-      const contact = form.querySelector('.contact').value;
+      // const contact = form.querySelector('.contact').value;
       
 
         
@@ -58,9 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       else if(!NIC){
         alert("Please fill in all required fields.");
       }
-      else if(!contact){
-        alert("Please fill in all required fields.");
-      }
+
         
         else {
             // All form data are valid, so submit to the server
@@ -71,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
         email:email,
         name:name,
         NIC:NIC,
-        contact:contact,
        
       };
   

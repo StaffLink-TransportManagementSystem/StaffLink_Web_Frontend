@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = form.querySelector('.name').value;
       const email = form.querySelector('.email').value;
       const NIC = form.querySelector('.NIC').value;
-      const password = form.querySelector('.password').value;       
+      // const password = form.querySelector('.password').value;       
 
   
       // Validate form data (You can add more validation as needed)
@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
       else if(!NIC){
         alert("Please fill in all required fields.");
       }
-      else if(!password){
-        alert("Please fill in all required fields.");
-      }
+      // else if(!password){
+      //   alert("Please fill in all required fields.");
+      // }
        
         else {
             // All form data are valid, so submit to the server
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name:name,
         email:email,
         NIC:NIC,
-        password:password,
+        
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
