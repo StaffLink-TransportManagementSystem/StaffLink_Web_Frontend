@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Vehicle Registration</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Vehicle Registration</div>
+            <form action="#">
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Owner Email</span>
+                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Number</span>
+                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Type</span>
+                        <select class="vehicle-type" id="vehicle-type">
+                            <option class="default" value>Select the vehicle type</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Car">Car</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Brand</span>
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Model</span>
+                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Registration Number</span>
+                        <input type="text" class="vehicleRegNo" placeholder="Enter your vehicle reg no" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Driver Email</span>
+                        <input type="text" class="driverEmail" placeholder="Enter the driver email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Number of Seats</span>
+                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Starting Location</span>
+                        <input type="text" class="startingLocation" placeholder="Select the starting location">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">End Location</span>
+                        <input type="text" class="endLocation" placeholder="Select the end location">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Trips</span>
+                        <select class="vehicle-trips" id="vehicle-trips">
+                            <option class="default" value>Select the relevent type</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Evening">Evening</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Photo of the Vehicle</span>
+                        <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
+                    </div>
+                    <div class="button">
+                    </div>
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="Register" onclick="">
+        </div>
+        <script src="vehicleForm.js"></script>
+    </body>
+</html>
