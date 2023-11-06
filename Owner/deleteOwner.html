@@ -18,15 +18,15 @@
                 <div class="vehicle-details">
                     <div class="input-box">
                         <span class="details">Owner Email</span>
-                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" required>
+                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Number</span>
-                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" required>
+                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Type</span>
-                        <select class="vehicle-type" id="vehicle-type">
+                        <select class="vehicle-type" id="vehicle-type" disabled>
                             <option class="default" value>Select the vehicle type</option>
                             <option value="Van">Van</option>
                             <option value="Bus">Bus</option>
@@ -35,35 +35,35 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Brand</span>
-                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Model</span>
-                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>
+                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Registration Number</span>
-                        <input type="text" class="vehicleRegNo" placeholder="Enter your vehicle reg no" required>
+                        <input type="text" class="vehicleRegNo" placeholder="Enter your vehicle reg no" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Driver Email</span>
-                        <input type="text" class="driverEmail" placeholder="Enter the driver email" required>
+                        <input type="text" class="driverEmail" placeholder="Enter the driver email" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Number of Seats</span>
-                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required>
+                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Starting Location</span>
-                        <input type="text" class="startingLocation" placeholder="Select the starting location">
+                        <input type="text" class="startingLocation" placeholder="Select the starting location" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">End Location</span>
-                        <input type="text" class="endLocation" placeholder="Select the end location">
+                        <input type="text" class="endLocation" placeholder="Select the end location" readonly>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Trips</span>
-                        <select class="vehicle-trips" id="vehicle-trips">
+                        <select class="vehicle-trips" id="vehicle-trips" disabled>
                             <option class="default" value>Select the relevent type</option>
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
@@ -81,6 +81,6 @@
             </form>
             <input type="submit" class="sub" value="remove" onclick="deletefunction()">
         </div>
-        <script src="vehicleEditForm.js"></script>
+        <script src="ownerEditForm.js"></script>
     </body>
 </html>
