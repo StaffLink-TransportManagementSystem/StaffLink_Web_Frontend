@@ -2,17 +2,17 @@ function validateNIC(nic) {
   // Remove any spaces or non-alphanumeric characters
   nic = nic.replace(/[^a-zA-Z0-9]/g, '');
 
-  if (nic.length === 10) {
+  if (nic.length === 12) {
     // New NIC: Should have 10 numeric characters
-    return /^\d{10}$/.test(nic);
-  } else if (nic.length === 9) {
+    return /^\d{12}$/.test(nic);
+  } else if (nic.length === 10) {
     // Old NIC: Should have 9 characters followed by 'V' or 'v'
     return /^[0-9]{9}[Vv]$/.test(nic);
   } else {
     // Invalid length
     return false;
   }
-} 
+}
 
 function ValidateEmail(input) {
 
@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var NIC = form.querySelector('.NIC').value;
       var contact = form.querySelector('.contact').value;
       var password = form.querySelector('.password').value;
+      console.log(contact);
 
       
       var checker = true;
@@ -151,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contact:contact,
         password:password,
       };
+      console.log(data);
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
       fetch('http://localhost:8080/try2_war_exploded/ownerRegister',{

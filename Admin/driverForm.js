@@ -1,7 +1,39 @@
-function isValidEmail(email) {
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  return emailRegex.test(email);
+function validateNIC(nic) {
+  // Remove any spaces or non-alphanumeric characters
+  nic = nic.replace(/[^a-zA-Z0-9]/g, '');
+
+  if (nic.length === 12) {
+    // New NIC: Should have 10 numeric characters
+    return /^\d{12}$/.test(nic);
+  } else if (nic.length === 10) {
+    // Old NIC: Should have 9 characters followed by 'V' or 'v'
+    return /^[0-9]{9}[Vv]$/.test(nic);
+  } else {
+    // Invalid length
+    return false;
+  }
 }
+
+function ValidateEmail(input) {
+
+  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (input.match(validRegex)) {
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+function validateContactNumber(contactNumber) {
+  // Remove any spaces or non-numeric characters
+  contactNumber = contactNumber.replace(/\D/g, '');
+
+  // Check if the contact number starts with '0' and has exactly 10 digits
+  return /^0\d{9}$/.test(contactNumber);
+}
+
 
 
 
@@ -20,45 +52,112 @@ document.addEventListener("DOMContentLoaded", function () {
       const contact = form.querySelector('.contact').value;
       const ownerEmail = form.querySelector('.ownerEmail').value;
       const password = form.querySelector('.password').value;
-    //   const vehicleModel = form.querySelector('.vehicleModel').value;
-    //   const regNumber = form.querySelector('.vehicleRegNo').value;
-    //   const driverEmail = form.querySelector('.driverEmail').value;
-    //   const seatCount = form.querySelector('.seatCount').value;
-    //   const startingLocation = form.querySelector('.startingLocation').value;
-    //   const endLocation = form.querySelector('.endLocation').value;
-    //   const vehicleTrips = form.querySelector('.vehicle-trips').value;
-
         
 
   
-      // Validate form data (You can add more validation as needed)
-      if (!email ) {
-        alert("Please fill in all required fields.");
+      var checker = true;
+        
+
+      var emailError = document.querySelector(".email-error-message");
+      var nameError = document.querySelector(".name-error-message");
+      var ageError = document.querySelector(".age-error-message");
+      var contactError = document.querySelector(".contact-error-message");
+      var NICError = document.querySelector(".NIC-error-message");
+      var ownerEmailError = document.querySelector(".ownerEmail-error-message");
+      var passwordError = document.querySelector(".password-error-message");
+
+      emailError.style.display = "none";
+      nameError.style.display = "none";
+      contactError.style.display = "none";
+      NICError.style.display = "none";
+      ownerEmailError.style.display = "none";
+      passwordError.style.display = "none";
+      ageError.style.display = "none";
+      
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if(!email){
+        emailError.innerText = "Please enter an email address.";
+        emailError.style.display = "block";
+        console.log("email error");
+        checker = false;
       }
-      else if (!name) {
-        alert("Please fill in all required fields.");
+      else if (!ValidateEmail(email)) {
+        emailError.innerText = "Please enter a valid email address.";
+        emailError.style.display = "block";
+        console.log("email error");
+        checker = false;
+    }
+      if (!name) {
+        nameError.innerText = "Please enter an owner name.";
+        nameError.style.display = "block";
+        console.log("name error");
+        checker = false;
       }
-      else if(!NIC){
-        alert("Please fill in all required fields.");
+      if(!age){
+        ageError.innerText = "Please enter an age.";
+        ageError.style.display = "block";
+        console.log("age error");
+        checker = false;
+        }
+      else if(age < 16 || age > 100){
+        ageError.innerText = "Please enter a valid age.";
+        ageError.style.display = "block";
+        console.log("age error");
+        checker = false;
       }
-      else if(!age){
-        alert("Please fill in all required fields.");
+      if (!NIC) {
+        NICError.innerText = "Please enter an NIC number.";
+        NICError.style.display = "block";
+        console.log("NIC error");
+        checker = false;
       }
-      else if(!contact){
-        alert("Please fill in all required fields.");
+      else if(validateNIC(NIC) === false){
+        NICError.innerText = "Please enter a Valid NIC number.";
+        NICError.style.display = "block";
+        console.log("NIC error");
+        checker = false;
       }
-      else if(!ownerEmail){
-        alert("Please fill in all required fields.");
+      if (!contact) {
+        contactError.innerText = "Please enter a contact number.";
+        contactError.style.display = "block";
+        console.log("contact error");
+        checker = false;
       }
-      else if(!password){
-        alert("Please fill in all required fields.");
+      else if(validateContactNumber(contact) === false){
+        contactError.innerText = "Please enter a Valid contact number.";
+        contactError.style.display = "block";
+        console.log("contact error");
+        checker = false;
       }
-        else {
-            // All form data are valid, so submit to the server
-           
-  
-      // Prepare the data to send to the backend (You can structure it as needed)
-      const data = {
+      if (!ownerEmail) {
+        ownerEmailError.innerText = "Please enter an owner email.";
+        ownerEmailError.style.display = "block";
+        console.log("ownerEmail error");
+        checker = false;
+      }
+      else if (!ValidateEmail(ownerEmail)) {
+        ownerEmailError.innerText = "Please enter a valid owner email.";
+        ownerEmailError.style.display = "block";
+        console.log("ownerEmail error");
+        checker = false;
+      }
+      if (!password) {
+        passwordError.innerText = "Please enter a password.";
+        passwordError.style.display = "block";
+        console.log("password error");
+        checker = false;
+      }
+      else if(password.length < 6){
+        passwordError.innerText = "Password should be at least 6 characters.";
+        passwordError.style.display = "block";
+        console.log("password error");
+        checker = false;
+      }
+
+      if(checker === true) {
+        
+        const data = {
         email:email,
         name:name,
         NIC:NIC,
