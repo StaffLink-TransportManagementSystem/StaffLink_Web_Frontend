@@ -239,8 +239,7 @@ nav .profile-details i{
     overflow: auto;
     table-layout: auto;
     border-collapse: collapse;
-   
-    margin-top: 5rem;
+
 }
 td button{
     color: white;
@@ -269,6 +268,78 @@ th, td {
     text-align: center;
     font-size: 15px;
 }
+/* absent form */
+
+.container{
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.container .title{
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.container form{
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px rgba(0,0,0,.1);
+  padding: 20px;
+  width: flex;
+  min-width: 500px;
+}
+
+.container form .inputBox{
+  margin-top: 20px;
+}
+
+.container form .inputBox span{
+  display: block;
+  color:#999;
+  padding-bottom: 5px;
+}
+
+.container form .inputBox input,
+.container form .inputBox select{
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border:1px solid rgba(0,0,0,.3);
+  color:#444;
+}
+
+.container form .flexbox{
+  display: flex;
+  gap:15px;
+}
+
+.container form .flexbox .inputBox{
+  flex:1 1 150px;
+}
+
+.container form .submit-btn{
+  width: 100%;
+  background: #081D45;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  color:#fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .2s linear;
+}
+
+.container form .submit-btn:hover{
+  letter-spacing: 2px;
+  opacity: .8;
+}
+
 
 /* Responsive Media Query */
 @media (max-width: 1240px) {
