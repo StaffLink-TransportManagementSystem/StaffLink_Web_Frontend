@@ -58,6 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const endLocation = form.querySelector('.endLocation').value;
       const vehicleTrips = form.querySelector('.vehicle-trips').value;
 
+      var ownerEmailError = document.getElementById("ownerEmailError");
+      var vehicleNumberError = document.getElementById("vehicleNumberError");
+      var vehicleTypeError = document.getElementById("vehicleTypeError");
+      var vehicleBrandError = document.getElementById("vehicleBrandError");
+      var vehicleModelError = document.getElementById("vehicleModelError");
+      var vehicleRegNoError = document.getElementById("vehicleRegNoError");
+      var driverEmailError = document.getElementById("driverEmailError");
+      var seatCountError = document.getElementById("seatCountError");
+      var startingLocationError = document.getElementById("startingLocationError");
+      var endLocationError = document.getElementById("endLocationError");
+      var vehicleTripsError = document.getElementById("vehicleTripsError");
+
         
 
   
