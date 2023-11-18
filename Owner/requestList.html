@@ -69,7 +69,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Vehicles</span>
+          <span class="dashboard">Passenger Requests</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -133,19 +133,21 @@
               <i class="bx bx-money cart two"></i>
             </div>
           </div>
-          <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
+          <!-- <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
             <a href="./addOwner.html">Add New Owner</a>
-          </div>
+          </div> -->
 
           <div class="vehicle-card-container" style="width: 100%;">
             
             <table class="passtable">
                 <thead>
                     <tr>
-                        <th scope="col">Email</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">NIC</th>
-                        <th scope="col">Contact No</th>
+                        <th scope="col">RequestId</th>
+                        <th scope="col">Vehicle No</th>
+                        <th scope="col">Passenger Email</th>
+                        <th scope="col">Starting Location</th>
+                        <th scope="col">Ending Location</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -168,7 +170,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
-    <script src="./ownerList.js"></script>
+    <script src="./requestList.js"></script>
     
   </body>
 </html>
