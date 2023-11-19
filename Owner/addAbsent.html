@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Create Absent Record</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Create Absent Record</div>
+            <form action="#">
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Passenger Email</span>
+                        <input type="text" class="passengerEmail" placeholder="Enter passenger email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Number</span>
+                        <input type="text" class="vehicleNumber" placeholder="Enter vehicle number" required>
+                    </div>
+                    <!-- <div class="input-box">
+                        <span class="details">Vehicle Type</span>
+                        <select class="vehicle-type" id="vehicle-type">
+                            <option class="default" value>Select the vehicle type</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Car">Car</option>
+                        </select>
+                    </div> -->
+                    <div class="input-box">
+                        <span class="details">Count of Absant Days</span>
+                        <input type="text" class="daysOfAbsent" placeholder="Enter count of absant days" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Starting Date</span>
+                        <input type="text" class="startingDate" placeholder="Enter starting date" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Ending Date</span>
+                        <input type="text" class="endingDate" placeholder="Enter ending date" required>
+                    </div>
+                    <div class="button">
+                    </div>
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="Register" onclick="">
+        </div>
+        <script src="absantForm.js"></script>
+    </body>
 </html>
