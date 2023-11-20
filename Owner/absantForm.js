@@ -94,127 +94,51 @@ function validateNIC(nic) {
         
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-        if(!ownerEmail){
+        if(!passengerEmail){
           ownerEmailError.innerText = "Please enter an email address.";
           ownerEmailError.style.display = "block";
           console.log("email error");
           checker = false;
         }
-        else if (!ValidateEmail(ownerEmail)) {
+        else if (!ValidateEmail(passengerEmail)) {
           ownerEmailError.innerText = "Please enter a valid email address.";
           ownerEmailError.style.display = "block";
           console.log("email error");
           checker = false;
         }
-        if(!driverEmail){
-          driverEmailError.innerText = "Please enter an email address.";
-          driverEmailError.style.display = "block";
-          console.log("email error");
-          checker = false;
-        }
-        else if (!ValidateEmail(driverEmail)) {
-          driverEmailError.innerText = "Please enter a valid email address.";
-          driverEmailError.style.display = "block";
-          console.log("email error");
-          checker = false;
-        }
-        if (!vehicleNumber) {
-          vehicleNoError.innerText = "Please enter a vehicle number.";
+        if (!daysOfAbsent) {
+          vehicleNoError.innerText = "Please enter count of absent days.";
           vehicleNoError.style.display = "block";
-          console.log("vehicle number error");
+          console.log("Count of absent days error");
           checker = false;
         }
-        else if(validateVehicleNumber(vehicleNumber) === false){
-          vehicleNoError.innerText = "Please enter a valid vehicle number.";
-          vehicleNoError.style.display = "block";
-          console.log("vehicle number error");
-          checker = false;
-        }
-        if (!vehicleType) {
-          typeError.innerText = "Please enter a vehicle type.";
+        if (!startingDate) {
+          typeError.innerText = "Please enter a starting date.";
           typeError.style.display = "block";
-          console.log("vehicle type error");
+          console.log("Starting date error");
           checker = false;
         }
-        if (!vehicleBrand) {
-          brandError.innerText = "Please enter a vehicle brand.";
+        if (!endingDate) {
+          brandError.innerText = "Please enter a ending date.";
           brandError.style.display = "block";
-          console.log("vehicle brand error");
+          console.log("ending date error");
           checker = false;
         }
-        if (!vehicleModel) {
-          modelError.innerText = "Please enter a vehicle model.";
-          modelError.style.display = "block";
-          console.log("vehicle model error");
-          checker = false;
-        }
-        if (!regNumber) {
-          vehicleRegNoEmailError.innerText = "Please enter a vehicle registration number.";
-          vehicleRegNoEmailError.style.display = "block";
-          console.log("vehicle registration number error");
-          checker = false;
-        }
-        if (!seatCount) {
-          seatCountError.innerText = "Please enter a seat count.";
-          seatCountError.style.display = "block";
-          console.log("seat count error");
-          checker = false;
-        }
-        if(vehicleType === "Bus" && (seatCount <= 0 || seatCount > 80)){
-          seatCountError.innerText = "Please enter a valid seat count.";
-          seatCountError.style.display = "block";
-          console.log("seat count error");
-          checker = false;
-        }
-        else if(vehicleType === "Van" && (seatCount <= 0 || seatCount > 15)){
-          seatCountError.innerText = "Please enter a valid seat count.";
-          seatCountError.style.display = "block";
-          console.log("seat count error");
-          checker = false;
-        }
-        else if(vehicleType === "Car" && (seatCount <= 0 || seatCount > 5)){
-          seatCountError.innerText = "Please enter a valid seat count.";
-          seatCountError.style.display = "block";
-          console.log("seat count error");
-          checker = false;
-        }
-        if (!startingLocation) {
-          startingLocationError.innerText = "Please enter a starting location.";
-          startingLocationError.style.display = "block";
-          console.log("starting location error");
-          checker = false;
-        }
-        if (!endLocation) {
-          endLocationError.innerText = "Please enter an end location.";
-          endLocationError.style.display = "block";
-          console.log("end location error");
-          checker = false;
-        }
-        if (!vehicleTrips) {
-          vehicleTripsError.innerText = "Please enter vehicle trips.";
-          vehicleTripsError.style.display = "block";
-          console.log("vehicle trips error");
-          checker = false;
-        }
+        
         if(checker === false){
           
               
           const data = {
-          ownerEmail:ownerEmail,
-          vehicleNo:vehicleNumber,
-          type:vehicleType,
-          vehicleBrand:vehicleBrand,
-          model:vehicleModel,
-          regNo:regNumber,
-          driverEmail:driverEmail,
-          seatsCount:seatCount,
-          startingPoint:startingLocation,
-          endingPoint:endLocation,
-          trips:vehicleTrips,
+            passengerEmail: passengerEmail,
+            vehicleNumber: vehicleNumber,
+            daysOfAbsent: daysOfAbsent,
+            startingDate: startingDate,
+            endingDate: endingDate,
+          };
         };
     
         // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-        fetch('http://localhost:8080/try2_war_exploded/vehicleRegister',{
+        fetch('http://localhost:8080/try2_war_exploded/addAbsent',{
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
@@ -222,14 +146,11 @@ function validateNIC(nic) {
               .then(response => response.json())
               .then(data => {
                   console.log(data.message)
-                  window.location.href = "http://127.0.0.1:5501/Admin/vehicleList.html";
+                  window.location.href = "http://127.0.0.1:5501/Admin/absents.html";
                   // document.getElementById("demo").innerHTML = data.message;
               })
               .catch(error => {
                   console.error('Error:', error);
               });
-        }
-      });
-  
-    });
-    
+        })
+});
