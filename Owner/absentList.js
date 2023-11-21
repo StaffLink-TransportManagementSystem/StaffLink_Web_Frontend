@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAbsents?vehicleNo='+vehicleNo,{
+    fetch('http://localhost:8080/try2_war_exploded/viewAllAbsent?vehicleNo='+vehicleNo,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
