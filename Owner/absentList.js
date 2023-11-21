@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         <td class="Action">
                             <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/editAbsent.html?vehicleNo=`+ absents.vehicleNo +`passengerEmail=`+ absents.passengerEmail +`" onclick=""><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/deleteAbsent.html?vehicleNo=`+ absents.vehicleNo +`passengerEmail=`+absents.passengerEmail +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/editAbsent.html?id=`+ absents.id +`" onclick=""><button class="edit">EDIT</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/deleteAbsent.html?vehicleNo=`+ absents.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
                         </td>
                     </tr>`
                 });
