@@ -17,62 +17,74 @@
             <form action="#">
                 <div class="vehicle-details">
                     <div class="input-box">
-                        <span class="details">Owner ID</span>
-                        <input type="text" placeholder="Enter your ownerID" required>
+                        <span class="details">Owner Email</span>
+                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" required>
+                        <div id="ownerEmail-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Number</span>
-                        <input type="text" placeholder="Enter your vehicle number" required>
+                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" required>
+                        <div id="vehicleNo-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Type</span>
-                        <select name="vehicle-type" id="vehicle-type">
+                        <select class="vehicle-type" name="vehicle-type" id="vehicle-type">
                             <option class="default" value>Select the vehicle type</option>
                             <option value="Van">Van</option>
                             <option value="Bus">Bus</option>
                             <option value="Car">Car</option>
                         </select>
+                        <div id="type-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Vehicle Make</span>
-                        <input type="text" placeholder="Enter your vehicle make" required>
+                        <span class="details">Vehicle Brand</span>
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>
+                        <div id="brand-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Model</span>
-                        <input type="text" placeholder="Enter your vehicle model" required>
+                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>
+                        <div od="model-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Registration Number</span>
-                        <input type="text" placeholder="Enter your vehicle reg no" required>
+                        <input type="text" class="vehicleRegNo" placeholder="Enter your vehicle reg no" required>
+                        <div id="vehicleRegNo-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Driver ID</span>
-                        <input type="text" placeholder="Enter the driverID" required>
+                        <span class="details">Driver Email</span>
+                        <input type="text" class="driverEmail" placeholder="Enter the driver email" required>
+                        <div id="driverEmail-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Number of Seats</span>
-                        <input type="text" placeholder="Enter the total no of seats" required>
+                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required>
+                        <div id="seats-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Starting Location</span>
-                        <input type="text" placeholder="Select the starting location">
+                        <input type="text" class="startingLocation" placeholder="Select the starting location">
+                        <div id="startingLocation-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">End Location</span>
-                        <input type="text" placeholder="Select the end location">
+                        <input type="text" class="endLocation" placeholder="Select the end location">
+                        <div id="endLocation-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Trips</span>
-                        <select name="vehicle-trips" id="vehicle-trips">
+                        <select name="vehicle-trips" class="vehicle-trips" id="vehicle-trips">
                             <option class="default" value>Select the relevent type</option>
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
                             <option value="Both">Both</option>
                         </select>
+                        <div id="vehicleTrips-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Vehicle</span>
                         <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
+                        <div id="vehiclePhoto-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="button">
                         <input type="submit" value="Register">
@@ -81,5 +93,6 @@
                 </div>
             </form>
         </div>
+        <script src="vehicleform.js"></script>
     </body>
 </html>

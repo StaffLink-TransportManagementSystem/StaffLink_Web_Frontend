@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="dashboardStyle.css" />
+    <link rel="stylesheet" href="vehicleList.css" />
     <!-- Boxicons CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
@@ -94,7 +94,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Passenger Requests</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -113,78 +113,79 @@
 
       <div class="home-content">
         <div class="overview-boxes">
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total Passengers</div>
-              <div class="number">50</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div> -->
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Passengers</div>
+                <div class="number">50</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-add-to-queue cart"></i>
             </div>
-            <i class="bx bx-add-to-queue cart"></i>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Balance</div>
+                <div class="number">Rs.-3,500</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from previous week</span>
+                </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Vehicals</div>
+                <div class="number">3</div>
+                <!-- <div class="indicator">
+                  <i class="bx bx-up-arrow-alt"></i>
+                  <span class="text">Up from yesterday</span>
+                </div> -->
+              </div>
+              <i class="bx bx-bus cart three"></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Revenue</div>
+                <div class="number">5</div>
+                    <!-- <div class="indicator"> 
+                    <i class="bx bx-up-arrow-alt"></i>
+                    <span class="text">For this month</span>
+                    </div> -->
+              </div>
+              <i class="bx bx-money cart two"></i>
+            </div>
           </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Balance</div>
-              <div class="number">Rs.-3,500</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from previous week</span>
-              </div> -->
-            </div>
-            <i class="bx bx-money cart two"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total Vehicals</div>
-              <div class="number">3</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div> -->
-            </div>
-            <i class="bx bx-bus cart three"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Revenue</div>
-              <div class="number">50,000</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">For this</span>
-              </div> -->
-            </div>
-            <i class="bx bx-money cart two"></i>
-          </div>
-        </div>
+          <!-- <div class="button" style="margin-top: 1rem; margin-left: 800px; width:fit-content;padding:0 2rem;">
+            <a href="./addOwner.html">Add New Owner</a>
+          </div> -->
 
-        <div class="charts">
-            <div class="newreg">
-                <h2>New Registrations</h2>
-                <h3>New Passenger registrations in last 5 months</h3><br>
-                
-                <canvas id="chart1" height="180"></canvas><br>
-
-                <div class="color-box" style="background-color: #003566; width: 25px; height: 18px;"></div>
-                <p>&ensp;Passengers</p><br>
-            </div>
-
-            <div class="revenue">
-                <h2>Monthly Revenue</h2>
-                <h3>The monthly revenue in last 5 months</h3><br>
-
-                <canvas id="chart2" height="180px"></canvas>  
-            </div>
+          <div class="vehicle-card-container" style="width: 100%;">
+            
+            <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">RequestId</th>
+                        <th scope="col">Vehicle No</th>
+                        <th scope="col">Passenger Email</th>
+                        <th scope="col">Starting Location</th>
+                        <th scope="col">Ending Location</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+    
+                <tbody class="tbody"></tbody>
+            </table>  
+            
         </div>
       </div>
+      
     </section>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
-        <script src="newreg.js"></script>
-        <script src="revenue.js"></script>
+
     <script>
-        
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
@@ -194,5 +195,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
     </script>
+    <script src="./requestList.js"></script>
+    
   </body>
 </html>
