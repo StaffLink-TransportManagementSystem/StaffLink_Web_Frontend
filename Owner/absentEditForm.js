@@ -128,14 +128,14 @@ document.addEventListener("DOMContentLoaded", function () {
     //   event.preventDefault(); // Prevent the default form submission
         console.log("update form submitted");
 
-      const email = form.querySelector('.email').value;
+      const id = form.querySelector('.id').value;
       
       const data = {
-        email:email,}
+        id:id,}
 
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/driverDelete',{
+      fetch('http://localhost:8080/try2_war_exploded/absentDelete',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
