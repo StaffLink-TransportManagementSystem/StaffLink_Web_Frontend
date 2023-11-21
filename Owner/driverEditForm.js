@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     const email = window.location.href.split("=")[1];
 
-    // console.log(window.location.href.split("=")[1]);
+    // console.log(window.locat ion.href.split("=")[1]);
     
   
     fetch("http://localhost:8080/try2_war_exploded/getDriver?email=" + email ,{

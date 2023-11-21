@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Absent Delete</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Absent Delete Confirmation</div>
+            <form action="#">
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Absent ID</span>
+                        <input type="text" class="id" placeholder="Enter Absent ID" readonly>
+                        <div class="id-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle No</span>
+                        <input type="text" class="vehicleNo" placeholder="Enter vehicle No" required readonly>
+                        <div class="vehicleNo-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Passenger Name</span>
+                        <input type="text" class="name" placeholder="Enter passenger Name" required readonly>
+                        <div class="name-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Passenger Contact No</span>
+                        <input type="text" class="contact" placeholder="Enter contact No" required readonly>
+                        <div class="contact-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Passenger Email</span>
+                        <input type="text" class="email" placeholder="Enter passenger email" required readonly>
+                        <div class="email-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Day Count of Absent</span>
+                        <input type="text" class="daysOfAbsent" placeholder="Enter Day Count of Absent" required readonly>
+                        <div class="daysOfAbsent-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Starting Date</span>
+                        <input type="text" class="startingDate" placeholder="Enter starting date" required readonly>
+                        <div class="startingDate-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Ending Date</span>
+                        <input type="text" class="endingDate" placeholder="Enter ending date" required readonly>
+                        <div class="endingDate-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    
+                    <div class="button">
+                    </div>
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="Remove" onclick="deletefunction()">
+        </div>
+        <script src="absentEditForm.js"></script>
+    </body>
+</html>
