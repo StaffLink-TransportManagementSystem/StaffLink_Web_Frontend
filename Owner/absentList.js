@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+
+    let vehicle = "CBA-1257";
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllAbsent?vehicleNo='+vehicleNo,{
+    fetch('http://localhost:8080/try2_war_exploded/viewAllAbsent',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         <td class="Action">
                             <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/editAbsent.html?vehicleNo=`+ absents.vehicleNo +`passengerEmail=`+absents.passengerEmail`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/deleteAbsent.html?vehicleNo=`+ absents.vehicleNo +`passengerEmail=`+absents.passengerEmail`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/editAbsent.html?vehicleNo=`+ absents.vehicleNo +`passengerEmail=`+ absents.passengerEmail +`" onclick=""><button class="edit">EDIT</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/deleteAbsent.html?vehicleNo=`+ absents.vehicleNo +`passengerEmail=`+absents.passengerEmail +`" onclick=""><button class="delete">DELETE</button></a>
                         </td>
                     </tr>`
                 });
