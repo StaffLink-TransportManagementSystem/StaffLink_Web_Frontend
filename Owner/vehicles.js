@@ -22,15 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="vehicle-card-description">
                             <b>Vehicle Brand : </b>`+ vehical.vehicleBrand +`<br>
                             <b>Vehicle Model : </b> `+ vehical.model +`<br>
-                            <b>Vehicle Registration No : </b> `+ vehical.regNo +`<br>
-                            <b>Vehicle Driver : </b>`+vehical.driverEmail+`<br>
                             <b>Vehicle Trips : </b> `+ vehical.trips +`<br>
                             <b>Vehicle Seat Count : </b>`+vehical.seatsCount+`<br>
                             <b>Vehicle Starting Point : </b> `+ vehical.startingPoint +`<br>
                             <b>Vehicle Ending Point : </b>`+vehical.endingPoint+`<br>
                             <div class="group">
-                              <a href="./editVehical.html"><button class="button">Edit</button></a>
-                                <button class="button">Remove</button>
+                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit">EDIT</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
                             </div>
                         </div>
                         
