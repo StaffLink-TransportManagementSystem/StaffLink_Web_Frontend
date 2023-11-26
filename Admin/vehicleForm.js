@@ -79,17 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
       var checker = true;
         
 
-      var ownerEmailError = document.querySelector(".ownerEmail-error-message");
-      var vehicleNoError = document.querySelector(".vehicleNo-error-message");
-      var typeError = document.querySelector(".type-error-message");
-      var brandError = document.querySelector(".brand-error-message");
-      var modelError = document.querySelector(".model-error-message");
-      var vehicleRegNoEmailError = document.querySelector(".vehicleRegNo-error-message");
-      var driverEmailError = document.querySelector(".driverEmail-error-message");
-      var seatCountError = document.querySelector(".seatCount-error-message");
-      var startingLocationError = document.querySelector(".startingLocation-error-message");
-      var endLocationError = document.querySelector(".endLocation-error-message");
-      var vehicleTripsError = document.querySelector(".vehicleTrips-error-message");
+      var ownerEmailError = document.getElementById("ownerEmail-error-message");
+      var vehicleNoError = document.getElementById("vehicleNo-error-message");
+      var typeError = document.getElementById("type-error-message");
+      var brandError = document.getElementById("brand-error-message");
+      var modelError = document.getElementById("model-error-message");
+      var vehicleRegNoEmailError = document.getElementById("vehicleRegNo-error-message");
+      var driverEmailError = document.getElementById("driverEmail-error-message");
+      var seatCountError = document.getElementById("seatCount-error-message");
+      var startingLocationError = document.getElementById("startingLocation-error-message");
+      var endLocationError = document.getElementById("endLocation-error-message");
+      var vehicleTripsError = document.getElementById("vehicleTrips-error-message");
+      // var tripError = document.querySelector(".trip-error-message");
       
       ownerEmailError.style.display = "none";
       vehicleNoError.style.display = "none";
@@ -207,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("vehicle trips error");
         checker = false;
       }
-      if(checker === false){
+      if(checker === true){
         
             
         const data = {

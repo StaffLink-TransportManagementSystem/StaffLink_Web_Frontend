@@ -1,14 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    let email = "rhatu2000@gmail.com";
+
+    let data = { email: email };
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllVehicle',{
-            method: 'GET',
+    fetch('http://localhost:8080/try2_war_exploded/getVehicleList',{
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            }, body: JSON.stringify(data)})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(vehical => {
@@ -39,3 +42,67 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     
   });
+
+//   function updatefunction(vehicleNo){
+//         window.location.href = "http://localhost:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
+//   }
+  
+
+
+
+
+
+
+
+// function fetchAllData() {
+//     fetch('http://localhost:15000/ecoswapperbackend_war/admin/centers', {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 return response.json();
+//             } else {
+//                 console.error('Error:', response.status);
+//             }
+//         })
+//         .then(data => {
+//             displayDataAsTable(data);
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+// }
+
+
+// fetchAllData();
+
+// function displayDataAsTable(data) {
+//     const tableBody = document.querySelector("#dataTable tbody");
+
+//     data.forEach(center => {
+//         const row = document.createElement("tr");
+
+//         row.innerHTML = `
+//             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+//             <td>${center.center_id}</td>
+//             <td>${center.business_name}</td>
+//             <td>${center.business_reg_no}</td>
+//             <td>${center.business_type}</td>
+//             <td>${center.center_bio}</td>
+//             <td>${center.center_location_link}</td>
+//             <td>
+//                 <span class="icon-container">
+//                     <i class="fas fa-pencil-alt" style="color: #ff0202"></i>
+//                 </span>
+//                 <span class="icon-container" style="margin-left: 10px;"> <!-- Adjust the margin as needed -->
+//                     <i class="fas fa-trash-alt" style="color: #ff0202"></i>
+//                 </span>
+//             </td>
+//         `;
+
+//         tableBody.appendChild(row);
+//     });
+// }

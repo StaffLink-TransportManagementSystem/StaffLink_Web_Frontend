@@ -2,13 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     sub = document.querySelector(".sub");
     console.log("vehicles");
+    let email = "rhatu2000@gmail.com"
+    let data = { email: email };
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllVehicle',{
-            method: 'GET',
+    fetch('http://localhost:8080/try2_war_exploded/getVehicleList',{
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            }, body: JSON.stringify(data)})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(vehical => {
