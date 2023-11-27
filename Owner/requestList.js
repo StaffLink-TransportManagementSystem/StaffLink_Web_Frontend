@@ -14,17 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
             }, body: JSON.stringify(data)})
             .then(response => response.json())
             .then(data => {
-                data.list.forEach(owner => {
+                data.list.forEach(request => {
+                    // console.log(request)
                 row += `<tr>
-                        <td scope="email" data-label="P ID">`+ owner.email +`</td>
-                        <td class="Name">`+ owner.name +`</td>
-                        <td class="NIC">`+ owner.NIC +`</td>
-                        <td class="contact">`+ owner.contact +`</td>
+                        <td scope="email" data-label="P ID">`+ request.id +`</td>
+                        <td class="Name">`+ request.vehicleNo +`</td>
+                        <td class="NIC">`+ request.passengerEmail +`</td>
+                        <td class="contact">`+ request.startingPoint +`</td>
+                        <td class="contact">`+ request.endingPoint +`</td>
+                        <td class="contact">`+ request.type +`</td>
+
                         
                         <td class="Action">
                             <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/editOwner.html?email=`+ owner.email +`" onclick="updatefunction(owner.email,owner.name,owner.NIC,owner.contact)"><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/deleteOwner.html?email=`+ owner.email +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/editRequest.html?email=`+ request.passengerEmail +`&vehicleNo=`+ request.vehicleNo +`" onclick="updatefunction(owner.email,owner.name,owner.NIC,owner.contact)"><button class="edit">EDIT</button></a>
+                            <a href="http://127.0.0.1:5501/Owner/deleteRequest.html?email=`+ request.passengerEmail +`&vehicleNo=`+ request.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
                         </td>
                     </tr>`
                 });
