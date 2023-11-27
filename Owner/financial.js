@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },})
             .then(response => response.json())
             .then(data => {
-                data.list.forEach(payment => {
+                data.payments.forEach(payment => {
                 row += `<tr>
                 <td>`+ payment.date +`</td>
                 <td>`+ payment.passengerEmail +`</td>
@@ -23,6 +23,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 document.querySelector(".table1").innerHTML = row;   
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            fetch('http://localhost:8080/try2_war_exploded/getOwnerFinancials?ownerEmail='+ownerEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },})
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector(".cardPay").innerHTML = `Rs. `+ data.payments.card ;
+                document.querySelector(".cashPay").innerHTML = `Rs. `+ data.payments.cash ;
+                document.querySelector(".subscription").innerHTML = `Rs. -`+ data.payments.subscription ;  
+                document.querySelector(".balance").innerHTML = `<b>Rs. `+ (data.payments.card + data.payments.cash - data.payments.subscription)+`</b>`; 
 
             })
             .catch(error => {
