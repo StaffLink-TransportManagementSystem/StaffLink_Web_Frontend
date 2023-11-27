@@ -12,23 +12,26 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(driver => {
-                row += `<tr>
-                        <td scope="email">`+ driver.email +`</td>
-                        <td class="Name">`+ driver.name +`</td>
-                        <td class="NIC">`+ driver.NIC +`</td>
-                        <td class="age">`+ driver.age +`</td>
-                        <td class="contact">`+ driver.contact +`</td>
-                        <td class="ownerEmail">`+ driver.ownerEmail +`</td>
-                        
-                        <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
-                        </td>
-                    </tr>`
+                row += `
+                
+                <div class="wrapper">
+                  
+                  
+                  <div class="profile" style="align-items:center;">
+                    <img src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w" class="thumbnail" >
+                    <div class="check"><i class="fas fa-check"></i></div>
+                    <h3 class="name">`+driver.name+`</h3>
+                    <p class="title">Assigned Vehicle</p>
+                    <p class="description" style="text-align:left"><b>Email : </b>`+ driver.email+`<br><b>NIC no : </b>`+driver.NIC+`<br><b>Age : </b>`+driver.age +`<br><b>Contact No : </b>`+driver.contact+` <br></p>
+                    <div style="display: flex;">
+                    <a href="http://127.0.0.1:5501/Owner/editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
+                    <a href="http://127.0.0.1:5501/Owner/deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
+                    </div>
+                  </div>
+                </div>`
                 });
 
-                document.querySelector(".tbody").innerHTML = row;   
+                document.querySelector(".cards").innerHTML = row;   
 
             })
             .catch(error => {
