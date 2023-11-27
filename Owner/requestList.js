@@ -2,13 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
   
+    const data = {
+        vehicleNo: "'CBA-7257'",
+    };
     let row ="";
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllRequests',{
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            }, body: JSON.stringify(data)})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(owner => {
