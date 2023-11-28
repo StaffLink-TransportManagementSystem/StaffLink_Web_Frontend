@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
-  
     const data = {
-        vehicleNo: "'CBA-7257'",
+        email: "rhatu2000@gmail.com",
     };
     let row ="";
 
@@ -23,15 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="contact">`+ request.startingPoint +`</td>
                         <td class="contact">`+ request.endingPoint +`</td>
                         <td class="contact">`+ request.type +`</td>
-
+                        <td class="contact"> <span class="status `+ request.status.toLowerCase() +`">`+ request.status +`</span></td>
                         
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/editRequest.html?email=`+ request.passengerEmail +`&vehicleNo=`+ request.vehicleNo +`" onclick="updatefunction(owner.email,owner.name,owner.NIC,owner.contact)"><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Owner/deleteRequest.html?email=`+ request.passengerEmail +`&vehicleNo=`+ request.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
+                        <button class="approve" onclick="approvedfunction(`+ request.id + `,'` + request.vehicleNo + `','` + request.passengerEmail + `','` + request.startingPoint + `','` + request.endingPoint + `','` + request.type + `','` + request.status + `')">Approve</button>
+                        <button class="reject" onclick="rejectedfunction(`+ request.id + `,'` + request.vehicleNo + `','` + request.passengerEmail + `','` + request.startingPoint + `','` + request.endingPoint + `','` + request.type + `','` + request.status + `')">Reject</button>
                         </td>
                     </tr>`
                 });
+
 
                 document.querySelector(".tbody").innerHTML = row;   
 
@@ -39,5 +38,81 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Error:', error);
             });
+  
+    
     
   });
+
+
+  function fetchData(){
+  }
+
+  function approvedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPoint, type, status){
+    console.log("update function called");
+    console.log(id, vehicleNo, passengerEmail, startingPoint, endingPoint, type, status);
+    // let data = {};
+
+        status = "Approved"
+        console.log("status changed to approved")
+
+    let data = {
+        id:id,
+        vehicleNo:vehicleNo,
+        passengerEmail:passengerEmail,
+        startingPoint:startingPoint,
+        endingPoint:endingPoint,
+        type:type,
+        status:status
+    }
+
+    fetch('http://localhost:8080/try2_war_exploded/requestEdit',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },body: JSON.stringify(data),})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message)
+                window.location.href = "http://127.0.0.1:5501/Owner/requestList.html";
+                // document.getElementById("demo").innerHTML = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    
+}
+
+function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPoint, type, status){
+    console.log("update function called");
+    console.log(id, vehicleNo, passengerEmail, startingPoint, endingPoint, type, status);
+    // let data = {};
+
+        status = "Rejected"
+        console.log("status changed to rejected")
+
+    let data = {
+        id:id,
+        vehicleNo:vehicleNo,
+        passengerEmail:passengerEmail,
+        startingPoint:startingPoint,
+        endingPoint:endingPoint,
+        type:type,
+        status:status
+    }
+
+    fetch('http://localhost:8080/try2_war_exploded/requestEdit',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },body: JSON.stringify(data),})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message)
+                window.location.href = "http://127.0.0.1:5501/Owner/requestList.html";
+                // document.getElementById("demo").innerHTML = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    
+}
