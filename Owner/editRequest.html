@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Request Edit</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Request Update</div>
+            <form action="#">
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Vehicle No</span>
+                        <input type="text" class="vehicleNo" placeholder="Enter Vehicle No" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Passenger Email</span>
+                        <input type="text" class="passengerEmail" placeholder="Enter Passenger Email" required>
+                    </div>
+                    <!-- <div class="input-box">
+                        <span class="details">Vehicle Type</span>
+                        <select class="vehicle-type" id="vehicle-type">
+                            <option class="default" value>Select the vehicle type</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Car">Car</option>
+                        </select>
+                    </div> -->
+                    <div class="input-box">
+                        <span class="details">Starting Location</span>
+                        <input type="text" class="StaryingLocation" placeholder="Enter Starting Location" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Ending Location</span>
+                        <input type="text" class="endingLocation" placeholder="Enter Starting Location" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Type</span>
+                        <input type="text" class="type" placeholder="Enter type" required>
+                    </div>
+                    
+                    <div class="button">
+                    </div>
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+        </div>
+        <script src="requestEditForm.js"></script>
+    </body>
+</html>
