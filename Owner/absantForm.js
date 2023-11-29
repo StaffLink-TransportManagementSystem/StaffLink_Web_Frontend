@@ -156,7 +156,7 @@ function validateNIC(nic) {
               .then(response => response.json())
               .then(data => {
                   console.log(data.message)
-                  window.location.href = "http://127.0.0.1:5501/Owner/absants.html";
+                  window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
               })
               .catch(error => {
                   console.error('Error:', error);

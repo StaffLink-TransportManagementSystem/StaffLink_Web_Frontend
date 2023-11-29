@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
