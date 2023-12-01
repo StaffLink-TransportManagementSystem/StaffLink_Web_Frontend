@@ -29,5 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            const d = new Date();
+            let year = d.getFullYear();
+            let years = "";
+            for(let i=0;i<15;i++){
+                years += `<option value="`+(year+i)+`">`+(year+i)+`</option>`
+            }
+            document.querySelector(".year-input").innerHTML = years;
     
   });
