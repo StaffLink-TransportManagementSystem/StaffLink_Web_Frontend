@@ -386,6 +386,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 years += `<option value="`+(year+i)+`">`+(year+i)+`</option>`
             }
             console.log(years);
-            document.getElementById("yearInput").innerHTML = years;
+            document.getElementById('yearInput').innerHTML = years;
     
   });
