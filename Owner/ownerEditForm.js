@@ -2,38 +2,26 @@ function validateNIC(nic) {
   // Remove any spaces or non-alphanumeric characters
   nic = nic.replace(/[^a-zA-Z0-9]/g, '');
 
-  if (nic.length === 10) {
+  if (nic.length === 12) {
     // New NIC: Should have 10 numeric characters
-    return /^\d{10}$/.test(nic);
-  } else if (nic.length === 9) {
+    return /^\d{12}$/.test(nic);
+  } else if (nic.length === 10) {
     // Old NIC: Should have 9 characters followed by 'V' or 'v'
     return /^[0-9]{9}[Vv]$/.test(nic);
   } else {
     // Invalid length
     return false;
   }
-} 
+}
 
 function ValidateEmail(input) {
 
   var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   if (input.match(validRegex)) {
-
-    // alert("Valid email address!");
-
-    // document.form1.text1.focus();
-
     return true;
-
   } else {
-
-    // alert("Invalid email address!");
-
-    // document.form1.text1.focus();
-
     return false;
-
   }
 
 }
@@ -48,7 +36,7 @@ function validateContactNumber(contactNumber) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
-    const vehicleNo = window.location.href.split("=")[1];
+    const email = window.location.href.split("=")[1];
 
     // console.log(window.location.href.split("=")[1]);
     
@@ -91,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = form.querySelector('.name').value;
       const NIC = form.querySelector('.NIC').value;
       const contact = form.querySelector('.contact').value;
+      // const password = form.querySelector('.password').value;
       
 
         
@@ -101,13 +90,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var emailError = document.querySelector(".email-error-message");
       var nameError = document.querySelector(".name-error-message");
-      var passwordError = document.querySelector(".password-error-message");
+      // var passwordError = document.querySelector(".password-error-message");
       var contactError = document.querySelector(".contact-error-message");
       var NICError = document.querySelector(".NIC-error-message");
 
       emailError.style.display = "none";
       nameError.style.display = "none";
-      passwordError.style.display = "none";
+      // passwordError.style.display = "none";
       contactError.style.display = "none";
       NICError.style.display = "none";
       
@@ -161,22 +150,20 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("contact error");
         checker = false;
       }
-      if (!password) {
-        passwordError.innerText = "Please enter a password.";
-        passwordError.style.display = "block";
-        console.log("password error");
-        checker = false;
+      // if (!password) {
+      //   passwordError.innerText = "Please enter a password.";
+      //   passwordError.style.display = "block";
+      //   console.log("password error");
+      //   checker = false;
 
-      }
-      else if(password.length < 6){
-        passwordError.innerText = "Password should be at least 6 characters.";
-        passwordError.style.display = "block";
-        console.log("password error");
-        checker = false;
-      }
+      // }
+      // else if(password.length < 6){
+      //   passwordError.innerText = "Password should be at least 6 characters.";
+      //   passwordError.style.display = "block";
+      //   console.log("password error");
+      //   checker = false;
+      // }
       if(checker === true) {
-            // All form data are valid, so submit to the server
-           
   
       // Prepare the data to send to the backend (You can structure it as needed)
       const data = {
@@ -184,7 +171,6 @@ document.addEventListener("DOMContentLoaded", function () {
         name:name,
         NIC:NIC,
         contact:contact,
-       
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
@@ -196,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -231,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

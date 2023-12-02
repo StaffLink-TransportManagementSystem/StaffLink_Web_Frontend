@@ -19,20 +19,23 @@
                     <div class="input-box">
                         <span class="details">Passenger Name</span>
                         <input type="text" class="name" placeholder="Enter name" required>
+                        <div class="name-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Passenger Email</span>
-                        <input type="text" class="email" placeholder="Enter email" required>
+                        <input type="text" class="email" placeholder="Enter email" readonly>
+                        <div class="email-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">NIC</span>
                         <input type="text" class="NIC" placeholder="Enter NIC" required>
+                        <div class="NIC-error-message" style="display: none; color: red;"></div>
                     </div>
                     
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="Update" onclick="">
+            <input type="submit" class="sub" value="Update" onclick="updatefunction()">
         </div>
         <script src="passengerEditForm.js"></script>
     </body>
