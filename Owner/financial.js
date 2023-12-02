@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>`+ payment.passengerEmail +`</td>
                 <td>`+ payment.paymentType +`</td>
                 <td>`+ payment.amount +`</td>
-                <td><span class="status pending">Pending</span></td>
+                <td><span class="status `+payment.status.toLowerCase()+`">`+payment.status+`</span></td>
             </tr>`
                 });
 
