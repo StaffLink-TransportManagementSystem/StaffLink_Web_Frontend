@@ -1,3 +1,52 @@
+function validateNIC(nic) {
+  // Remove any spaces or non-alphanumeric characters
+  nic = nic.replace(/[^a-zA-Z0-9]/g, '');
+
+  if (nic.length === 12) {
+    // New NIC: Should have 10 numeric characters
+    return /^\d{12}$/.test(nic);
+  } else if (nic.length === 10) {
+    // Old NIC: Should have 9 characters followed by 'V' or 'v'
+    return /^[0-9]{9}[Vv]$/.test(nic);
+  } else {
+    // Invalid length
+    return false;
+  }
+}
+
+function ValidateEmail(input) {
+
+  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (input.match(validRegex)) {
+
+    // alert("Valid email address!");
+
+    // document.form1.text1.focus();
+
+    return true;
+
+  } else {
+
+    // alert("Invalid email address!");
+
+    // document.form1.text1.focus();
+
+    return false;
+
+  }
+
+}
+
+function validateContactNumber(contactNumber) {
+  // Remove any spaces or non-numeric characters
+  contactNumber = contactNumber.replace(/\D/g, '');
+
+  // Check if the contact number starts with '0' and has exactly 10 digits
+  return /^0\d{9}$/.test(contactNumber);
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     const email = window.location.href.split("=")[1];
@@ -42,33 +91,70 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = form.querySelector('.name').value;
       const email = form.querySelector('.email').value;
       const NIC = form.querySelector('.NIC').value;
-      const password = form.querySelector('.password').value;       
+      // const password = form.querySelector('.password').value;       
 
   
-      // Validate form data (You can add more validation as needed)
-      if (!name ) {
-        alert("Please fill in all required fields.");
+      var checker = true;
+        
+
+      var emailError = document.querySelector(".email-error-message");
+      var nameError = document.querySelector(".name-error-message");
+      // var ageError = document.querySelector(".age-error-message");
+      // var contactError = document.querySelector(".contact-error-message");
+      var NICError = document.querySelector(".NIC-error-message");
+      // var ownerEmailError = document.querySelector(".ownerEmail-error-message");
+      // var passwordError = document.querySelector(".password-error-message");
+
+      emailError.style.display = "none";
+      nameError.style.display = "none";
+      // contactError.style.display = "none";
+      NICError.style.display = "none";
+      // ownerEmailError.style.display = "none";
+      // passwordError.style.display = "none";
+      // ageError.style.display = "none";
+      
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if(!email){
+        emailError.innerText = "Please enter an email address.";
+        emailError.style.display = "block";
+        console.log("email error");
+        checker = false;
       }
-      else if (!email) {
-        alert("Please fill in all required fields.");
+      else if (!ValidateEmail(email)) {
+        emailError.innerText = "Please enter a valid email address.";
+        emailError.style.display = "block";
+        console.log("email error");
+        checker = false;
+    }
+      if (!name) {
+        nameError.innerText = "Please enter an owner name.";
+        nameError.style.display = "block";
+        console.log("name error");
+        checker = false;
       }
-      else if(!NIC){
-        alert("Please fill in all required fields.");
+
+      if (!NIC) {
+        NICError.innerText = "Please enter an NIC number.";
+        NICError.style.display = "block";
+        console.log("NIC error");
+        checker = false;
       }
-      else if(!password){
-        alert("Please fill in all required fields.");
+      else if(validateNIC(NIC) === false){
+        NICError.innerText = "Please enter a Valid NIC number.";
+        NICError.style.display = "block";
+        console.log("NIC error");
+        checker = false;
       }
-       
-        else {
-            // All form data are valid, so submit to the server
-           
-  
-      // Prepare the data to send to the backend (You can structure it as needed)
+      
+
+      if(checker === true) {
+
       const data = {
         name:name,
         email:email,
         NIC:NIC,
-        password:password,
+        
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
@@ -80,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Owner/passengerLIst.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -111,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/ownerDashboard.html";
+                window.location.href = "http://127.0.0.1:5501/Owner/passengerLIst.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
