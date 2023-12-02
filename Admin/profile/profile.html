@@ -15,15 +15,26 @@
         <div class="container">
             <div class="topic">
                 <div class="title">Passenger Profile</div>
-                <button class="del">Delete Account</button>
-            </div>
-
-            <div class="profile-pic-div">
-                <img src="" alt="">
+                <button class="del" id="notice">Delete Account</button>
             </div>
 
             <form action="#">
-                <div class="sub-title">Account</div>
+                <div>
+                    <div class="sub-title" id="st2">Profile Picture</div>
+                    <div class="profilepic">
+                        <div class="card">
+                            <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+                        </div>
+                    </div>
+                    <label for="pic">Update Photo</label>
+                    <input type="file" accept="image/.*" id="pic">
+                    <button class="pic-del" onclick="deletePhoto()">Delete Photo</button>
+                </div>
+
+                <div class="edit">
+                    <div class="sub-title" id="st3">Account</div>
+                    <button class="edit-btn">Edit</button>
+                </div>
                 <div class="pass-details">
                     <div class="input-box">
                         <span class="details">Passenger Name</span>
@@ -41,52 +52,13 @@
                         <span class="details">Telephone</span>
                         <input disabled type="number" value name="passengerID">
                     </div>
-                    <button>Edit</button>
                 </div>
 
-                <div class="sub-title">Password</div>
-                <div class="password">
-                    <div class="input-box">
-                        <span class="details">Password</span>
-                        <input disabled type="password" value name="password">
-                    </div>
+                <div class="passw">
+                    <div class="sub-title" id="st4">Password</div>
                     <a href="#change-pass"><button>Change</button></a>
                 </div>
             </form>
-        </div>
-
-        <div class="overlay" id="change-pass">
-            <div class="otp">
-                <h2>Enter OTP Code</h2>
-                <form action="#">
-                    <div class="otp-card-inputs">
-                        <input type="number"/>
-                        <input type="number" disabled/>
-                        <input type="number" disabled/>
-                        <input type="number" disabled/>
-                        <input type="number" disabled/>
-                    </div>
-                </form>
-                <p>Didn't get the OTP<a href="#">Resend</a></p>
-                <button>Next</button>
-
-
-                <!-- <a href="#" class="close">&times;</a>
-                <div class="content">
-                    <div class="contain">
-                        <form>
-                            <label>Current Password</label>
-                            <input type="password" placeholder="********">
-
-                            <label>New Password</label>
-                            <input type="password" placeholder="********">
-
-                            <label>Confirm Password</label>
-                            <input type="password" placeholder="********">
-                        </form>
-                    </div>
-                </div> -->
-            </div>
         </div>
 
         <script src="profile.js"></script>
