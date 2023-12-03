@@ -78,12 +78,7 @@ function validateNIC(nic) {
         var daysOfAbsantError = document.querySelector(".daysOfAbsant-error-message");
         var startingError = document.querySelector(".startingDate-error-message");
         var endingError = document.querySelector(".endingDate-error-message");
-        // var vehicleRegNoEmailError = document.querySelector(".vehicleRegNo-error-message");
-        // var driverEmailError = document.querySelector(".driverEmail-error-message");
-        // var seatCountError = document.querySelector(".seatCount-error-message");
-        // var startingLocationError = document.querySelector(".startingLocation-error-message");
-        // var endLocationError = document.querySelector(".endLocation-error-message");
-        // var vehicleTripsError = document.querySelector(".vehicleTrips-error-message");
+
         
         passengerEmailError.style.display = "none";
         vehicleNoError.style.display = "none";

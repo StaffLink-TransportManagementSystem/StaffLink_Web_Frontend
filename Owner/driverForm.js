@@ -176,6 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                if(data.message === "Registration successful"){
+                  Swal.fire({
+                    title: "Driver Registered!",
+                    icon: "success"
+                  });
+                }
                 window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
