@@ -33,6 +33,27 @@ function validateContactNumber(contactNumber) {
   // Check if the contact number starts with '0' and has exactly 10 digits
   return /^0\d{9}$/.test(contactNumber);
 }
+function usedEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getDriver?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No driver"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
 
 
@@ -88,6 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("email error");
         checker = false;
     }
+    else if (!usedEmail(email)){
+      emailError.innerText = "This driver is already registered.";
+      emailError.style.display = "block";
+      console.log("email error");
+      checker = false;
+  }
       if (!name) {
         nameError.innerText = "Please enter an owner name.";
         nameError.style.display = "block";
