@@ -101,6 +101,7 @@ function validateNIC(nic) {
           console.log("email error");
           checker = false;
         }
+        
         if(!vehicleNumber){
             vehicleNoError.innerText = "Please enter a vehicle number.";
             vehicleNoError.style.display = "block";
