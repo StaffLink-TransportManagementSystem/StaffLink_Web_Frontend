@@ -54,9 +54,33 @@ function validateContactNumber(contactNumber) {
   return /^0\d{9}$/.test(contactNumber);
 }
 
+function usedVehicleNumber(vehicleNumber) {
+  console.log(vehicleNumber);
+  fetch('http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo='+vehicleNumber,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No vehicle"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
      sub = document.querySelector(".sub");
+     const owner = "rhatu2000@gmail.com";
+    form.querySelector('.ownerEmail').value = owner;
   
     sub.addEventListener("click", () => {
     //   event.preventDefault(); // Prevent the default form submission
@@ -138,6 +162,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       else if(validateVehicleNumber(vehicleNumber) === false){
         vehicleNoError.innerText = "Please enter a valid vehicle number.";
+        vehicleNoError.style.display = "block";
+        console.log("vehicle number error");
+        checker = false;
+      }
+      else if(usedVehicleNumber(vehicleNumber) === true){
+        vehicleNoError.innerText = "This vehicle number is already registered.";
         vehicleNoError.style.display = "block";
         console.log("vehicle number error");
         checker = false;

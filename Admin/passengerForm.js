@@ -46,6 +46,30 @@ function validateContactNumber(contactNumber) {
   return /^0\d{9}$/.test(contactNumber);
 }
 
+function passengerUsedEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getPassenger?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if(data.length > 0){
+          console.log("email already used");
+          return true;
+        }
+        else{
+          console.log("email not used");
+          return false;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
      sub = document.querySelector(".sub");
@@ -91,6 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
         emailError.style.display = "block";
         console.log("email error");
         checker = false;
+    }
+    else if(passengerUsedEmail(email)){
+      emailError.innerText = "Email address already used.";
+      emailError.style.display = "block";
+      console.log("email error");
+      checker = false;
     }
       if (!name) {
         nameError.innerText = "Please enter an owner name.";

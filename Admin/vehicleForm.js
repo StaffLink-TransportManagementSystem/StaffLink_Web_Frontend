@@ -54,6 +54,52 @@ function validateContactNumber(contactNumber) {
   return /^0\d{9}$/.test(contactNumber);
 }
 
+function usedVehicleNumber(vehicleNumber) {
+  console.log(vehicleNumber);
+  fetch('http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo'+vehicleNumber,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message)
+        if(data.message === "No vehicle"){
+          return false;
+        }
+        else{
+          return true;
+        }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      }
+      );
+}
+
+function usedOwnerEmail(ownerEmail) {
+  console.log(ownerEmail);
+  fetch('http://localhost:8080/try2_war_exploded/getOwner?email'+ownerEmail,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message)
+        if(data.message === "No owner"){
+          return false;
+        }
+        else{
+          return true;
+        }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      }
+      );
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
      sub = document.querySelector(".sub");
@@ -118,6 +164,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("email error");
         checker = false;
       }
+      else if(usedOwnerEmail(ownerEmail) === false){
+        ownerEmailError.innerText = "This email address is not registered as an owner.";
+        ownerEmailError.style.display = "block";
+        console.log("email error");
+        checker = false;
+      }
       if(!driverEmail){
         driverEmailError.innerText = "Please enter an email address.";
         driverEmailError.style.display = "block";
@@ -142,6 +194,13 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("vehicle number error");
         checker = false;
       }
+      else if(usedVehicleNumber(vehicleNumber) === true){
+        vehicleNoError.innerText = "This vehicle number is already registered.";
+        vehicleNoError.style.display = "block";
+        console.log("vehicle number error");
+        checker = false;
+      }
+
       if (!vehicleType) {
         typeError.innerText = "Please enter a vehicle type.";
         typeError.style.display = "block";
