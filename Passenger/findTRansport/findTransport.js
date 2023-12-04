@@ -129,3 +129,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+    let tripTypeSelect = document.querySelector(".type");
+    let startingTimeInput = document.querySelector(".starting-time");
+    let endingTimeInput = document.querySelector(".ending-time");
+  
+    // Initially hide the starting time and ending time input boxes
+    startingTimeInput.classList.add("hide-input");
+    endingTimeInput.classList.add("hide-input");
+  
+    tripTypeSelect.addEventListener("change", function () {
+      // Show or hide the starting and ending time input boxes based on the selected option
+      if (tripTypeSelect.value === "type1") {
+        startingTimeInput.classList.remove("hide-input");
+        endingTimeInput.classList.add("hide-input");
+      } else if (tripTypeSelect.value === "type2") {
+        startingTimeInput.classList.remove("hide-input");
+        endingTimeInput.classList.remove("hide-input");
+      }
+    });
+  });

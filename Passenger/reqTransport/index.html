@@ -96,16 +96,58 @@
 
           <div class="home-content">
             <div class="container">
+
+              <table class="passtable">
+                <thead>
+                    <tr>
+                        <th scope="col">Reservation Id</th>
+                        <th scope="col">VEHICLE NO</th>
+                        <th scope="col">VEHICLE TYPE</th>
+                        <th scope="col">Service Provider</th>
+                        <th scope="col">Reservation Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Reservation Status</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr>
+                        <td data-label="Reservation Date">212840</td>
+                        <td data-label="Vehicle-no">KD 2314</td>
+                        <td data-label="Type">Bus</td>
+                        <td data-label="Service Provider">xyz Trnasportation</td>
+                        <td data-label="Reservation Date">20:09:2023</td>
+                        <td data-label="End Date">20:09:2023</td>
+                        <td data-label="Status">Pending</td>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Reservation Date">212956</td>
+                      <td data-label="Vehicle-no">KD 1234</td>
+                      <td data-label="Type">Bus A/C</td>
+                      <td data-label="Service Provider">abc Trnasportation</td>
+                      <td data-label="Reservation Date">21:09:2023</td>
+                      <td data-label="End Date">28:09:2023</td>
+                      <td data-label="Status">Accepted</td>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+
               <form action="#">
                   <div class="req-transport">
                       <div class="input-box">
                       <span class="details">Service provider</span>
-                      <input type="text" class="provider" placeholder="Enter prefered service provider" required>
+                      <select name="Provider" id="Provider-name" class="type">
+                        <option class="default" selected disabled value>Select the Service provider</option>
+                        <option value="provider1">xyz Trnasportation</option>
+                        <option value="provider2">abc Trnasportation</option>
+                    </select>
                       </div>
                       <div class="input-box">
                         <span class="details">payment Type</span>
                         <select name="vehicle-type" id="vehicle-type" class="type">
-                            <option class="default" value>Select the payment type</option>
+                            <option class="default" selected disabled value>Select the payment type</option>
                             <option value="card">Card</option>
                             <option value="to driver">To Driver</option>
                         </select>
@@ -116,7 +158,11 @@
                       </div>
                       <div class="input-box">
                           <span class="details">Vehicle No</span>
-                          <input class="vehicleNo" type="text" placeholder="Enter your bus id" required>
+                          <select name="vehicleNo" id="vehicleid" class="type">
+                            <option class="default" selected disabled value>Select the Vehicle No</option>
+                            <option value="provider1">KD 2314</option>
+                            <option value="provider2">KD 1234</option>
+                        </select>
                       </div>
                       <div class="button">
                           <input type="submit" value="Request">
