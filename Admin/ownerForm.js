@@ -191,7 +191,22 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                if(data.message === "Registration successfully"){
+                  Swal.fire({
+                    title: "Owner Registered Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    title: "Something went wrong!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                  })
+                }
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

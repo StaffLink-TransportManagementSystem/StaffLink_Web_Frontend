@@ -181,8 +181,23 @@ document.addEventListener("DOMContentLoaded", function () {
             },body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
-                console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                console.log(data.message);
+                if(data.message === "Update successfully"){
+                  Swal.fire({
+                    title: "Owner Updated Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/ownerList.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    title: "Something went wrong!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/ownerList.html";
+                  })
+                }
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -217,7 +232,22 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                if(data.message === "Delete successfully"){
+                  Swal.fire({
+                    title: "Owner Deleted Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/ownerList.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    title: "Something went wrong!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/ownerList.html";
+                  })
+                }
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
