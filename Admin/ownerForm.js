@@ -46,6 +46,28 @@ function validateContactNumber(contactNumber) {
   return /^0\d{9}$/.test(contactNumber);
 }
 
+function ownerUsedEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getOwner?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No owner"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
      sub = document.querySelector(".sub");
@@ -96,6 +118,12 @@ document.addEventListener("DOMContentLoaded", function () {
         emailError.style.display = "block";
         console.log("email error");
         checker = false;
+    }
+    else if(ownerUsedEmail(email)){
+      emailError.innerText = "This email is already used.";
+      emailError.style.display = "block";
+      console.log("email error");
+      checker = false;
     }
       if (!name) {
         nameError.innerText = "Please enter an owner name.";
