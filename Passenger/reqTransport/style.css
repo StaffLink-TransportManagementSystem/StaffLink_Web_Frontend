@@ -193,7 +193,7 @@ nav .profile-details i{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0 12px 0;
+  margin: 40px 0 12px 0;
 }
 
 form .req-transport .input-box{
@@ -317,6 +317,42 @@ form .button input:hover{
 .details-button:hover {
   background-color: #16449a;
 }
+
+
+.home-content table{
+  width: 100%;
+  overflow: auto;
+  table-layout: auto;
+  border-collapse: collapse;
+
+}
+td button{
+  color: white;
+  background-color: #003566;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+td button:hover {
+  color:#DAA600;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #e7f2fe;
+  color: #000;
+  border-top: 1px solid #dddddd;
+}
+th, td {
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  padding: 10px 8px;
+  word-break: break-all;
+  text-align: center;
+  font-size: 15px;
+}
 /* Responsive Media Query */
 @media (max-width: 1240px) {
   .sidebar{
@@ -393,4 +429,57 @@ form .button input:hover{
     left: 60px;
     width: calc(100% - 60px);
   }
+}
+
+
+@media(max-width: 1410px) {
+  table {
+      border: 0;
+      width: 50px;
+  }
+
+
+  table thead{
+      display: none;
+  }
+
+
+  table tr{
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+  }
+
+
+  table td{
+      border-bottom: 1px solid #ddd;
+      display: block;
+      text-align: right;
+  }
+
+
+  table th{
+      border-bottom: 1px solid #ddd;
+      display: block;
+      text-align: left;
+  }
+
+
+  table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+
+
+  table td:last-child { 
+      border-bottom: 0; 
+  }
+
+
+  .searchpass {
+      width: 100%;
+  }
+
 }

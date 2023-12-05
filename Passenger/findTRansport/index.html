@@ -95,28 +95,45 @@
       </nav>
 
           <div class="home-content">
-          <form id="search-form">
-              <div class="location">
-                <input type="text" placeholder="Home Location" id="start-location" name="startLocation" required>
-                <input type="text" placeholder="Office Location" id="end-location" name="endLocation" required>
+            <div class="container">
+            <form action="#">
+              <div class="Find-transport">
+                <div class="input-box">
+                  <span class="details">Starting Location</span>
+                  <input class="location" type="text" placeholder="Enter your Starting Location" required>
               </div>
-              <div class="inputlabel">
-                <div class="stime">
-                  <label for="start-time">Work Starting Time:</label>
-                  <input type="time" placeholder="Work Starting Time" id="start-time" name="startTime" required>
-                </div>
-                <div class="otime">
-                  <label for="off-time">Work Off Time:</label>
-                  <input type="time" placeholder="Work Off Time" id="off-time" name="offTime" required>
-                </div>
+              <div class="input-box">
+                    <span class="details">End Location</span>
+                    <input class="location type="text" placeholder="Enter your End Location" required>
               </div>
-              <button type="submit" onclick="">Search</button>
+              <div class="input-box">
+                <span class="details">Trip type</span>
+                <select name="triptype" class="type">
+                  <option class="default" selected disabled value>Select the Trip type</option>
+                  <option value="type1">One way</option>
+                  <option value="type2">Two way</option>
+                </select>
+              </div>
+              <div class="input-box starting-time hide-input">
+                <span class="details">Starting time</span>
+                <input class="time" type="time" required>
+              </div>
+              <div class="input-box ending-time hide-input">
+                <span class="details">Ending time</span>
+                <input class="time" type="time">
+              </div>
+              <div class="button">
+                      <input type="submit" value="Search">
+              </div>
+
+              </div>
           </form>
       
           <div id="results">
               <!-- Search results will be displayed here -->
           </div>
         </div>
+      </div>
     </section>
 
     <!-- <script>
