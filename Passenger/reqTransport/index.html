@@ -100,11 +100,11 @@
                   <div class="req-transport">
                       <div class="input-box">
                       <span class="details">Service provider</span>
-                      <input type="text" placeholder="Enter prefered service provider" required>
+                      <input type="text" class="provider" placeholder="Enter prefered service provider" required>
                       </div>
                       <div class="input-box">
                         <span class="details">payment Type</span>
-                        <select name="vehicle-type" id="vehicle-type">
+                        <select name="vehicle-type" id="vehicle-type" class="type">
                             <option class="default" value>Select the payment type</option>
                             <option value="card">Card</option>
                             <option value="to driver">To Driver</option>
@@ -112,11 +112,11 @@
                     </div>
                       <div class="input-box">
                           <span class="details">reservation id</span>
-                          <input type="text" placeholder="Enter your reservation id" required>
+                          <input class="reservation" type="text" placeholder="Enter your reservation id" required>
                       </div>
                       <div class="input-box">
-                          <span class="details">bus id</span>
-                          <input type="text" placeholder="Enter your bus id" required>
+                          <span class="details">Vehicle No</span>
+                          <input class="vehicleNo" type="text" placeholder="Enter your bus id" required>
                       </div>
                       <div class="button">
                           <input type="submit" value="Request">
@@ -137,5 +137,6 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     };
     </script>
+    <script src="makePayment.js"></script>
   </body>
 </html>

@@ -26,12 +26,77 @@ function ValidateEmail(input) {
 
 }
 
+function usedOwnerEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getOwner?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No owner"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function usedDriverEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getDriver?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No driver"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 function validateContactNumber(contactNumber) {
   // Remove any spaces or non-numeric characters
   contactNumber = contactNumber.replace(/\D/g, '');
 
   // Check if the contact number starts with '0' and has exactly 10 digits
   return /^0\d{9}$/.test(contactNumber);
+}
+function usedEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getDriver?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No driver"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 
@@ -88,6 +153,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("email error");
         checker = false;
     }
+    else if (usedDriverEmail(email)){
+      emailError.innerText = "This email is already registered.";
+      emailError.style.display = "block";
+      console.log("email error");
+      checker = false;
+  }
       if (!name) {
         nameError.innerText = "Please enter an owner name.";
         nameError.style.display = "block";
@@ -138,6 +209,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       else if (!ValidateEmail(ownerEmail)) {
         ownerEmailError.innerText = "Please enter a valid owner email.";
+        ownerEmailError.style.display = "block";
+        console.log("ownerEmail error");
+        checker = false;
+      }
+      else if (!usedEmail(ownerEmail)){
+        ownerEmailError.innerText = "This owner is not registered.";
         ownerEmailError.style.display = "block";
         console.log("ownerEmail error");
         checker = false;

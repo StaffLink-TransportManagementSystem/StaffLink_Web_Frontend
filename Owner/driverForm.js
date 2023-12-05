@@ -1,3 +1,5 @@
+// const e = require('express');
+
 function validateNIC(nic) {
   // Remove any spaces or non-alphanumeric characters
   nic = nic.replace(/[^a-zA-Z0-9]/g, '');
@@ -34,12 +36,37 @@ function validateContactNumber(contactNumber) {
   return /^0\d{9}$/.test(contactNumber);
 }
 
+function usedEmail(email) {
+  console.log(email);
+  fetch('http://localhost:8080/try2_war_exploded/getDriver?email='+email,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if(data.message === "No driver"){
+          return false;
+        }
+        else{
+          return true;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
+  // const Swal = require('sweetalert2')
     const form = document.querySelector("form"),
      sub = document.querySelector(".sub");
+     const owner = "rhatu2000@gmail.com";
+    form.querySelector('.ownerEmail').value = owner;
   
     sub.addEventListener("click", () => {
     //   event.preventDefault(); // Prevent the default form submission
@@ -88,6 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("email error");
         checker = false;
     }
+    else if (!usedEmail(email)){
+      emailError.innerText = "This driver is already registered.";
+      emailError.style.display = "block";
+      console.log("email error");
+      checker = false;
+  }
       if (!name) {
         nameError.innerText = "Please enter an owner name.";
         nameError.style.display = "block";
@@ -176,6 +209,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                if(data.message === "Registration successful"){
+                  Swal.fire({
+                    title: "Driver Registered!",
+                    icon: "success"
+                  });
+                }
                 window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
