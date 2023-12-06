@@ -112,8 +112,24 @@ document.addEventListener("DOMContentLoaded", function () {
             },body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
-                console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                console.log(data.message);
+                if(data.message == "Update successful"){
+                  Swal.fire({
+                    title: "Absent Updated Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    title: "Absent Update Failed!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                  })
+                }
+                // window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -143,7 +159,23 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                if(data.message == "Delete successful"){
+                  Swal.fire({
+                    title: "Absent Removed Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                  })
+                
+                }
+                else{
+                  Swal.fire({
+                    title: "Absent Removal Failed!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                  })
+                }
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
