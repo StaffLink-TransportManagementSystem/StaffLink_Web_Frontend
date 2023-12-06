@@ -152,7 +152,22 @@ function validateNIC(nic) {
               .then(response => response.json())
               .then(data => {
                   console.log(data.message)
-                  window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                  if(data.message === "Registration successfully"){
+                    Swal.fire({
+                      title: "Absent Added Successfully!",
+                      icon: "success"
+                    }).then(()=>{
+                      window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                    })
+                  }
+                  else{
+                    Swal.fire({
+                      title: "Absent Adding Failed!",
+                      icon: "error"
+                    }).then(()=>{
+                      window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                    })
+                  }
               })
               .catch(error => {
                   console.error('Error:', error);
