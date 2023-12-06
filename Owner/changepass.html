@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="changepass.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>Change Password</title>
+    </head>
+
+    <body>   
+        <div class="enter-pass">
+            <h2>Enter New Password</h2>
+            <p>Enter a new password below to change your password</p>
+            <form action="#">
+                <div class="input-box">
+                    <span class="details">New Password</span>
+                    <input type="password" placeholder="New password">
+                </div>
+                <div class="input-box">
+                    <span class="details">Re-enter New Password</span>
+                    <input type="password" placeholder="Re-enter New password">
+                </div>
+                <button type="submit" class="btn submit-btn">Change</button>
+                <button type="submit" class="btn cancel-btn" onclick="goToProfile()"><a href="./profile.html">Cancel</a></button>
+            </form>
+        </div>
+      
+        <!-- <script src="enterotp.js"></script> -->
+        <script>
+            function goToProfile() {
+                console.log("Go to profile");
+                window.location.href = "http://127.0.0.1:5501/Admin/profile/profile.html";
+                console.log("Go to profile2");
+            }
+        </script>
+    </body>
