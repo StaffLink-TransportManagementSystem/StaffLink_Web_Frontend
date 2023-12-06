@@ -46,7 +46,7 @@ function usedEmail(email) {
     .then(response => response.json())
     .then(data => {
         console.log(data.message);
-        if(data.message === "No driver"){
+        if(data.message == "No driver"){
           return false;
         }
         else{
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("email error");
         checker = false;
     }
-    else if (!usedEmail(email)){
+    else if (usedEmail(email)){
       emailError.innerText = "This driver is already registered.";
       emailError.style.display = "block";
       console.log("email error");
@@ -209,13 +209,27 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                if(data.message === "Registration successful"){
+                if(data.message === "Registration successfully"){
                   Swal.fire({
                     title: "Driver Registered!",
                     icon: "success"
-                  });
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
+                })
                 }
-                window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
+                else{
+                  Swal.fire({
+                    title: "Driver Registration Failed!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
+                })}
+                // Swal.fire({
+                //   title: "Driver Registered!",
+                //   text: "That thing is still around?",
+                //   icon: "question"
+                // });
+                // window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

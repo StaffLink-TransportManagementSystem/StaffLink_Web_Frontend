@@ -19,7 +19,7 @@ body{
     max-width: 700px;
     width: 100%;
     background: white;
-    padding: 40px 30px;
+    padding: 30px 30px;
     border-radius: 5px;
 }
 
@@ -200,7 +200,14 @@ label{
     border: 1px solid #0A2558;
 }
 
+.passw a{
+    text-decoration: none;
+    color: #fff;
+}
 
+.passw a:hover{
+    color: #0A2558;
+}
 
 @media (max-width: 584px) {
     .container{

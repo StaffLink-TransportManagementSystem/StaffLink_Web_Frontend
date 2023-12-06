@@ -1,3 +1,5 @@
+const e = require("express");
+
 function validateNIC(nic) {
   // Remove any spaces or non-alphanumeric characters
   nic = nic.replace(/[^a-zA-Z0-9]/g, '');
@@ -174,8 +176,23 @@ document.addEventListener("DOMContentLoaded", function () {
             },body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
-                console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                console.log(data.message);
+                if(data.message==="Registration successfully"){
+                  Swal.fire({
+                    title: "Vehicle Registered Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    title: "Vehicle Registration Failed!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                  })
+                }
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
