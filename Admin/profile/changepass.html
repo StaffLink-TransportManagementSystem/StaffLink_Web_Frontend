@@ -25,9 +25,16 @@
                     <input type="password" placeholder="Re-enter New password">
                 </div>
                 <button type="submit" class="btn submit-btn">Change</button>
-                <button type="submit" class="btn cancel-btn"><a href="profile.html">Cancel</a></button>
+                <button type="submit" class="btn cancel-btn" onclick="goToProfile()"><a href="./profile.html">Cancel</a></button>
             </form>
         </div>
       
-        <script src="enterotp.js"></script>
+        <!-- <script src="enterotp.js"></script> -->
+        <script>
+            function goToProfile() {
+                console.log("Go to profile");
+                window.location.href = "http://127.0.0.1:5501/Admin/profile/profile.html";
+                console.log("Go to profile2");
+            }
+        </script>
     </body>
