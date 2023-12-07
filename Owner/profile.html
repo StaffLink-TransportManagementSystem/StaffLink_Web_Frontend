@@ -7,18 +7,18 @@
 
         <link rel="stylesheet" href="profile.css">
 
-        <title>Passenger Profile</title>
+        <title>Owner Profile</title>
     </head>
 
 
     <body>
         <div class="container">
             <div class="topic">
-                <div class="title">Passenger Profile</div>
+                <div class="title">Owner Profile</div>
                 <button class="del" id="notice">Delete Account</button>
             </div>
 
-            <form action="#">
+            <form>
                 <div>
                     <div class="sub-title" id="st2">Profile Picture</div>
                     <div class="profilepic">
@@ -33,36 +33,36 @@
 
                 <div class="edit">
                     <div class="sub-title" id="st3">Account</div>
-                    <button class="edit-btn" onclick="editAcc()">Edit</button>
+                    <button class="edit-btn" onclick="editAcc(event)">Edit</button>
                 </div>
                 <div class="pass-details">
                     <div class="input-box">
-                        <span class="details">Passenger ID</span>
+                        <span class="details">Owner ID</span>
                         <input disabled type="text" class="passengerID" name="passengerID">
                         <div class="id-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Passenger Name</span>
+                        <span class="details">Owner Name</span>
                         <input disabled type="text" class="passengerName" value name="passengerName">
                         <div class="name-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">NIC No</span>
                         <input disabled type="text" class="NIC" value name="NIC">
-                        <div class="nic-error-message" style="display: none; color: red;"></div>
+                        <div class="NIC-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
                         <input disabled type="email" class="email" value name="email">
                         <div class="email-error-message" style="display: none; color: red;"></div>
                     </div>
-                    <div class="input-box">
+                    <!-- <div class="input-box">
                         <span class="details">Telephone</span>
                         <input disabled type="number" class="Telephone" value name="Telephone">
                         <div class="contact-error-message" style="display: none; color: red;"></div>
-                    </div>
+                    </div> -->
                     <div class="save" style="display: none; margin: 25px 0 0 0;">
-                        <button class="edit-btn" onclick="updateProfile()">Save Changes</button>
+                        <button class="edit-btn" onclick="updateProfile(event)">Save Changes</button>
                     </div>
                 </div>
                 
@@ -75,5 +75,6 @@
         </div>
 
         <script src="profile.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>

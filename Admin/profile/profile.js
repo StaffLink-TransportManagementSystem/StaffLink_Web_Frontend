@@ -60,7 +60,8 @@ function deletePhoto() {
 }
 
 
-function editAcc(){
+function editAcc(e){    
+    e.preventDefault();
     console.log("editAcc");
     document.querySelector('.passengerName').disabled = false;
     document.querySelector('.NIC').disabled = false;
@@ -71,7 +72,8 @@ function editAcc(){
 }
 
 
-function updateProfile(){
+function updateProfile(e){
+    e.preventDefault();
     const form = document.querySelector("form"),
     sub = document.querySelector(".sub");
 

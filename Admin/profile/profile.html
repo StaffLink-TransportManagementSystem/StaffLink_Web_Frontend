@@ -18,7 +18,7 @@
                 <button class="del" id="notice">Delete Account</button>
             </div>
 
-            <form action="#">
+            <form>
                 <div>
                     <div class="sub-title" id="st2">Profile Picture</div>
                     <div class="profilepic">
@@ -33,7 +33,7 @@
 
                 <div class="edit">
                     <div class="sub-title" id="st3">Account</div>
-                    <button class="edit-btn" onclick="editAcc()">Edit</button>
+                    <button class="edit-btn" onclick="editAcc(event)">Edit</button>
                 </div>
                 <div class="pass-details">
                     <div class="input-box">
@@ -62,7 +62,7 @@
                         <div class="contact-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="save" style="display: none; margin: 25px 0 0 0;">
-                        <button class="edit-btn" onclick="updateProfile()">Save Changes</button>
+                        <button class="edit-btn" onclick="updateProfile(event)">Save Changes</button>
                     </div>
                 </div>
                 
@@ -73,7 +73,6 @@
                 </div>
             </form>
         </div>
-
         <script src="profile.js"></script>
     </body>
 </html>

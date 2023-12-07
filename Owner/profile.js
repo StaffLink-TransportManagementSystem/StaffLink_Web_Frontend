@@ -60,56 +60,84 @@ function deletePhoto() {
 }
 
 
-function editAcc(){
+function editAcc(e){
+    e.preventDefault();
     console.log("editAcc");
     document.querySelector('.passengerName').disabled = false;
     document.querySelector('.NIC').disabled = false;
-    document.querySelector('.Telephone').disabled = false;
+    // document.querySelector('.Telephone').disabled = false;
     document.querySelector('.edit').style.display = "none";
     document.querySelector('.save').style.display = "block";
    
 }
 
 
-function updateProfile(){
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  // const email = window.location.href.split("=")[1];
+  const email = "rhatu2000@gmail.com"
+
+  // console.log(window.location.href.split("=")[1]);
+  
+
+  fetch("http://localhost:8080/try2_war_exploded/getOwner?email=" + email ,{
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          },})
+          .then(response => response.json())
+          .then(data => {
+              console.log(data.owner) 
+              form.querySelector('.passengerID').value = data.owner.id;
+              form.querySelector('.email').value = data.owner.email;  
+              form.querySelector('.passengerName').value = data.owner.name;
+              form.querySelector('.NIC').value = data.owner.NIC;
+              // form.querySelector('.Telephone').value = data.owner.contact;
+              
+              
+
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+          
+  
+});
+
+function updateProfile(e){
+    e.preventDefault();
     const form = document.querySelector("form"),
     sub = document.querySelector(".sub");
 
-    const id = form.querySelector('.id').value;
+    const id = form.querySelector('.passengerID').value;
     const name = form.querySelector('.passengerName').value;
     const NIC = form.querySelector('.NIC').value;
     // const contact = form.querySelector('.Telephone').value;
     const email = form.querySelector('.email').value;
-    const Telephone = form.querySelector('.Telephone').value;
+    // const Telephone = form.querySelector('.Telephone').value;
     // const profilePic = document.getElementById("default-pic");
 
     console.log("update form submitted");
     console.log(id);
     console.log(name);
     console.log(NIC);
-    console.log(Telephone);
+    // console.log(Telephone);
     console.log(email);
 
     var checker = true;
 
     var nameError = document.querySelector(".name-error-message");
     var NICError = document.querySelector(".NIC-error-message");
-    var contactError = document.querySelector(".contact-error-message");
+    // var contactError = document.querySelector(".contact-error-message");
     var emailError = document.querySelector(".email-error-message");
 
     nameError.style.display = "none";
     NICError.style.display = "none";
-    contactError.style.display = "none";
+    // contactError.style.display = "none";
     emailError.style.display = "none";
 
     if(!name){
         nameError.innerText = "Please enter your name.";
-        nameError.style.display = "block";
-        console.log("name error");
-        checker = false;
-    }
-    else if(!ValidateName(name)){
-        nameError.innerText = "Please enter a valid name.";
         nameError.style.display = "block";
         console.log("name error");
         checker = false;
@@ -120,24 +148,24 @@ function updateProfile(){
         console.log("NIC error");
         checker = false;
     }
-    else if(!ValidateNIC(NIC)){
+    else if(!validateNIC(NIC)){
         NICError.innerText = "Please enter a valid NIC.";
         NICError.style.display = "block";
         console.log("NIC error");
         checker = false;
     }
-    if(!Telephone){
-        contactError.innerText = "Please enter your contact number.";
-        contactError.style.display = "block";
-        console.log("contact error");
-        checker = false;
-    }
-    else if(!ValidateTelephone(Telephone)){
-        contactError.innerText = "Please enter a valid contact number.";
-        contactError.style.display = "block";
-        console.log("contact error");
-        checker = false;
-    }
+    // if(!Telephone){
+    //     contactError.innerText = "Please enter your contact number.";
+    //     contactError.style.display = "block";
+    //     console.log("contact error");
+    //     checker = false;
+    // }
+    // else if(!validateContactNumber(Telephone)){
+    //     contactError.innerText = "Please enter a valid contact number.";
+    //     contactError.style.display = "block";
+    //     console.log("contact error");
+    //     checker = false;
+    // }
     if(!email){
         emailError.innerText = "Please enter your email.";
         emailError.style.display = "block";
@@ -155,19 +183,44 @@ function updateProfile(){
         console.log(id);
         console.log(name);
         console.log(NIC);
-        console.log(Telephone);
+        // console.log(Telephone);
         console.log(email);
         
         const data = {
             id: id,
             name: name,
             NIC: NIC,
-            Telephone: Telephone,
             email: email,
             // profilePic: profilePic
         }
-        alert("Your profile has been updated successfully!");
-        
+        // alert("Your profile has been updated successfully!");
+        fetch('http://localhost:8080/try2_war_exploded/ownerEdit',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },body: JSON.stringify(data),})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                if(data.message === "Update successfully"){
+                  Swal.fire({
+                    title: "Owner Updated Successfully!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    title: "Something went wrong!",
+                    icon: "error"
+                  }).then(()=>{
+                    window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+                  })
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+      }
     }
-    
-}
