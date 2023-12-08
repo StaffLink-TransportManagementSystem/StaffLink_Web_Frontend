@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Request Edit</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Change Request</div>
+            <form action="#">
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Request Id</span>
+                        <input type="text" class="id" placeholder="Enter request id" readonly>
+                        <div class="id-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Model</span>
+                        <input type="text" class="model" placeholder="Enter vehicle Model" readonly>
+                        <div class="model-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Type</span>
+                        <input type="text" class="tyoe" placeholder="Enter vehicle type" readonly>
+                        <div class="type-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Reservation Starting Date</span>
+                        <input type="text" class="startingDate" placeholder="Enter starting date" required>
+                        <div class="startingDate-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Ending Date</span>
+                        <input type="text" class="endingDate" placeholder="Enter ending date" required>
+                        <div class="endingDate-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Status</span>
+                        <input type="text" class="status" placeholder="Enter status" readonly>
+                        <div class="status-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    
+                    <div class="button">
+                    </div>
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+        </div>
+        <script src="request.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>

@@ -37,10 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td>${vehicle.model}</td>
                         <td>${request.startingDate}</td>
                         <td>${request.endingDate}</td>
+                        <td>${request.amount}</td>
                         <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
                         <td><a href="#" onclick=""><button class="edit">RESERVE</button></a>
-                        <a href="#" onclick=""><button class="edit">EDIT</button></a>
-                        <a href="#" onclick=""><button class="delete">DELETE</button></a></td>
+                        <a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
+                        <button class="delete" onclick="deleteRequest(`+ request.vehicleNo +`, `+ request.passengerEmail +`)">DELETE</button></a></td>
                     </tr>`;
                     i++;
                 }
@@ -53,3 +54,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Error:', error);
             });
         });
+
+
+function deleteRequest(vehicleNo, passengerEmail) {
+    console.log("delete request");
+    console.log(vehicleNo);
+    console.log(passengerEmail);
+
+    let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
+    fetch('http://localhost:8080/try2_war_exploded/requestDelete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// function deleteRequest(){
+//     console.log("delete request");
+// }
