@@ -1,4 +1,4 @@
-const { subscribe } = require("diagnostics_channel");
+// const { subscribe } = require("diagnostics_channel");
 
 function makePayment(){
     const form = document.querySelector("form");
@@ -10,3 +10,46 @@ function makePayment(){
         const cardNumber = form.querySelector('.cardNumber').value;
     })
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    
+    passengerEmail = "passenger@gmail.com"
+  
+    let row ="";
+
+    fetch('http://localhost:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },})
+            .then(response => response.json())
+            .then(data => {
+                let i = 0;
+                while (i < data.requests.length) {
+                    const request = data.requests[i];
+                    const vehicle = data.vehicles[i];
+                    row += `<tr>
+                        <td>${request.id}</td>
+                        <td>${vehicle.vehicleNo}</td>
+                        <td>${vehicle.type}</td>
+                        <td>${vehicle.model}</td>
+                        <td>${request.startingDate}</td>
+                        <td>${request.endingDate}</td>
+                        <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
+                        <td><a href="#" onclick=""><button class="edit">RESERVE</button></a>
+                        <a href="#" onclick=""><button class="edit">EDIT</button></a>
+                        <a href="#" onclick=""><button class="delete">DELETE</button></a></td>
+                    </tr>`;
+                    i++;
+                }
+
+
+                document.querySelector(".tbody").innerHTML = row;   
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
