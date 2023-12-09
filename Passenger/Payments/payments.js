@@ -57,7 +57,8 @@ function validateYear(year) {
     return !isNaN(numericYear) && numericYear >= currentYear && numericYear <= currentYear + 10; // Adjust the range as needed
 }
 
-function makePayment() {
+function makePayment(e) {
+    e.preventDefault();
     const form = document.querySelector("form"),
     sub = document.querySelector(".sub");
 

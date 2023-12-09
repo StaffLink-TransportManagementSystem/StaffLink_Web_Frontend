@@ -141,10 +141,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
     tripTypeSelect.addEventListener("change", function () {
       // Show or hide the starting and ending time input boxes based on the selected option
-      if (tripTypeSelect.value === "type1") {
+      if (tripTypeSelect.value === "Morning") {
         startingTimeInput.classList.remove("hide-input");
         endingTimeInput.classList.add("hide-input");
-      } else if (tripTypeSelect.value === "type2") {
+      } else if (tripTypeSelect.value === "Evening" || tripTypeSelect.value === "Both") {
         startingTimeInput.classList.remove("hide-input");
         endingTimeInput.classList.remove("hide-input");
       }
