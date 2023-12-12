@@ -15,16 +15,18 @@
         <div class="enter-pass">
             <h2>Enter New Password</h2>
             <p>Enter a new password below to change your password</p>
-            <form action="#">
+            <form>
                 <div class="input-box">
                     <span class="details">New Password</span>
-                    <input type="password" placeholder="New password">
+                    <input id="newpass" type="password" placeholder="New password">
+                    <div id="newpass-error-message" style="display: none; color: red;"></div>
                 </div>
                 <div class="input-box">
                     <span class="details">Re-enter New Password</span>
-                    <input type="password" placeholder="Re-enter New password">
+                    <input id="confirmPass" type="password" placeholder="Re-enter New password">
+                    <div id="confirm-error-message" style="display: none; color: red;"></div>
                 </div>
-                <button type="submit" class="btn submit-btn">Change</button>
+                <button type="submit" class="btn submit-btn" onclick="newPassword(event)">Change</button>
                 <button type="submit" class="btn cancel-btn" onclick="goToProfile()"><a href="./profile.html">Cancel</a></button>
             </form>
         </div>
@@ -34,7 +36,9 @@
             function goToProfile() {
                 console.log("Go to profile");
                 window.location.href = "http://127.0.0.1:5501/Admin/profile/profile.html";
-                console.log("Go to profile2");
+                <!-- console.log("Go to profile2"); -->
             }
         </script>
+        <script src="changepass.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>

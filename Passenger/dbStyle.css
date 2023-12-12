@@ -456,3 +456,6 @@ nav .profile-details i{
     width: calc(100% - 60px);
   }
 }
+td{
+  width: 100%;
+}
