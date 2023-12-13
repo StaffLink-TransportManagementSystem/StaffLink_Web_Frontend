@@ -29,8 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             <td>${reservation.startingDate}</td>
                             <td>${reservation.endingDate}</td>
                             <td><span class="status ${reservation.status.toLowerCase()}">${reservation.status}</span></td>
-                            <td><a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
-                            <button class="delete" onclick="deleteRequest(`+ reservation.vehicleNo +`, `+ reservation.passengerEmail +`)">CANCEL</button></a></td>
                         </tr>`;
                         i++;
                     }

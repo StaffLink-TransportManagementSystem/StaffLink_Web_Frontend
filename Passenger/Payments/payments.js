@@ -348,6 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.payments.forEach(payment => {
                 row += `<tr>
                 <td>`+ payment.id +`</td>
+                <td>`+ payment.vehicleNo +`</td>
                 <td>2023.11.27</td>
                 <td>`+ payment.date +`</td>
                 <td> Rs. `+ payment.amount +`</td>
