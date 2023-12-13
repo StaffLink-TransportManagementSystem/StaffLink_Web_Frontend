@@ -135,13 +135,13 @@
         
             <form>
                 <div class="inputBox">
-                    <span>Payment for</span>
-                    <input type="text" maxlength="16" class="payment-input">
+                    <span>Request ID</span>
+                    <input type="number" maxlength="16" class="id-input">
                     <div class="paymentFor-error-message" style="display: none; color: red;"></div>
                 </div>
                 <div class="inputBox">
                     <span>card number</span>
-                    <input type="text" maxlength="16" class="card-number-input">
+                    <input type="number" maxlength="12" class="card-number-input">
                     <div class="cardNo-error-message" style="display: none; color: red;"></div>
                 </div>
                 <div class="inputBox">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="inputBox">
                   <span>amount</span>
-                  <input type="text" maxlength="16" class="amount-input">
+                  <input type="number" maxlength="8" class="amount-input">
                   <div class="amount-error-message" style="display: none; color: red;"></div>
               </div>
                 <div class="flexbox">
@@ -178,7 +178,7 @@
                         <span>expiration yy</span>
                         <select name="" id="" class="year-input">
                           <div id="yearInput"></div>
-                            <!-- <option value="year" selected disabled>year</option>
+                            <option value="year" selected disabled>year</option>
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
@@ -188,7 +188,7 @@
                             <option value="2027">2027</option>
                             <option value="2028">2028</option>
                             <option value="2029">2029</option>
-                            <option value="2030">2030</option> -->
+                            <option value="2030">2030</option>
                         </select>
                         <div class="year-error-message" style="display: none; color: red;"></div>
                     </div>
