@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+        <link rel="stylesheet" href="payments.css">
+        <title>Reserve Vehicle</title>
+    </head>
+
+
+    <body>
+        <div class="container" style="height:fit-content;">
+            <!-- <div class="title" style="text-align:left; align-items:start;">Card Payment</div> -->
+
+            <!-- <div class="container"> -->
+                <div class="card-container">
+                    <div class="front">
+                        <div class="image">
+                            <!-- <img src="chip.png" alt="">
+                            <img src="visa.png" alt=""> -->
+                        </div>
+                        <div class="card-number-box">################</div>
+                        <div class="flexbox">
+                            <div class="box">
+                                <span>card holder</span>
+                                <div class="card-holder-name">full name</div>
+                            </div>
+                            <div class="box">
+                                <span>expires</span>
+                                <div class="expiration">
+                                    <span class="exp-month">mm</span>
+                                    <span class="exp-year">yy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="back" style="height: fit-content;">
+                        <div class="stripe"></div>
+                        <div class="box">
+                            <span>cvv</span>
+                            <div class="cvv-box"></div>
+                            <!-- <img src="visa.png" alt=""> -->
+                        </div>
+                    </div>
+            
+                </div>
+            
+                <form>
+                    <!-- <div class="inputBox">
+                        <span>Request ID</span>
+                        <input type="number" maxlength="16" class="id-input">
+                        <div class="paymentFor-error-message" style="display: none; color: red;"></div>
+                    </div> -->
+                    <div class="inputBox">
+                        <span>card number</span>
+                        <input type="number" maxlength="12" class="card-number-input">
+                        <div class="cardNo-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="inputBox">
+                        <span>card holder</span>
+                        <input type="text" class="card-holder-input">
+                        <div class="holder-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="inputBox">
+                      <span>amount</span>
+                      <input type="number" maxlength="8" class="amount-input">
+                      <div class="amount-error-message" style="display: none; color: red;"></div>
+                  </div>
+                    <div class="flexbox">
+                        <div class="inputBox">
+                            <span>expiration mm</span>
+                            <select name="" id="" class="month-input">
+                                <option value="month" selected disabled>month</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <div class="month-error-message" style="display: none; color: red;"></div>
+                        </div>
+                        <div class="inputBox">
+                            <span>expiration yy</span>
+                            <select name="" id="" class="year-input">
+                              <div id="yearInput"></div>
+                                <option value="year" selected disabled>year</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                            </select>
+                            <div class="year-error-message" style="display: none; color: red;"></div>
+                        </div>
+                        <div class="inputBox">
+                            <span>cvv</span>
+                            <input type="number" maxlength="3" class="cvv-input">
+                            <div class="cvv-error-message" style="display: none; color: red;"></div>
+                        </div>
+                    </div>
+                    <input type="submit" value="submit" class="submit-btn" onclick="makePayment(event)">
+                </form>
+            
+            </div>
+            <!-- <div class="" style="display: flex; margin:1rem 1rem; justify-content: space-around;">
+                <article class="card" onclick="cardPayment()">
+                    <div class='card-background'>
+                        <img src="./assets/credit-card.png" alt="background" />
+                    </div>
+                    <div class='content'>
+                        <h1  style="text-align:center;">Card Payment</h1>
+                        <p style="text-align:center;">
+                            You can pay now using your credit or debit card.
+                        </p>
+                    </div>
+                </article>
+                <article class="card" onclick="cashPayment()">
+                    <div class='card-background'>
+                        <img src="./assets/money.png" alt="background" />
+                    </div>
+                    <div class='content'>
+                        <h1  style="text-align:center;">Cash Payment</h1>
+                        <p style="text-align:center;">
+                            You can handover the cash to the driver when you get the vehicle.
+                        </p>
+                    </div>
+                </article>
+            </div> -->
+        </div>
+        <script src="payment.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>
