@@ -30,19 +30,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 while (i < data.requests.length) {
                     const request = data.requests[i];
                     const vehicle = data.vehicles[i];
-                    row += `<tr>
-                        <td>${request.id}</td>
-                        <td>${vehicle.vehicleNo}</td>
-                        <td>${vehicle.type}</td>
-                        <td>${vehicle.model}</td>
-                        <td>${request.startingDate}</td>
-                        <td>${request.endingDate}</td>
-                        <td>${request.amount}</td>
-                        <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
-                        <td><a href="#" onclick=""><button class="edit">RESERVE</button></a>
-                        <a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
-                        <button class="delete" onclick="deleteRequest(`+ request.vehicleNo +`, `+ request.passengerEmail +`)">DELETE</button></a></td>
-                    </tr>`;
+                    var rowDate = `<tr>
+                    <td>${request.id}</td>
+                    <td>${vehicle.vehicleNo}</td>
+                    <td>${vehicle.type}</td>
+                    <td>${vehicle.model}</td>
+                    <td>${request.startingDate}</td>
+                    <td>${request.endingDate}</td>
+                    <td>${request.amount}</td>
+                    <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
+                    <td>`
+                    if(request.status.toLowerCase() == "approved"){
+                        rowDate += `<a href="#" onclick=""><button class="edit">RESERVE</button></a>
+                        `
+                    }
+                    rowDate += `<a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
+                    <button class="delete" onclick="deleteRequest(`+ request.vehicleNo +`, `+ request.passengerEmail +`)">DELETE</button></a></td>
+                </tr>`;
+                    // row += `<tr>
+                    //     <td>${request.id}</td>
+                    //     <td>${vehicle.vehicleNo}</td>
+                    //     <td>${vehicle.type}</td>
+                    //     <td>${vehicle.model}</td>
+                    //     <td>${request.startingDate}</td>
+                    //     <td>${request.endingDate}</td>
+                    //     <td>${request.amount}</td>
+                    //     <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
+                    //     <td><a href="#" onclick=""><button class="edit">RESERVE</button></a>
+                    //     <a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
+                    //     <button class="delete" onclick="deleteRequest(`+ request.vehicleNo +`, `+ request.passengerEmail +`)">DELETE</button></a></td>
+                    // </tr>`;
+                    row += rowDate;
                     i++;
                 }
 
