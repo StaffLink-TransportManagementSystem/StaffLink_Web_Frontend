@@ -39,25 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
                     <td>`
                     if(request.status.toLowerCase() == "approved"){
-                        rowData += `<a href="#" onclick=""><button class="edit">RESERVE</button></a>
+                        rowData += `<button class="reserve" onclick="reserve('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >RESERVE</button>
                         `
                     }
                     rowData += `<a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
                     <button class="delete" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >DELETE</button></td>
                 </tr>`;
-                    // row += `<tr>
-                    //     <td>${request.id}</td>
-                    //     <td>${vehicle.vehicleNo}</td>
-                    //     <td>${vehicle.type}</td>
-                    //     <td>${vehicle.model}</td>
-                    //     <td>${request.startingDate}</td>
-                    //     <td>${request.endingDate}</td>
-                    //     <td>${request.amount}</td>
-                    //     <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
-                    //     <td><a href="#" onclick=""><button class="edit">RESERVE</button></a>
-                    //     <a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
-                    //     <button class="delete" onclick="deleteRequest(`+ request.vehicleNo +`, `+ request.passengerEmail +`)">DELETE</button></a></td>
-                    // </tr>`;
                     row += rowData;
                     i++;
                 }
@@ -73,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function deleteRequest(vehicleNo, passengerEmail) {
-    // console.log("delete request");
+
     console.log(vehicleNo);
     console.log(passengerEmail);
     const swalWithBootstrapButtons = Swal.mixin({
@@ -85,7 +72,6 @@ function deleteRequest(vehicleNo, passengerEmail) {
       });
       swalWithBootstrapButtons.fire({
         title: "Are you sure?",
-        // text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
@@ -121,14 +107,21 @@ function deleteRequest(vehicleNo, passengerEmail) {
                 console.error('Error:', error);
             });
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire({
             title: "Cancelled",
-            // text: "Your imaginary file is safe :)",
             icon: "error"
           });
         }
       });
+}
+
+
+function reserve(vehicleNo, passengerEmail) {
+    console.log("reserve request");
+    console.log(vehicleNo);
+    console.log(passengerEmail);
+
+    window.location.href = "./makePayment.html?vehicleNo="+vehicleNo+"&passengerEmail="+passengerEmail;
 }
