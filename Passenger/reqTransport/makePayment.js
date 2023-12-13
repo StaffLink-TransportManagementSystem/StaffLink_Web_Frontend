@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${vehicle.model}</td>
                     <td>${request.startingDate}</td>
                     <td>${request.endingDate}</td>
-                    <td>${request.amount}</td>
+                    <td>Rs. ${request.price}</td>
                     <td><span class="status ${request.status.toLowerCase()}">${request.status}</span></td>
                     <td>`
                     if(request.status.toLowerCase() == "approved"){

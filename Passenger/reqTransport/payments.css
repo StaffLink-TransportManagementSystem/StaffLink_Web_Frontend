@@ -210,7 +210,7 @@ nav .profile-details i{
   padding: 20px;
   width: flex;
   min-width: 500px;
-  padding-top: 100px;
+  padding-top: 120px;
 }
 
 .container form .inputBox{
@@ -267,7 +267,7 @@ nav .profile-details i{
 
 .container .card-container .front{
   position: absolute;
-  height: 80%;
+  height: 90%;
   width: 100%;
   top: 0; left: 0;
   background:linear-gradient(45deg, #081D45, #12439f);
@@ -312,7 +312,7 @@ nav .profile-details i{
 .container .card-container .back{
   position: absolute;
   top:0; left: 0;
-  height: 80%;
+  height: 90%;
   width: 100%;
   background:linear-gradient(45deg, #081D45, #12439f);
   border-radius: 5px;

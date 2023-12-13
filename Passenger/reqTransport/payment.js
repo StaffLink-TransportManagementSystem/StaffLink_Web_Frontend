@@ -292,6 +292,37 @@ function makePayment(e){
                 year: year
             };
 
+            fetch('http://localhost:8080/try2_war_exploded/passengerCardPayment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                if(data.message == "Payment successfully"){
+                    Swal.fire({
+                        title: "Reservation Success!",
+                        icon: "success"
+                    })
+                    .then(()=>{
+                        window.location.href = "./index.html"
+                    })
+                }
+                if(data.message == "Payment unsuccessfully"){
+                    Swal.fire({
+                        title: "Reservation Failed!",
+                        icon: "error"
+                    })
+                    .then(()=>{
+                        window.location.href = "./index.html"
+                    })
+                }   
+                             
+            })
+            
+
             // HAVE TO HANDLE
 
             // let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail, amount: amount, cardNo: form.querySelector(".cardNo").value, cvv: form.querySelector(".cvv").value, expDate: form.querySelector(".expDate").value };
