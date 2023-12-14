@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Vehicle Registered Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/vehicleList.html";
+                    window.location.href = "vehicleList.html";
                   })
                 }
                 else
@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Vehicle Registration Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/vehicleList.html";
+                    window.location.href = "vehicleList.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;

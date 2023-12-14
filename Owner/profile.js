@@ -207,7 +207,7 @@ function updateProfile(e){
                     title: "Owner Updated Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+                    window.location.href = "profile.html";
                   })
                 }
                 else{
@@ -215,7 +215,7 @@ function updateProfile(e){
                     title: "Something went wrong!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+                    window.location.href = "profile.html";
                   })
                 }
             })

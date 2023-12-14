@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/requestList.html";
+                window.location.href = "requestList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -108,7 +108,7 @@ function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPo
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/requestList.html";
+                window.location.href = "requestList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

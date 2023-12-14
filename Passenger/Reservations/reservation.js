@@ -44,28 +44,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-function deleteRequest(vehicleNo, passengerEmail) {
-    console.log("delete request");
-    console.log(vehicleNo);
-    console.log(passengerEmail);
-
-    let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
-    fetch('http://localhost:8080/try2_war_exploded/requestDelete', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }, body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            location.reload();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-// function deleteRequest(){
+// function deleteRequest(vehicleNo, passengerEmail) {
 //     console.log("delete request");
+//     console.log(vehicleNo);
+//     console.log(passengerEmail);
+
+//     let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
+//     fetch('http://localhost:8080/try2_war_exploded/requestDelete', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }, body: JSON.stringify(data)
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data);
+//             if (data.message == "Request successfully") {
+//                 Swal.fire({
+//                     title: "Request Deleted!",
+//                     icon: "success"
+//                 }).then(() => {
+//                     location.reload();
+//                 })
+//             }
+//             location.reload();
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
 // }

@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Absent Updated Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                    window.location.href = "absentList.html";
                   })
                 }
                 else{
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Absent Update Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                    window.location.href = "absentList.html";
                   })
                 }
                 // window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Absent Removed Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                    window.location.href = "absentList.html";
                   })
                 
                 }
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Absent Removal Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                    window.location.href = "absentList.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;
