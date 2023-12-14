@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: 'success',
                     title: 'Driver Updated Successfully',
                   }).then(()=> {
-                    window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
+                    window.location.href = "drivers.html";
                   })
                 }
                 else{
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: 'error',
                     title: 'Something went wrong!',
                   }).then(()=> {
-                    window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
+                    window.location.href = "drivers.html";
                   })
                 }
                 // window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Driver Deleted Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
+                    window.location.href = "drivers.html";
                   })
                 }
                 else{
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Something went wrong!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
+                    window.location.href = "drivers.html";
                   })
                 }
                 // window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";

@@ -99,120 +99,10 @@
       </nav>
 
       <div class="home-content">
-        <div class="detail-boxes" style="margin-top: 2rem;">
-
-          <div class="container">
-
-            <div class="card-container">
-        
-                <div class="front">
-                    <div class="image">
-                        <!-- <img src="chip.png" alt="">
-                        <img src="visa.png" alt=""> -->
-                    </div>
-                    <div class="card-number-box">################</div>
-                    <div class="flexbox">
-                        <div class="box">
-                            <span>card holder</span>
-                            <div class="card-holder-name">full name</div>
-                        </div>
-                        <div class="box">
-                            <span>expires</span>
-                            <div class="expiration">
-                                <span class="exp-month">mm</span>
-                                <span class="exp-year">yy</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="back">
-                    <div class="stripe"></div>
-                    <div class="box">
-                        <span>cvv</span>
-                        <div class="cvv-box"></div>
-                        <!-- <img src="visa.png" alt=""> -->
-                    </div>
-                </div>
-        
-            </div>
-        
-            <form>
-                <div class="inputBox">
-                    <span>Payment for</span>
-                    <input type="text" maxlength="16" class="payment-input">
-                    <div class="paymentFor-error-message" style="display: none; color: red;"></div>
-                </div>
-                <div class="inputBox">
-                    <span>card number</span>
-                    <input type="text" maxlength="16" class="card-number-input">
-                    <div class="cardNo-error-message" style="display: none; color: red;"></div>
-                </div>
-                <div class="inputBox">
-                    <span>card holder</span>
-                    <input type="text" class="card-holder-input">
-                    <div class="holder-error-message" style="display: none; color: red;"></div>
-                </div>
-                <div class="inputBox">
-                  <span>amount</span>
-                  <input type="text" maxlength="16" class="amount-input">
-                  <div class="amount-error-message" style="display: none; color: red;"></div>
-              </div>
-                <div class="flexbox">
-                    <div class="inputBox">
-                        <span>expiration mm</span>
-                        <select name="" id="" class="month-input">
-                            <option value="month" selected disabled>month</option>
-                            <option value="01">01</option>
-                            <option value="02">02</option>
-                            <option value="03">03</option>
-                            <option value="04">04</option>
-                            <option value="05">05</option>
-                            <option value="06">06</option>
-                            <option value="07">07</option>
-                            <option value="08">08</option>
-                            <option value="09">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                        </select>
-                        <div class="month-error-message" style="display: none; color: red;"></div>
-                    </div>
-                    <div class="inputBox">
-                        <span>expiration yy</span>
-                        <select name="" id="" class="year-input">
-                          <div id="yearInput"></div>
-                            <!-- <option value="year" selected disabled>year</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option> -->
-                        </select>
-                        <div class="year-error-message" style="display: none; color: red;"></div>
-                    </div>
-                    <div class="inputBox">
-                        <span>cvv</span>
-                        <input type="number" maxlength="3" class="cvv-input">
-                        <div class="cvv-error-message" style="display: none; color: red;"></div>
-                    </div>
-                </div>
-                <input type="submit" value="submit" class="submit-btn" onclick="makePayment(event)">
-            </form>
-        
-        </div>
-
-
-
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Payments Details</h2>
+                        <h2>Payments History</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
 
@@ -220,6 +110,7 @@
                         <thead>
                             <tr>
                                 <td>Payment Id</td>
+                                <td>Vehicle No</td>
                                 <td>Reservation Date</td>
                                 <td>Payment Date</td>
                                 <td>Payment</td>
@@ -229,58 +120,7 @@
                         </thead>
 
                         <tbody class="tbody">
-                            <!-- <tr>
-                                <td>01</td>
-                                <td>01:03:2023</td>
-                                <td>01:03:2023</td>
-                                <td>Rs10,000</td>
-                                <td>Card</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>02</td>
-                                <td>01:03:2023</td>
-                                <td>NULL</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>03</td>
-                                <td>01:03:2023</td>
-                                <td>02:03:2023</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td>01:03:2023</td>
-                                <td>01:03:2023</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>05</td>
-                                <td>01:03:2023</td>
-                                <td>01:04:2023</td>
-                                <td>Rs10,000</td>
-                                <td>Card</td>
-                                <td><span class="status delivered">Paid</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>06</td>
-                                <td>01:03:2023</td>
-                                <td>NULL</td>
-                                <td>Rs10,000</td>
-                                <td>To Driver</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr> -->
+                            
                         </tbody>
                     </table>
                 </div> 

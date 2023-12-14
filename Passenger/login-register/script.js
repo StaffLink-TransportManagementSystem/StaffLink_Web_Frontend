@@ -103,20 +103,21 @@ const container = document.querySelector(".container"),
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                if(data.message === "Login successful"){
-                    Swal.fire({
-                        title: "Login Successful!",
-                        icon: "success"
-                      }).then(()=>{
-                        window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
-                      })
+                if(data.message == "Login successfully"){
+                    window.location.href = "../dashboard.html";
+                    // Swal.fire({
+                    //     title: "Login Successful!",
+                    //     icon: "success"
+                    //   }).then(()=>{
+                    //     window.location.href = "../dashboard.html";
+                    //   })
                     }
                     else if(data.message === "Wrong Password"){
                         Swal.fire({
                             title: "Invalid Username or Password!",
                             icon: "error"
                             }).then(()=>{
-                                window.location.href = "http://127.0.0.1:5501/Passenger/login-register/index.html";
+                                location.reload();
                             })
                     }
                     else if(data.message === "Invalid Email"){
@@ -124,7 +125,7 @@ const container = document.querySelector(".container"),
                             title: "Invalid Username or Password!",
                             icon: "error"
                             }).then(()=>{
-                                window.location.href = "http://127.0.0.1:5501/Passenger/login-register/index.html";
+                                location.reload();
                             })
                     }
                     // window.location.href = "http://localhost:5501/Passenger/dashboard.html";
@@ -207,7 +208,7 @@ const container = document.querySelector(".container"),
                         title: "Registration Successful!",
                         icon: "success"
                       }).then(()=>{
-                        window.location.href = "http://127.0.0.1:5501/Passenger/login-register/index.html";
+                        window.location.href = "index.html";
                         })
                     }
                     else if(data.message === "Registration unsuccessfully"){
@@ -215,7 +216,7 @@ const container = document.querySelector(".container"),
                             title: "Registration unsuccessful!",
                             icon: "error"
                             }).then(()=>{
-                                window.location.href = "http://127.0.0.1:5501/Passenger/login-register/index.html";
+                                window.location.href = "index.html";
                             })
                     }
                 // window.location.href = "http://localhost:5501/Passenger/dashboard.html";

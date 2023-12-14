@@ -157,7 +157,7 @@ function validateNIC(nic) {
                       title: "Absent Added Successfully!",
                       icon: "success"
                     }).then(()=>{
-                      window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                      window.location.href = "absentList.html";
                     })
                   }
                   else{
@@ -165,7 +165,7 @@ function validateNIC(nic) {
                       title: "Absent Adding Failed!",
                       icon: "error"
                     }).then(()=>{
-                      window.location.href = "http://127.0.0.1:5501/Owner/absentList.html";
+                      window.location.href = "absentList.html";
                     })
                   }
               })

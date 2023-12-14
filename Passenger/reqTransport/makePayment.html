@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="vehicleform.css">
+
+        <title>Reserve Vehicle</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Select Payment Method</div>
+            <div class="" style="display: flex; margin:1rem 1rem; justify-content: space-around;">
+                <article class="card" onclick="cardPayment()">
+                    <div class='card-background'>
+                        <img src="./assets/credit-card.png" alt="background" />
+                    </div>
+                    <div class='content'>
+                        <h1  style="text-align:center;">Card Payment</h1>
+                        <p style="text-align:center;">
+                            You can pay now using your credit or debit card.
+                        </p>
+                    </div>
+                </article>
+                <article class="card" onclick="cashPayment()">
+                    <div class='card-background'>
+                        <img src="./assets/money.png" alt="background" />
+                    </div>
+                    <div class='content'>
+                        <h1  style="text-align:center;">Cash Payment</h1>
+                        <p style="text-align:center;">
+                            You can handover the cash to the driver when you get the vehicle.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <script src="payment.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>

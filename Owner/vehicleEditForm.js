@@ -139,14 +139,14 @@ document.addEventListener("DOMContentLoaded", function () {
                   Swal.fire({
                     title: "Vehicle Updated Successfully!",
                     icon: "success"
-                  }).then(()=>{window.location.href = "http://127.0.0.1:5501/Owner/vehicles.html";
+                  }).then(()=>{window.location.href = "vehicles.html";
                 })
               }
               else{
                 Swal.fire({
                   title: "Vehicle Update Failed!",
                   icon: "error"
-                }).then(()=>{window.location.href = "http://127.0.0.1:5501/Owner/vehicles.html";
+                }).then(()=>{window.location.href = "vehicles.html";
               })
             }
                 // window.location.href = "http://127.0.0.1:5501/Owner/vehicles.html";
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Vehicle Deleted Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/vehicles.html";
+                    window.location.href = "vehicles.html";
                   })
                 }
                 else{
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Vehicle Delete Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/vehicles.html";
+                    window.location.href = "vehicles.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;
