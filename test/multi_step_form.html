@@ -1,79 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link  rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Registraion Form</title>
+  </head>
+  <body>
     <form action="#" class="form">
-        <h1 class="text-center">Multi Step Registration Form</h1>
-        <div class="progress-bar">
-            <div class="progress-step progress-step-active" data-title="Intro"></div>
-            <div class="progress-step" data-title="Contact"></div>
-            <div class="progress-step" data-title="ID"></div>
-            <div class="progress-step" data-title="Password"></div>
-        </div>
-        <div class="form-step-active">
-            <div class="input-group">
-                <label for="username">username</label>
-                <input type="text" id="username" placeholder="Enter your username" name="username"/>
-            </div>
-            <div class="input-group">
-                <label for="position">Position</label>
-                <input type="text" id="position" placeholder="Enter your position" name="position"/>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
-            </div>
-        </div>
+      <h1 class="text-center">Registration Form</h1>
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div
+          class="progress-step progress-step-active"
+          data-title="Intro"
+        ></div>
+        <div class="progress-step" data-title="Contact"></div>
+        <div class="progress-step" data-title="ID"></div>
+        <div class="progress-step" data-title="Password"></div>
+      </div>
 
-        <div class="form-setup">
-            <div class="input-group">
-                <label for="username">Phone</label>
-                <input type="text" id="phone" placeholder="Enter your phone no" name="phone"/>
-            </div>
-            <div class="input-group">
-                <label for="position">email</label>
-                <input type="text" id="email" placeholder="Enter your email" name="email"/>
-            </div>
-            <div class="btns-group">
-                <a href="#" class="btn btn-next">Previous</a>
-                <a href="#" class="btn btn-next">Next</a>
-            </div>
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" />
         </div>
-
-        <div class="form-setup">
-            <div class="input-group">
-                <label for="dob">Date of birth</label>
-                <input type="text" id="dob" placeholder="Enter your date of birth" name="dob"/>
-            </div>
-            <div class="input-group">
-                <label for="nic">National ID</label>
-                <input type="text" id="nic" placeholder="Enter your nic" name="nic"/>
-            </div>
-            <div class="btns-group">
-                <a href="#" class="btn btn-next">Previous</a>
-                <a href="#" class="btn btn-next">Next</a>
-            </div>
+        <div class="input-group">
+          <label for="position">Position</label>
+          <input type="text" name="position" id="position" />
         </div>
-
-        <div class="form-setup">
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="text" id="password" placeholder="Enter your password" name="password"/>
-            </div>
-            <div class="input-group">
-                <label for="confirmPassword">Confrom Password</label>
-                <input type="text" id="confirmPassword" placeholder="Enter your Password again" name="confirmPassword"/>
-            </div>
-            <div class="btns-group">
-                <a href="#" class="btn btn-next">Previous</a>
-                <input type="submit" value="Submit" class="btn btn-submit">
-            </div>
+        <div class="">
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
         </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" id="phone" />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" name="dob" id="dob" />
+        </div>
+        <div class="input-group">
+          <label for="ID">National ID</label>
+          <input type="number" name="ID" id="ID" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+          />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="Submit" class="btn" />
+        </div>
+      </div>
     </form>
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
