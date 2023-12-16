@@ -35,6 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
   });
 
+
+function AddVehicleOwner() {
+    window.location.href = "./addOwner.html";
+}
+
 //   function updatefunction(vehicleNo){
 //         window.location.href = "http://localhost:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
 //   }
