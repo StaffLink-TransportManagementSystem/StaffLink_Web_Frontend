@@ -189,7 +189,7 @@ nav .profile-details i{
   align-items: center;
   width: 100%;
   background: #fff;
-  padding: 15px 14px;
+  padding: 0px 14px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
@@ -215,14 +215,22 @@ nav .profile-details i{
 }
 .home-content .box input{
     padding: 10px 20px;
-    margin: 0 10px;
+    margin: 0 0 25px 10px;
     outline: none;
-    border: 1px solid white;
     border-radius: 5px;
     color: #003566;
     background-color: #eef3f9;
+    border: none;
 }
-
+.home-content .box i{
+  padding: 9px 15px 15px 0;
+  margin: 25px 10px 0 -15px;
+  outline: none;
+  border-radius: 5px;
+  color: #003566;
+  background-color: #eef3f9;
+  cursor: pointer;
+}
 .home-content .detail-boxes{
   display: flex;
   justify-content: space-between;
