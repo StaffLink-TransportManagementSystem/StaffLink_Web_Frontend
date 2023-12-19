@@ -360,7 +360,7 @@ form .button input:hover{
     object-fit: cover;
 }
 
-.button{
+.btn{
     display: inline;
     right: 5px;
     /* float: right; */
@@ -375,4 +375,73 @@ form .button input:hover{
     padding: 8px 20px;
     justify-content: center;
     border: 1px solid #0A2558;
+}
+
+.pass-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 17px;
+}
+
+
+.pass-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
+}
+
+.pass-details .input-box input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.pass-details .input-box select{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.input-box{
+    height: fit-content;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    /* border: 1px solid #ccc; */
+    padding-left: auto;
+    font-size: 14px;
+    /* border-bottom-width: 2px; */
+    /* transition: all 0.3s ease; */
+}
+
+@media (max-width: 584px) {
+    .container{
+        max-width: 100%;
+    }
+
+    form .vehicle-details .input-box{
+        width: 100%;
+        margin-bottom: 17px;
+    }
+
+    .container form .vehicle-details{
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .vehicle-details::-webkit-scrollbar{
+        width: 0;
+    }
 }

@@ -95,53 +95,79 @@
                 <div class="image" style="display: none;">
                     <div class="container">
                         <div class="photo-set" style="display: flex;">
-                            <div>
-                                <div class="sub-title" id="st2">Profile Picture</div>
+                            <div style="width: 50%;">
+                                <div class="sub-title" id="st2">Front View of Vehicle</div>
                                 <div class="profilepic">
-                                    <div class="card">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-                                    </div>
+                                  <div class="card">
+                                    <img src="./file.png" id="front-view-pic">
+                                  </div>
                                 </div>
-                                <!-- <label for="pic">Update Photo</label> -->
-                                <input type="file" accept="image/.*" id="pic">
-                                <button class="pic-del" onclick="deletePhoto()">Delete Photo</button>
-                            </div>
-                            <div>
-                                <div class="sub-title" id="st2">Profile Picture</div>
+                                <label class="btn" for="front-view-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="front-view-file" style="display: none;">
+                              </div>
+
+                              <div style="width: 50%;">
+                                <div class="sub-title" id="st2">Side View of Vehicle</div>
                                 <div class="profilepic">
-                                    <div class="card">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-                                    </div>
+                                  <div class="card">
+                                    <img src="./file.png" id="side-view-pic">
+                                  </div>
                                 </div>
-                                <label for="pic">Update Photo</label>
-                                <input type="file" accept="image/.*" id="pic">
-                                <button class="pic-del" onclick="deletePhoto()">Delete Photo</button>
-                            </div>
+                                <label class="btn" for="side-view-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="side-view-file" style="display: none;">
+                              </div>
                         </div>
+
                         <div class="photo-set" style="display: flex;">
-                            <div>
-                                <div class="sub-title" id="st2">Profile Picture</div>
+                            <div style="width: 50%;">
+                                <div class="sub-title" id="st2">Rear View of Vehicle</div>
                                 <div class="profilepic">
-                                    <div class="card">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-                                    </div>
+                                  <div class="card">
+                                    <img src="./file.png" id="rear-view-pic">
+                                  </div>
                                 </div>
-                                <label for="pic">Update Photo</label>
-                                <input type="file" accept="image/.*" id="pic">
-                                <button class="pic-del button" onclick="deletePhoto()">Delete Photo</button>
-                            </div>
-                            <div>
-                                <div class="sub-title" id="st2">Profile Picture</div>
+                                <label class="btn" for="rear-view-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="rear-view-file" style="display: none;">
+                              </div>
+
+                              <div style="width: 50%;">
+                                <div class="sub-title" id="st2">Inside View of Vehicle</div>
                                 <div class="profilepic">
-                                    <div class="card">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-                                    </div>
+                                  <div class="card">
+                                    <img src="./file.png" id="inside-view-pic">
+                                  </div>
                                 </div>
-                                <label for="pic">Update Photo</label>
-                                <input type="file" accept="image/.*" id="pic">
-                                <button class="pic-del" onclick="deletePhoto()">Delete Photo</button>
-                            </div>
+                                <label class="btn" for="inside-view-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="inside-view-file" style="display: none;">
+                              </div>
                         </div>
+                        <!-- <div class="photo-set" style="display: flex;">
+                            <div>
+                                <div class="sub-title" id="st2">Rear View of Vehicle</div>
+                                <div class="profilepic">
+                                    <div class="card">
+                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+                                    </div>
+                                </div>
+                                <label for="pic">Update Photo</label>
+                                <input type="file" accept="image/.*" id="pic">
+                                <button class="pic-del btn" onclick="deletePhoto()">Delete Photo</button>
+                            </div>
+                            <div>
+                                <div class="sub-title" id="st2">Inside View of Vehicle</div>
+                                <div class="profilepic">
+                                    <div class="card">
+                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+                                    </div>
+                                </div>
+                                <label for="pic">Update Photo</label>
+                                <input type="file" accept="image/.*" id="pic">
+                                <button class="pic-del btn" onclick="deletePhoto()">Delete Photo</button>
+                            </div> -->
+                        <!-- </div> -->
+
+
+
                         <!-- <div class="input-box">
                             <span class="details">Front View of Vehicle</span>
                             <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
@@ -179,6 +205,31 @@
                 document.querySelector(".intro").style.display = "block";
                 document.querySelector(".image").style.display = "none";
             }
+
+            let frontPic = document.getElementById("front-view-pic");
+            let frontFile = document.getElementById("front-view-file");
+
+            frontFile.onchange = function(){
+                frontPic.src = URL.createObjectURL(frontFile.files[0]);
+            }
+
+            let sidePic = document.getElementById("side-view-pic");
+            let sideFile = document.getElementById("side-view-file");
+
+            sideFile.onchange = function(){
+                sidePic.src = URL.createObjectURL(sideFile.files[0]);
+            }
+
+            let rearPic = document.getElementById("rear-view-pic");
+            let rearFile = document.getElementById("rear-view-file");
+
+            rearFile.onchange = function(){
+                rearPic.src = URL.createObjectURL(rearFile.files[0]);
+            }
+
+            let insidePic = document.getElementById("inside-view-pic");
+            let insideFile = document.getElementById("inside-view-file");
+            okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
         </script>
     </body>
 </html>
