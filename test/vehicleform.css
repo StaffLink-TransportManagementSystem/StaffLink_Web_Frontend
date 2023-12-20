@@ -355,6 +355,7 @@ form .button input:hover{
 .card img{
     width: 130px;
     height: 130px;
+    border-radius: 5px;
     /* border-radius: 50%; */
     margin: 10px 0; 
     object-fit: cover;
@@ -375,6 +376,13 @@ form .button input:hover{
     padding: 8px 20px;
     justify-content: center;
     border: 1px solid #0A2558;
+}
+
+.btn:hover{
+    color: #0A2558;
+    background: #fff;
+    border: 1px solid #0A2558;
+    cursor: pointer;
 }
 
 .pass-details .input-box{
