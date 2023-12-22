@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="complaintform.css">
+
+        <title>Add complaint</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">Add Your Complaint</div>
+            <form action="#">
+                <div class="complaint-details">
+                    <div class="input-box">
+                        <span class="details"></span>
+                        <select class="form-select" id="title" name="title" required>
+                            <option value="" disabled selected hidden="">Complaint Type</option>
+
+                            <option value="a">App was not working</option>
+                            <option value="b">Taking more time</option>
+                            <option value="c">Didn't pick up the bus</option>
+                        </select>
+                      
+                    </div>
+                   
+                    <div class="input-box">
+                        <span class="details">Complain</span>
+                        <textarea type="text" class="Complaint textarea" placeholder="Write Your Complaint Here"></textarea>
+                    </div>
+                  
+                    
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="Submit" onclick="">
+        </div>
+       
+    </body>
+</html>
