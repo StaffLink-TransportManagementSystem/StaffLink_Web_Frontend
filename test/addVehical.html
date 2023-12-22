@@ -195,7 +195,7 @@
             </form>
             <!-- <input type="submit" class="sub" value="Register" onclick=""> -->
         </div>
-        <script src="vehicleForm.js"></script>
+        <!-- <script src="vehicleForm.js"></script> -->
         <script>
             function btn1(){
                 document.querySelector(".intro").style.display = "none";
@@ -234,26 +234,53 @@
                 insidePic.src = URL.createObjectURL(insideFile.files[0]);
             }
 
-            function img(){
-                let img = document.getElementById("front-view-pic");
-                const data = {
-                    "image":img
-                }
-                fetch('http://localhost:8080/try2_war_exploded/imageUpload',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },body: JSON.stringify(data),})
+            function img() {
+                let fileInput = document.getElementById("front-view-file");
+            
+                if (fileInput.files.length > 0) {
+                    let formData = new FormData();
+                    formData.append("image", fileInput.files[0]);
+                    //formData.append("extension", getImageFileExtension(fileInput));
+
+                    let data = {"extension": getImageFileExtension(fileInput)}
+
+                    alert(getImageFileExtension(fileInput));
+            
+                    fetch('http://localhost:8080/try2_war_exploded/imageUpload', {
+                        method: 'POST',
+                        body: formData
+                    })
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data.message)
-                         // window.location.href = "http://localhost:5501/Passenger/dashboard.html";
-                        // document.getElementById("demo").innerHTML = data.message;
+                        console.log(data.message);
                     })
                     .catch(error => {
                         console.error('Error:', error);
                     });
+                } else {
+                    console.error('No file selected');
+                }
             }
+            
+            function getImageFileExtension(fileInput) {
+                // Check if a file is selected
+                if (fileInput.files.length > 0) {
+                    // Get the selected file
+                    let file = fileInput.files[0];
+            
+                    // Split the file name at the last dot to get the file extension
+                    let fileNameParts = file.name.split(".");
+                    if (fileNameParts.length > 1) {
+                        // Return the file extension (convert to lowercase for consistency)
+                        return fileNameParts[fileNameParts.length - 1].toLowerCase();
+                    }
+                }
+            
+                // Return null if no file or no extension found
+                return null;
+            }
+            
+            
             
         </script>
     </body>
