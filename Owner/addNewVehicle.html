@@ -107,7 +107,7 @@
                                 </div>
                                 <label class="btn" for="front-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="front-view-file" style="display: none;">
-                                <div id="frontImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
+                                <div id="frontImage-error-message" style="display: block; color: red; margin-top: 1rem;"></div>
                               </div>
 
                               <div style="width: 50%;">
@@ -119,7 +119,7 @@
                                 </div>
                                 <label class="btn" for="side-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="side-view-file" style="display: none;">
-                                <div id="sideImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
+                                <div id="sideImage-error-message" style="display: block; color: red; margin-top: 1rem;"></div>
                               </div>
                         </div>
 
@@ -133,7 +133,7 @@
                                 </div>
                                 <label class="btn" for="rear-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="rear-view-file" style="display: none;">
-                                <div id="rearImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
+                                <div id="rearImage-error-message" style="display: block; color: red; margin-top: 1rem;"></div>
                               </div>
 
                               <div style="width: 50%;">
@@ -145,7 +145,7 @@
                                 </div>
                                 <label class="btn" for="inside-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="inside-view-file" style="display: none;">
-                                <div id="insideImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
+                                <div id="insideImage-error-message" style="display: block; color: red; margin-top: 1rem;"></div>
                               </div>
                         </div>
                     </div>
@@ -179,6 +179,35 @@
             function prev1(){
                 document.getElementById("form1").style.display = "block";
                 document.getElementById("form2").style.display = "none";
+            }
+
+            
+            let frontPic = document.getElementById("front-view-pic");
+            let frontFile = document.getElementById("front-view-file");
+
+            frontFile.onchange = function(){
+                frontPic.src = URL.createObjectURL(frontFile.files[0]);
+            }
+
+            let sidePic = document.getElementById("side-view-pic");
+            let sideFile = document.getElementById("side-view-file");
+
+            sideFile.onchange = function(){
+                sidePic.src = URL.createObjectURL(sideFile.files[0]);
+            }
+
+            let rearPic = document.getElementById("rear-view-pic");
+            let rearFile = document.getElementById("rear-view-file");
+
+            rearFile.onchange = function(){
+                rearPic.src = URL.createObjectURL(rearFile.files[0]);
+            }
+
+            let insidePic = document.getElementById("inside-view-pic");
+            let insideFile = document.getElementById("inside-view-file");
+            
+            insideFile.onchange = function(){
+                insidePic.src = URL.createObjectURL(insideFile.files[0]);
             }
         </script>
     </body>

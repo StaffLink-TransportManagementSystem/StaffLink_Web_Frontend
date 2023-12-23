@@ -399,6 +399,7 @@ function validateNIC(nic) {
           console.log("vehicle trips error");
           checker = false;
         }
+        checker = true;
         if(checker === true){
             document.getElementById("form1").style.display = "none";
             document.getElementById("form2").style.display = "block";
@@ -458,10 +459,49 @@ function validateNIC(nic) {
 function img(){
     var frontImage = document.getElementById("front-view-file");
     var sideImage = document.getElementById("side-view-file");
-    var backImage = document.getElementById("rear-view-pic");
-    var insideImage = document.getElementById("inside-view-pic");
+    var backImage = document.getElementById("rear-view-file");
+    var insideImage = document.getElementById("inside-view-file");
 
+    var frontImageError = document.getElementById("frontImage-error-message");
+    var sideImageError = document.getElementById("sideImage-error-message");
+    var backImageError = document.getElementById("rearImage-error-message");
+    var insideImageError = document.getElementById("insideImage-error-message");
+
+    frontImageError.style.display = "none";
+    sideImageError.style.display = "none";
+    backImageError.style.display = "none";
+    insideImageError.style.display = "none";
     
+    var checker = true;
+
+    if(!frontImage.value){
+        frontImageError.innerText = "Please upload front view image.";
+        frontImageError.style.display = "block";
+        console.log("front image error");
+        checker = false;
+    }
+    if(!sideImage.value){
+        sideImageError.innerText = "Please upload side view image.";
+        sideImageError.style.display = "block";
+        console.log("side image error");
+        checker = false;
+    }
+    if(!backImage.value){
+        backImageError.innerText = "Please upload back view image.";
+        backImageError.style.display = "block";
+        console.log("back image error");
+        checker = false;
+    }
+    if(!insideImage.value){
+        insideImageError.innerText = "Please upload inside view image.";
+        insideImageError.style.display = "block";
+        console.log("inside image error");
+        checker = false;
+    }
+    if(checker === true){
+        document.getElementById("form2").style.display = "none";
+        document.getElementById("form3").style.display = "block";
+    }   
 
     
 }
