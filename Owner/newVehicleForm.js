@@ -454,3 +454,14 @@ function validateNIC(nic) {
     // });
     });
 });
+
+function img(){
+    var frontImage = document.getElementById("front-view-file");
+    var sideImage = document.getElementById("side-view-file");
+    var backImage = document.getElementById("rear-view-pic");
+    var insideImage = document.getElementById("inside-view-pic");
+
+    
+
+    
+}

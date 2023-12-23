@@ -252,22 +252,27 @@
                 let fileInput3 = document.getElementById("rear-view-file");
                 let fileInput4 = document.getElementById("inside-view-file");
 
-                let data = {"email":"rhatu2000@gmail.com"};
+                //let data = {"email":"rhatu2000@gmail.com"}; 
+                let data = {
+                    "email": "rhatu2000@gmail.com",
+                    "vehicleNumber": vehicleNumber,
+                    "vehicleType": vehicleType,
+                    "vehicleBrand": vehicleBrand,
+                    "vehicleModel": vehicleModel,
+                    "vehicleRegNo": vehicleRegNo,
+                    "driverEmail": driverEmail,
+                    "seatCount": seatCount,
+                    "startingLocation": startingLocation,
+                    "endLocation": endLocation,
+                    "vehicleTrips": vehicleTrips
+                };
+                
             
                 if (fileInput.files.length > 0) {
                     let formData = new FormData();
                     formData.append("image", fileInput.files[0]);
-                    formData.append("email", "rhatu2000@gmail.com");
-                    formData.append("vehicleNumber", vehicleNumber);
-                    formData.append("vehicleType", vehicleType);
-                    formData.append("vehicleBrand", vehicleBrand);
-                    formData.append("vehicleModel", vehicleModel);
-                    formData.append("vehicleRegNo", vehicleRegNo);
-                    formData.append("driverEmail", driverEmail);
-                    formData.append("seatCount", seatCount);
-                    formData.append("startingLocation", startingLocation);
-                    formData.append("endLocation", endLocation);
-                    formData.append("vehicleTrips", vehicleTrips);
+                    formData.append("data", data);
+                    
                     //formData.append("extension", getImageFileExtension(fileInput));
 
                 

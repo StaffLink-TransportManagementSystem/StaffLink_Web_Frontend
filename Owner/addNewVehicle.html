@@ -107,6 +107,7 @@
                                 </div>
                                 <label class="btn" for="front-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="front-view-file" style="display: none;">
+                                <div id="frontImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
                               </div>
 
                               <div style="width: 50%;">
@@ -118,6 +119,7 @@
                                 </div>
                                 <label class="btn" for="side-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="side-view-file" style="display: none;">
+                                <div id="sideImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
                               </div>
                         </div>
 
@@ -131,6 +133,7 @@
                                 </div>
                                 <label class="btn" for="rear-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="rear-view-file" style="display: none;">
+                                <div id="rearImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
                               </div>
 
                               <div style="width: 50%;">
@@ -142,55 +145,28 @@
                                 </div>
                                 <label class="btn" for="inside-view-file">Add Photo</label>
                                 <input type="file" accept="image/*" id="inside-view-file" style="display: none;">
+                                <div id="insideImage-error-message" style="display: block; color: red; margin: top 2rem;"></div>
                               </div>
                         </div>
-                        <!-- <div class="photo-set" style="display: flex;">
-                            <div>
-                                <div class="sub-title" id="st2">Rear View of Vehicle</div>
+                    </div>
+                    <button onclick="prev1()">Previous</button>
+                    <button onclick="img()">Next</button>
+                </div>
+
+                <div id="form2" class="image" style="display: none;">
+                    <div class="container">
+                        <div class="photo-set" style="display: flex;">
+                            <div style="width: 50%;">
+                                <div class="sub-title" id="st2">Certificate of Registraion of motor vehicle</div>
                                 <div class="profilepic">
-                                    <div class="card">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-                                    </div>
+                                  <div class="card">
+                                    <img src="./file.png" id="front-view-pic">
+                                  </div>
                                 </div>
-                                <label for="pic">Update Photo</label>
-                                <input type="file" accept="image/.*" id="pic">
-                                <button class="pic-del btn" onclick="deletePhoto()">Delete Photo</button>
-                            </div>
-                            <div>
-                                <div class="sub-title" id="st2">Inside View of Vehicle</div>
-                                <div class="profilepic">
-                                    <div class="card">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-                                    </div>
-                                </div>
-                                <label for="pic">Update Photo</label>
-                                <input type="file" accept="image/.*" id="pic">
-                                <button class="pic-del btn" onclick="deletePhoto()">Delete Photo</button>
-                            </div> -->
-                        <!-- </div> -->
-
-
-
-                        <!-- <div class="input-box">
-                            <span class="details">Front View of Vehicle</span>
-                            <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
+                                <label class="btn" for="front-view-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="front-view-file" style="display: none;">
+                              </div>
                         </div>
-                        <div class="input-box">
-                            <span class="details">Back View of Vehicle</span>
-                            <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
-                        </div>
-                        <div class="input-box">
-                            <span class="details">Left View of Vehicle</span>
-                            <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
-                        </div>
-                        <div class="input-box">
-                            <span class="details">Right View of Vehicle</span>
-                            <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
-                        </div>
-                        <div class="input-box">
-                            <span class="details">Inside View of Vehicle</span>
-                            <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
-                        </div> -->
                     </div>
                     <button onclick="prev1()">Previous</button>
                     <button onclick="img()">Next</button>
@@ -199,5 +175,11 @@
         </div>
         <script src="newVehicleForm.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function prev1(){
+                document.getElementById("form1").style.display = "block";
+                document.getElementById("form2").style.display = "none";
+            }
+        </script>
     </body>
 </html>
