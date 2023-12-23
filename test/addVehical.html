@@ -236,13 +236,15 @@
 
             function img() {
                 let fileInput = document.getElementById("front-view-file");
+                let data = {"email":"rhatu2000@gmail.com"};
             
                 if (fileInput.files.length > 0) {
                     let formData = new FormData();
                     formData.append("image", fileInput.files[0]);
+                    formData.append("email", "rhatu2000@gmail.com");
                     //formData.append("extension", getImageFileExtension(fileInput));
 
-                    let data = {"extension": getImageFileExtension(fileInput)}
+                
 
                     alert(getImageFileExtension(fileInput));
             
