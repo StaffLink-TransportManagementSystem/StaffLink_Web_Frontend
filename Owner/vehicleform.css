@@ -154,3 +154,128 @@ form .button input{
 form .button input:hover{
     color: #DAA600;
 }
+
+
+
+
+
+
+
+
+
+
+.container .sub-title{
+    font-size: 19px;
+    font-weight: 600;
+    position: relative;
+    color: #0A2558;
+    margin-top: 28px;
+}
+
+.profilepic{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+.card img{
+    width: 130px;
+    height: 130px;
+    border-radius: 5px;
+    /* border-radius: 50%; */
+    margin: 10px 0; 
+    object-fit: cover;
+}
+
+.btn{
+    display: inline;
+    right: 5px;
+    /* float: right; */
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #0A2558;
+    padding: 8px 20px;
+    justify-content: center;
+    border: 1px solid #0A2558;
+}
+
+.btn:hover{
+    color: #0A2558;
+    background: #fff;
+    border: 1px solid #0A2558;
+    cursor: pointer;
+}
+
+.pass-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 17px;
+}
+
+
+.pass-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
+}
+
+.pass-details .input-box input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.pass-details .input-box select{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.input-box{
+    height: fit-content;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    /* border: 1px solid #ccc; */
+    padding-left: auto;
+    font-size: 14px;
+    /* border-bottom-width: 2px; */
+    /* transition: all 0.3s ease; */
+}
+
+@media (max-width: 584px) {
+    .container{
+        max-width: 100%;
+    }
+
+    form .vehicle-details .input-box{
+        width: 100%;
+        margin-bottom: 17px;
+    }
+
+    .container form .vehicle-details{
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .vehicle-details::-webkit-scrollbar{
+        width: 0;
+    }
+}

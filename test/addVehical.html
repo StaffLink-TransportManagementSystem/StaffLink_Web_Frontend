@@ -235,13 +235,39 @@
             }
 
             function img() {
+                let ownerEmail = document.querySelector(".ownerEmail").value;
+                let vehicleNumber = document.querySelector(".vehicleNumber").value;
+                let vehicleType = document.querySelector(".vehicle-type").value;
+                let vehicleBrand = document.querySelector(".vehicleBrand").value;
+                let vehicleModel = document.querySelector(".vehicleModel").value;
+                let vehicleRegNo = document.querySelector(".vehicleRegNo").value;
+                let driverEmail = document.querySelector(".driverEmail").value;
+                let seatCount = document.querySelector(".seatCount").value;
+                let startingLocation = document.querySelector(".startingLocation").value;
+                let endLocation = document.querySelector(".endLocation").value;
+                let vehicleTrips = document.querySelector(".vehicle-trips").value;
+
                 let fileInput = document.getElementById("front-view-file");
+                let fileInput2 = document.getElementById("side-view-file");
+                let fileInput3 = document.getElementById("rear-view-file");
+                let fileInput4 = document.getElementById("inside-view-file");
+
                 let data = {"email":"rhatu2000@gmail.com"};
             
                 if (fileInput.files.length > 0) {
                     let formData = new FormData();
                     formData.append("image", fileInput.files[0]);
                     formData.append("email", "rhatu2000@gmail.com");
+                    formData.append("vehicleNumber", vehicleNumber);
+                    formData.append("vehicleType", vehicleType);
+                    formData.append("vehicleBrand", vehicleBrand);
+                    formData.append("vehicleModel", vehicleModel);
+                    formData.append("vehicleRegNo", vehicleRegNo);
+                    formData.append("driverEmail", driverEmail);
+                    formData.append("seatCount", seatCount);
+                    formData.append("startingLocation", startingLocation);
+                    formData.append("endLocation", endLocation);
+                    formData.append("vehicleTrips", vehicleTrips);
                     //formData.append("extension", getImageFileExtension(fileInput));
 
                 
