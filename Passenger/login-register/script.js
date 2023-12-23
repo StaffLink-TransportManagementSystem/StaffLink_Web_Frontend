@@ -1,4 +1,19 @@
 // const { get } = require("http");
+function validateNIC(nic) {
+    // Remove any spaces or non-alphanumeric characters
+    nic = nic.replace(/[^a-zA-Z0-9]/g, '');
+  
+    if (nic.length === 12) {
+      // New NIC: Should have 10 numeric characters
+      return /^\d{12}$/.test(nic);
+    } else if (nic.length === 10) {
+      // Old NIC: Should have 9 characters followed by 'V' or 'v'
+      return /^[0-9]{9}[Vv]$/.test(nic);
+    } else {
+      // Invalid length
+      return false;
+    }
+  }
 
 const container = document.querySelector(".container"),
       pwShowHide = document.querySelectorAll(".showHidePw"),
@@ -55,6 +70,7 @@ const container = document.querySelector(".container"),
         // Get the email and password input values
     
         // Get the error message element
+        
         const errorMessage1 = document.querySelector(".form.login .email-error-message");
         const errorMessage2 = document.querySelector(".form.login .password-error-message");
         const signUpErrorMessage1 = document.querySelector(".form.signup .nic-error-message");
@@ -139,34 +155,57 @@ const container = document.querySelector(".container"),
 
     function validateSignup(){
         console.log("validate function called");
+        
 
         // Get the error message element
-        const errorMessage1 = document.querySelector(".form.login .email-error-message");
-        const errorMessage2 = document.querySelector(".form.login .password-error-message");
-        const signUpErrorMessage1 = document.querySelector(".form.signup .nic-error-message");
-        const signUpErrorMessage2 = document.querySelector(".form.signup .confirm-error-message");
+        const nameError = document.querySelector(".form.signup .name-error-message");
+        const emailError = document.querySelector(".form.signup .email-error-message");
+        const nicError = document.querySelector(".form.signup .nic-error-message");
+        const passwordError = document.querySelector(".form.signup .password-error-message");
+        const confirmError = document.querySelector(".form.signup .confirm-error-message");
+        // const errorMessage1 = document.querySelector(".form.login .email-error-message");
+        // const errorMessage2 = document.querySelector(".form.login .password-error-message");
+        // const signUpErrorMessage1 = document.querySelector(".form.signup .nic-error-message");
+        // const signUpErrorMessage2 = document.querySelector(".form.signup .confirm-error-message");
         
         // Regular expression for validating an email address
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const nicPattern = /^[0-9]{9}[vVxX]|[0-9]{12}$/;
+
+        var checker = true;
+        // Check if the name is empty
+        if (sname.value == "") {
+            nameError.innerText = "Please enter your name.";
+            nameError.style.display = "block";
+            checker = false;
+        }
     
         // Check if the email is valid
         if (!emailPattern.test(semail.value)) {
-            errorMessage1.innerText = "Please enter a valid email address.";
-            errorMessage1.style.display = "block";
-            
+            emailError.innerText = "Please enter a valid email address.";
+            emailError.style.display = "block";
+            checker = false;            
+        }
+
+        // Check if the NIC is valid
+        if(!validateNIC(snic.value)){
+            nicError.innerText = "Please enter a valid NIC.";
+            nicError.style.display = "block";
+            checker = false;
         }
     
         // Check if the password is empty
         else if (spassword.value === "") {
-            errorMessage2.innerText = "Please enter a password.";
-            errorMessage2.style.display = "block";
+            passwordError.innerText = "Please enter a password.";
+            passwordError.style.display = "block";
+            checker = false;
 
         }
 
         else if (scpassword.value.length < 6) {
-            errorMessage2.innerText = "Password must be at least 6 characters long.";
-            errorMessage2.style.display = "block";
-            return;
+            passwordError.innerText = "Password must be at least 6 characters long.";
+            passwordError.style.display = "block";
+            checker = false;
         }
 
             // Check if the NIC is valid
@@ -178,12 +217,14 @@ const container = document.querySelector(".container"),
 
         // Check if the confirm password matches the password
         else if (spassword.value !== scpassword.value) {
-            signUpErrorMessage2.innerText = "Password and confirm password do not match.";
-            signUpErrorMessage2.style.display = "block";
-            return;
+            confirmError.innerText = "Password and confirm password do not match.";
+            confirmError.style.display = "block";
+            checker = false;
         }
-
-        getDataSignup();
+        if(checker){
+            getDataSignup();
+        }
+        
     }
 
 
