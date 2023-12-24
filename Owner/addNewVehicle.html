@@ -153,23 +153,33 @@
                     <button onclick="img()">Next</button>
                 </div>
 
-                <div id="form2" class="image" style="display: none;">
+                <div id="form3" class="image" style="display: none;">
                     <div class="container">
                         <div class="photo-set" style="display: flex;">
                             <div style="width: 50%;">
                                 <div class="sub-title" id="st2">Certificate of Registraion of motor vehicle</div>
                                 <div class="profilepic">
                                   <div class="card">
-                                    <img src="./file.png" id="front-view-pic">
+                                    <img src="./file.png" id="Registraion-pic">
                                   </div>
                                 </div>
-                                <label class="btn" for="front-view-file">Add Photo</label>
-                                <input type="file" accept="image/*" id="front-view-file" style="display: none;">
+                                <label class="btn" for="Registraion-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="Registraion-file" style="display: none;">
+                              </div>
+                              <div style="width: 50%;">
+                                <div class="sub-title" id="st2">Insurance of vehicle</div>
+                                <div class="profilepic">
+                                  <div class="card">
+                                    <img src="./file.png" id="insurance-pic">
+                                  </div>
+                                </div>
+                                <label class="btn" for="insurance-file">Add Photo</label>
+                                <input type="file" accept="image/*" id="insurance-file" style="display: none;">
                               </div>
                         </div>
                     </div>
-                    <button onclick="prev1()">Previous</button>
-                    <button onclick="img()">Next</button>
+                    <button onclick="prev2()">Previous</button>
+                    <button onclick="submit()">Submit</button>
                 </div>
             </div>
         </div>
@@ -208,6 +218,25 @@
             
             insideFile.onchange = function(){
                 insidePic.src = URL.createObjectURL(insideFile.files[0]);
+            }
+
+            let RegistraionPic = document.getElementById("Registraion-pic");
+            let RegistraionFile = document.getElementById("Registraion-file");
+
+            RegistraionFile.onchange = function(){
+                RegistraionPic.src = URL.createObjectURL(RegistraionFile.files[0]);
+            }
+
+            function prev2(){
+                document.getElementById("form2").style.display = "block";
+                document.getElementById("form3").style.display = "none";
+            }
+
+            let insurancePic = document.getElementById("insurance-pic");
+            let insuranceFile = document.getElementById("insurance-file");
+
+            insuranceFile.onchange = function(){
+                insurancePic.src = URL.createObjectURL(insuranceFile.files[0]);
             }
         </script>
     </body>
