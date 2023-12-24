@@ -605,6 +605,30 @@ function submit() {
             console.log("vehicle trips error");
             checker = false;
         }
+        if (!frontImage.value) {
+            console.log("front image error");
+            checker = false;
+        }
+        if (!sideImage.value) {
+            console.log("side image error");
+            checker = false;
+        }
+        if (!backImage.value) {
+            console.log("back image error");
+            checker = false;
+        }
+        if (!insideImage.value) {
+            console.log("inside image error");
+            checker = false;
+        }
+        if (!certificate.value) {
+            console.log("certificate error");
+            checker = false;
+        }
+        if (!insurance.value) {
+            console.log("insurance error");
+            checker = false;
+        }
 
     if (checker === true) {
 
@@ -657,11 +681,30 @@ function submit() {
             });
     }
     else {
-        Swal.fire({
-            title: "Somthing Went Wrong!",
-            icon: "error"
-        }).then(() => {
-            window.location.href = "vehicles.html";
-        })
+        var insuranceError = document.getElementById("insurance-error-message");
+        insurance.style.display = "none";
+        var certificateError = document.getElementById("certificate-error-message");
+        certificate.style.display = "none";
+
+        if (!certificate.value) {
+            certificateError.innerText = "Please upload certificate.";
+            certificateError.style.display = "block";
+            console.log("certificate error");
+            checker = false;
+        }
+        if (!insurance.value) {
+            insuranceError.innerText = "Please upload insurance.";
+            insuranceError.style.display = "block";
+            console.log("insurance error");
+            checker = false;
+        }
+        else {
+            Swal.fire({
+                title: "Somthing Went Wrong!",
+                icon: "error"
+            }).then(() => {
+                window.location.href = "vehicles.html";
+            })
+        }
     }
 }
