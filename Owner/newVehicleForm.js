@@ -526,7 +526,7 @@ function submit() {
     var backImage = document.getElementById("rear-view-file");
     var insideImage = document.getElementById("inside-view-file");
 
-    var certificate = document.getElementById("certificate-file");
+    var certificate = document.getElementById("Registraion-file");
     var insurance = document.getElementById("insurance-file");
 
     var checker = true;
@@ -636,7 +636,7 @@ function submit() {
         formData.append("ownerEmail", ownerEmail);
         formData.append("vehicleNo", vehicleNumber);
         formData.append("type", vehicleType);
-        formData.append("vehicleBrand", vehicleBrand);
+        formData.append("brand", vehicleBrand);
         formData.append("model", vehicleModel);
         formData.append("regNo", regNumber);
         formData.append("driverEmail", driverEmail);
