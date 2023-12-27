@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Passenger Registered Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                    window.location.href = "passengerLIst.html";
                   })
                 }
                 else{
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Registration Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/passengerLIst.html";
+                    window.location.href = "passengerLIst.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;

@@ -91,6 +91,10 @@
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
           <span class="user_name">Madhushan</span>
           <i class="bx bx-chevron-down"></i>
+          <ul class="dropdown-list">
+            <li><a href="/Admin/profile/profile.html" class="link">Your Profile</a></li>
+            <li><a href="#" class="link">Notifications</a></li>
+          </ul>
         </div>
       </nav>
 
@@ -137,16 +141,16 @@
                     <th scope="col">VEHICLE NO</th>
                     <th scope="col">VEHICLE TYPE</th>
                     <th scope="col">Service Provider</th>
-                    <th scope="col">DRIVER</th>
+                    <!-- <th scope="col">DRIVER</th> -->
                     <th scope="col">Reservation Date</th>
                     <th scope="col">End Date</th>
-                    <th scope="col">Reservation Status</th>
-                    <th scope="col">ACTION</th>
+                    <th scope="col">Payment Status</th>
+                    <!-- <th scope="col">ACTION</th> -->
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
+            <tbody class="tbody">
+                <!-- <tr>
                     <td data-label="Vehicle-no">KD 1234</td>
                     <td data-label="Type">Bus</td>
                     <td data-label="Service Provider">xyz Trnasportation</td>
@@ -171,7 +175,7 @@
                       <a href="#edit"></a><button class="edit">Edit</button></a>
                       <a href="#Cancel"></a><button class="Cancel">Cancel</button></a>
                   </td>
-              </tr>
+              </tr> -->
             </tbody>
         </table> 
       </div>
@@ -188,5 +192,8 @@
       };
     </script>
     <script src="absent.js"></script>
+    <script src="reservation.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
   </body>
 </html>

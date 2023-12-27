@@ -105,7 +105,7 @@ const container = document.querySelector(".container"),
             .then(response => response.json())
             .then(data => {
                 //console.log(data.message)
-                window.location.href = "http://localhost:5501/new-dashboard.html";
+                window.location.href = "new-dashboard.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -181,7 +181,7 @@ const container = document.querySelector(".container"),
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://localhost:5501/new-dashboard.html";
+                window.location.href = "new-dashboard.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Passenger Updated Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                    window.location.href = "passengerLIst.html";
                   })
                 }
                 else{
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Passenger Update Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                    window.location.href = "passengerLIst.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Passenger Deleted Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                    window.location.href = "passengerLIst.html";
                   })
                 }
                 else{
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Passenger Deletion Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/passengerLIst.html";
+                    window.location.href = "passengerLIst.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;

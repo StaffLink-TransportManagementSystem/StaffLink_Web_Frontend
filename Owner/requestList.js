@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         email: "rhatu2000@gmail.com",
     };
     let row ="";
+    let rowData = "";
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllRequests',{
             method: 'POST',
@@ -15,20 +16,26 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 data.list.forEach(request => {
                     // console.log(request)
-                row += `<tr>
-                        <td scope="email" data-label="P ID">`+ request.id +`</td>
-                        <td class="Name">`+ request.vehicleNo +`</td>
-                        <td class="NIC">`+ request.passengerEmail +`</td>
-                        <td class="contact">`+ request.startingPoint +`</td>
-                        <td class="contact">`+ request.endingPoint +`</td>
-                        <td class="contact">`+ request.type +`</td>
-                        <td class="contact"> <span class="status `+ request.status.toLowerCase() +`">`+ request.status +`</span></td>
-                        
-                        <td class="Action">
+                    rowData = `<tr>
+                    <td scope="email" data-label="P ID">`+ request.id +`</td>
+                    <td class="Name">`+ request.vehicleNo +`</td>
+                    <td class="NIC">`+ request.passengerEmail +`</td>
+                    <td class="contact">`+ request.startingPoint +`</td>
+                    <td class="contact">`+ request.endingPoint +`</td>
+                    <td class="contact">`+ request.type +`</td>
+                    <td class="contact"> <span class="status `+ request.status.toLowerCase() +`">`+ request.status +`</span></td>`
+                    
+                    if(request.status.toLowerCase() == "pending"){
+                        rowData += `<td class="Action">
                         <button class="approve" onclick="approvedfunction(`+ request.id + `,'` + request.vehicleNo + `','` + request.passengerEmail + `','` + request.startingPoint + `','` + request.endingPoint + `','` + request.type + `','` + request.status + `')">Approve</button>
                         <button class="reject" onclick="rejectedfunction(`+ request.id + `,'` + request.vehicleNo + `','` + request.passengerEmail + `','` + request.startingPoint + `','` + request.endingPoint + `','` + request.type + `','` + request.status + `')">Reject</button>
-                        </td>
-                    </tr>`
+                        </td>`
+                    }
+                    else{
+                        rowData += `<td class="Action">
+                        </td>`
+                    }
+                    row += rowData;
                 });
 
 
@@ -73,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/requestList.html";
+                window.location.href = "requestList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -108,7 +115,7 @@ function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPo
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "http://127.0.0.1:5501/Owner/requestList.html";
+                window.location.href = "requestList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

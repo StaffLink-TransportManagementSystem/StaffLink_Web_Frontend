@@ -207,7 +207,7 @@ function updateProfile(e){
                     title: "Owner Updated Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+                    window.location.href = "profile.html";
                   })
                 }
                 else{
@@ -215,7 +215,7 @@ function updateProfile(e){
                     title: "Something went wrong!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+                    window.location.href = "profile.html";
                   })
                 }
             })
@@ -224,3 +224,48 @@ function updateProfile(e){
             });
       }
     }
+
+
+function deleteAccount(){
+  const email = "rhatu2000@gmail.com";
+  const data = { email: email };
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch("http://localhost:8080/try2_war_exploded/ownerDelete?email=" + email ,{
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },body: JSON.stringify(data),})
+          .then(response => response.json())
+          .then(data => {
+              console.log(data.message);
+              if(data.message === "Delete successfully"){
+                Swal.fire({
+                  title: "Deleted Successfully!",
+                  icon: "success"
+                }).then(()=>{
+                  window.location.href = "login.html";
+                })
+              }
+              else{
+                Swal.fire({
+                  title: "Something went wrong!",
+                  icon: "error"
+                }).then(()=>{
+                  window.location.href = "profile.html";
+                })
+              }
+          })
+    }
+    
+  })
+}

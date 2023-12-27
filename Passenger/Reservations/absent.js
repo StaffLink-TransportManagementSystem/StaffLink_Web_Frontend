@@ -24,7 +24,22 @@ function createAbsent() {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                // window.location.href = "http://127.0.0.1:5501/Passenger/Reservations/index.html";
+                if(data.message == "Registration successfully"){
+                    Swal.fire({
+                        title: "Absent Added!",
+                        icon: "success"
+                      }).then(()=>{
+                        location.reload();
+                      })
+                }
+                else{
+                    Swal.fire({
+                        title: "Absent Adding Failed!",
+                        icon: "error"
+                      }).then(()=>{
+                        location.reload();
+                      })
+                }
             })
             .catch(error => {
                 console.error('Error:', error);

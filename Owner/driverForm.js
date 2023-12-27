@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Driver Registered!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
+                    window.location.href = "drivers.html";
                 })
                 }
                 else{
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Driver Registration Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Owner/drivers.html";
+                    window.location.href = "drivers.html";
                 })}
                 // Swal.fire({
                 //   title: "Driver Registered!",

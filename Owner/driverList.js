@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="title">Assigned Vehicle</p>
                     <p class="description" style="text-align:left"><b>Email : </b>`+ driver.email+`<br><b>NIC no : </b>`+driver.NIC+`<br><b>Age : </b>`+driver.age +`<br><b>Contact No : </b>`+driver.contact+` <br></p>
                     <div style="display: flex;">
-                    <a href="http://127.0.0.1:5501/Owner/editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
-                    <a href="http://127.0.0.1:5501/Owner/deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
+                    <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
+                    <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
                     </div>
                   </div>
                 </div>`

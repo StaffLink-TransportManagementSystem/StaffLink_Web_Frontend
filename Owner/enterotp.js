@@ -26,21 +26,21 @@ function veify(){
             title: "Please enter the OTP!",
             icon: "warning"
           }).then(()=>{
-            window.location.href = "http://127.0.0.1:5501/Owner/profile.html";
+            window.location.href = "profile.html";
           })
         //   alert("Please enter the OTP");
     }
     else{
         if(number01 == "1" && number02 == "2" && number03 == "3" && number04 == "4"){
             // alert("OTP verified");
-            window.location.href = "http://127.0.0.1:5501/Owner/changepass.html";
+            window.location.href = "changepass.html";
         }
         else{
             Swal.fire({
                 title: "Incorrect OTP!",
                 icon: "error"
               }).then(()=>{
-                window.location.href = "http://127.0.0.1:5501/Owner/enterotp.html";
+                window.location.href = "enterotp.html";
               })
             // window.location.href = "http://127.0.0.1:5501/Owner/enterotp.html";
         }

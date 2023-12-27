@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Email">`+ vehical.endingPoint +`</td>
                         <td class="Action">
                             <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Admin/editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Admin/deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit">EDIT</button></a>
+                            <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
                         </td>
                     </tr>`
                 });
@@ -40,6 +40,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     
   });
+
+
+function AddVehicle() {
+    window.location.href = "./addVehical.html";
+}
 
 //   function updatefunction(vehicleNo){
 //         window.location.href = "http://localhost:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;

@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Owner Registered Successfully!",
                     icon: "success"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                    window.location.href = "ownerList.html";
                   })
                 }
                 else{
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Something went wrong!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "http://127.0.0.1:5501/Admin/ownerList.html";
+                    window.location.href = "ownerList.html";
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;
