@@ -57,7 +57,7 @@
                 console.log(data);
 
                 // Set the image source
-                document.getElementById('image').src = `data:image/jpeg;base64,${data.base64Image}`;
+                document.getElementById('image').src = `data:image/jpeg;base64,${data.image}`;
             })
             .catch(error => {
                 console.error('Error fetching image:', error);
