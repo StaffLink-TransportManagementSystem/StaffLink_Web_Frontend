@@ -1,0 +1,103 @@
+/* Your CSS styles here */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #0A2558;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: #0A2558;
+}
+
+.unread-count {
+    background-color: #f00;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.messages-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.messages-list th,
+.messages-list td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.messages-list th {
+    background-color: #0A2558;
+    color: white;
+    font-weight: bold;
+}
+
+.message-item:hover {
+    background-color: #f5f5f5;
+}
+
+.unread {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.subject {
+    font-size: 14px;
+}
+
+.snippet {
+    color: #888;
+    font-size: 12px;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 584px) {
+    .container {
+        max-width: 100%;
+    }
+}
