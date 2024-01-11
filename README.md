@@ -40,6 +40,6 @@ Explain how to use your project. Include examples or code snippets if applicable
 
 ## License
 
-This project is licensed under the MIT - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT
 
 
