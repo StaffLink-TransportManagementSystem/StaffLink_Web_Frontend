@@ -23,7 +23,7 @@ The main objectives of the project include:
   - JavaScript
 
 
-## Authors
+## Contributors
 
 - [Ravindu Hasanka](https://github.com/Ravinduhash)
 - [Sandani Gunawardhana](https://github.com/GunawardhanaSIA)
@@ -37,20 +37,6 @@ Explain how to use your project. Include examples or code snippets if applicable
 ## Views
 
 [![GitHub Views](https://views.whatilearened.today/views/github/Ravinduhash/staffLink_frontend.svg)](https://github.com/Ravinduhash/staffLink_frontend)
-
-## Issues
-
-[![GitHub issues](https://img.shields.io/github/issues/Ravinduhash/staffLink_frontend.svg)](https://github.com/Ravinduhash/staffLink_frontend/issues)
-
-## Pull Requests
-
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/Ravinduhash/staffLink_frontend.svg)](https://github.com/Ravinduhash/staffLink_frontend/pulls)
-
-## Contributors
-
-[![GitHub contributors](https://img.shields.io/github/contributors/Ravinduhash/staffLink_frontend.svg)](https://github.com/Ravinduhash/staffLink_frontend/graphs/contributors)
-
-Click the badge above to view the list of contributors.
 
 ## License
 
