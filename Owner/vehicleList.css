@@ -147,6 +147,9 @@ nav .sidebar-button i {
     width: 100%;
     margin: 0 20px;
 }
+.hide {
+    display: none;
+  }
 
 nav .search-box input {
     height: 100%;
@@ -1160,13 +1163,12 @@ body {
     display: block;
   }
 
-  .dropdown-list li :hover{
-    /* color: #fff; */
+  /* .dropdown-list li :hover{
+    color: #fff; */
     /* text-decoration-color: #fff;
     color: #fff;
-    background: #bfbfbf; */
-    
-  }
+    background: #bfbfbf;
+  } */
 
 
 
