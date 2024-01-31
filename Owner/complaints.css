@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  .inbox-container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .unread-count {
+    background-color: #f00;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .messages-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .message-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .message-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .unread {
+    font-weight: bold;
+    background-color: #f5f5f5; /* Slightly different background for unread */
+  }
+  
+  .sender {
+    font-weight: bold;
+  }
+  
+  .subject {
+    font-size: 14px;
+  }
+  
+  .snippet {
+    color: #888;
+    font-size: 12px;
+  }
+  
+  .timestamp {
+    font-size: 12px;
+    color: #888;
+  }

@@ -114,7 +114,7 @@ nav .sidebar-button i{
   font-size: 35px;
   margin-right: 10px;
 }
-.home-section nav .search-box{
+/* .home-section nav .search-box{
   position: relative;
   height: 50px;
   max-width: 550px;
@@ -145,7 +145,7 @@ nav .search-box .bx-search{
   color: #fff;
   font-size: 22px;
   transition: all 0.4 ease;
-}
+} */
 .home-section nav .profile-details{
   display: flex;
   align-items: center;
@@ -259,7 +259,50 @@ nav .profile-details i{
   justify-content: space-between;
   /* padding: 0 20px; */
 }
-
+.home-content .sub-fee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin: 50px 20px 30px 20px;
+}
+.sub-fee .box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  padding: 25px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.sub-fee .box p{
+  color: #003566;
+  font-size: larger;
+  font-weight: 600;
+}
+.sub-fee .pay-now {
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  background: #0A2558;
+  padding: 8px 20px;
+  justify-content: center;
+  position: relative;
+  display: inline;
+  border: 1px solid #0A2558;
+}
+.sub-fee .pay-now:hover {
+  color: #0A2558;
+  background: #fff;
+  border: 1px solid #0A2558;
+  cursor: pointer;
+}
 .home-content .detail-boxes .recent-res{
   width: 100%;
   background: #fff;

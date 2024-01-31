@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="comview.css">
+    <title>Complaints</title>
+    <style>
+        /* Your CSS styles here */
+        /* ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Complaints <span class="unread-count">3</span></div>
+        <table class="messages-list">
+            <thead>
+                <tr>
+                    <th>Complaints Type</th>
+                    <th>Discription</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="message-item unread" data-id="3">
+                    <td class="Complaints Type">Taking more time</td>
+                    <td class="Discription">Please review the attached document...</td>
+                    <td class="Time">11:00 AM</td>
+                    <td class="Date">11/12</td>
+                    <td class="Status"></td> 
+                </tr>
+                <tr class="message-item" data-id="1">
+                    <td class="Complaints Type">App was not working</td>
+                    <td class="Discription">Please don't forget to bring the...</td>
+                    <td class="Time">10:30 AM</td>
+                    <td class="Date">13/12</td>
+                    <td class="Status"></td>
+                </tr>
+                <tr class="message-item unread" data-id="4">
+                    <td class="Complaints Type">Taking more time</td>
+                    <td class="Discription">Just a quick reminder about...</td>
+                    <td class="Time">9:45 AM</td>
+                    <td class="Time">14/12</td>
+                    <td class="Status"></td>
+                </tr>
+                <tr class="message-item" data-id="2">
+                    <td class="Complaints Type">Didn't pick up the bus</td>
+                    <td class="Discription">Just wanted to let you know that...</td>
+                    <td class="Time">9:15 AM</td>
+                    <td class="Time">15/12</td>
+                    <td class="Status"></td>    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="driverForm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

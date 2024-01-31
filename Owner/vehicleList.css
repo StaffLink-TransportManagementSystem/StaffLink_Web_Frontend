@@ -140,7 +140,7 @@ nav .sidebar-button i {
     margin-right: 10px;
 }
 
-.home-section nav .search-box {
+/* .home-section nav .search-box {
     position: relative;
     height: 50px;
     max-width: 550px;
@@ -173,7 +173,7 @@ nav .search-box .bx-search {
     color: #fff;
     font-size: 22px;
     transition: all 0.4 ease;
-}
+} */
 
 .home-section nav .profile-details {
     display: flex;
@@ -183,7 +183,7 @@ nav .search-box .bx-search {
     border-radius: 6px;
     height: 50px;
     min-width: 100px;
-    padding: 0 15px 0 2px;
+    padding: 0 2px 0 2px;
 }
 
 nav .profile-details img {
@@ -209,6 +209,8 @@ nav .profile-details i {
 .home-section .home-content {
     position: relative;
     padding-top: 104px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .home-content .overview-boxes {
@@ -216,8 +218,8 @@ nav .profile-details i {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 20px;
     margin-bottom: 26px;
+    margin-top: 20px;
 }
 
 .overview-boxes .box {
@@ -300,6 +302,64 @@ nav .profile-details i {
     font-size: 20px;
     font-weight: 500;
 }
+
+.home-content .add-record {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-right: -10px;
+  }
+  .add-record .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: #fff;
+    padding: 0px 14px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  .add-record .box{
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  .add-record .box p{
+      color: #003566;
+      font-weight: 600;
+  }
+  .add-record .box .add-new{
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 10px 20px;
+      color: #003566;
+      font-size: 15px;
+      background-color: white;
+      font-weight: 400;
+  }
+  .add-record .box input{
+      padding: 10px 20px;
+      margin: 0 0 25px 10px;
+      outline: none;
+      border-radius: 5px;
+      color: #003566;
+      background-color: #eef3f9;
+      border: none;
+  }
+  .add-record .box i{
+    padding: 6.5px 15px 14px 0;
+    margin: 25px 10px 0 -15px;
+    outline: none;
+    border-radius: 5px;
+    color: #003566;
+    background-color: #eef3f9;
+    cursor: pointer;
+  }
 
 .home-content .detail-boxes {
     display: flex;
@@ -1138,7 +1198,7 @@ body {
     display: block;
   }
   .home-section nav .profile-details .dropdown-list{
-    width: 10%;
+    width: 11%;
     position: absolute;
     z-index: 999;
     display: none;
@@ -1171,13 +1231,12 @@ body {
 
 
 
-  .home-content table{
+.home-content table{
     width: 100%;
     overflow: auto;
     table-layout: auto;
     border-collapse: collapse;
-   
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 td button{
     color: white;
