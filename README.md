@@ -1,10 +1,14 @@
-# StaffLink
+# STAFFLINK (Staff Transportation Platform)
 
-Welcome to Staff Link, your innovative platform for streamlining staff transportation services island-wide!
+The Staff Transportation Platform is an innovative solution designed to streamline the process of staff transportation, providing island-wide services to transport service owners, drivers, and passengers. The platform offers a consolidated solution aimed at enhancing the experience and transparency for all parties involved, including passengers, transport service drivers, and owners.
 
-## Project Overview
+## Purpose
 
-The purpose of our project is to establish an innovative platform that streamlines the process of staff transportation. We provide island-wide service to transport service owners, drivers, and passengers by offering a consolidated solution. Our primary goal is to help employees all around the country find the most convenient transport service to commute to their workplace. Additionally, we aim to enhance the experience and transparency for all parties involved, including passengers, transport service drivers, and owners.
+The main objectives of the project include:
+
+- Helping employees find the most convenient transport service for their daily commute.
+- Establishing a transparent and efficient platform for transport service owners, drivers, and passengers.
+- Providing island-wide service to cater to the transportation needs of employees across the country.
 
 ## Features
 
@@ -12,21 +16,30 @@ The purpose of our project is to establish an innovative platform that streamlin
 
 - **Enhanced Experience:** We focus on improving the overall experience and transparency for passengers, transport service drivers, and owners.
 
-## Views
-
-[![GitHub Views](https://views.whatilearened.today/views/github/your-username/your-repository.svg)](https://github.com/your-username/your-repository)
-
-## Authors
-
-- [Ravindu Hasanka](#)
-- [Sandani Gunawardhana](#)
-- [Madhushan](#)
-- [Wishwa Prabhathiya](#)
-
 ## Technologies Used
 
-- **Frontend:**
   - HTML
   - CSS
   - JavaScript
+
+
+## Contributors
+
+- [Ravindu Hasanka](https://github.com/Ravinduhash)
+- [Sandani Gunawardhana](https://github.com/GunawardhanaSIA)
+- [Madhushan](https://github.com/MadhushanAndawaththa)
+- [Wishwa Prabhathiya](https://github.com/wishwaprabathiya)
+
+## Usage
+
+Explain how to use your project. Include examples or code snippets if applicable.
+
+## Views
+
+[![GitHub Views](https://views.whatilearened.today/views/github/Ravinduhash/staffLink_frontend.svg)](https://github.com/Ravinduhash/staffLink_frontend)
+
+## License
+
+This project is licensed under the MIT
+
 
