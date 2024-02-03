@@ -114,6 +114,7 @@ nav .sidebar-button i{
   font-size: 35px;
   margin-right: 10px;
 }
+/* 
 .home-section nav .search-box{
   position: relative;
   height: 50px;
@@ -145,7 +146,7 @@ nav .search-box .bx-search{
   color: #fff;
   font-size: 22px;
   transition: all 0.4 ease;
-}
+} */
 .home-section nav .profile-details{
   display: flex;
   align-items: center;
@@ -173,6 +174,44 @@ nav .profile-details i{
   font-size: 25px;
   color: #333;
 }
+
+.home-section nav .profile-details{
+  cursor: pointer;
+}
+.home-section nav .profile-details ul li{
+  display: block;
+}
+.home-section nav .profile-details .dropdown-list{
+  width: 11%;
+  position: absolute;
+  z-index: 999;
+  display: none;
+  margin-top: 135px;
+  margin-right: 180px;
+  background: #F5F6FA;
+  border-radius: 10px;
+  margin-left: -4px;
+}
+.home-section nav .profile-details .dropdown-list li a{
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding-left: 5px;
+}
+.home-section nav .profile-details:hover ul.dropdown-list{
+  display: block;
+}
+
+/* .dropdown-list li :hover{
+  color: #fff; 
+  text-decoration-color: #fff;
+  color: #fff;
+  background: #bfbfbf;
+  
+} */
+
 .home-section .home-content{
   position: relative;
   padding-top: 104px;
@@ -205,27 +244,7 @@ nav .profile-details i{
   margin-top: -6px;
   font-weight: 500;
 }
-.home-content .box .indicator{
-  display: flex;
-  align-items: center;
-}
-.home-content .box .indicator i{
-  height: 20px;
-  width: 20px;
-  background: #8FDACB;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  margin-right: 5px;
-}
-.box .indicator i.down{
-  background: #e87d88;
-}
-.home-content .box .indicator .text{
-  font-size: 12px;
-}
+
 .home-content .box .cart{
   display: inline-block;
   font-size: 32px;
@@ -245,124 +264,16 @@ nav .profile-details i{
 .home-content .box .cart.three{
    color: #ffc233;
    background: #ffe8b3;
- }
+ } 
 .home-content .box .cart.four{
    color: #e05260;
    background: #f7d4d7;
  }
-.home-content .total-order{
+ .home-content .total-order{
   font-size: 20px;
   font-weight: 500;
-}
-.home-content .detail-boxes{
-  display: flex;
-  justify-content: space-between;
-  /* padding: 0 20px; */
-}
+} 
 
-/* left box */
-.home-content .detail-boxes .recent-res{
-  width: 75%;
-  background: #fff;
-  padding: 20px 30px;
-  margin: 0 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-.home-content .detail-boxes .res-details{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.detail-boxes .box .title{
-  font-size: 24px;
-  font-weight: 500;
-  /* margin-bottom: 10px; */
-}
-.detail-boxes .res-details li.topic{
-  font-size: 20px;
-  font-weight: 500;
-}
-.detail-boxes .res-details li{
-  list-style: none;
-  margin: 8px 0;
-}
-.detail-boxes .res-details li a{
-  font-size: 18px;
-  color: #333;
-  font-size: 400;
-  text-decoration: none;
-}
-.detail-boxes .box .button{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-.detail-boxes .box .button a{
-  color: #fff;
-  background: #0A2558;
-  padding: 4px 12px;
-  font-size: 15px;
-  font-weight: 400;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.detail-boxes .box .button a:hover{
-  background:  #0d3073;
-}
-
-/* Right box */
-.home-content .detail-boxes .recent-payments{
-  width: 35%;
-  background: #fff;
-  padding: 20px 30px;
-  margin: 0 10px;
-  border-radius: 8px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-.home-content .detail-boxes .payment-details{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.detail-boxes .box .title{
-  font-size: 24px;
-  font-weight: 500;
-  
-}
-.detail-boxes .payment-details li.topic{
-  font-size: 20px;
-  font-weight: 500;
-}
-.detail-boxes .payment-details li{
-  list-style: none;
-  margin: 8px 0;
-}
-.detail-boxes .payment-details li a{
-  font-size: 18px;
-  color: #333;
-  font-size: 400;
-  text-decoration: none;
-}
-.detail-boxes .box .button{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-.detail-boxes .box .button a{
-  color: #fff;
-  background: #0A2558;
-  padding: 4px 12px;
-  font-size: 15px;
-  font-weight: 400;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.detail-boxes .box .button a:hover{
-  background:  #0d3073;
-}
 .map {
     
     display: grid;
@@ -399,7 +310,7 @@ nav .profile-details i{
     }
 
     .toggle-button {
-      background-color: #0A2558;
+      background-color: #081D45;
       color: #fff;
       padding: 10px 20px;
       border: none;
@@ -415,36 +326,9 @@ nav .profile-details i{
       pointer-events: none;
     }
 
-    .home-section nav .profile-details{
-      cursor: pointer;
-    }
-    .home-section nav .profile-details ul li{
-      display: block;
-    }
-    .home-section nav .profile-details .dropdown-list{
-      width: 10%;
-      position: absolute;
-      z-index: 999;
-      display: none;
-      margin-top: 135px;
-      margin-right: 180px;
-      background: #F5F6FA;
-      border-radius: 10px;
-      margin-left: -4px;
-    }
-    .home-section nav .profile-details .dropdown-list li a{
-      text-decoration: none;
-      color: #000;
-      display: flex;
-      align-items: center;
-      margin: 12px 0;
-      padding-left: 5px;
-    }
-    .home-section nav .profile-details:hover ul.dropdown-list{
-      display: block;
-    }
+ 
     /* Add this CSS to your existing styles */
-.owner-profile {
+.user-profile {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -454,7 +338,7 @@ nav .profile-details i{
   margin-right: 200px;
 }
 
-.owner-profile h2 {
+.user-profile h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -723,4 +607,3 @@ footer {
       width: 100%;
   }
   /* Reset some default styles */
-}  
