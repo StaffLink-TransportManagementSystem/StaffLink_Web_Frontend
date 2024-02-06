@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    const searchInput = document.querySelector("[Driver-search]")
   
     let row ="";
+    let users = []
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllDriver',{
             method: 'GET',
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.list.forEach(driver => {
                 row += `
                 
-                <div class="wrapper">
+                <div class="wrapper" id="${driver.NIC}" >
                   
                   
                   <div class="profile" style="align-items:center;">
@@ -31,12 +33,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>`
                 });
 
+                users = data.list;
+
                 document.querySelector(".cards").innerHTML = row;   
 
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            searchInput.addEventListener("input", e => {
+              const value = e.target.value.toLowerCase()
+              users.forEach(data => {
+                const isVisible =
+                    data.name.toLowerCase().includes(value) ||
+                    data.email.toLowerCase().includes(value) ||
+                    data.NIC.toLowerCase().includes(value) ||
+                    data.contact.toLowerCase().includes(value) ||
+                    data.age.toString().toLowerCase().includes(value)
+                document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+              })
+            })
     
   });
 

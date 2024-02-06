@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    const searchInput = document.querySelector("[ownerList]")
   
     let row ="";
+    let users = []
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllOwner',{
             method: 'GET',
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(owner => {
-                row += `<tr>
+                row += `<tr  id="${owner.NIC}">
                         <td scope="email" data-label="P ID">`+ owner.email +`</td>
                         <td class="Name">`+ owner.name +`</td>
                         <td class="NIC">`+ owner.NIC +`</td>
@@ -25,12 +27,25 @@ document.addEventListener("DOMContentLoaded", function () {
                         </td>
                     </tr>`
                 });
+                users = data.list;
 
                 document.querySelector(".tbody").innerHTML = row;   
 
             })
             .catch(error => {
                 console.error('Error:', error);
+            });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                users.forEach(data => {
+                    const isVisible =
+                        data.name.toLowerCase().includes(value) ||
+                        data.email.toLowerCase().includes(value) ||
+                        data.NIC.toLowerCase().includes(value)
+   
+                        document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+                });
             });
     
   });
