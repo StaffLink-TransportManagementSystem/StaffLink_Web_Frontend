@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="ownerEmail">`+ driver.ownerEmail +`</td>
                         
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
-                            <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                            <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit-btn">EDIT</button></a>
+                            <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });
