@@ -13,6 +13,10 @@ a{
     color: white;
 }
 
+.hide {
+    display: none;
+  }
+
 .sidebar {
     position: fixed;
     height: 100%;
@@ -1219,14 +1223,14 @@ body {
   .home-section nav .profile-details:hover ul.dropdown-list{
     display: block;
   }
-
+/* 
   .dropdown-list li :hover{
-    /* color: #fff; */
+    color: #fff; */
     /* text-decoration-color: #fff;
     color: #fff;
-    background: #bfbfbf; */
+    background: #bfbfbf;
     
-  }
+  } */
 
 
 

@@ -144,7 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (tripTypeSelect.value === "Morning") {
         startingTimeInput.classList.remove("hide-input");
         endingTimeInput.classList.add("hide-input");
-      } else if (tripTypeSelect.value === "Evening" || tripTypeSelect.value === "Both") {
+      } else if (tripTypeSelect.value === "Evening") {
+        startingTimeInput.classList.add("hide-input");
+        endingTimeInput.classList.remove("hide-input");
+      }
+      else if (tripTypeSelect.value === "Both") {
         startingTimeInput.classList.remove("hide-input");
         endingTimeInput.classList.remove("hide-input");
       }

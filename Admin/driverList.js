@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    const searchInput = document.querySelector("[Drivers]")
   
     let row ="";
+    let users = []
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllDriver',{
             method: 'GET',
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(driver => {
-                row += `<tr>
+                row += `<tr  id="${driver.NIC}">
                         <td scope="email">`+ driver.email +`</td>
                         <td class="Name">`+ driver.name +`</td>
                         <td class="NIC">`+ driver.NIC +`</td>
@@ -27,12 +29,27 @@ document.addEventListener("DOMContentLoaded", function () {
                         </td>
                     </tr>`
                 });
+                users = data.list;
 
                 document.querySelector(".tbody").innerHTML = row;   
 
             })
             .catch(error => {
                 console.error('Error:', error);
+            });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                users.forEach(data => {
+                    const isVisible =
+                        data.name.toLowerCase().includes(value) ||
+                        data.email.toLowerCase().includes(value) ||
+                        data.contact.toLowerCase().includes(value) ||
+                        data.ownerEmail.toLowerCase().includes(value) ||
+                        data.NIC.toLowerCase().includes(value)
+   
+                        document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+                });
             });
     
   });
