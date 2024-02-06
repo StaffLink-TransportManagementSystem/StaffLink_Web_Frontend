@@ -1,4 +1,4 @@
-const e = require("express");
+// const e = require("express");
 
 function validateNIC(nic) {
   // Remove any spaces or non-alphanumeric characters
