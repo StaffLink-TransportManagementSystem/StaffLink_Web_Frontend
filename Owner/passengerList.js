@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="NIC">`+ passenger.NIC +`</td>
                     
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit">EDIT</button></a>
-                            <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                            <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit-btn">EDIT</button></a>
+                            <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });

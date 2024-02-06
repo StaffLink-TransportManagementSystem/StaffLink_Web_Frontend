@@ -544,7 +544,7 @@ tbody tr:last-child{
 
 .delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn{
     padding: 5px 12px;
-    border-radius: 15px;
+    border-radius: 10px;
     font-weight: 500;
 }
 
