@@ -2,64 +2,75 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="passengers.css" />
-    <!-- Boxicons CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <title>Admin Passengers</title>
+
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="passengerList.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
+
   <body>
     <div class="sidebar">
       <div class="logo-details">
-        <i class="bx bxs-bus"></i>
+        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
         <span class="logo_name">StaffLink</span>
       </div>
+
       <ul class="nav-links">
         <li>
-          <a href="dashboard.html" class="">
-            <i class="bx bx-grid-alt"></i>
+          <a href="dashboard.html">
+            <i class="fas fa-chart-line"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
+
         <li>
           <a href="./passengerLIst.html" class="active">
-            <i class="bx bx-group"></i>
+            <i class="fas fa-user-group"></i>
             <span class="links_name">Passengers</span>
           </a>
         </li>
+
         <li>
           <a href="./vehicleList.html">
-            <i class="bx bx-bus"></i>
+            <i class="fas fa-bus"></i>
             <span class="links_name">Vehicles</span>
           </a>
         </li>
+
         <li>
           <a href="./ownerList.html">
-            <i class="bx bx-user"></i>
+            <i class="fas fa-user"></i>
             <span class="links_name">Vehicle Owners</span>
           </a>
         </li>
+
         <li>
           <a href="drivers.html">
-            <i class="bx bx-trip"></i>
+            <i class="fas fa-key"></i>
             <span class="links_name">Drivers</span>
           </a>
         </li>
+
         <li>
           <a href="#">
-            <i class="bx bx-map-alt"></i>
+            <i class="fas fa-route"></i>
             <span class="links_name">Routes</span>
           </a>
         </li>
+
         <li>
           <a href="#">
-            <i class="bx bx-line-chart-down"></i>
+            <i class="fas fa-table-cells"></i>
             <span class="links_name">Reports</span>
           </a>
         </li>
+
         <li class="log_out">
           <a href="#">
-            <i class="bx bx-log-out"></i>
+            <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
@@ -70,69 +81,107 @@
     <section class="home-section">
       <nav>
         <div class="sidebar-button">
-          <i class="bx bx-menu sidebarBtn"></i>
+          <i class="fas fa-bars sidebarBtn"></i>
           <span class="dashboard">Passengers</span>
         </div>
-        <div class="profile-details">
-          <i class="bx bxs-user"></i>
+
+        <div class="profile-details"  onclick="toggleMenu()">
+          <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
           <span class="user_name">Admin</span>
-          <i class="bx bx-chevron-down"></i>
-          <ul class="dropdown-list">
-            <li><a href="#" class="link">Your Profile</a></li>
-            <li><a href="#" class="link">Notifications</a></li>
-          </ul>
+          <i class="fas fa-angle-down"></i>
+        </div>
+
+        <div class="dropdown-list-wrap" id="dropdown1">         
+          <div class="dropdown-list">
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-circle-user"></i>
+              <p>Your Profile</p>
+              <span>></span>
+            </a>
+
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-bell"></i>
+              <p>Notifications</p>
+              <span>></span>
+            </a>
+          </div>
         </div>
       </nav>
 
       <div class="home-content">
-
-        <div class="overview-boxes-upper">
-          <div class="box-upper">
-            <div class="right-side">
-              <div class="box-topic">Total no of passengers</div>
-              <div class="number">400</div>
-            </div>
-            <i class="bx bx-add-to-queue cart"></i>
-          </div>
-          <div class="box-upper">
-            <div class="right-side">
-              <div class="box-topic">Total no of vehicles</div>
-              <div class="number">30</div>
-            </div>
-            <i class="bx bx-bus cart three"></i>
-          </div>
-          <div class="box-upper">
-            <div class="right-side">
-              <div class="box-topic">Total no of vehicle owners</div>
-              <div class="number">23</div>
-            </div>
-            <i class="bx bx-user cart four"></i>
-          </div>
-        </div>
-
         <div class="overview-boxes">
           <div class="box">
-            <p>Passenger Details</p>
-                <div>               
-                    <input placeholder="Passenger" class="ph">
-                    <i class="bx bx-search"></i>
-                    
-                    <button class="add-new" onclick="AddPassenger()">+ Add New</button>
+            <div class="right-side">
+              <div class="topic">Total no of Passengers</div>
+              <div class="number">400</div>
+            </div>
+            <i class="fas fa-user-group cart"></i>
+          </div>
+
+          <div class="box">
+            <div class="right-side">
+              <div class="topic">Total no of vehicles</div>
+              <div class="number">30</div>
+            </div>
+            <i class="fas fa-bus cart two"></i>
+          </div>
+
+          <div class="box">
+            <div class="right-side">
+              <div class="topic">Total no of vehicle owners</div>
+              <div class="number">23</div>
+            </div>
+            <i class="fas fa-user cart three"></i>
+          </div>
+        </div>
+    
+        <div class="detail-bar">
+          <div class="box">
+            <p class="topic">Passenger Details</p>
+                
+            <form action="" class="search-bar">
+              <!-- <div class="search-dropdown" onclick="toggleMenu2()">
+                <p>Search<i class="fas fa-angle-down"></i></p>                      
+              </div> -->
+              
+              <!-- <div class="dropdown-list-wrap" id="dropdown2">
+
+                <div class="dropdown-list">               
+                  <a href="#" class="dropdown-list-link">
+                    <p>Pass ID</p>
+                  </a>
+                  <a href="#" class="dropdown-list-link">
+                    <p>Name</p>
+                  </a>
+                  <a href="#" class="dropdown-list-link">
+                    <p>Email</p>
+                  </a>
+                  <a href="#" class="dropdown-list-link">
+                    <p>NIC</p>
+                  </a>                                  
                 </div>
+              </div>  -->
+
+              <input type="text" placeholder="Type Anything">
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>           
+              
+            <button class="add-new" onclick="AddPassenger()">+ Add New</button>                
           </div>
         </div>
 
-        <table class="passtable">
-            <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">NIC</th>
-                  <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-          </table>
+        <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">NIC</th>
+                <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody class="tbody">                     
+          </tbody>
+        </table>
       </div>
       
     </section>
@@ -142,10 +191,17 @@
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
         sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        // if (sidebar.classList.contains("active")) {
+        //   sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        // } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+      }
     </script>
     <script src="./passengerList.js"></script>
     

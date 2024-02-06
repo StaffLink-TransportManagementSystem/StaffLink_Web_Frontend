@@ -233,7 +233,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 .home-section .home-content{
     position: relative;
-    padding: 100px 20px 0px 20px;
+    padding: 100px 20px 20px 20px;
 }
 
 .home-content .overview-boxes{
@@ -287,6 +287,11 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     background: #ffe8b3;
 }
 
+.home-content .box .cart.four{
+    color: #e05260;
+    background: #f7d4d7;
+}
+
 
 
 @media (max-width: 1150px) {
@@ -324,7 +329,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     align-items: center;
     width: 100%;
     background: #fff;
-    padding: 10px;
+    padding: 10px 14px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     margin-top: 50px;
