@@ -2,99 +2,101 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>User Dashboard</title>
+    <title>Passenger Dashboard</title>
+    
+    <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="dbstyle.css" />
-    <!-- Boxicons CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
+
   <body>
     <div class="sidebar">
       <div class="logo-details">
-        <i class="bx bxs-bus"></i>
+        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
         <span class="logo_name">StaffLink</span>
       </div>
+
       <ul class="nav-links">
         <li>
           <a href="dashboard.html" class="active">
-            <i class="bx bx-grid-alt"></i>
+            <i class="fas fa-chart-line"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
+
         <li>
           <a href="findTRansport/index.html">
-            <i class="bx bx-search"></i>
+            <i class="fas fa-magnifying-glass"></i>
             <span class="links_name">Find Transport</span>
           </a>
         </li>
+
         <li>
           <a href="reqTransport/index.html">
-            <i class='bx bx-plus-circle' ></i>
+            <i class="fas fa-plus"></i>
             <span class="links_name">Request Transport</span>
           </a>
         </li>
+
         <li>
           <a href="Reservations/index.html">
-            <i class="bx bx-list-ul"></i>
+            <i class="fas fa-calendar-plus"></i>
             <span class="links_name">Reservations</span>
           </a>
         </li>
+
         <li>
           <a href="Payments/payments.html">
-            <i class="bx bx-coin-stack"></i>
+            <i class="fas fa-credit-card"></i>
             <span class="links_name">Payments</span>
           </a>
         </li>
+
         <li>
           <a href="Reports/reports.html">
-            <i class="bx bx-pie-chart-alt-2"></i>
+            <i class="fas fa-table-cells"></i>
             <span class="links_name">Reports</span>
           </a>
         </li>
-        <li>
-          <a href="Notifcation/index.html">
-            <i class="bx bx-message"></i>
-            <span class="links_name">Notifications</span>
-          </a>
-        </li>
-        <!-- <li>
-          <a href="#">
-            <i class="bx bx-help-circle"></i>
-            <span class="links_name">Help</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-cog"></i>
-            <span class="links_name">Settings</span>
-          </a>
-        </li> -->
+
         <li class="log_out">
           <a href="#">
-            <i class="bx bx-log-out"></i>
+            <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
       </ul>
     </div>
+
     <section class="home-section">
       <nav>
         <div class="sidebar-button">
-          <i class="bx bx-menu sidebarBtn"></i>
+          <i class="fas fa-bars sidebarBtn"></i>
           <span class="dashboard">Dashboard</span>
         </div>
-        <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
+        
+        <div class="profile-details"  onclick="toggleMenu()">
+          <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
+          <span class="user_name">User</span>
+          <i class="fas fa-angle-down"></i>
         </div>
-        <div class="profile-details">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
-          <span class="user_name">Madhushan</span>
-          <i class="bx bx-chevron-down"></i>
-          <ul class="dropdown-list">
-            <li><a href="/Admin/profile/profile.html" class="link">Your Profile</a></li>
-            <li><a href="#" class="link">Notifications</a></li>
-          </ul>
+
+        <div class="dropdown-list-wrap" id="dropdown1">         
+          <div class="dropdown-list">
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-circle-user"></i>
+              <p>Your Profile</p>
+              <span>></span>
+            </a>
+
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-bell"></i>
+              <p>Notifications</p>
+              <span>></span>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -102,208 +104,64 @@
         <div class="overview-boxes">
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Total resv</div>
-              <div class="number">40</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div>
-            </div>
-            <i class="bx bx-add-to-queue cart"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Last Payment</div>
+              <div class="topic">Last Payment</div>
               <div class="number">Rs.3,500</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from previous week</span>
-              </div>
             </div>
-            <i class="bx bx-money cart two"></i>
+            <i class="fas fa-user-group cart"></i>
           </div>
+
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Total Trips</div>
-              <div class="number">230</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div>
+              <div class="topic">Trips left for the Reservation</div>
+              <div class="number">23</div>
             </div>
-            <i class="bx bx-bus cart three"></i>
+            <i class="fas fa-bus cart two"></i>
           </div>
+
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Trip left</div>
+              <div class="topic">Total Absent Days</div>
               <div class="number">5</div>
-              <div class="indicator">
-                <i class="bx bx-down-arrow-alt down"></i>
-                <span class="text">Down From Today</span>
-              </div>
             </div>
-            <i class="bx bx-minus bx-fade-left cart four"></i>
+            <i class="fas fa-user cart three"></i>
           </div>
         </div>
 
-        <div class="detail-boxes">
-          <div class="recent-res box">
-            <div class="title">Reservations</div>
-            <div class="res-details">
-              <ul class="details">
-                <li class="topic">Date</li>
-                <li><a href="#">02 Jan 2024</a></li>
-                <li><a href="#">03 Jan 2024</a></li>
-                <li><a href="#">04 Jan 2024</a></li>
-                <li><a href="#">05 Jan 2024</a></li>
-                <li><a href="#">06 Jan 2024</a></li>
-                <li><a href="#">07 Jan 2024</a></li>
-                <li><a href="#">08 Jan 2024</a></li>
-                <li><a href="#">08 Jan 2024</a></li>
-                <li><a href="#">08 Jan 2024</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Service Provider</li>
-                <li><a href="#">Alex Doe</a></li>
-                <li><a href="#">David Mart</a></li>
-                <li><a href="#">Roe Parter</a></li>
-                <li><a href="#">Diana Penty</a></li>
-                <li><a href="#">Martin Paw</a></li>
-                <li><a href="#">Doe Alex</a></li>
-                <li><a href="#">Aiana Lexa</a></li>
-                <li><a href="#">Rexel Mags</a></li>
-                <li><a href="#">Tiana Loths</a></li>
-              </ul>
-              <ul class="Status">
-                <li class="topic">Sales</li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Pending</a></li>
-                <li><a href="#">Closed</a></li>
-                <li><a href="#">Closed</a></li>
-                <li><a href="#">Closed</a></li>
-                <li><a href="#">Closed</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Destination</li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Nugegoda</a></li>
-                <li><a href="#">Maharagama</a></li>
-              </ul>
-            </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div>
+        <div class="dashboard-tables">
+          <div class="reservation-table">
+            <p class="topic">Reservations</p>
+  
+            <table >
+              <thead>
+                  <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Vehicle No</th>
+                      <th scope="col">Start</th>
+                      <th scope="col">Destination</th>
+                  </tr>
+              </thead>
+    
+              <tbody class="tbody"></tbody>
+            </table>
+
+            <button class="more-btn" class="Reservation-btn">See All</button>
           </div>
-          <div class="recent-payments box">
-            <div class="title">Payments</div>
-            <div class="recentOrders">
-              <div class="cardHeader">
-                  <!-- <h2>Payments Details</h2> -->
-                  <!-- <a href="#" class="btn">View All</a> -->
-              </div>
 
-              <table>
-                  <thead>
-                      <tr>
-                          <td>Date</td>
-                          <td>Amount</td>
-                      </tr>
-                  </thead>
+          <div class="payment-table">
+            <p class="topic">Payments</p>
 
-                  <tbody class="tbody2">
-                      <!-- <tr>
-                          <td>01</td>
-                          <td>01:03:2023</td>
-                          <td>01:03:2023</td>
-                          <td>Rs10,000</td>
-                          <td>Card</td>
-                          <td><span class="status delivered">Paid</span></td>
-                      </tr>
+            <table>
+              <thead>
+                  <tr>
+                      <th>Date</td>
+                      <th>Amount</td>
+                  </tr>
+              </thead>
 
-                      <tr>
-                          <td>02</td>
-                          <td>01:03:2023</td>
-                          <td>NULL</td>
-                          <td>Rs10,000</td>
-                          <td>To Driver</td>
-                          <td><span class="status pending">Pending</span></td>
-                      </tr>
+              <tbody class="tbody2"></tbody>
+            </table>
 
-                      <tr>
-                          <td>03</td>
-                          <td>01:03:2023</td>
-                          <td>02:03:2023</td>
-                          <td>Rs10,000</td>
-                          <td>To Driver</td>
-                          <td><span class="status delivered">Paid</span></td>
-                      </tr>
-                      <tr>
-                          <td>04</td>
-                          <td>01:03:2023</td>
-                          <td>01:03:2023</td>
-                          <td>Rs10,000</td>
-                          <td>To Driver</td>
-                          <td><span class="status delivered">Paid</span></td>
-                      </tr>
-
-                      <tr>
-                          <td>05</td>
-                          <td>01:03:2023</td>
-                          <td>01:04:2023</td>
-                          <td>Rs10,000</td>
-                          <td>Card</td>
-                          <td><span class="status delivered">Paid</span></td>
-                      </tr>
-
-                      <tr>
-                          <td>06</td>
-                          <td>01:03:2023</td>
-                          <td>NULL</td>
-                          <td>Rs10,000</td>
-                          <td>To Driver</td>
-                          <td><span class="status pending">Pending</span></td>
-                      </tr> -->
-                  </tbody>
-              </table>
-          </div> 
-            <!-- <div class="payment-details">
-              <ul class="Status">
-                <li class="topic">Date</li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-                <li><a href="#">jan 2</a></li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Amount</li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.3,500</a></li>
-                <li><a href="#">Rs.4,300</a></li>
-                <li><a href="#">Rs.6,900</a></li>
-              </ul>
-            </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div> -->
+            <button class="more-btn" class="Payment-btn">See All</button>
           </div>
         </div>
       </div>
@@ -314,10 +172,17 @@
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
         sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        // if (sidebar.classList.contains("active")) {
+        //   sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        // } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+      }
     </script>
     <script src="./dashboard.js"></script>
   </body>
