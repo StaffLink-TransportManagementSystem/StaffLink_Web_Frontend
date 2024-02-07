@@ -237,7 +237,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 .home-section .home-content{
     position: relative;
-    padding: 100px 20px 20px 20px;
+    padding: 100px 10px 20px 10px;
 }
 
 .home-content .overview-boxes{
@@ -421,7 +421,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 
 
-.home-content table{
+.home-content .table{
     width: 100%;
     overflow: auto;
     table-layout: auto;
@@ -429,7 +429,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     margin-top: 50px;
 }
 
-thead th {
+.table thead th {
     position: sticky;
     top: 0;
     background-color: #e7f2fe;
@@ -437,7 +437,7 @@ thead th {
     border-top: 1px solid #dddddd;
 }
 
-th, td {
+.table th, td {
     border: 1px solid #dddddd;
     padding: 10px 8px;
     word-break: break-all;
@@ -445,11 +445,11 @@ th, td {
     font-size: 15px;
 }
 
-tbody tr:nth-child(even){
+.table tr:nth-child(even){
     background-color: white;
 }
 
-tbody tr:last-child{
+.table tbody tr:last-child{
     margin-bottom: 10px;
 }
 
@@ -465,24 +465,24 @@ tbody tr:last-child{
         display: none;
     }
 
-    table tr{
+    .table tr{
         border-bottom: 3px solid #ddd;
         display: block;
     }
 
-    table td{
+    .table td{
         border-bottom: 1px solid #ddd;
         display: block;
         text-align: right;
     }
 
-    table th{
+    .table th{
         border-bottom: 1px solid #ddd;
         display: block;
         text-align: center;
     }
 
-    table td:before {
+    .table td:before {
         content: attr(data-label);
         float: left;
         font-weight: bold;
@@ -543,7 +543,9 @@ tbody tr:last-child{
 
 
 .delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn{
-    padding: 5px 12px;
+
+    padding: 6px 13px;
+
     border-radius: 10px;
     font-weight: 500;
 }
