@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="/main.css">
         <link rel="stylesheet" href="vehicleform.css">
 
+        <link rel="stylesheet" href="/main.css">
         <title>Owner delete</title>
     </head>
 
@@ -39,8 +40,14 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="Delete" onclick="deletefunction()">
+            <button class="cancel-btn" onclick="cancel()">Cancel</button>
+            <button type="submit" class="sub delete-btn" value="Delete" onclick="deletefunction()">Remove</button>
         </div>
         <script src="passengerEditForm.js"></script>
+        <script>
+            function cancel(){
+                window.location.href = "passengerList.html";
+            }
+        </script>
     </body>
 </html>

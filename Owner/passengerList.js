@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    const searchInput = document.querySelector("[PassengerDetails]")
   
     let row ="";
+    let users = []
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllPassenger',{
             method: 'GET',
@@ -12,24 +14,37 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(passenger => {
-                row += `<tr>
+                row += `<tr  id="${passenger.NIC}">
                         <td scope="name" data-label="P ID">`+ passenger.name +`</td>
                         <td class="email">`+ passenger.email +`</td>
                         <td class="NIC">`+ passenger.NIC +`</td>
                     
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit">EDIT</button></a>
-                            <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                            <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit-btn">EDIT</button></a>
+                            <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });
+                users = data.list;
 
                 document.querySelector(".tbody").innerHTML = row;   
 
             })
             .catch(error => {
                 console.error('Error:', error);
+            });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                users.forEach(data => {
+                    const isVisible =
+                        data.name.toLowerCase().includes(value) ||
+                        data.email.toLowerCase().includes(value) ||
+                        data.NIC.toLowerCase().includes(value)
+   
+                        document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+                });
             });
     
   });

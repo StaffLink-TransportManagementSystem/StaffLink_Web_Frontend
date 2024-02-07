@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    const searchInput = document.querySelector("[Driver-search]")
   
     let row ="";
+    let users = []
 
     fetch('http://localhost:8080/try2_war_exploded/viewAllDriver',{
             method: 'GET',
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.list.forEach(driver => {
                 row += `
                 
-                <div class="wrapper">
+                <div class="wrapper" id="${driver.NIC}" >
                   
                   
                   <div class="profile" style="align-items:center;">
@@ -24,12 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="title">Assigned Vehicle</p>
                     <p class="description" style="text-align:left"><b>Email : </b>`+ driver.email+`<br><b>NIC no : </b>`+driver.NIC+`<br><b>Age : </b>`+driver.age +`<br><b>Contact No : </b>`+driver.contact+` <br></p>
                     <div style="display: flex;">
-                    <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
-                    <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
+                    <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit-btn">EDIT</button></a>
+                    <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                     </div>
                   </div>
                 </div>`
                 });
+
+                users = data.list;
 
                 document.querySelector(".cards").innerHTML = row;   
 
@@ -37,6 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            searchInput.addEventListener("input", e => {
+              const value = e.target.value.toLowerCase()
+              users.forEach(data => {
+                const isVisible =
+                    data.name.toLowerCase().includes(value) ||
+                    data.email.toLowerCase().includes(value) ||
+                    data.NIC.toLowerCase().includes(value) ||
+                    data.contact.toLowerCase().includes(value) ||
+                    data.age.toString().toLowerCase().includes(value)
+                document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+              })
+            })
     
   });
 

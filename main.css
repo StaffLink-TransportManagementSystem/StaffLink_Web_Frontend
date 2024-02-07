@@ -7,6 +7,10 @@
     font-family: 'Poppins', sans-serif;
   }
 
+.hide {
+    display: none;
+}
+
 .sidebar{
     position: fixed;
     height: 100%;
@@ -539,7 +543,9 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 
 .delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn{
+
     padding: 6px 13px;
+
     border-radius: 10px;
     font-weight: 500;
 }
