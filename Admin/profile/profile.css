@@ -1,63 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 body{
     display: flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    background: #0A2558;
+    background: #dfdede;
 }
 
 .container{
-    max-width: 700px;
-    width: 100%;
+    width: 50%;
     background: white;
     padding: 30px 30px;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-.container .topic button{
-    display: inline;
-    right: 5px;
+.container .card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
 
-.container .title{
-    font-size: 22px;
+.container .card-header button{
+    display: flex;
+    justify-content: right;
+    float: right;
+}
+
+.container .sub-topic{
+    font-size: 18px;
     font-weight: 500;
     position: relative;
-    display: inline;
-}
-
-.container .sub-title{
-    font-size: 19px;
-    font-weight: 600;
-    position: relative;
     color: #0A2558;
-    margin-top: 28px;
 }
 
-.container .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 50px;
-    background: #0A2558;
+.profile-photo, .edit, .passw{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0 10px 0;
+}
+
+label{
+    font-size: 13.33px;
 }
 
 .container form .pass-details{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 15px 0 12px 0;
 }
 
 form .pass-details .input-box{
@@ -84,44 +75,8 @@ form .pass-details .input-box{
     transition: all 0.3s ease;
 }
 
-.pass-details .input-box select{
-    height: 32px;
-    width: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding-left: 15px;
-    font-size: 14px;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-}
-
-.del{
-    display: flex;
-    float: right;
-    outline: none;
-    color: #fff;
-    border: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    background: #0A2558;
-    padding: 8px 20px;
-    justify-content: center;
-}
-
-button:hover, label:hover, .passw button:hover{
-    color: #0A2558;
-    background: #fff;
-    border: 1px solid #0A2558;
-    cursor: pointer;
-}
-
-.profilepic{
-    display: flex;
-    align-items: left;
-    justify-content: left;
+.pass-details .input-box input:focus{
+    border-color: #0A2558;
 }
 
 .card img{
@@ -130,39 +85,6 @@ button:hover, label:hover, .passw button:hover{
     border-radius: 50%;
     margin: 10px 0; 
     object-fit: cover;
-}
-
-label{
-    outline: none;
-    color: #fff;
-    border: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    background: #0A2558;
-    padding: 8px 20px;
-    justify-content: center;
-    position: relative;
-    display: inline;
-    border: 1px solid #0A2558;
-}
-
-.pic-del{
-    margin-left: 30px;
-    outline: none;
-    color: #fff;
-    border: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    background: #0A2558;
-    padding: 8px 20px;
-    justify-content: center;  
-    position: relative;
-    display: inline;
-    border: 1px solid #0A2558;
 }
 
 #pic{
@@ -174,57 +96,11 @@ label{
     height: 180px;
 }
 
-.edit{
-    margin-top: 25px;
-}
 
-#st3, #st4{
-    position: relative;
-    display: inline;
-}
 
-.edit-btn, .passw button{
-    display: inline;
-    right: 5px;
-    float: right;
-    outline: none;
-    color: #fff;
-    border: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    background: #0A2558;
-    padding: 8px 20px;
-    justify-content: center;
-    border: 1px solid #0A2558;
-}
-
-.passw a{
-    text-decoration: none;
-    color: #fff;
-}
-
-.passw a:hover{
-    color: #0A2558;
-}
-
-@media (max-width: 584px) {
+@media (max-width: 1000px) {
     .container{
-        max-width: 100%;
-    }
-
-    form .vehicle-details .input-box{
-        width: 100%;
-        margin-bottom: 17px;
-    }
-
-    .container form .vehicle-details{
-        max-height: 400px;
-        overflow-y: scroll;
-    }
-
-    .vehicle-details::-webkit-scrollbar{
-        width: 0;
+        width: 90%;
+        height: max-content;
     }
 }
