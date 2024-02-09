@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
+        <link rel="stylesheet" href="/main.css">
         <link rel="stylesheet" href="vehicleform.css">
 
         <title>Owner Delete</title>
@@ -39,9 +40,15 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="Remove" onclick="deletefunction()">
+            <button class="cancel-btn" onclick="cancel()">Cancel</button>
+            <button class="sub delete-btn" value="Remove" onclick="deletefunction()">Remove</button>
         </div>
         <script src="ownerEditForm.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function cancel(){
+                window.location.href = "ownerList.html";
+            }
+        </script>
     </body>
 </html>

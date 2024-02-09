@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="/main.css">
         <link rel="stylesheet" href="vehicleform.css">
 
         <title>Vehicle Registration</title>
@@ -79,8 +79,14 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+            <button class="cancel-btn" onclick="cancel()">Cancel</button>
+            <button type="submit" class="sub edit-btn" value="update" onclick="updatefunction()">Update</button>
         </div>
         <script src="vehicleEditForm.js"></script>
+        <script>
+            function cancel(){
+                window.location.href = "vehicleList.html";
+            }
+        </script>
     </body>
 </html>
