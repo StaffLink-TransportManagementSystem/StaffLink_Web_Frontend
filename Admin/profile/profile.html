@@ -76,20 +76,18 @@
 
                 <div class="passw">
                     <div class="sub-topic">Password</div>
-                    <button class="edit-btn" id="change1">Change</button>
+                    <button class="edit-btn" onclick="changepass()">Change</button>
                 </div>
             </form>
         </div>
-        <script src="profile.js"></script>
+        
 
         <script>
-            var button = document.getElementById('change1');
-
-
-            button.addEventListener('click', function() {
-
-            window.location.href = 'changepass.html';
-            });
+            function changepass(){
+                window.location.href = "https://open.spotify.com/";
+            }
         </script>
+
+        <script src="profile.js"></script>
     </body>
 </html>
