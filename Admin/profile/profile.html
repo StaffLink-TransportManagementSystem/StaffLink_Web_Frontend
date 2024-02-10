@@ -6,6 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="/main.css">
 
         <title>Passenger Profile</title>
     </head>
@@ -13,27 +14,33 @@
 
     <body>
         <div class="container">
-            <div class="topic">
-                <div class="title">Passenger Profile</div>
-                <button class="del" id="notice">Delete Account</button>
+            <div class="card-header">
+                <div class="topic">Passenger Profile</div>
+                <button class="delete-btn" id="notice">Delete Account</button>
             </div>
 
             <form>
                 <div>
-                    <div class="sub-title" id="st2">Profile Picture</div>
+                    <div class="profile-photo">
+                        <div class="sub-topic" id="st2">Profile Photo</div>
+
+                        <div class="photo-options">
+                            <label for="pic" class="update-btn">Update Photo</label>
+                            <input type="file" accept="image/.*" id="pic">
+                            <button class="delete-btn" onclick="deletePhoto()">Delete Photo</button>
+                        </div>
+                    </div>
+                    
                     <div class="profilepic">
                         <div class="card">
                             <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
                         </div>
                     </div>
-                    <label for="pic">Update Photo</label>
-                    <input type="file" accept="image/.*" id="pic">
-                    <button class="pic-del" onclick="deletePhoto()">Delete Photo</button>
                 </div>
 
                 <div class="edit">
-                    <div class="sub-title" id="st3">Account</div>
-                    <button class="edit-btn" onclick="editAcc(event)">Edit</button>
+                    <div class="sub-topic">Account</div>
+                    <button class="edit-btn" id="edit-btn" onclick="editAcc(event)">Edit Details</button>
                 </div>
                 <div class="pass-details">
                     <div class="input-box">
@@ -62,17 +69,27 @@
                         <div class="contact-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="save" style="display: none; margin: 25px 0 0 0;">
-                        <button class="edit-btn" onclick="updateProfile(event)">Save Changes</button>
+                        <button class="submit-btn" onclick="updateProfile(event)">Save Changes</button>
                     </div>
                 </div>
                 
 
                 <div class="passw">
-                    <div class="sub-title" id="st4">Password</div>
-                    <button><a href="enterotp.html">Change</a></button>
+                    <div class="sub-topic">Password</div>
+                    <button class="edit-btn" id="change1">Change</button>
                 </div>
             </form>
         </div>
         <script src="profile.js"></script>
+
+        <script>
+            var button = document.getElementById('change1');
+
+
+            button.addEventListener('click', function() {
+
+            window.location.href = 'changepass.html';
+            });
+        </script>
     </body>
 </html>

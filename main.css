@@ -542,21 +542,19 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 
 
-.delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn{
-
+.delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn, .submit-btn{
     padding: 6px 13px;
-
     border-radius: 10px;
     font-weight: 500;
 }
 
-.more-btn, .change-btn{
+.more-btn{
     background-color: #0A2558;
     color: white;
     border: 1px solid #0A2558;
 }
 
-.more-btn:hover, .change-btn:hover{
+.more-btn:hover{
     cursor: pointer;
     background-color: #fff;
     color: #0A2558;
@@ -602,13 +600,13 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     border: 1px solid gray;
 }
 
-.add-btn{
+.add-btn, .submit-btn{
     background-color: #129912;
     color: white;
     border: 1px solid #129912;
 }
 
-.add-btn:hover{
+.add-btn:hover, .submit-btn:hover{
     cursor: pointer;
     background-color: #fff;
     color: #129912;
