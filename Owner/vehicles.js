@@ -3,8 +3,30 @@ document.addEventListener("DOMContentLoaded", function () {
     sub = document.querySelector(".sub");
     const searchInput = document.querySelector("[vehicle-search]")
 
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+      }
+    
+      function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+      }
+    
+      console.log(checkCookie("jwt"))
+    
+      const token = checkCookie("jwt");
+      const payload = getPayload(token);
+      console.log("Payload", payload);
+
+
     console.log("vehicles");
-    let email = "rhatu2000@gmail.com"
+    let email = payload.id;
     let data = { email: email };
     let row ="";
     let users = []
