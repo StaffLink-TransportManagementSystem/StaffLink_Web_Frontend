@@ -168,3 +168,75 @@
     margin-bottom: 10px;
   }
 }
+
+
+
+
+/* drivers.html */
+.driver-cards{
+  margin: 50px 20px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.driver-cards .driver{
+  align-items: center;
+  display: flex;
+  width: calc(100% / 2 - 30px);
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.driver img{
+  width: 150px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+.driver .driver-name{
+  margin-bottom: 20px;
+}
+
+.driver .driver-spec{
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+
+@media(max-width: 1350px){
+  .driver-cards{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .driver-cards .driver{
+    width: calc(100% / 2 - 10px);
+  }
+}
+
+@media(max-width: 1250px){
+  .driver-cards{
+    margin: 50px 20px 0 20px;
+  }
+
+  .driver-cards .driver{
+    flex-direction: column;
+    width: calc(100% / 2 - 20px);
+  }
+
+  .driver img{
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 900px){
+  .driver-cards .driver{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
