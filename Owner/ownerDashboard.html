@@ -2,112 +2,128 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>User Dashboard</title>
+    <title>Owner Dashboard</title>
+    
+    <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="dashboardStyle.css" />
-    <!-- Boxicons CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
+
   <body>
     <div class="sidebar">
       <div class="logo-details">
-        <i class="bx bxs-bus"></i>
+        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
         <span class="logo_name">StaffLink</span>
       </div>
+
       <ul class="nav-links">
         <li>
           <a href="./ownerDashboard.html" class="active">
-            <i class="bx bx-grid-alt"></i>
+            <i class="fas fa-chart-line"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
-      <li>
-        <!-- <li>
-          <a href="./ownerList.html" class="">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">owners</span>
-          </a>
-        </li>
-      <li> -->
+
+        <li>
           <a href="./passengerLIst.html" class="">
-            <i class='bx bxs-briefcase-alt-2'></i>
+            <i class="fas fa-user-group"></i>
             <span class="links_name">Passengers</span>
           </a>
         </li>
+
         <li>
           <a href="./vehicles.html" class="">
-            <i class="bx bx-search"></i>
+            <i class="fas fa-bus"></i>
             <span class="links_name">Vehicles</span>
           </a>
         </li>
+
         <li>
           <a href="./drivers.html">
-            <i class='bx bxs-traffic'></i>
+            <i class="fas fa-gauge-high"></i>
             <span class="links_name">Drivers</span>
           </a>
         </li>
+
         <li>
           <a href="./routes.html">
-            <i class="bx bx-coin-stack"></i>
+            <i class="fas fa-route"></i>
             <span class="links_name">Routes</span>
           </a>
         </li>
+
         <li>
           <a href="./requestList.html">
-            <i class="bx bx-pie-chart-alt-2"></i>
+            <i class="fas fa-hand"></i>
             <span class="links_name">Requests</span>
           </a>
         </li>
+
         <li>
           <a href="./reservations.html">
-            <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
+            <i class="fas fa-calendar-day"></i>
             <span class="links_name">Reservations</span>
           </a>
         </li>
+
         <li>
           <a href="./absants.html">
-            <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
-            <span class="links_name">Absants</span>
+            <i class="fas fa-calendar-minus"></i>
+            <span class="links_name">Absents</span>
           </a>
         </li>
         <li>
           <a href="./financial.html">
-            <i class="bx bx-pie-chart-alt-2"></i>
+            <i class="fas fa-money-bills"></i>
             <span class="links_name">Financial</span>
           </a>
         </li>
+
         <li>
           <a href="./reports.html">
-            <i class='bx bxs-report' style='color:#fbf8f8'  ></i>
+            <i class="fas fa-table-cells"></i>
             <span class="links_name">Reports</span>
           </a>
         </li>
+
         <li class="log_out">
           <a href=".logout.html">
-            <i class="bx bx-log-out"></i>
+            <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
       </ul>
     </div>
+
     <section class="home-section">
       <nav>
         <div class="sidebar-button">
-          <i class="bx bx-menu sidebarBtn"></i>
+          <i class="fas fa-bars sidebarBtn"></i>
           <span class="dashboard">Dashboard</span>
         </div>
-        <!-- <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
-        </div> -->
-        <div class="profile-details">
-          <i class="bx bxs-user"></i>
-          <span class="user_name">Ravindu</span>
-          <i class="bx bx-chevron-down"></i>
-          <ul class="dropdown-list">
-            <li><a href="./profile.html" class="link">Your Profile</a></li>
-            <li><a href="#" class="link">Notifications</a></li>
-          </ul>
+        
+        <div class="profile-details"  onclick="toggleMenu()">
+          <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
+          <span class="user_name">Owner</span>
+          <i class="fas fa-angle-down"></i>
+        </div>
+
+        <div class="dropdown-list-wrap" id="dropdown1">         
+          <div class="dropdown-list">
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-circle-user"></i>
+              <p>Your Profile</p>
+              <span>></span>
+            </a>
+
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-bell"></i>
+              <p>Notifications</p>
+              <span>></span>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -115,70 +131,55 @@
         <div class="overview-boxes">
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Total Passengers</div>
+              <div class="topic">Total Passengers</div>
               <div class="number">50</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div> -->
             </div>
-            <i class="bx bx-add-to-queue cart"></i>
+            <i class="fas fa-user-group cart"></i>
           </div>
+
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Balance</div>
-              <div class="number">Rs.-3,500</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from previous week</span>
-              </div> -->
-            </div>
-            <i class="bx bx-money cart two"></i>
-          </div>
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total Vehicals</div>
+              <div class="topic">Total Vehicals</div>
               <div class="number">3</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div> -->
             </div>
-            <i class="bx bx-bus cart three"></i>
+            <i class="fas fa-bus cart three"></i>
           </div>
+
           <div class="box">
             <div class="right-side">
-              <div class="box-topic">Revenue</div>
-              <div class="number">50,000</div>
-              <!-- <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">For this</span>
-              </div> -->
+              <div class="topic">Balance</div>
+              <div class="number">Rs.-3,500</div>
             </div>
-            <i class="bx bx-money cart two"></i>
+            <i class="fas fa-file-invoice-dollar cart two"></i>
+          </div>
+
+          <div class="box">
+            <div class="right-side">
+              <div class="topic">Revenue</div>
+              <div class="number">50,000</div>
+            </div>
+            <i class="fas fa-sack-dollar cart four"></i>
           </div>
         </div>
 
         <div class="charts">
-            <div class="newreg">
-                <h2>New Registrations</h2>
-                <h3>New Passenger registrations in last 5 months</h3><br>
+            <div class="newreg box">
+                <p class="topic">New Registrations</p><br>
+                <p class="desc">New Passenger registrations in last 5 months</p>
                 
                 <canvas id="chart1" height="180"></canvas><br>
-
-                <div class="color-box" style="background-color: #003566; width: 25px; height: 18px;"></div>
-                <p>&ensp;Passengers</p><br>
             </div>
 
-            <div class="revenue">
-                <h2>Monthly Revenue</h2>
-                <h3>The monthly revenue in last 5 months</h3><br>
+            <div class="revenue box">
+                <div class="topic">Monthly Revenue</div>
+                <div class="desc">The monthly revenue in last 5 months</div>
 
                 <canvas id="chart2" height="180px"></canvas>  
             </div>
         </div>
       </div>
     </section>
+
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
         <script src="newreg.js"></script>
@@ -193,6 +194,13 @@
           sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+      }
     </script>
   </body>
 </html>
