@@ -103,7 +103,7 @@ const container = document.querySelector(".container"),
             .then(response => response.json())
             .then(data => {
                 console.log(data.jwt)
-                document.cookie = "jwt=" + data.jwt;
+                document.cookie = "jwt=" + data.jwt+" ; path=/";
                 console.log(data.message)
                 window.location.href = "ownerDashboard.html";
                 // document.getElementById("demo").innerHTML = data.message;
