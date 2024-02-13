@@ -102,6 +102,8 @@ const container = document.querySelector(".container"),
             },body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
+                console.log(data.jwt)
+                document.cookie = "jwt=" + data.jwt;
                 console.log(data.message)
                 window.location.href = "ownerDashboard.html";
                 // document.getElementById("demo").innerHTML = data.message;
