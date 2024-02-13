@@ -250,7 +250,7 @@ function deleteAccount() {
     confirmButtonText: 'Yes!'
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch("http://localhost:8080/try2_war_exploded/ownerDelete?email=" + email, {
+      fetch("http://127.0.0.1:8080/try2_war_exploded/ownerDelete?email=" + email, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let row ="";
     let users = []
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllPassenger',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllPassenger',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

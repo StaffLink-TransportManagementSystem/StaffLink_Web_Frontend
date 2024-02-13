@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id:id}),})
+            body: JSON.stringify({id:id}),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 
@@ -105,11 +105,11 @@ document.addEventListener("DOMContentLoaded", function () {
         startingDate:startingDate,
         endingDate:endingDate,}
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/absentEdit',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/absentEdit',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message);
@@ -151,11 +151,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/absentDelete',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/absentDelete',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

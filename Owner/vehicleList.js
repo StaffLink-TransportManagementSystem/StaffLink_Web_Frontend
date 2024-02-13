@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getVehicleList',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicleList',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

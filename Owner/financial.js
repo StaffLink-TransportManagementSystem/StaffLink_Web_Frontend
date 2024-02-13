@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getPassengerPaymentsByOwner?ownerEmail='+ownerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getPassengerPaymentsByOwner?ownerEmail='+ownerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            }, credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 data.payments.forEach(payment => {
@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Error:', error);
             });
 
-            fetch('http://localhost:8080/try2_war_exploded/getOwnerFinancials?ownerEmail='+ownerEmail,{
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getOwnerFinancials?ownerEmail='+ownerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            }, credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 document.querySelector(".cardPay").innerHTML = `Rs. `+ data.payments.card ;
@@ -74,15 +74,37 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".table2");
-    ownerEmail = "rhatu2000@gmail.com"
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+
+    const token = checkCookie("jwt");
+    const payload = getPayload(token);
+    console.log("Payload",payload);
+
+
+    var ownerEmail = payload.id;
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getOwnerFinancials?ownerEmail='+ownerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getOwnerFinancials?ownerEmail='+ownerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            }, credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(payment => {

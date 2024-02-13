@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let users = []
 
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllRequests',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllRequests',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(data)})
+            }, body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(request => {
@@ -114,11 +114,11 @@ document.addEventListener("DOMContentLoaded", function () {
         status:status
     }
 
-    fetch('http://localhost:8080/try2_war_exploded/requestEdit',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/requestEdit',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
@@ -149,11 +149,11 @@ function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPo
         status:status
     }
 
-    fetch('http://localhost:8080/try2_war_exploded/requestEdit',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/requestEdit',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
