@@ -32,42 +32,82 @@ document.addEventListener("DOMContentLoaded", function () {
     let users = []
 
 
-    fetch('http://localhost:8080/try2_war_exploded/getVehicleList', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicleList', {
         method: 'POST',
+        credentials: 'include',
         headers: {
-            'Content-Type': 'application/json'
-        }, 
-        credentials: "include",body: JSON.stringify(data)
+            'Content-Type': 'application/json',
+            // 'Cookie': 'jwtToken=' + encodeURIComponent(document.cookie.match(/jwt=(.*?)(?:$|;)/)[1]),
+        }, body: JSON.stringify(data)
     })
         .then(response => response.json())
         .then(data => {
+            console.log("List:",data.list);
             data.list.forEach(vehical => {
-                row += `<div class="vehicle-card vehicle-card-blue" id="${vehical.vehicleNo}" style="--vehicle-card-color: #F5AF41;">
-                <div class="vehicle-card-innerbox">
-                    <img class="vehicle-card-img" src="../images/Bus/bus4.jpg" />
-                    <div class="vehicle-card-textbox">
-                        <div class="vehicle-card-title">`+ vehical.vehicleNo + `</div>
-                        <div class="vehicle-card-subtitle">`+ vehical.type + `</div>
-                        <div class="vehicle-card-bar"></div>
-                        <div class="vehicle-card-description">
-                            <b>Vehicle Brand : </b>`+ vehical.vehicleBrand + `<br>
-                            <b>Vehicle Model : </b> `+ vehical.model + `<br>
-                            <b>Vehicle Trips : </b> `+ vehical.trips + `<br>
-                            <b>Vehicle Seat Count : </b>`+ vehical.seatsCount + `<br>
-                            <b>Vehicle Starting Point : </b> `+ vehical.startingPoint + `<br>
-                            <b>Vehicle Ending Point : </b>`+ vehical.endingPoint + `<br>
-                            <div class="group">
-                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
-                            <a href="Owner/editVehical.html?vehicleNo=`+ vehical.vehicleNo + `" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
-                            <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo + `" onclick=""><button class="delete-btn">DELETE</button></a>
-                            </div>
-                        </div>
+            //     row += `<div class="vehicle-card vehicle-card-blue" id="${vehical.vehicleNo}" style="--vehicle-card-color: #F5AF41;">
+            //     <div class="vehicle-card-innerbox">
+            //         <img class="vehicle-card-img" src="../images/Bus/bus4.jpg" />
+            //         <div class="vehicle-card-textbox">
+            //             <div class="vehicle-card-title">`+ vehical.vehicleNo + `</div>
+            //             <div class="vehicle-card-subtitle">`+ vehical.type + `</div>
+            //             <div class="vehicle-card-bar"></div>
+            //             <div class="vehicle-card-description">
+            //                 <b>Vehicle Brand : </b>`+ vehical.vehicleBrand + `<br>
+            //                 <b>Vehicle Model : </b> `+ vehical.model + `<br>
+            //                 <b>Vehicle Trips : </b> `+ vehical.trips + `<br>
+            //                 <b>Vehicle Seat Count : </b>`+ vehical.seatsCount + `<br>
+            //                 <b>Vehicle Starting Point : </b> `+ vehical.startingPoint + `<br>
+            //                 <b>Vehicle Ending Point : </b>`+ vehical.endingPoint + `<br>
+            //                 <div class="group">
+            //                 <a href="#moredetails"><button class="more-btn">MORE</button></a>
+            //                 <a href="Owner/editVehical.html?vehicleNo=`+ vehical.vehicleNo + `" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
+            //                 <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo + `" onclick=""><button class="delete-btn">DELETE</button></a>
+            //                 </div>
+            //             </div>
                         
-                    </div>
-                </div>
-            </div>`
+            //         </div>
+            //     </div>
+            // </div>`
+            row+=`
+            <div class="vehicle-card">
+          <div class="slider">
+            <div class="vehicle-images">
+              <input type="radio" name="slide" id="img-outside">
+              <input type="radio" name="slide" id="img-inside">
+
+              <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
+              <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+            </div>
+
+            <div class="dots">
+              <label for="img-outside"></label>
+              <label for="img-inside"></label>
+            </div>
+          </div>
+
+          <div class="vehicle-desc">
+            <div class="topic vehicle-card-title">${vehical.vehicleNo}</div>
+
+            <div class="vehicle-spec">
+              <p><b>Vehicle Type :</b> ${vehical.type}</p>
+              <p><b>Vehicle Brand :</b> ${vehical.vehicleBrand}</p>
+              <p><b>Type of Trips :</b> ${vehical.trips}</p>
+              <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
+              <p><b>Starting Location :</b> ${vehical.startingPoint}</p>
+              <p><b>Destination :</b> ${vehical.endingPoint}</p>
+            </div>
+
+            <button class="more-btn">MORE</button>
+            <button class="edit-btn">EDIT</button>
+            <button class="delete-btn">DELETE</button>
+            <button class="cancel-btn">ABSENT LIST</button>
+            <button class="add-btn">REQUESTS</button>
+          </div>
+        </div>`
             });
             users = data.list;
+
+            console.log("Row:", row);
 
             document.querySelector(".vehicleSet").innerHTML = row;
 

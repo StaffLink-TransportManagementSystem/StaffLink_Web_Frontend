@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(owner => {
