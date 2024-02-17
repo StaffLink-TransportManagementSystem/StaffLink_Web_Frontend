@@ -39,6 +39,58 @@
             </form>
             <input type="submit" class="sub" value="Submit" onclick="">
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+      
+              function getPayload(token) {
+                return JSON.parse(atob(token.split(".")[1]));
+            }
+        
+            function checkCookie(cName) {
+                const name = cName + "=";
+                const cDecoded = decodeURIComponent(document.cookie); //to be careful
+                const cArr = cDecoded.split("; ");
+                let res;
+                cArr.forEach((val) => {
+                    if (val.indexOf(name) === 0) res = val.substring(name.length);
+                });
+                return res;
+            }
+        
+            console.log(checkCookie("jwt"))
+            const token = checkCookie("jwt");
+      
+            if(token == null){
+              console.log("No Cookie Found");
+              window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+            }
+      
+            const payload = getPayload(token);
+            console.log("Payload",payload);
+      
+            if (payload.role === "passenger") {
+              console.log("Passenger");
+            } 
+            else if (payload.role === "admin") {
+              console.log("Admin");
+              window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+            }
+            else if (payload.role === "owner") {
+              console.log("Passenger");
+              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+            }
+            else if (payload.role === "driver") {
+              console.log("Driver");
+              window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+            }
+            else {
+              console.log("No Cookie Found");
+              window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+              
+            }
+            });
+          </script>
        
     </body>
 </html>
