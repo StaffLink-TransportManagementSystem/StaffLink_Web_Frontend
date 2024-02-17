@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify({id:id}),credentials: "include",})
             .then(response => response.json())
             .then(data => {
+
+              if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                window.location.href = "login.html";
+              }
+              else{
                 
                 console.log(data.absent) 
                 form.querySelector('.id').value = data.absent.id;  
@@ -45,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.querySelector('.email').value = data.absent.passengerEmail;
                 form.querySelector('.daysOfAbsent').value = data.absent.daysOfAbsent;
                 form.querySelector('.startingDate').value = data.absent.startingDate;
-                form.querySelector('.endingDate').value = data.absent.endingDate;                
+                form.querySelector('.endingDate').value = data.absent.endingDate;  
+              }              
 
             })
             .catch(error => {
@@ -113,6 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message);
+                if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                  window.location.href = "login.html";
+                }
                 if(data.message == "Update successful"){
                   Swal.fire({
                     title: "Absent Updated Successfully!",
@@ -159,6 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                  window.location.href = "login.html";
+                }
                 if(data.message == "Delete successful"){
                   Swal.fire({
                     title: "Absent Removed Successfully!",

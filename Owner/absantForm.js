@@ -152,6 +152,9 @@ function validateNIC(nic) {
               .then(response => response.json())
               .then(data => {
                   console.log(data.message)
+                  if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                    window.location.href = "login.html";
+                  }
                   if(data.message === "Registration successfully"){
                     Swal.fire({
                       title: "Absent Added Successfully!",
