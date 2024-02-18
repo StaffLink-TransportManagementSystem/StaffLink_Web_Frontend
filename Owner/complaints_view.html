@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="complaint_view.css">
+    <title>Complaints</title>
+   
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Complaints <span class="unread-count">3</span></div>
+        <table class="messages-list">
+            <thead>
+                <tr>
+                    <th>Complaints Type</th>
+                    <th>Discription</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr class="message-item unread"  onclick="location.href = 'id1.html';">
+                    <td class="Complaints Type">Taking more time</td>
+                    <td class="Discription">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                         Distinctio repellendus rerum quaerat sequi consequatur, es
+                         t ducimus aspernatur consequuntur repudiandae. Vel amet ill
+                         o deserunt magnam quos natus debitis, sapiente delectus quam?.</td>
+                    <td class="Date">11/12</td>
+                    <td class="Status"><button  class="delete-btn">Delete</button><button  class="reply-btn">Reply</button></td> 
+                </tr>
+                <tr class="message-item read"  onclick="location.href = 'id1.html';">
+                    <td class="Complaints Type">App was not working</td>
+                    <td class="Discription">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        Ipsam, totam fugit? Maiores rem minima quia, in quam, nobis, non suscipit amet
+                        laboriosam eveniet illum fugit perspiciatis. Tenetur, doloribus? Cupiditate, 
+                        facilis?</td>
+                    <td class="Date">13/12</td>
+                    <td class="Status"><button  class="delete-btn">Delete</button><button  class="reply-btn">Reply</button></td>
+                </tr>
+                <tr class="message-item unread"  onclick="location.href = 'id1.html';">
+                    <td class="Complaints Type">Taking more time</td>
+                    <td class="Discription">Just a quick reminder about...</td>
+                    <td class="Time">14/12</td>
+                    <td class="Status"><button  class="delete-btn">Delete</button><button  class="reply-btn">Reply</button></td>
+                </tr>
+                <tr class="message-item read"  onclick="location.href = 'id1.html';">
+                    <td class="Complaints Type">Didn't pick up the bus</td>
+                    <td class="Discription">Just wanted to let you know that...</td>
+                    <td class="Time">15/12</td>
+                    <td class="Status"><button class="delete-btn">Delete</button><button  class="reply-btn">Reply</button></td>    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var messageItems = document.querySelectorAll('.message-item');
+    
+            messageItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    var fullDescription = item.querySelector('.Discription');
+    
+                    // Toggle the unread class
+                    item.classList.toggle('unread');
+    
+                    // Add the read class
+                    item.classList.add('read');
+    
+                    // Show the full description
+                    fullDescription.style.display = 'block';
+                });
+            });
+        });
+    </script>
+    
+
+    <!-- <script src="driverForm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+</body>
+</html>
