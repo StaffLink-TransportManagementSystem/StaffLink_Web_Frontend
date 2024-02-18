@@ -62,7 +62,7 @@
         </li>
 
         <li class="log_out">
-          <a href="#">
+          <a href="../Passenger/login-register/index.html" onclick="logout()">
             <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -183,6 +183,11 @@
       function toggleMenu(){
         dropdown1.classList.toggle("open-menu");
       }
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
+      
     </script>
     <script src="./dashboard.js"></script>
 

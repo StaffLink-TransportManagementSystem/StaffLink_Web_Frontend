@@ -188,7 +188,7 @@ function makePayment(e) {
                 year: year
             };
 
-            fetch('http://localhost:8080/try2_war_exploded/passengerPaymentRegister', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/passengerPaymentRegister', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getPassengerPaymentsByPassenger?passengerEmail='+passengerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getPassengerPaymentsByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

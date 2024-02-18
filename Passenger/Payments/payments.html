@@ -62,8 +62,8 @@
         </li>
         
         <li class="log_out">
-          <a href="#">
-            <i class="bx bx-log-out"></i>
+          <a href="../login-register/index.html" onclick="logout()">
+            <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
@@ -129,6 +129,11 @@
     </section>
 
     <script>
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
+
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {

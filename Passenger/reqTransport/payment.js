@@ -46,7 +46,7 @@ function cardPayment(){
     const passengerEmail = urlParams.get('passengerEmail')
     console.log(passengerEmail);
     let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
-    fetch('http://localhost:8080/try2_war_exploded/getRequest', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getRequest', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ function cashPayment(){
         confirmButtonText: "Pay To Driver",        
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch('http://localhost:8080/try2_war_exploded/passengerCashPayment', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/passengerCashPayment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -292,7 +292,7 @@ function makePayment(e){
                 year: year
             };
 
-            fetch('http://localhost:8080/try2_war_exploded/passengerCardPayment', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/passengerCardPayment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

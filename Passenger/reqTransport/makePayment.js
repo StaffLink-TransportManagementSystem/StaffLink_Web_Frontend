@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ function deleteRequest(vehicleNo, passengerEmail) {
       }).then((result) => {
         if (result.isConfirmed) {
             let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
-            fetch('http://localhost:8080/try2_war_exploded/requestDelete', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/requestDelete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

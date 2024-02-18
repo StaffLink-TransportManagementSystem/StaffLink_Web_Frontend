@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
 
-    fetch('http://localhost:8080/try2_war_exploded/getRequest',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getRequest',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.querySelector(".startingDate").value = data.Request.startingDate;
                 form.querySelector(".endingDate").value = data.Request.endingDate;
                 form.querySelector(".status").value = data.Request.status;
-                fetch('http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo='+data.Request.vehicleNo,{
+                fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo='+data.Request.vehicleNo,{
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ function updatefunction(){
         endingDate: form.querySelector(".endingDate").value, 
         status: form.querySelector(".status").value };
 
-    fetch('http://localhost:8080/try2_war_exploded/requestEdit', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/requestEdit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

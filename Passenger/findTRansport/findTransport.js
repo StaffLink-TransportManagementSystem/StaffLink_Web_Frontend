@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // });
 
         if (checker) {
-            fetch('http://localhost:8080/try2_war_exploded/findTransport',{
+            fetch('http://127.0.0.1:8080/try2_war_exploded/findTransport',{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
