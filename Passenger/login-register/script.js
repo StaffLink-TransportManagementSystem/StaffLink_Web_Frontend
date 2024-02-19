@@ -99,6 +99,7 @@ const container = document.querySelector(".container"),
             return;
         }
 
+        // console.log("getData function calling");
         getData();
     }
     
@@ -111,22 +112,24 @@ const container = document.querySelector(".container"),
             email:lusername.value,
             password:lpassword.value,
         }
-        fetch('http://localhost:8080/try2_war_exploded/passengerLogin',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/passengerLogin',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },
+            credentials: "include", body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                console.log(data.jwt)
                 if(data.message == "Login successfully"){
-                    window.location.href = "../dashboard.html";
-                    // Swal.fire({
-                    //     title: "Login Successful!",
-                    //     icon: "success"
-                    //   }).then(()=>{
-                    //     window.location.href = "../dashboard.html";
-                    //   })
+                    window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                    Swal.fire({
+                        title: "Login Successful!",
+                        icon: "success"
+                      }).then(()=>{
+                        // window.location.href = "../dashboard.html";
+                      })
                     }
                     else if(data.message === "Wrong Password"){
                         Swal.fire({
@@ -144,7 +147,7 @@ const container = document.querySelector(".container"),
                                 location.reload();
                             })
                     }
-                    // window.location.href = "http://localhost:5501/Passenger/dashboard.html";
+                    window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
                 })
             .catch(error => {
                 console.error('Error:', error);
@@ -236,11 +239,12 @@ const container = document.querySelector(".container"),
             name:sname.value,
             NIC:snic.value,
         }
-        fetch('http://localhost:8080/try2_war_exploded/passengerRegister',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/passengerRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },
+            credentials: "include", body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

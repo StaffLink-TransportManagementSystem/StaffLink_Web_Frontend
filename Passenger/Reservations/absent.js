@@ -16,11 +16,12 @@ function createAbsent() {
             daysOfAbsent: daysOfAbsant,
             startingDate: startingDate
         }
-        fetch('http://localhost:8080/try2_war_exploded/addAbsent    ',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/addAbsent    ',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

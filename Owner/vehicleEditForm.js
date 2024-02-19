@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // console.log(window.location.href.split("=")[1]);
     
   
-    fetch("http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo=" + vehicleNo ,{
+    fetch("http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=" + vehicleNo ,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.vehicle) 
@@ -127,11 +127,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/vehicleEdit',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleEdit',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },credentials: "include", body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
@@ -176,11 +176,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/vehicleDelete',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleDelete',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },credentials: "include", body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

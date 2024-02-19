@@ -56,11 +56,11 @@ function validateContactNumber(contactNumber) {
 
 function usedVehicleNumber(vehicleNumber) {
   console.log(vehicleNumber);
-  fetch('http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo=' + vehicleNumber, {
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + vehicleNumber, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    }
+    },credentials: "include",
   })
     .then(response => response.json())
     .then(data => {
@@ -280,11 +280,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/vehicleRegister', {
+      fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
-        }, body: JSON.stringify(data),
+        },credentials: "include", body: JSON.stringify(data),
       })
         .then(response => response.json())
         .then(data => {

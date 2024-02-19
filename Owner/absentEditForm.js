@@ -33,9 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id:id}),})
+            body: JSON.stringify({id:id}),credentials: "include",})
             .then(response => response.json())
             .then(data => {
+
+              if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                window.location.href = "login.html";
+              }
+              else{
                 
                 console.log(data.absent) 
                 form.querySelector('.id').value = data.absent.id;  
@@ -45,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.querySelector('.email').value = data.absent.passengerEmail;
                 form.querySelector('.daysOfAbsent').value = data.absent.daysOfAbsent;
                 form.querySelector('.startingDate').value = data.absent.startingDate;
-                form.querySelector('.endingDate').value = data.absent.endingDate;                
+                form.querySelector('.endingDate').value = data.absent.endingDate;  
+              }              
 
             })
             .catch(error => {
@@ -105,14 +111,17 @@ document.addEventListener("DOMContentLoaded", function () {
         startingDate:startingDate,
         endingDate:endingDate,}
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/absentEdit',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/absentEdit',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message);
+                if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                  window.location.href = "login.html";
+                }
                 if(data.message == "Update successful"){
                   Swal.fire({
                     title: "Absent Updated Successfully!",
@@ -151,14 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/absentDelete',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/absentDelete',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                if(data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found"){
+                  window.location.href = "login.html";
+                }
                 if(data.message == "Delete successful"){
                   Swal.fire({
                     title: "Absent Removed Successfully!",

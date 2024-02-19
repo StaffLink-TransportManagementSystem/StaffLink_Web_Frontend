@@ -153,9 +153,30 @@ function makePayment(e) {
             checker = false;
         }
 
+        function getPayload(token) {
+            return JSON.parse(atob(token.split(".")[1]));
+        }
+    
+        function checkCookie(cName) {
+            const name = cName + "=";
+            const cDecoded = decodeURIComponent(document.cookie); //to be careful
+            const cArr = cDecoded.split("; ");
+            let res;
+            cArr.forEach((val) => {
+                if (val.indexOf(name) === 0) res = val.substring(name.length);
+            });
+            return res;
+        }
+    
+        console.log(checkCookie("jwt"))
+        const token = checkCookie("jwt");
+        
+        const payload = getPayload(token);
+        console.log("Payload",payload);
+
         if(checker){
             const data = {
-                passengerEmail: "rhatu2000@gmail.com",
+                passengerEmail: payload.id,
                 vehicleNo: "CBA7357",
                 requestID: id,
                 paymentType: "Card",
@@ -167,11 +188,12 @@ function makePayment(e) {
                 year: year
             };
 
-            fetch('http://localhost:8080/try2_war_exploded/passengerPaymentRegister', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/passengerPaymentRegister', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: "include", 
                 body: JSON.stringify(data)
             })
                 .then(response => response.json())
@@ -201,16 +223,38 @@ function makePayment(e) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+    const token = checkCookie("jwt");
+
+    const payload = getPayload(token);
+    console.log("Payload",payload);
     
-    passengerEmail = "rhatu2000@gmail.com"
+    passengerEmail = payload.id;
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getPassengerPaymentsByPassenger?passengerEmail='+passengerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getPassengerPaymentsByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
                 data.payments.forEach(payment => {

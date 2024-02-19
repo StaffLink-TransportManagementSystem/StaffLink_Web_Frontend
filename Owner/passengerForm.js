@@ -48,11 +48,11 @@ function validateContactNumber(contactNumber) {
 
 function passengerUsedEmail(email) {
   console.log(email);
-  fetch('http://localhost:8080/try2_war_exploded/getPassenger?email='+email,{
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getPassenger?email='+email,{
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
-    }})
+    },credentials: "include",})
     .then(response => response.json())
     .then(data => {
         console.log(data.message);
@@ -165,11 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/passengerRegister',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/passengerRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

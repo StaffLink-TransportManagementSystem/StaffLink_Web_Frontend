@@ -12,16 +12,37 @@ function makePayment(){
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
-    passengerEmail = "passenger@gmail.com"
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+    const token = checkCookie("jwt");
+
+    const payload = getPayload(token);
+    console.log("Payload",payload);
+
+    passengerEmail = payload.id;
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
                 let i = 0;
@@ -80,7 +101,7 @@ function deleteRequest(vehicleNo, passengerEmail) {
       }).then((result) => {
         if (result.isConfirmed) {
             let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
-            fetch('http://localhost:8080/try2_war_exploded/requestDelete', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/requestDelete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
