@@ -19,7 +19,7 @@
 
       <ul class="nav-links">
         <li>
-          <a href="new dashboard.html">
+          <a href="dashboard.html">
             <i class="fas fa-chart-line"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -54,7 +54,7 @@
         </li>
       
         <li class="log_out">
-          <a href="#">
+          <a href="login.html" onclick="logout()">
             <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -150,8 +150,6 @@
       function toggleMenu(){
         dropdown1.classList.toggle("open-menu");
       }
-
-
       
     // Get the button element
     const toggleButton = document.querySelector('.toggle-button');
@@ -160,6 +158,10 @@
     toggleButton.addEventListener('click', function() {
       this.classList.toggle('active');
     });
+
+    function logout(){
+      document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    }
     </script>
 
     <script>
