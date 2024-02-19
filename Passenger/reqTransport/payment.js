@@ -50,7 +50,8 @@ function cardPayment(){
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }, body: JSON.stringify(data)
+        }, body: JSON.stringify(data),
+        credentials: "include", 
     })
     .then(response => response.json())
     .then(data => {
@@ -104,7 +105,8 @@ function cashPayment(){
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }, body: JSON.stringify(data)
+                }, body: JSON.stringify(data),
+                credentials: "include", 
             })
             .then(response => response.json())
             .then(data => {
@@ -296,7 +298,8 @@ function makePayment(e){
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }, body: JSON.stringify(data)
+                }, body: JSON.stringify(data),
+                credentials: "include", 
             })
             .then(response => response.json())
             .then(data => {

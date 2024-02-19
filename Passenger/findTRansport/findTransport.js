@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },credentials: "include"
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.message);

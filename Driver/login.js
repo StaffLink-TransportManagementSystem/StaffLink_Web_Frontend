@@ -97,15 +97,16 @@ const container = document.querySelector(".container"),
         }
 
         console.log(data.message)
-        fetch('http://localhost:8080/try2_war_exploded/driverLogin',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/driverLogin',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data), credentials:"include"})
             .then(response => response.json())
             .then(data => {
-                //console.log(data.message)
-                window.location.href = "new-dashboard.html";
+                console.log("message:"+data.message)
+                console.log(data.jwt)
+                window.location.href = "dashboard.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -173,15 +174,15 @@ const container = document.querySelector(".container"),
             name:sname.value,
             NIC:snic.value,
         }
-        fetch('http://localhost:8080/try2_war_exploded/driverRegister',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/driverRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data), credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "new-dashboard.html";
+                window.location.href = "dashboard.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)})
+            body: JSON.stringify(data),
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -82,7 +83,8 @@ function updatefunction(){
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }, body: JSON.stringify(data)
+        }, body: JSON.stringify(data),
+        credentials: "include", 
     })
         .then(response => response.json())
         .then(data => {

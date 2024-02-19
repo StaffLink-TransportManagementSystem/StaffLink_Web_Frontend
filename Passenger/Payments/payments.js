@@ -193,6 +193,7 @@ function makePayment(e) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: "include", 
                 body: JSON.stringify(data)
             })
                 .then(response => response.json())
@@ -252,7 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
                 data.payments.forEach(payment => {
