@@ -58,8 +58,8 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
-            <i class="bx bx-log-out"></i>
+          <a href="./login.html" onclick="logout()">
+            <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
@@ -133,6 +133,10 @@
           sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
     </script>
   </body>
 </html>
