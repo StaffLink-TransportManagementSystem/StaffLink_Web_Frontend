@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let row ="";
     let users = []
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllPassenger',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllPassenger',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(passenger => {
@@ -58,7 +58,7 @@ function AddPassenger() {
 }
 
 //   function updatefunction(vehicleNo){
-//         window.location.href = "http://localhost:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
+//         window.location.href = "http://127.0.0.1:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
 //   }
   
 
@@ -69,7 +69,7 @@ function AddPassenger() {
 
 
 // function fetchAllData() {
-//     fetch('http://localhost:15000/ecoswapperbackend_war/admin/centers', {
+//     fetch('http://127.0.0.1:15000/ecoswapperbackend_war/admin/centers', {
 //         method: 'GET',
 //         headers: {
 //             'Content-Type': 'application/json'

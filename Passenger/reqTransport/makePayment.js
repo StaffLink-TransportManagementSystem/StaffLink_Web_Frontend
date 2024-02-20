@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             credentials: "include", })
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 let i = 0;
                 while (i < data.requests.length) {
                     const request = data.requests[i];

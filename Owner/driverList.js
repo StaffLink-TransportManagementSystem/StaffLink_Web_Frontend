@@ -14,28 +14,32 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(driver => {
+                  console.log(driver);
                 row += `
-                
-                <div class="wrapper" id="${driver.NIC}" >
-                  
-                  
-                  <div class="profile" style="align-items:center;">
-                    <img src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w" class="thumbnail" >
-                    <div class="check"><i class="fas fa-check"></i></div>
-                    <h3 class="name">`+driver.name+`</h3>
-                    <p class="title">Assigned Vehicle</p>
-                    <p class="description" style="text-align:left"><b>Email : </b>`+ driver.email+`<br><b>NIC no : </b>`+driver.NIC+`<br><b>Age : </b>`+driver.age +`<br><b>Contact No : </b>`+driver.contact+` <br></p>
-                    <div style="display: flex;">
-                    <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit-btn">EDIT</button></a>
-                    <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
+                <div class="driver">
+                  <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg" alt="driver-photo">
+
+                  <div class="driver-desc">
+                    <div class="topic driver-name">${driver.name}</div>
+
+                    <div class="driver-spec">
+                      <p><b>Telephone No : ${driver.contact}</b></p>
+                      <p><b>Email : ${driver.email}</b></p>
+                      <p><b>NIC No : ${driver.NIC}</b></p>
                     </div>
+
+                    <button class="more-btn">MORE</button>
+                    <button class="edit-btn">EDIT</button>
+                    <button class="delete-btn">DELETE</button>
                   </div>
-                </div>`
+                </div>
+                
+              `
                 });
 
                 users = data.list;
 
-                document.querySelector(".cards").innerHTML = row;   
+                document.querySelector(".driver-cards").innerHTML = row;   
 
             })
             .catch(error => {
