@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="report_genarate_form.css">
+
+        <title>View reports</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="title">View Reports</div>
+            <form action="#">
+                <div class="report-details">
+                    <h3>Time Period</h3>
+                    <div class="input-box">
+                        <span class="details"></span>
+                        <select class="form-select" id="title" name="title" required>
+                            <option value="" disabled selected hidden="">Choose the period you want</option>
+
+                            <option value="a">Last 15 trx</option>
+                            <option value="b">Current  Month</option>
+                            <option value="c">Last Month</option>
+                            <option value="c">Last 3 Month</option>
+                        </select>
+                      
+                    </div>
+                   
+                   
+                    
+                </div>
+            </form>
+            <input type="submit" class="sub" value="Generate Report" onclick="location.href = 'index.html';">
+        </div>
+       
+    </body>
+</html>
