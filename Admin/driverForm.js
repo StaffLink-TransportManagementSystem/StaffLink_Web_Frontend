@@ -28,11 +28,11 @@ function ValidateEmail(input) {
 
 function usedOwnerEmail(email) {
   console.log(email);
-  fetch('http://localhost:8080/try2_war_exploded/getOwner?email='+email,{
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email='+email,{
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
-    }})
+    },credentials: "include",})
     .then(response => response.json())
     .then(data => {
         console.log(data.message);
@@ -50,11 +50,11 @@ function usedOwnerEmail(email) {
 
 function usedDriverEmail(email) {
   console.log(email);
-  fetch('http://localhost:8080/try2_war_exploded/getDriver?email='+email,{
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+email,{
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
-    }})
+    },credentials: "include",})
     .then(response => response.json())
     .then(data => {
         console.log(data.message);
@@ -79,11 +79,11 @@ function validateContactNumber(contactNumber) {
 }
 function usedEmail(email) {
   console.log(email);
-  fetch('http://localhost:8080/try2_war_exploded/getDriver?email='+email,{
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+email,{
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
-    }})
+    },credentials: "include",})
     .then(response => response.json())
     .then(data => {
         console.log(data.message);
@@ -245,11 +245,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/driverRegister',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/driverRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

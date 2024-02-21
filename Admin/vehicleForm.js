@@ -56,11 +56,11 @@ function validateContactNumber(contactNumber) {
 
 function usedVehicleNumber(vehicleNumber) {
   console.log(vehicleNumber);
-  fetch('http://localhost:8080/try2_war_exploded/getVehicle?vehicleNo'+vehicleNumber,{
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo'+vehicleNumber,{
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
-    },})
+    },credentials: 'include'})
     .then(response => response.json())
     .then(data => {
         console.log(data.message)
@@ -79,11 +79,11 @@ function usedVehicleNumber(vehicleNumber) {
 
 function usedOwnerEmail(ownerEmail) {
   console.log(ownerEmail);
-  fetch('http://localhost:8080/try2_war_exploded/getOwner?email'+ownerEmail,{
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email'+ownerEmail,{
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
-    },})
+    },credentials: 'include'})
     .then(response => response.json())
     .then(data => {
         console.log(data.message)
@@ -285,11 +285,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://localhost:8080/try2_war_exploded/vehicleRegister',{
+      fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },body: JSON.stringify(data),credentials: "include",})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

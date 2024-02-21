@@ -69,7 +69,7 @@
         </li>
 
         <li class="log_out">
-          <a href="#">
+          <a href="./login.html" onclick="logout()">
             <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -93,7 +93,7 @@
 
         <div class="dropdown-list-wrap" id="dropdown1">         
           <div class="dropdown-list">
-            <a href="#" class="dropdown-list-link">
+            <a href="../Admin/profile/profile.html" class="dropdown-list-link">
               <i class="fas fa-circle-user"></i>
               <p>Your Profile</p>
               <span>></span>
@@ -192,8 +192,63 @@
       function toggleMenu(){
         dropdown1.classList.toggle("open-menu");
       }
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
     </script>
     <script src="./vehicleList.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+
+        function getPayload(token) {
+          return JSON.parse(atob(token.split(".")[1]));
+      }
+  
+      function checkCookie(cName) {
+          const name = cName + "=";
+          const cDecoded = decodeURIComponent(document.cookie); //to be careful
+          const cArr = cDecoded.split("; ");
+          let res;
+          cArr.forEach((val) => {
+              if (val.indexOf(name) === 0) res = val.substring(name.length);
+          });
+          return res;
+      }
+  
+      console.log(checkCookie("jwt"))
+      const token = checkCookie("jwt");
+
+      if(token == null){
+        console.log("No Cookie Found");
+        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+      }
+
+      const payload = getPayload(token);
+      console.log("Payload",payload);
+
+      if (payload.role === "admin") {
+        console.log("Admin");
+      } 
+      else if (payload.role === "owner") {
+        console.log("Admin");
+        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+      }
+      else if (payload.role === "passenger") {
+        console.log("Passenger");
+        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+      }
+      else if (payload.role === "driver") {
+        console.log("Driver");
+        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+      }
+      else {
+        console.log("No Cookie Found");
+        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        
+      }
+      });
+    </script>
     
   </body>
 </html>
