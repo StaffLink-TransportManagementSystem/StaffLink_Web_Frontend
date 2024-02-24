@@ -123,14 +123,10 @@ const container = document.querySelector(".container"),
                 console.log(data.message)
                 console.log(data.jwt)
                 if(data.message == "Login successfully"){
-                    window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
-                    Swal.fire({
-                        title: "Login Successful!",
-                        icon: "success"
-                      }).then(()=>{
-                        // window.location.href = "../dashboard.html";
-                      })
+                    if(data.message === "Login successfully"){
+                        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
                     }
+                    
                     else if(data.message === "Wrong Password"){
                         Swal.fire({
                             title: "Invalid Username or Password!",
@@ -147,11 +143,9 @@ const container = document.querySelector(".container"),
                                 location.reload();
                             })
                     }
-                    window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
-                })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                    // window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                }
+            })
     }
 
 
