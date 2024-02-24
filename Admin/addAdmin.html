@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="addAdmin.css">
-        <link rel="stylesheet" href="/main.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
-        <title>Add Admin</title>
-    </head>
+    <link rel="stylesheet" href="addAdmin.css">
+    <link rel="stylesheet" href="/main.css">
 
-    <body>
-        <div class="container">
-            <div class="card-header">
-                <div class="topic">Add Admin</div>
-            </div>
+    <title>Add Admin</title>
+</head>
 
-            <form>
-                <div class="admin-details">
+<body>
+    <div class="container">
+        <div class="card-header">
+            <div class="topic">Add Admin</div>
+        </div>
+
+        <form>
+            <div class="admin-details">
                     <div class="input-box">
                         <span class="details">First Name</span>
-                        <input type="text" class="fnameAdmin" name="fnameAdmin">
+                        <input type="text" class="fnameAdmin" id="fnameAdmin" name="fnameAdmin">
+                        <div class="fname-error-message" style="display: none; color: red;">1234456</div>
                     </div>
+    
 
-                    <div class="input-box">
-                        <span class="details">Last Name</span>
-                        <input type="text" class="lnameAdmin" name="lnameAdmin">
-                    </div>
-
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="email" class="emailAdmin" name="emailAdmin">
-                    </div>
-
-                    <div class="input-box">
-                        <span class="details">Telephone</span>
-                        <input type="number" class="teleAdmin" name="teleAdmin">
-                    </div>
+                <div class="input-box">
+                    <span class="details">Last Name</span>
+                    <input type="text" class="lnameAdmin" id="lnameAdmin" name="lnameAdmin">
+                    <div class="lname-error-message" style="display: none; color: red;"></div>
                 </div>
 
-                <div class="passw">
-                    <div class="sub-topic">Password</div>
-                    <p>Set NIC of the new administrator as the password here. He can change it later.</p>
-                    <input type="password" class="NICAdmin" name="NICAdmin">
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" class="emailAdmin" id="emailAdmin" name="emailAdmin">
+                    <div class="email-error-message" style="display: none; color: red;"></div>
                 </div>
-            </form>
 
-            <div class="buttons">
-                <button class="submit-btn" onclick="changepass()">Save Admin</button>
-                <button class="cancel-btn" onclick="changepass()">Cancel</button>
+                <div class="input-box">
+                    <span class="details">Telephone</span>
+                    <input type="number" class="teleAdmin" id="teleAdmin" name="teleAdmin">
+                    <div class="contact-error-message" style="display: none; color: red;"></div>
+                </div>
             </div>
+
+            <div class="passw">
+                <div class="sub-topic">Password</div>
+                <p>Set NIC of the new administrator as the password here. He can change it later.</p>
+                <input type="password" class="passwordAdmin" id="passwordAdmin" name="passwordAdmin">
+                <div class="password-error-message" style="display: none; color: red;"></div>
+            </div>
+        </form>
+
+        <div class="buttons">
+            <button class="submit-btn" onclick="validateSignup()">Save Admin</button>
+            <button class="cancel-btn" onclick="cancel()">Cancel</button>
         </div>
-    </body>
+    </div>
+    <script src="addAdmin.js"></script>
+</body>
+
 </html>

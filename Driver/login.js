@@ -187,5 +187,5 @@ const container = document.querySelector(".container"),
             })
             .catch(error => {
                 console.error('Error:', error);
-            });
+            });   
     }

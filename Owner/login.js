@@ -106,9 +106,13 @@ function getData() {
         .then(response => response.json())
         .then(data => {
             console.log(data.jwt)
+
+            if(data.message === "Login successfully"){
+
             // document.cookie = "jwt=" + data.jwt + "; expires=2024-02-14T20:29:05.800Z; path=/";
             console.log(data.message)
             window.location.href = "ownerDashboard.html";
+            }
             // document.getElementById("demo").innerHTML = data.message;
         })
         .catch(error => {
