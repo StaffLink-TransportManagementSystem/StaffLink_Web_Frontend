@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         rowData += `<button class="reserve" onclick="reserve('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >RESERVE</button>
                         `
                     }
-                    rowData += `<a href="./editRequest.html" onclick=""><button class="edit-btn">EDIT</button></a>
+                    rowData += `<a href="./editRequest.html?email=`+ request.vehicleNo +`" onclick=""><button class="edit-btn">EDIT</button></a>
                     <button class="delete-btn" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >DELETE</button></td>
                 </tr>`;
                     row += rowData;
