@@ -98,20 +98,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const email = payload.id;
 
+  console.log("email", email);
 
-  fetch("http://localhost:8080/try2_war_exploded/getOwner?email=" + email, {
+
+  fetch("http://127.0.0.1:8080/try2_war_exploded/getPassenger?email=" + email, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
+    },credentials: "include",
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data.owner)
-      form.querySelector('.passengerID').value = data.owner.id;
-      form.querySelector('.email').value = data.owner.email;
-      form.querySelector('.passengerName').value = data.owner.name;
-      form.querySelector('.NIC').value = data.owner.NIC;
+      console.log("Passenger data",data.passenger)
+      form.querySelector('.passengerID').value = data.passenger.id;
+      form.querySelector('.email').value = data.passenger.email;
+      form.querySelector('.passengerName').value = data.passenger.name;
+      form.querySelector('.NIC').value = data.passenger.NIC;
       // form.querySelector('.Telephone').value = data.owner.contact;
 
 
@@ -203,7 +205,7 @@ function updateProfile(e) {
       // profilePic: profilePic
     }
     // alert("Your profile has been updated successfully!");
-    fetch('http://localhost:8080/try2_war_exploded/ownerEdit', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/ownerEdit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -6,6 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="/main.css">
 
         <title>Owner Profile</title>
     </head>
@@ -13,43 +14,49 @@
 
     <body>
         <div class="container">
-            <div class="topic">
-                <div class="title">Owner Profile</div>
-                <button class="del" id="notice" onclick="deleteAccount()">Delete Account</button>
+            <div class="card-header">
+                <div class="topic">Passenger Profile</div>
+                <button class="delete-btn" id="notice">Delete Account</button>
             </div>
 
             <form>
                 <div>
-                    <div class="sub-title" id="st2">Profile Picture</div>
+                    <div class="profile-photo">
+                        <div class="sub-topic" id="st2">Profile Photo</div>
+
+                        <div class="photo-options">
+                            <label for="pic" class="update-btn">Update Photo</label>
+                            <input type="file" accept="image/.*" id="pic">
+                            <button class="delete-btn" onclick="deletePhoto()">Delete Photo</button>
+                        </div>
+                    </div>
+                    
                     <div class="profilepic">
                         <div class="card">
                             <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
                         </div>
                     </div>
-                    <label for="pic">Update Photo</label>
-                    <input type="file" accept="image/.*" id="pic">
-                    <!-- <button class="pic-del" onclick="deletePhoto()">Delete Photo</button> -->
                 </div>
 
                 <div class="edit">
-                    <div class="sub-title" id="st3">Account</div>
-                    <button class="edit-btn" onclick="editAcc(event)">Edit</button>
+                    <div class="sub-topic">Account</div>
+                    <button class="edit-btn" id="edit-btn" onclick="editAcc(event)">Edit Details</button>
                 </div>
                 <div class="pass-details">
                     <div class="input-box">
-                        <span class="details">Owner ID</span>
+                        <span class="details">Passenger ID</span>
                         <input disabled type="text" class="passengerID" name="passengerID">
                         <div class="id-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Owner Name</span>
+                        <span class="details">Passenger Name</span>
                         <input disabled type="text" class="passengerName" value name="passengerName">
                         <div class="name-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">NIC No</span>
                         <input disabled type="text" class="NIC" value name="NIC">
-                        <div class="NIC-error-message" style="display: none; color: red;"></div>
+                        <div class="nic-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
@@ -62,14 +69,14 @@
                         <div class="contact-error-message" style="display: none; color: red;"></div>
                     </div> -->
                     <div class="save" style="display: none; margin: 25px 0 0 0;">
-                        <button class="edit-btn" onclick="updateProfile(event)">Save Changes</button>
+                        <button class="submit-btn" onclick="updateProfile(event)">Save Changes</button>
                     </div>
                 </div>
                 
 
                 <div class="passw">
-                    <div class="sub-title" id="st4">Password</div>
-                    <button><a href="enterotp.html">Change</a></button>
+                    <div class="sub-topic">Password</div>
+                    <button class="edit-btn" onclick="changeOTP(event)">Change</button>
                 </div>
             </form>
         </div>
@@ -106,16 +113,16 @@
             const payload = getPayload(token);
             console.log("Payload",payload);
       
-            if (payload.role === "owner") {
-              console.log("Owner");
+            if (payload.role === "passenger") {
+              console.log("Passenger");
             } 
             else if (payload.role === "admin") {
               console.log("Admin");
               window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
             }
-            else if (payload.role === "passenger") {
-              console.log("Passenger");
-              window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+            else if (payload.role === "owner") {
+              console.log("Owner");
+              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
             }
             else if (payload.role === "driver") {
               console.log("Driver");
@@ -123,10 +130,22 @@
             }
             else {
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+              window.location.href = "http://127.0.0.1:5558/passenger/login-register/index.html";
               
             }
             });
           </script>
+
+          <script>
+            function changepass(){
+                console.log("Change Password");
+            }
+
+            function changeOTP(e){
+                e.preventDefault();
+                console.log("Change OTP");
+                window.location.href = "enterotp.html";
+            }
+        </script>
     </body>
 </html>
