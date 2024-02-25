@@ -135,7 +135,7 @@ function sendOTPEmail() {
                 }
                 else{
                     Swal.fire({
-                        title: "OTP sending Failed!",
+                        title: "OTP send Failed!",
                         icon: "error"
                       }).then(()=>{
                         location.reload();

@@ -18,24 +18,25 @@
             <form action="#">
                 <div class="input-box">
                     <span class="details">New Password</span>
-                    <input type="password" placeholder="New password">
+                    <input id="newPass" type="password" placeholder="New password">
                 </div>
                 <div class="input-box">
                     <span class="details">Re-enter New Password</span>
-                    <input type="password" placeholder="Re-enter New password">
+                    <input id="confirmPass" type="password" placeholder="Re-enter New password">
                 </div>
 
                 <div class="buttons"></div>
-                <button type="submit" class="btn more-btn">Change</button>
-                <button type="submit" class="btn cancel-btn" onclick="goToProfile()">Cancel</button>
+                <button type="submit" class="btn more-btn" onclick="changePass()">Change</button>
+                <button type="submit" class="btn cancel-btn" onclick="goToProfile(event)">Cancel</button>
             </form>
         </div>
       
-        <!-- <script src="enterotp.js"></script> -->
+        <script src="changepass.js"></script>
         <script>
-            function goToProfile() {
+            function goToProfile(e) {
+              e.preventDefault();
                 console.log("Go to profile");
-                window.location.href = "http://127.0.0.1:5501/Admin/profile/profile.html";
+                window.location.href = "profile.html";
                 console.log("Go to profile2");
             }
         </script>
@@ -90,4 +91,5 @@
           }
           });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>>
     </body>
