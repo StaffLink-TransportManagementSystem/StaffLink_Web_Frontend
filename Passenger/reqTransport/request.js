@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Payload",payload);
 
     let passengerEmail = payload.id;
-    let vehicleNo = "CBA7357";
+    let vehicleNo = window.location.href.split("=")[1];
 
     const form = document.querySelector("form");
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // form.querySelector(".model").value = data.Request.model;
                 // form.querySelector(".type").value = data.Request.type;
                 form.querySelector(".passengerEmail").value = data.Request.passengerEmail;
-                form.querySelector(".amount").value = data.Request.amount;
+                form.querySelector(".amount").value = data.Request.price;
                 form.querySelector(".startingDate").value = data.Request.startingDate;
                 form.querySelector(".endingDate").value = data.Request.endingDate;
                 form.querySelector(".status").value = data.Request.status;
@@ -51,12 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
-                    },})
+                    },credentials: "include",})
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
                         form.querySelector(".model").value = data.vehicle.model;
                         form.querySelector(".type").value = data.vehicle.type;
+                        form.querySelector(".status").value = data.Request.status;
                     })
                     .catch(error => {
                         console.error('Error:', error);

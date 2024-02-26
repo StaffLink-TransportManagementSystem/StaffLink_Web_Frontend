@@ -1,3 +1,5 @@
+// const { Console } = require("console");
+
 document.addEventListener("DOMContentLoaded", function () {
     
     function getPayload(token) {
@@ -55,5 +57,34 @@ document.addEventListener("DOMContentLoaded", function () {
             // }
             // console.log(years);
             // document.getElementById('yearInput').innerHTML = years;
+
+            var row2 = "";
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getReservationsByPassenger?passengerEmail='+passengerEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include", })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.reservations);
+                data.reservations.forEach(reservation => {
+                row2 += `<tr>
+                <td>`+ reservation.startingDate +`</td>
+                <td>`+ reservation.vehicleNo +`</td>
+                <td>`+ reservation.startingWaypoint +`</td>
+                <td>`+ reservation.endingWaypoint +`</td>
+                </tr>`
+                });
+
+                document.querySelector(".tbody").innerHTML = row2;   
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     
   });
+
+  

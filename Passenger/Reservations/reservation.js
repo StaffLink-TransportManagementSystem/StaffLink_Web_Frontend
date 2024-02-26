@@ -41,9 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     //TO BE HANDLE
                 }
                 else{
+                    console.log(data);
                     while (i < data.reservations.length) {
                         reservation = data.reservations[i];
                         vehicle = data.vehicles[i];
+                        console.log("reservation: "+reservation);
+                        console.log("vehicle : "+vehicle.vehicleNo);
                         row += `<tr>
                             <td>${vehicle.vehicleNo}</td>
                             <td>${vehicle.type}</td>
