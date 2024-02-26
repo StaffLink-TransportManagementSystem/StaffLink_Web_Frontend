@@ -6,91 +6,90 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="changepass.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/main.css">
 
         <title>Change Password</title>
     </head>
 
     <body>   
         <div class="enter-pass">
-            <h2>Enter New Password</h2>
+            <p class="topic">Enter New Password</p>
             <p>Enter a new password below to change your password</p>
-            <form>
+            <form action="#">
                 <div class="input-box">
                     <span class="details">New Password</span>
-                    <input id="newpass" type="password" placeholder="New password">
-                    <div id="newpass-error-message" style="display: none; color: red;"></div>
+                    <input id="newPass" type="password" placeholder="New password">
                 </div>
                 <div class="input-box">
                     <span class="details">Re-enter New Password</span>
                     <input id="confirmPass" type="password" placeholder="Re-enter New password">
-                    <div id="confirm-error-message" style="display: none; color: red;"></div>
                 </div>
-                <button type="submit" class="btn submit-btn" onclick="newPassword(event)">Change</button>
-                <button type="submit" class="btn cancel-btn" onclick="goToProfile()"><a href="./profile.html">Cancel</a></button>
+
+                <div class="buttons"></div>
+                <button type="submit" class="btn more-btn" onclick="changePass()">Change</button>
+                <button type="submit" class="btn cancel-btn" onclick="goToProfile(event)">Cancel</button>
             </form>
         </div>
       
-        <!-- <script src="enterotp.js"></script> -->
+        <script src="changepass.js"></script>
         <script>
-            function goToProfile() {
+            function goToProfile(e) {
+              e.preventDefault();
                 console.log("Go to profile");
-                window.location.href = "http://127.0.0.1:5501/Admin/profile/profile.html";
-                <!-- console.log("Go to profile2"); -->
+                window.location.href = "profile.html";
+                console.log("Go to profile2");
             }
         </script>
-        <script src="changepass.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+          document.addEventListener("DOMContentLoaded", function () {
+    
+            function getPayload(token) {
+              return JSON.parse(atob(token.split(".")[1]));
+          }
       
-              function getPayload(token) {
-                return JSON.parse(atob(token.split(".")[1]));
-            }
-        
-            function checkCookie(cName) {
-                const name = cName + "=";
-                const cDecoded = decodeURIComponent(document.cookie); //to be careful
-                const cArr = cDecoded.split("; ");
-                let res;
-                cArr.forEach((val) => {
-                    if (val.indexOf(name) === 0) res = val.substring(name.length);
-                });
-                return res;
-            }
-        
-            console.log(checkCookie("jwt"))
-            const token = checkCookie("jwt");
+          function checkCookie(cName) {
+              const name = cName + "=";
+              const cDecoded = decodeURIComponent(document.cookie); //to be careful
+              const cArr = cDecoded.split("; ");
+              let res;
+              cArr.forEach((val) => {
+                  if (val.indexOf(name) === 0) res = val.substring(name.length);
+              });
+              return res;
+          }
       
-            if(token == null){
-              console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Owner/login.html";
-            }
-      
-            const payload = getPayload(token);
-            console.log("Payload",payload);
-      
-            if (payload.role === "owner") {
-              console.log("Owner");
-            } 
-            else if (payload.role === "admin") {
-              console.log("Admin");
-              window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
-            }
-            else if (payload.role === "passenger") {
-              console.log("Passenger");
-              window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
-            }
-            else if (payload.role === "driver") {
-              console.log("Driver");
-              window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
-            }
-            else {
-              console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Owner/login.html";
-              
-            }
-            });
-          </script>
+          console.log(checkCookie("jwt"))
+          const token = checkCookie("jwt");
+    
+          if(token == null){
+            console.log("No Cookie Found");
+            window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+          }
+    
+          const payload = getPayload(token);
+          console.log("Payload",payload);
+    
+          if (payload.role === "owner") {
+            console.log("Owner");
+          } 
+          else if (payload.role === "admin") {
+            console.log("Admin");
+            window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+          }
+          else if (payload.role === "passenger") {
+            console.log("Passenger");
+            window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+          }
+          else if (payload.role === "driver") {
+            console.log("Driver");
+            window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+          }
+          else {
+            console.log("No Cookie Found");
+            window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+            
+          }
+          });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>>
     </body>

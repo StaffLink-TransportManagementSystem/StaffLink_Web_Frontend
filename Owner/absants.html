@@ -96,18 +96,26 @@
           <i class="bx bx-menu sidebarBtn"></i>
           <span class="dashboard">Absent Passengers</span>
         </div>
-        <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
+        <div class="profile-details"  onclick="toggleMenu()">
+          <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
+          <span class="user_name">Owner</span>
+          <i class="fas fa-angle-down"></i>
         </div>
-        <div class="profile-details">
-          <i class="bx bxs-user"></i>
-          <span class="user_name">Ravindu</span>
-          <i class="bx bx-chevron-down"></i>
-          <ul class="dropdown-list">
-            <li><a href="./profile.html" class="link">Your Profile</a></li>
-            <li><a href="#" class="link">Notifications</a></li>
-          </ul>
+
+        <div class="dropdown-list-wrap" id="dropdown1">         
+          <div class="dropdown-list">
+            <a href="./profile.html" class="dropdown-list-link">
+              <i class="fas fa-circle-user"></i>
+              <p>Your Profile</p>
+              <span>></span>
+            </a>
+
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-bell"></i>
+              <p>Notifications</p>
+              <span>></span>
+            </a>
+          </div>
         </div>
       </nav>
 

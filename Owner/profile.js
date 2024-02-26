@@ -98,16 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const email = payload.id;
 
+  console.log("email", email);
 
-  fetch("http://localhost:8080/try2_war_exploded/getOwner?email=" + email, {
+
+  fetch("http://127.0.0.1:8080/try2_war_exploded/getOwner?email=" + email, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
+    },credentials: "include",
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data.owner)
+      console.log("Passenger data",data.owner)
       form.querySelector('.passengerID').value = data.owner.id;
       form.querySelector('.email').value = data.owner.email;
       form.querySelector('.passengerName').value = data.owner.name;
@@ -147,7 +149,7 @@ function updateProfile(e) {
   var checker = true;
 
   var nameError = document.querySelector(".name-error-message");
-  var NICError = document.querySelector(".NIC-error-message");
+  var NICError = document.querySelector(".nic-error-message");
   // var contactError = document.querySelector(".contact-error-message");
   var emailError = document.querySelector(".email-error-message");
 
@@ -203,18 +205,18 @@ function updateProfile(e) {
       // profilePic: profilePic
     }
     // alert("Your profile has been updated successfully!");
-    fetch('http://localhost:8080/try2_war_exploded/ownerEdit', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/passengerEdit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      }, body: JSON.stringify(data),
+      }, body: JSON.stringify(data), credentials: "include",
     })
       .then(response => response.json())
       .then(data => {
         console.log(data.message);
         if (data.message === "Update successfully") {
           Swal.fire({
-            title: "Owner Updated Successfully!",
+            title: "Passenger Updated Successfully!",
             icon: "success"
           }).then(() => {
             window.location.href = "profile.html";
@@ -237,7 +239,32 @@ function updateProfile(e) {
 
 
 function deleteAccount() {
-  const email = "rhatu2000@gmail.com";
+
+  console.log("deleteAccount");
+  
+    function getPayload(token) {
+      return JSON.parse(atob(token.split(".")[1]));
+    }
+  
+    function checkCookie(cName) {
+      const name = cName + "=";
+      const cDecoded = decodeURIComponent(document.cookie); //to be careful
+      const cArr = cDecoded.split("; ");
+      let res;
+      cArr.forEach((val) => {
+        if (val.indexOf(name) === 0) res = val.substring(name.length);
+      });
+      return res;
+    }
+  
+    console.log(checkCookie("jwt"))
+  
+    const token = checkCookie("jwt");
+    const payload = getPayload(token);
+    console.log("Payload", payload);
+  
+    const email = payload.id;
+
   const data = { email: email };
   Swal.fire({
     title: 'Are you sure?',
@@ -250,7 +277,7 @@ function deleteAccount() {
     confirmButtonText: 'Yes!'
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch("http://127.0.0.1:8080/try2_war_exploded/ownerDelete?email=" + email, {
+      fetch("http://127.0.0.1:8080/try2_war_exploded/passengerDelete", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -264,7 +291,7 @@ function deleteAccount() {
               title: "Deleted Successfully!",
               icon: "success"
             }).then(() => {
-              window.location.href = "login.html";
+              window.location.href = "../login-register/index.html";
             })
           }
           else {
