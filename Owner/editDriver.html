@@ -6,7 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="vehicleform.css">
-
+        <link rel="stylesheet" href="/main.css">
         <title>Driver Update</title>
     </head>
 
@@ -52,12 +52,18 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+            <button class="update-btn" onclick="updatedriver()">Update</button>
+            <button class="cancel-btn" onclick="cancel()">Cancel</button>
+            <!-- <input type="submit" class="sub" value="update" onclick="updatefunction()"> -->
         </div>
         <script src="driverEditForm.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script>
+          function cancel(){
+            window.location.href = "drivers.html";
+          }
+
             document.addEventListener("DOMContentLoaded", function () {
       
               function getPayload(token) {
