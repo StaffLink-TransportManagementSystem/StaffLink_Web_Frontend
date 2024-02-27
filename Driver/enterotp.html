@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="enterotp.css">
+        <link rel="stylesheet" href="/main.css">
+
+        <title>Enter OTP</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <p class="topic">Verify Your Account</p>
+            <p>
+                We emailed the verification code to <div class="email"></div><br>
+                Enter the code below to confirm your email address.
+            </p>
+
+            <div class="code-container">
+                <input type="number" class="code otp1" min="0" max="9" required>
+                <input type="number" class="code otp2" min="0" max="9" required>
+                <input type="number" class="code otp3" min="0" max="9" required>
+                <input type="number" class="code otp4" min="0" max="9" required>
+            </div>
+
+            <div class="buttons">
+                <button class="more-btn" onclick="verifiyOTP()">Verify</button>
+                <button class="cancel-btn" onclick="cancel()">Cancel</button>
+            </div>
+
+            <!-- <div>
+                <button type="button" class="btn btn-primary"><a href="changepass.html">Verify</a></button>
+                <button type="button" class="btn btn-cancel"><a href="profile.html">Cancel</a></button>
+            </div> -->
+
+            <small>
+                If you didn't receive a code <a onclick="sendOTPEmail()"><strong>RESEND</strong></a>
+            </small>
+        </div>
+
+
+        <script src="enterotp.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+    
+            function getPayload(token) {
+              return JSON.parse(atob(token.split(".")[1]));
+          }
+      
+          function checkCookie(cName) {
+              const name = cName + "=";
+              const cDecoded = decodeURIComponent(document.cookie); //to be careful
+              const cArr = cDecoded.split("; ");
+              let res;
+              cArr.forEach((val) => {
+                  if (val.indexOf(name) === 0) res = val.substring(name.length);
+              });
+              return res;
+          }
+      
+          console.log(checkCookie("jwt"))
+          const token = checkCookie("jwt");
+    
+          if(token == null){
+            console.log("No Cookie Found");
+            window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+          }
+    
+          const payload = getPayload(token);
+          console.log("Payload",payload);
+    
+          if (payload.role === "driver") {
+            console.log("Driver");
+          } 
+          else if (payload.role === "admin") {
+            console.log("Admin");
+            window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+          }
+          else if (payload.role === "owner") {
+            console.log("Owner");
+            window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+          }
+          else if (payload.role === "Passenger") {
+            console.log("Driver");
+            window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+          }
+          else {
+            console.log("No Cookie Found");
+            window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+            
+          }
+          });
+
+          function getPayload(token) {
+            return JSON.parse(atob(token.split(".")[1]));
+          }
+        
+          function checkCookie(cName) {
+            const name = cName + "=";
+            const cDecoded = decodeURIComponent(document.cookie); //to be careful
+            const cArr = cDecoded.split("; ");
+            let res;
+            cArr.forEach((val) => {
+              if (val.indexOf(name) === 0) res = val.substring(name.length);
+            });
+            return res;
+          }
+        
+          console.log(checkCookie("jwt"))
+        
+          const token = checkCookie("jwt");
+          const payload = getPayload(token);
+          console.log("Payload", payload);
+        
+          const email = payload.id;
+
+          document.querySelector(".email").innerHTML = email; 
+
+          function cancel() {
+            window.location.href = "profile.html";
+          }
+        </script>
+    </body>

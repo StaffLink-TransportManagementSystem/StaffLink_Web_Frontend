@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="/main.css">
+
+        <title>Driver Profile</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="card-header">
+                <div class="topic">Driver Profile</div>
+                <button class="delete-btn" id="notice" onclick="deleteAccount()">Delete Account</button>
+            </div>
+
+            <form>
+                <div>
+                    <div class="profile-photo">
+                        <div class="sub-topic" id="st2">Profile Photo</div>
+
+                        <div class="photo-options">
+                            <label for="pic" class="update-btn">Update Photo</label>
+                            <input type="file" accept="image/.*" id="pic">
+                            <button class="delete-btn" onclick="deletePhoto()">Delete Photo</button>
+                        </div>
+                    </div>
+                    
+                    <div class="profilepic">
+                        <div class="card">
+                            <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edit">
+                    <div class="sub-topic">Account</div>
+                    <button class="edit-btn" id="edit-btn" onclick="editAcc(event)">Edit Details</button>
+                </div>
+                <div class="pass-details">
+                    <div class="input-box">
+                        <span class="details">Passenger ID</span>
+                        <input disabled type="text" class="passengerID" name="passengerID">
+                        <div class="id-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Passenger Name</span>
+                        <input disabled type="text" class="passengerName" value name="passengerName">
+                        <div class="name-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">NIC No</span>
+                        <input disabled type="text" class="NIC" value name="NIC">
+                        <div class="nic-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input disabled type="email" class="email" value name="email">
+                        <div class="email-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Age</span>
+                        <input disabled type="age" class="age" value name="age">
+                        <div class="age-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Owner Email</span>
+                        <input disabled type="ownerEmail" class="ownerEmail" value name="ownerEmail">
+                        <div class="ownerEmail-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <!-- <div class="input-box">
+                        <span class="details">Telephone</span>
+                        <input disabled type="number" class="Telephone" value name="Telephone">
+                        <div class="contact-error-message" style="display: none; color: red;"></div>
+                    </div> -->
+                    <div class="save" style="display: none; margin: 25px 0 0 0;">
+                        <button class="submit-btn" onclick="updateProfile(event)">Save Changes</button>
+                    </div>
+                </div>
+                
+
+                <div class="passw">
+                    <div class="sub-topic">Password</div>
+                    <button class="edit-btn" onclick="changeOTP(event)">Change</button>
+                </div>
+            </form>
+        </div>
+
+        <script src="profile.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+      
+              function getPayload(token) {
+                return JSON.parse(atob(token.split(".")[1]));
+            }
+        
+            function checkCookie(cName) {
+                const name = cName + "=";
+                const cDecoded = decodeURIComponent(document.cookie); //to be careful
+                const cArr = cDecoded.split("; ");
+                let res;
+                cArr.forEach((val) => {
+                    if (val.indexOf(name) === 0) res = val.substring(name.length);
+                });
+                return res;
+            }
+        
+            console.log(checkCookie("jwt"))
+            const token = checkCookie("jwt");
+      
+            if(token == null){
+                console.log("No Cookie Found");
+                window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+              }
+        
+              const payload = getPayload(token);
+              console.log("Payload",payload);
+        
+              if (payload.role === "driver") {
+                console.log("Driver");
+              } 
+              else if (payload.role === "admin") {
+                console.log("Admin");
+                window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+              }
+              else if (payload.role === "owner") {
+                console.log("Owner");
+                window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+              }
+              else if (payload.role === "Passenger") {
+                console.log("Driver");
+                window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+              }
+              else {
+                console.log("No Cookie Found");
+                window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+                
+              }
+              });
+          </script>
+
+          <script>
+            function changepass(){
+                console.log("Change Password");
+            }
+
+            function changeOTP(e){
+                e.preventDefault();
+                console.log("Change OTP");
+                window.location.href = "enterotp.html";
+            }
+        </script>
+    </body>
+</html>
