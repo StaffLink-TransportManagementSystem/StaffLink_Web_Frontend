@@ -6,7 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="vehicleform.css">
-
+        <link rel="stylesheet" href="/main.css">
         <title>Owner delete</title>
     </head>
 
@@ -39,7 +39,9 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="Delete" onclick="deletefunction()">
+            <button class="delete-btn" onclick="deletefunction()">Delete</button>
+            <button class="cancel-btn" onclick="cancel()">Cancel</button>
+            <!-- <input type="submit" class="sub" value="Delete" onclick="deletefunction()"> -->
         </div>
         <script src="passengerEditForm.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -93,6 +95,11 @@
               
             }
             });
+
+
+            function cancel(){
+                window.location.href = "passengerLIst.html";
+            }
           </script>
     </body>
 </html>

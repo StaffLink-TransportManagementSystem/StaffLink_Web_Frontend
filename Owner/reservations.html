@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Owner Reservations</title>
@@ -166,7 +167,29 @@
       </div>     
     </section>
 
-    
+
+            
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Reservation ID</th>
+                    <th scope="col">Passenger Email</th>
+                    <th scope="col">Passenger Name</th>
+                    <th scope="col">Vehicle No</th>
+                    <th scope="col">Starting Date</th>
+                    <th scope="col">Ending Date</th>
+                    <th scope="col">Starting Location</th>
+                    <th scope="col">Ending Location</th>
+                </tr>
+            </thead>
+
+            <tbody class="tbody"></tbody>
+        </table>  
+            
+      </div>
+
+      
+    </section>
 
     <script>
       let sidebar = document.querySelector(".sidebar");
@@ -182,60 +205,76 @@
         dropdown1.classList.toggle("open-menu");
       }
 
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+
 
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
-      
-        document.addEventListener("DOMContentLoaded", function () {
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+
+      }
+    </script>
+    <script src="./reservationList.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+
+        function getPayload(token) {
+          return JSON.parse(atob(token.split(".")[1]));
+      }
   
-          function getPayload(token) {
-            return JSON.parse(atob(token.split(".")[1]));
-        }
+      function checkCookie(cName) {
+          const name = cName + "=";
+          const cDecoded = decodeURIComponent(document.cookie); //to be careful
+          const cArr = cDecoded.split("; ");
+          let res;
+          cArr.forEach((val) => {
+              if (val.indexOf(name) === 0) res = val.substring(name.length);
+          });
+          return res;
+      }
+  
+      console.log(checkCookie("jwt"))
+      const token = checkCookie("jwt");
+
+      if(token == null){
+        console.log("No Cookie Found");
+        window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+      }
+
+      const payload = getPayload(token);
+      console.log("Payload",payload);
+
+      if (payload.role === "owner") {
+        console.log("Owner");
+      } 
+      else if (payload.role === "admin") {
+        console.log("Admin");
+        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+      }
+      else if (payload.role === "passenger") {
+        console.log("Passenger");
+        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+      }
+      else if (payload.role === "driver") {
+        console.log("Driver");
+        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+      }
+      else {
+        console.log("No Cookie Found");
+        window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+        
+      }
+      });
+    </script>
     
-        function checkCookie(cName) {
-            const name = cName + "=";
-            const cDecoded = decodeURIComponent(document.cookie); //to be careful
-            const cArr = cDecoded.split("; ");
-            let res;
-            cArr.forEach((val) => {
-                if (val.indexOf(name) === 0) res = val.substring(name.length);
-            });
-            return res;
-        }
-    
-        console.log(checkCookie("jwt"))
-        const token = checkCookie("jwt");
-  
-        if(token == null){
-          console.log("No Cookie Found");
-          window.location.href = "http://127.0.0.1:5558/Owner/login.html";
-        }
-  
-        const payload = getPayload(token);
-        console.log("Payload",payload);
-  
-        if (payload.role === "owner") {
-          console.log("Owner");
-        } 
-        else if (payload.role === "admin") {
-          console.log("Admin");
-          window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
-        }
-        else if (payload.role === "passenger") {
-          console.log("Passenger");
-          window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
-        }
-        else if (payload.role === "driver") {
-          console.log("Driver");
-          window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
-        }
-        else {
-          console.log("No Cookie Found");
-          window.location.href = "http://127.0.0.1:5558/Owner/login.html";
-          
-        }
-        });
-      </script>
-</body>
+  </body>
 </html>

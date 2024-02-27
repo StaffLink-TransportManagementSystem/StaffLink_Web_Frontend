@@ -1,52 +1,79 @@
-function newPassword(e){
-    e.preventDefault();
-    // alert("Password changed successfully");
-    const newPass = document.getElementById("newpass").value;
-    const confirmPass = document.getElementById("confirmPass").value;
+function changePass(){
+    // var oldPass = document.getElementById("oldPass").value;
+    var newPass = document.getElementById("newPass").value;
+    var confirmPass = document.getElementById("confirmPass").value;
 
-    var newPassError = document.getElementById("newpass-error-message");
-    var confirmPassError = document.getElementById("confirm-error-message");
-
-    newPassError.style.display = "none";
-    confirmPassError.style.display = "none";
-
-    var checker = true;
-
-    if(!newPass){
-        newPassError.innerText = "Please enter a new password.";
-        newPassError.style.display = "block";
-        console.log("new password error");
-        checker = false;
-    }
-    if(newPass.length < 6){
-        newPassError.innerText = "Password must be at least 6 characters.";
-        newPassError.style.display = "block";
-        console.log("new password error");
-        checker = false;
-    }
-    if(!confirmPass){
-        confirmPassError.innerText = "Please confirm your password.";
-        confirmPassError.style.display = "block";
-        console.log("confirm password error");
-        checker = false;
-    }
-    if(newPass !== confirmPass){
-        confirmPassError.innerText = "Passwords do not match.";
-        confirmPassError.style.display = "block";
-        console.log("confirm password error");
-        checker = false;
-    }
-
-
-    if(checker===true){
+    console.log("New password:",newPass);
+    console.log("Confirm password:",confirmPass);
+    
+    if(newPass != confirmPass){
         Swal.fire({
-            title: "Password Changed Successfully!",
-            icon: "success"
-          }).then(()=>{
-            window.location.href = "profile.html";
+            icon: 'error',
+            title: 'New Password and Confirm Password does not match',
           })
-        // alert("Password changed successfully");
-        // window.location.href = "profile.html";
     }
+    else{
 
-}
+        function getPayload(token) {
+            return JSON.parse(atob(token.split(".")[1]));
+          }
+        
+          function checkCookie(cName) {
+            const name = cName + "=";
+            const cDecoded = decodeURIComponent(document.cookie); //to be careful
+            const cArr = cDecoded.split("; ");
+            let res;
+            cArr.forEach((val) => {
+              if (val.indexOf(name) === 0) res = val.substring(name.length);
+            });
+            return res;
+          }
+        
+          console.log(checkCookie("jwt"))
+        
+          const token = checkCookie("jwt");
+          const payload = getPayload(token);
+          console.log("Payload", payload);
+    
+        let email = payload.id;
+        console.log(email);
+
+        var data = {
+            newPass: newPass,
+            email: email
+        }
+
+
+        fetch('http://127.0.0.1:8080/try2_war_exploded/changeOwnerPassword',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },body: JSON.stringify(data),credentials: "include",})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message)
+                if(data.message === "Update successfully"){
+                  Swral.fire({
+                    icon: 'success',
+                    title: 'Password Updated Successfully',
+                  }).then(()=> {
+                    window.location.href = "profile.html";
+                  })
+                }
+                else{
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Something went wrong!',
+                  }).then(()=> {
+                    window.location.href = "profile.html";
+                  })
+                }
+                // window.location.href = "http://127.0.0.1:5501/Admin/drivers.html";
+                // document.getElementById("demo").innerHTML = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+      }
+        
+    }

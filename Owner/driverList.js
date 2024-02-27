@@ -3,17 +3,43 @@ document.addEventListener("DOMContentLoaded", function () {
     tbody = document.querySelector(".tbody");
     const searchInput = document.querySelector("[Driver-search]")
   
+    function getPayload(token) {
+      return JSON.parse(atob(token.split(".")[1]));
+    }
+  
+    function checkCookie(cName) {
+      const name = cName + "=";
+      const cDecoded = decodeURIComponent(document.cookie); //to be careful
+      const cArr = cDecoded.split("; ");
+      let res;
+      cArr.forEach((val) => {
+        if (val.indexOf(name) === 0) res = val.substring(name.length);
+      });
+      return res;
+    }
+  
+    console.log(checkCookie("jwt"))
+  
+    const token = checkCookie("jwt");
+    const payload = getPayload(token);
+    console.log("Payload", payload);
+  
+    const email = payload.id;
+
     let row ="";
     let users = []
+    let data = {
+      email: email
+    }
 
-    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllDriver',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getDriversByOwner?email='+email,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },credentials: "include",})
             .then(response => response.json())
             .then(data => {
-                data.list.forEach(driver => {
+                data.drivers.forEach(driver => {
                   console.log(driver);
                 row += `
                 <div class="driver">
@@ -23,18 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="topic driver-name">${driver.name}</div>
 
                     <div class="driver-spec">
-                      <p><b>Telephone No : ${driver.contact}</b></p>
                       <p><b>Email : ${driver.email}</b></p>
                       <p><b>NIC No : ${driver.NIC}</b></p>
+                      <p><b>Telephone No : ${driver.contact}</b></p>
                     </div>
 
-                    <button class="more-btn">MORE</button>
-                    <button class="edit-btn">EDIT</button>
-                    <button class="delete-btn">DELETE</button>
+                    <a href="#"><button class="more-btn">MORE</button></a>
+                    <a href="editDriver.html?email=`+ driver.email+`"><button class="edit-btn">EDIT</button></a>
+                    <a href="deleteDriver.html?email=`+ driver.email+`"><button class="delete-btn">DELETE</button></a>
                   </div>
-                </div>
-                
-              `
+                </div>`
                 });
 
                 users = data.list;

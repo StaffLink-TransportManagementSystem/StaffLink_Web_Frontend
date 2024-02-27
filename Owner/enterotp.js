@@ -1,3 +1,5 @@
+const e = require("express")
+
 const codes = document.querySelectorAll(".code")
 
 codes[0].focus()
@@ -15,35 +17,133 @@ codes.forEach((code, idx) => {
 })
 
 
-function veify(){
-    number01 = document.querySelector(".number01").value;
-    number02 = document.querySelector(".number02").value;
-    number03 = document.querySelector(".number03").value;
-    number04 = document.querySelector(".number04").value;
+function verifiyOTP() {
+    // let otp1 = document.getElementsByClassName("otp1")[0].value;
+    // console.log(otp1);
+    let otp = "";
+    codes.forEach(code => {
+        otp += code.value;
+    });
+    console.log("OTP",otp);
 
-    if(number01 == "" || number02 == "" || number03 == "" || number04 == ""){
-        Swal.fire({
-            title: "Please enter the OTP!",
-            icon: "warning"
-          }).then(()=>{
-            window.location.href = "profile.html";
-          })
-        //   alert("Please enter the OTP");
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+      }
+    
+      function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+      }
+    
+      console.log(checkCookie("jwt"))
+    
+      const token = checkCookie("jwt");
+      const payload = getPayload(token);
+      console.log("Payload", payload);
+
+    let email = payload.id;
+
+    let data = {
+        otp: otp,
+        email: email
     }
-    else{
-        if(number01 == "1" && number02 == "2" && number03 == "3" && number04 == "4"){
-            // alert("OTP verified");
-            window.location.href = "changepass.html";
-        }
-        else{
-            Swal.fire({
-                title: "Incorrect OTP!",
-                icon: "error"
-              }).then(()=>{
-                window.location.href = "enterotp.html";
-              })
-            // window.location.href = "http://127.0.0.1:5501/Owner/enterotp.html";
-        }
-        
+
+    fetch('http://127.0.0.1:8080/try2_war_exploded/verifyOTP',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include", body: JSON.stringify(data)})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                
+                if(data.message == "OTP verified"){
+                    Swal.fire({
+                        title: "OTP Verified!",
+                        icon: "success"
+                      }).then(()=>{
+                        location.href = "changePassword.html";
+                        })
+                }
+                else{
+                    Swal.fire({
+                        title: "OTP Verification Failed!",
+                        icon: "error"
+                      }).then(()=>{
+                        location.reload();
+                        })
+                }
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+}
+
+
+function sendOTPEmail() {
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+      }
+    
+      function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+      }
+    
+      console.log(checkCookie("jwt"))
+    
+      const token = checkCookie("jwt");
+      const payload = getPayload(token);
+      console.log("Payload", payload);
+
+    let email = payload.id;
+    console.log(email);
+
+    let data = {
+        email: email
     }
+
+    fetch('http://127.0.0.1:8080/try2_war_exploded/sendOTP',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include", body: JSON.stringify(data)})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                
+                if(data.message == "OTP sent"){
+                    Swal.fire({
+                        title: "OTP sent!",
+                        icon: "success"
+                      }).then(()=>{
+                        location.reload();
+                        })
+                }
+                else{
+                    Swal.fire({
+                        title: "OTP send Failed!",
+                        icon: "error"
+                      }).then(()=>{
+                        location.reload();
+                        })
+                }
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
 }
