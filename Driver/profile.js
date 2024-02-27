@@ -65,9 +65,11 @@ function editAcc(e) {
   console.log("editAcc");
   document.querySelector('.passengerName').disabled = false;
   document.querySelector('.NIC').disabled = false;
+  document.querySelector('.age').disabled = false;
   // document.querySelector('.Telephone').disabled = false;
   document.querySelector('.edit').style.display = "none";
   document.querySelector('.save').style.display = "block";
+
 
 }
 
@@ -101,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("email", email);
 
 
-  fetch("http://127.0.0.1:8080/try2_war_exploded/getPassenger?email=" + email, {
+  fetch("http://127.0.0.1:8080/try2_war_exploded/getDriver?email=" + email, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -109,13 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
   })
     .then(response => response.json())
     .then(data => {
-      console.log("Passenger data",data.passenger)
-      form.querySelector('.passengerID').value = data.passenger.id;
-      form.querySelector('.email').value = data.passenger.email;
-      form.querySelector('.passengerName').value = data.passenger.name;
-      form.querySelector('.NIC').value = data.passenger.NIC;
+      console.log("Passenger data",data.driver)
+      form.querySelector('.passengerID').value = data.driver.id;
+      form.querySelector('.email').value = data.driver.email;
+      form.querySelector('.passengerName').value = data.driver.name;
+      form.querySelector('.NIC').value = data.driver.NIC;
+      form.querySelector('.age').value = data.driver.age;
+      form.querySelector('.ownerEmail').value = data.driver.ownerEmail;
       // form.querySelector('.Telephone').value = data.owner.contact;
-
+      
 
 
     })

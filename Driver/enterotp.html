@@ -66,14 +66,14 @@
     
           if(token == null){
             console.log("No Cookie Found");
-            window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+            window.location.href = "http://127.0.0.1:5558/Driver/login.html";
           }
     
           const payload = getPayload(token);
           console.log("Payload",payload);
     
-          if (payload.role === "passenger") {
-            console.log("Passenger");
+          if (payload.role === "driver") {
+            console.log("Driver");
           } 
           else if (payload.role === "admin") {
             console.log("Admin");
@@ -81,15 +81,15 @@
           }
           else if (payload.role === "owner") {
             console.log("Owner");
-            window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+            window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
           }
-          else if (payload.role === "driver") {
+          else if (payload.role === "Passenger") {
             console.log("Driver");
-            window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+            window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
           }
           else {
             console.log("No Cookie Found");
-            window.location.href = "http://127.0.0.1:5558/passenger/login-register/index.html";
+            window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
             
           }
           });
