@@ -20,20 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="NIC">`+ passenger.NIC +`</td>
                     
                         <td class="Action">
-                            <a href="#moredetails"><button class="more-btn" onclick="togglePopup()">MORE</button></a>
+                            <button class="more-btn" onclick="togglePopup()">MORE</button>
                             <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit-btn">EDIT</button></a>
                             <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>
 
-                    <div class="popup" id="popup">
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <i class="fas fa-xmark" onclick="togglePopup()"></i>
-                        <h1>Title</h1>
-                        <p>ffffffffffffffffff</p>
-                    </div>
-                    </div>
+                    
+                    
             `
                 });
 

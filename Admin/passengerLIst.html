@@ -175,9 +175,49 @@
           <tbody class="tbody">                  
           </tbody>
         </table>
-      </div>
-      
+      </div>      
     </section>
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+
+        <p class="topic">Passenger Details</p>       
+        
+        <div class="detail-box">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+          </div>
+
+          <form action="">
+            <div class="input-box">
+              <span class="details">Passenger ID</span>
+              <input disabled type="text" class="passengerID" name="passengerID" placeholder="p0101">
+            </div>
+            <div class="input-box">
+                <span class="details">Passenger Name</span>
+                <input disabled type="text" class="passengerName" value name="passengerName" placeholder="Ravindu Hasanka">
+            </div>
+            <div class="input-box">
+                <span class="details">NIC No</span>
+                <input disabled type="text" class="NIC" value name="NIC" placeholder="123456789v">
+            </div>
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input disabled type="email" class="email" value name="email" placeholder="rh@gmail.com">
+            </div>
+            <div class="input-box">
+                <span class="details">Telephone</span>
+                <input disabled type="number" class="Telephone" value name="Telephone" placeholder="0123456789">
+            </div>
+            <div class="input-box">
+              <span class="details">Registered Date</span>
+              <input disabled type="date" class="regDate" value name="regDate">
+            </div>
+          </form>
+        </div>       
+      </div>
+    </div>
 
     <script>
       let sidebar = document.querySelector(".sidebar");
@@ -195,6 +235,12 @@
       function toggleMenu(){
         dropdown1.classList.toggle("open-menu");
       }
+
+
+      function togglePopup(){
+        document.getElementById("popup").classList.toggle("active");
+      }
+
 
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
