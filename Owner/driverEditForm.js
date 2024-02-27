@@ -83,10 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
-  function updatefunction() {
+  function updatedriver() {
 
     const form = document.querySelector("form"),
-     sub = document.querySelector(".sub");
+     sub = document.querySelector(".container");
   
     sub.addEventListener("click", () => {
     //   event.preventDefault(); // Prevent the default form submission
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Driver Update Failed!",
                     icon: "error"
                   }).then(()=>{
-                    window.location.href = "drivers.html";
+                    location.reload();
                   })
                 }
                 // document.getElementById("demo").innerHTML = data.message;

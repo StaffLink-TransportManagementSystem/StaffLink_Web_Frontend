@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         status:status
     }
 
-    fetch('http://127.0.0.1:8080/try2_war_exploded/requestEdit',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/RequestsApproval',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -122,7 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "requestList.html";
+                location.reload();
+                // window.location.href = "requestList.html";
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
@@ -149,7 +150,7 @@ function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPo
         status:status
     }
 
-    fetch('http://127.0.0.1:8080/try2_war_exploded/requestEdit',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/RequestsApproval',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -157,7 +158,7 @@ function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPo
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                window.location.href = "requestList.html";
+                location.reload();
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {

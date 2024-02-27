@@ -6,7 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="vehicleform.css">
-
+        <link rel="stylesheet" href="/main.css">
         <title>Absent Delete</title>
     </head>
 
@@ -62,7 +62,9 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="Remove" onclick="deletefunction()">
+            <button class="delete-btn" onclick="deletefunction()">Delete</button>
+            <button class="cancel-btn cancel" onclick="cancel()">Cancel</button>
+            <!-- <input type="submit" class="sub" value="Remove" onclick="deletefunction()"> -->
         </div>
         <script src="absentEditForm.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -117,6 +119,10 @@
               
             }
             });
+
+            function cancel(){
+                window.location.href = "absentList.html";
+              }
           </script>
     </body>
 </html>

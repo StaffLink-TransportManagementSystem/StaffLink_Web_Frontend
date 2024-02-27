@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
             'Content-Type': 'application/json',
             // 'Cookie': 'jwtToken=' + encodeURIComponent(document.cookie.match(/jwt=(.*?)(?:$|;)/)[1]),
-        }, body: JSON.stringify(data)
+        }, body: JSON.stringify(data), credentials: "include"
     })
         .then(response => response.json())
         .then(data => {
@@ -74,10 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
             <button class="more-btn">MORE</button>
-            <button class="edit-btn">EDIT</button>
-            <button class="delete-btn">DELETE</button>
-            <button class="cancel-btn">ABSENT LIST</button>
-            <button class="add-btn">REQUESTS</button>
+            <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="edit-btn" onclick="editVehicle("${vehical.vehicleNo}")">EDIT</button></a>
+            <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="delete-btn" onclick="deleteVehicle(${vehical.vehicleNo})">DELETE</button></a>
+            <a href="vehicleAbsents.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="cancel-btn" onclick="absantList(${vehical.vehicleNo})">ABSENT LIST</button></a>
+            <a href="vehicleRequests.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="add-btn" onclick="requestList(${vehical.vehicleNo})">REQUESTS</button></a>
           </div>
         </div>`
             });
@@ -108,3 +108,4 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
 });
+

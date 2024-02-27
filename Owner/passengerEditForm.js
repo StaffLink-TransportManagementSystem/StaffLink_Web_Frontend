@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updatefunction() {
 
     const form = document.querySelector("form"),
-     sub = document.querySelector(".sub");
+     sub = document.querySelector(".container");
   
     sub.addEventListener("click", () => {
     //   event.preventDefault(); // Prevent the default form submission
