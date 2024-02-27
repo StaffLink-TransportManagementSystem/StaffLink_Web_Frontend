@@ -182,6 +182,85 @@
       
     </section>
 
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+
+        <p class="topic">Vehicle Details</p>       
+        
+        <div class="detail-box">
+          <div class="slider">           
+            <div class="vehicle-images">
+              <input type="radio" name="slide" id="img-outside">
+              <input type="radio" name="slide" id="img-inside">
+
+              <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
+              <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+            </div>
+
+            <div class="dots">
+              <label for="img-outside"></label>
+              <label for="img-inside"></label>
+            </div>
+
+            <a href="map">Show on Google Map</a>
+          </div>
+
+          <form action="">
+            <div class="input-box">
+              <span class="details">Vehicle ID</span>
+              <input disabled type="text" class="vehicleID" name="vehicleID" placeholder="v0101">
+            </div>
+            <div class="input-box">
+                <span class="details">Vehicle No</span>
+                <input disabled type="text" class="vehicleNo" value name="vehicleNo" placeholder="NB 4523">
+            </div>
+            <div class="input-box">
+                <span class="details">Brand</span>
+                <input disabled type="text" class="Brand" value name="Brand" placeholder="Toyota">
+            </div>
+            <div class="input-box">
+              <span class="details">Type</span>
+              <input disabled type="text" class="type" value name="type" placeholder="Bus">
+            </div>
+            <div class="input-box">
+              <span class="details">Owner</span>
+              <input disabled type="text" class="owner" value name="owner" placeholder="Nimal Perera">
+            </div>
+            <div class="input-box">
+                <span class="details">Owner Email</span>
+                <input disabled type="text" class="ownerEmail" value name="ownerEmail" placeholder="owner@gmail.com">
+            </div>
+            <div class="input-box">
+              <span class="details">Driver</span>
+              <input disabled type="text" class="driver" value name="driver" placeholder="Sandun De Silva">
+            </div>
+            <div class="input-box">
+                <span class="details">Driver Email</span>
+                <input disabled type="text" class="drivererEmail" value name="drivererEmail" placeholder="sandun@gmail.com">
+            </div>
+            <div class="input-box">
+              <span class="details">Total Seats</span>
+              <input disabled type="number" class="totalSeats" value name="totalSeats" placeholder="12">
+            </div>
+            <div class="input-box">
+              <span class="details">Available Seats</span>
+              <input disabled type="number" class="availSeats" value name="availSeats" placeholder="3">
+            </div>
+            <div class="input-box">
+                <span class="details">Telephone</span>
+                <input disabled type="number" class="Telephone" value name="Telephone" placeholder="0123456789">
+            </div>
+            <div class="input-box">
+              <span class="details">Registered Date</span>
+              <input disabled type="date" class="regDate" value name="regDate">
+            </div>
+          </form>
+        </div>       
+      </div>
+    </div>
+
     <script>
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -198,6 +277,12 @@
       function toggleMenu(){
         dropdown1.classList.toggle("open-menu");
       }
+
+
+      function togglePopup(){
+        document.getElementById("popup").classList.toggle("active");
+      }
+
 
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
