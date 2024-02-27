@@ -86,5 +86,79 @@
 
 .popup.active .content{
     transition: all ease-in-out;
-    /* transform: translate(-50%, -50%)scale(1); */
+}
+
+
+
+
+/* vehicleList.html */
+.popup-content{
+    width: 70%;
+}
+
+.popup-content .slider{
+    position: relative;
+    width: 70%;
+    overflow: hidden;
+    margin-right: 40px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.slider a{
+    text-decoration: none;
+    text-align: center;
+    margin-top: 30px;
+    color: #129912;
+    font-weight: 500;
+}
+
+.popup-content form{
+    width: 80%;
+}
+
+.vehicle-images{
+    display: flex;
+    width: 100%;
+}
+
+.vehicle-images img{
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+}
+
+.vehicle-images input{
+    display: none;
+}
+
+.dots{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+  
+  .dots label{
+    border-radius: 50%;
+    border: solid #0A2558 2px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 5px 5px 0 5px;
+    width: 12px;
+    height: 12px;
+}
+
+.dots label:hover{
+    background: #0A2558;
+}
+  
+#img-outside:checked ~ .img-outside{
+    margin-left: 0;
+}
+  
+#img-inside:checked ~ .img-inside{
+    margin-left: -100%;
 }

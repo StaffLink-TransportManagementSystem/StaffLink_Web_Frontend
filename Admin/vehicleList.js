@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Email">`+ vehical.startingPoint +`</td>
                         <td class="Email">`+ vehical.endingPoint +`</td>
                         <td class="Action">
-                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                            <button class="more-btn" onclick="togglePopup()">MORE</button>
                             <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
                             <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
