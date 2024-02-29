@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         
                         <td class="Action">
-                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                            <button class="more-btn" onclick="togglePopup()">MORE</button>
                             <a href="editOwner.html?email=`+ owner.email +`" onclick="updatefunction(owner.email,owner.name,owner.NIC,owner.contact)"><button class="edit-btn">EDIT</button></a>
                             <a href="deleteOwner.html?email=`+ owner.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
