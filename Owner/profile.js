@@ -205,7 +205,7 @@ function updateProfile(e) {
       // profilePic: profilePic
     }
     // alert("Your profile has been updated successfully!");
-    fetch('http://127.0.0.1:8080/try2_war_exploded/passengerEdit', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/ownerEdit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
