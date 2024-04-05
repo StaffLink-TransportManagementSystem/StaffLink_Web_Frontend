@@ -87,4 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
   });
 
+
+function seeReservations(){
+    window.location.href = "./Reservations/index.html";
+}
+
+function seePayments(){
+    window.location.href = "./Payments/payments.html";
+}
   
