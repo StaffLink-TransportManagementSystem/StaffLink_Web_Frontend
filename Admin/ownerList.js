@@ -1,3 +1,5 @@
+var ownerList = [];
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
@@ -13,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
             },credentials: "include",})
             .then(response => response.json())
             .then(data => {
+                ownerList = data.list;
+                console.log("Owner data",data.list)
                 data.list.forEach(owner => {
                 row += `<tr  id="${owner.NIC}">
                         <td scope="email" data-label="P ID">`+ owner.email +`</td>
@@ -21,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         
                         <td class="Action">
-                            <button class="more-btn" onclick="togglePopup()">MORE</button>
+                            <button class="more-btn" onclick="togglePopup1(${owner.id})">MORE</button>
                             <a href="editOwner.html?email=`+ owner.email +`" onclick="updatefunction(owner.email,owner.name,owner.NIC,owner.contact)"><button class="edit-btn">EDIT</button></a>
                             <a href="deleteOwner.html?email=`+ owner.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
@@ -118,3 +122,66 @@ function AddVehicleOwner() {
 //         tableBody.appendChild(row);
 //     });
 // }
+
+
+function togglePopup1(id) {
+    // alert(id);
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+    var popupData = ""
+    for (var i = 0; i < ownerList.length; i++) {
+        if (ownerList[i].id == id) {
+            var owner = ownerList[i];
+        
+            popupData = `<div class="popup-content">
+            <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+    
+            <p class="topic">Vehicle Owner Details</p>       
+            
+            <div class="detail-box">
+              <div class="image">
+                <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+              </div>
+    
+              <form action="">
+                <div class="input-box">
+                  <span class="details">Owner ID</span>
+                  <input disabled type="text" class="passengerID" name="passengerID" placeholder="${owner.id}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Vehicle Owner Name</span>
+                    <input disabled type="text" class="ownerName" value name="ownerName" placeholder="${owner.name}">
+                </div>
+                <div class="input-box">
+                    <span class="details">NIC No</span>
+                    <input disabled type="text" class="NIC" value name="NIC" placeholder="${owner.NIC}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input disabled type="email" class="email" value name="email" placeholder="${owner.email}">
+                </div>
+                <div class="input-box">
+                  <span class="details">No of Vehicles</span>
+                  <input disabled type="number" class="vehicleCount" value name="vehicleCount" placeholder="${owner.vehicleCount}">
+                </div>
+                <div class="input-box">
+                  <span class="details">No of Drivers</span>
+                  <input disabled type="number" class="driverCount" value name="driverCount" placeholder="${owner.driverCount}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Telephone</span>
+                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${owner.contact}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Registered Date</span>
+                  <input disabled type="date" class="regDate" value name="regDate">
+                </div>
+              </form>
+            </div>       
+          </div>`
+
+          document.getElementById("popup").innerHTML = popupData;
+                    
+        }
+    }
+}
