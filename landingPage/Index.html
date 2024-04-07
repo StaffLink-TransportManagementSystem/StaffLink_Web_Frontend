@@ -194,13 +194,16 @@
           </div>
           <div class="onl-contact">
             <h2>Online Inquiry</h2>
-            <form action="/">
-              <input type="text" placeholder="Your Email Address" />
-              <input type="text" placeholder="Your Name" />
+            <form action="#">
+              <input class="email" type="text" placeholder="Your Email Address" required />
+              <input class="name" type="text" placeholder="Your Name" required/>
               <!-- <input type="text" placeholder="Topic" /> -->
-              <textarea class="message" rows="4" cols="50" placeholder="Message"></textarea>
+              <textarea class="message" rows="4" cols="50" placeholder="Message" required></textarea>
             </form>
-            <button class="btn btn_secondary">Send</button>
+            <div style="display: flex;">
+              <button class="btn btn_secondary">Send</button>
+              <div class="error-message"></div>
+            </div>
             <p class="para">
               By sumbitting this form, our team will contact you back to provide you with the information you need.
             </p>
@@ -219,7 +222,7 @@
       </section>
       
 
-    <script src="main.js"></script>
+    <script src="landingpage.js"></script>
 </body>
 
 </html>
