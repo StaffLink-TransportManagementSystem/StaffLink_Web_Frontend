@@ -106,13 +106,15 @@
             <div class="Find-transport">
               <div class="input-box">
                 <span class="details">Starting Location</span>
-                <input class="location" type="text" placeholder="Enter your Starting Location" required>
+                <input class="location" id="startingAddressInput" type="text" placeholder="Enter your Starting Location" required>
               </div>
 
               <div class="input-box">
                 <span class="details">End Location</span>
-                <input class="location" type="text" placeholder="Enter your End Location" required>
+                <input class="location" id="endingAddressInput" type="text" placeholder="Enter your End Location" required>
               </div>
+
+              <div id="map"></div>
 
               <div class="input-box">
                 <span class="details">Trip type</span>
@@ -266,5 +268,7 @@
       }
       });
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=KEY&libraries=places&callback=initMap" async defer></script>
+
   </body>
 </html>

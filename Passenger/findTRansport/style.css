@@ -132,3 +132,10 @@ form .Find-transport .input-box{
 .details-button:hover {
   background-color: #16449a;
 }
+
+
+#map {
+  height: 18rem;
+  width: 100%;
+  margin-bottom: 20px;
+}
