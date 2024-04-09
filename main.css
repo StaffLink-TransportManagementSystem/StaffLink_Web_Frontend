@@ -492,6 +492,69 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 
 
+.home-content .container{
+    margin: 50px auto;
+    width: 75%;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.container .topic{
+    margin-bottom: 30px;
+}
+
+.container .period{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .period input{
+    height: 35px;
+    width: 230px;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.container .period input:focus{
+    border-color: #0A2558;
+}
+
+.container .period #month, #year{
+    height: 35px;
+    width: 150px;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+#year{
+    margin-left: 0;
+    width: 85px;
+}
+
+.container .period #month:focus, #year:focus{
+    border-color: #0A2558;
+}
+
+
+
+
+
 
 
 
