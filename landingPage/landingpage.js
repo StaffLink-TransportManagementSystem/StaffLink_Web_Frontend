@@ -1,6 +1,6 @@
-const email = document.querySelector(".email"),
-      username = document.querySelector(".name"),
-      message = document.querySelector(".message");
+var email = document.querySelector(".email"),
+    username = document.querySelector(".name"),
+    message = document.querySelector(".message");
 
 
 function validate(){
@@ -10,17 +10,37 @@ function validate(){
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    var checker = true;
+    // var checker = true;
 
-    if(!emailPattern.test(email.value) || username.value === "" || email.value === "" || message.value === ""){
-        errorMessage.innerText = "Invalid email or unfilled fields.";
+    if(!emailPattern.test(email.value)){
+        errorMessage.innerText = "Invalid email or/and unfilled fields.";
         errorMessage.style.display = "block";
-        checker = false;
+        // checker = false;
+        return;
+    }
+    else if(username.value === ""){
+        errorMessage.innerText = "Invalid email or/and unfilled fields.";
+        errorMessage.style.display = "block";
+        // checker = false;
+        return;
+    }
+    else if(email.value === ""){
+        errorMessage.innerText = "Invalid email or/and unfilled fields.";
+        errorMessage.style.display = "block";
+        // checker = false;
+        return;
+    }
+    else if(message.value === ""){
+        errorMessage.innerText = "Invalid email or/and unfilled fields.";
+        errorMessage.style.display = "block";
+        // checker = false;
+        return;
     }
 
-    if(checker){
-        getMessage();
-    }
+    
+    getMessage();
+    clearForm();
+    errorMessage.style.display = "none";
 }
 
 
@@ -67,4 +87,10 @@ function getMessage(){
         .catch(error => {
             console.error('Error:', error);
         });
+}
+
+
+
+function clearForm() {
+    document.getElementById("myForm").reset();
 }
