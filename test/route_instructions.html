@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Directions with Turn-by-Turn Instructions</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function calculateDirections() {
+            var origin = document.getElementById('origin').value;
+            var destination = document.getElementById('destination').value;
+
+            var directionsService = new google.maps.DirectionsService();
+            var directionsRenderer = new google.maps.DirectionsRenderer();
+
+            var mapOptions = {
+                zoom: 7,
+                center: {lat: 41.85, lng: -87.65},  // Default center (e.g., Chicago)
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            directionsRenderer.setMap(map);
+
+            var request = {
+                origin: origin,
+                destination: destination,
+                travelMode: 'DRIVING' // You can specify other travel modes such as 'WALKING', 'BICYCLING', or 'TRANSIT'
+            };
+
+            directionsService.route(request, function(response, status) {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(response);
+                    var route = response.routes[0];
+                    var instructions = document.getElementById('instructions');
+                    instructions.innerHTML = '';
+                    for (var i = 0; i < route.legs.length; i++) {
+                        var steps = route.legs[i].steps;
+                        for (var j = 0; j < steps.length; j++) {
+                            instructions.innerHTML += (j + 1) + '. ' + steps[j].instructions + '<br>';
+                        }
+                    }
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <label for="origin">Origin:</label>
+    <input type="text" id="origin" placeholder="Origin">
+
+    <label for="destination">Destination:</label>
+    <input type="text" id="destination" placeholder="Destination">
+
+    <button onclick="calculateDirections()">Get Directions</button>
+
+    <div id="map" style="height: 400px;"></div>
+    <div id="instructions"></div>
+</body>
+</html>
