@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Distance</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function calculateDistance() {
+            var origin = document.getElementById('origin').value;
+            var destination = document.getElementById('destination').value;
+            
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+                {
+                    origins: [origin],
+                    destinations: [destination],
+                    travelMode: 'DRIVING', // You can specify other travel modes such as 'WALKING', 'BICYCLING', or 'TRANSIT'
+                    unitSystem: google.maps.UnitSystem.IMPERIAL, // or google.maps.UnitSystem.METRIC
+                    avoidHighways: false,
+                    avoidTolls: false
+                }, 
+                callback
+            );
+        }
+
+        function callback(response, status) {
+            if (status == 'OK') {
+                var origins = response.originAddresses;
+                var destinations = response.destinationAddresses;
+
+                for (var i = 0; i < origins.length; i++) {
+                    var results = response.rows[i].elements;
+                    for (var j = 0; j < results.length; j++) {
+                        var element = results[j];
+                        var distance = element.distance.text;
+                        var duration = element.duration.text;
+                        var from = origins[i];
+                        var to = destinations[j];
+
+                        document.getElementById('result').innerHTML = 'Distance from ' + from + ' to ' + to + ' is ' + distance + ' and it will take ' + duration + '.';
+                    }
+                }
+            } else {
+                window.alert('Error was: ' + status);
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="origin">Origin:</label>
+    <input type="text" id="origin" placeholder="Origin">
+
+    <label for="destination">Destination:</label>
+    <input type="text" id="destination" placeholder="Destination">
+
+    <button onclick="calculateDistance()">Get Distance</button>
+
+    <div id="result"></div>
+</body>
+</html>
