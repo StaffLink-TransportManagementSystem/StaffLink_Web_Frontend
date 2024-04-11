@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <div class="vehicle-desc">
             <div class="topic vehicle-card-title">${vehical.vehicleNo}</div>
-
+            
             <div class="vehicle-spec">
               <p><b>Vehicle Type :</b> ${vehical.type}</p>
               <p><b>Vehicle Brand :</b> ${vehical.vehicleBrand}</p>

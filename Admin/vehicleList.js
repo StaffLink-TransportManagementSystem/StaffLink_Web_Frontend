@@ -76,46 +76,187 @@ function togglePopup1(id) {
     var popupData = ""
     for (var i = 0; i < vehicleList.length; i++) {
         if (vehicleList[i].id == id) {
-            popupData = `<div class="popup-content">
-        <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
-
-        <p class="topic">Passenger Details</p>       
+            var vehical = vehicleList[i];
         
-        <div class="detail-box">
-          <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-          </div>
 
-          <form action="">
-            <div class="input-box">
-              <span class="details">Passenger ID</span>
-              <input disabled type="text" class="passengerID" name="passengerID" placeholder="p0101">
-            </div>
-            <div class="input-box">
-                <span class="details">Passenger Name</span>
-                <input disabled type="text" class="passengerName" value name="passengerName" placeholder="Ravindu Hasanka">
-            </div>
-            <div class="input-box">
-                <span class="details">NIC No</span>
-                <input disabled type="text" class="NIC" value name="NIC" placeholder="123456789v">
-            </div>
-            <div class="input-box">
-                <span class="details">Email</span>
-                <input disabled type="email" class="email" value name="email" placeholder="rh@gmail.com">
-            </div>
-            <div class="input-box">
-                <span class="details">Telephone</span>
-                <input disabled type="number" class="Telephone" value name="Telephone" placeholder="0123456789">
-            </div>
-            <div class="input-box">
-              <span class="details">Registered Date</span>
-              <input disabled type="date" class="regDate" value name="regDate">
-            </div>
-          </form>
-        </div>       
-      </div>`
+            var driverDetails = ""
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+vehical.driverEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include",})
+            .then(response => response.json())
+            .then(driver => {
+
+                console.log("Driver Details", driver);
+                fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email='+vehical.ownerEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include",})
+            .then(response => response.json())
+            .then(owner => {
+                driver = driver.driver;
+                owner = owner.owner;
+
+                popupData = `<div class="popup-content">
+            <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+    
+            <p class="topic">Vehicle Details</p>       
+            
+            <div class="detail-box">
+              <div class="slider">           
+                <div class="vehicle-images">
+                  <input type="radio" name="slide" id="img-outside">
+                  <input type="radio" name="slide" id="img-inside">
+    
+                  <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
+                  <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+                </div>
+    
+                <div class="dots">
+                  <label for="img-outside"></label>
+                  <label for="img-inside"></label>
+                </div>
+    
+                <a href="map">Show on Google Map</a>
+              </div>
+    
+              <form action="">
+                <div class="input-box">
+                  <span class="details">Vehicle ID</span>
+                  <input disabled type="text" class="vehicleID" name="vehicleID" placeholder="${vehical.id}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Vehicle No</span>
+                    <input disabled type="text" class="vehicleNo" value name="vehicleNo" placeholder="${vehical.vehicleNo}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Brand</span>
+                    <input disabled type="text" class="Brand" value name="Brand" placeholder="${vehical.vehicleBrand}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Type</span>
+                  <input disabled type="text" class="type" value name="type" placeholder="${vehical.type}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Owner</span>
+                  <input disabled type="text" class="owner" value name="owner" placeholder="${owner.name}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Owner Email</span>
+                    <input disabled type="text" class="ownerEmail" value name="ownerEmail" placeholder="${vehical.ownerEmail}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Driver</span>
+                  <input disabled type="text" class="driver" value name="driver" placeholder="${driver.name}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Email</span>
+                    <input disabled type="text" class="drivererEmail" value name="drivererEmail" placeholder="${vehical.driverEmail}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Telephone</span>
+                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${driver.contact}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Total Seats</span>
+                  <input disabled type="number" class="totalSeats" value name="totalSeats" placeholder="${vehical.seatsCount}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Available Seats</span>
+                  <input disabled type="number" class="availSeats" value name="availSeats" placeholder="${vehical.availableSeats}">
+                </div>  
+                <div class="input-box">
+                  <span class="details">Registered Date</span>
+                  <input disabled type="date" class="reg-date" value name="reg-date" placeholder="">
+                </div>  
+              </form>
+            </div>       
+          </div>`
 
           document.getElementById("popup").innerHTML = popupData;
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            console.log("Driver Details", driverDetails.driver);
+            // console.log("Driver Details", dr);
+
+
+            
+
+          
         }
+    }
+}
+
+
+function getDriverDetais(driverEmail) {
+    let driverDetails = ""
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+driverEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include",})
+            .then(response => response.json())
+            .then(data => {
+                driverDetails = data;
+                return data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    // return driverDetails;
+}
+
+// function getOwnerDetais(ownerEmail) {
+//     let ownerDetails = ""
+//     fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email='+ownerEmail,{
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },credentials: "include",})
+//             .then(response => response.json())
+//             .then(data => {
+//                 ownerDetails = data.owner;
+//                 console.log("Owner", ownerDetails);
+//                 // console.log("Owner", data.owner);
+//                 // return data.owner;
+//             })
+//             .catch(error => {
+//                 console.error('Error:', error);
+//             });
+//     return ownerDetails;
+//     // return ownerDetails;
+// }
+
+
+async function getOwnerDetais(ownerEmail) {
+    try {
+        const response = await fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email=' + ownerEmail, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+
+        const data = await response.json();
+        console.log('Owner', data);
+        return data.owner;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error; // Rethrow the error for the caller to handle
     }
 }

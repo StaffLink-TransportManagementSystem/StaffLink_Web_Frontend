@@ -43,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${reservation.name}</td>
                 <td>${reservation.email}</td>
                 <td>${reservation.NIC}</td>
-                <td>${reservation.contact}</td>
+                <td class="Action">
+                  <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                </td>
                 <tr>`
                 
         })

@@ -96,6 +96,10 @@ function togglePopup1(id) {
                     <span class="details">Email</span>
                     <input disabled type="email" class="email" value name="email" placeholder="${passengerList[i].email}">
                 </div>
+                <div class="input-box">
+                    <span class="details">Registered Date</span>
+                    <input disabled type="date" class="reg-date" value name="reg-date" placeholder="">
+                </div>
                 
               </form>
             </div>       
