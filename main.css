@@ -675,3 +675,8 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     color: #129912;
     border: 1px solid #129912;
 }
+
+.email-all{
+    float: right;
+    margin: 20px 0;
+}

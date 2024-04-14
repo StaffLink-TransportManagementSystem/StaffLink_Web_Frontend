@@ -111,6 +111,7 @@ function togglePopup1(id) {
 }
 
 
+
 //   function updatefunction(vehicleNo){
 //         window.location.href = "http://127.0.0.1:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
 //   }
