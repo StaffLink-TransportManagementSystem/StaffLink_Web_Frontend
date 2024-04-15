@@ -24,6 +24,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("email", email);
 
+    fetch("http://127.0.0.1:8080/try2_war_exploded/checkOnTrip?email=" + email, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }, credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            if (data.message === "On Trip") {
+                onTheTrip();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+
+
+        })
+
+
+
+
     var row = "";
 
     fetch("http://127.0.0.1:8080/try2_war_exploded/getPaymentCollection?email=" + email, {
@@ -80,49 +102,113 @@ function collectedMoney(id) {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, Money Collected!"
-      }).then((result) => {
+    }).then((result) => {
 
         if (result.isConfirmed) {
             fetch("http://127.0.0.1:8080/try2_war_exploded/updatePassengerPayment", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }, credentials: "include", body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Payment data", data.message)
-            if (data.message == "Payment Successful") {
-                Swal.fire({
-                    title: 'Payment Successful',
-                    text: 'Money Collected Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                }).then(function () {
-                    location.reload();
-                });
-            }
-            else {
-                Swal.fire({
-                    title: 'Payment Failed',
-                    text: 'Money Collection Failed',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                }).then(function () {
-                    location.reload();
-                });
-            }
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, credentials: "include", body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Payment data", data.message)
+                    if (data.message == "Payment Successful") {
+                        Swal.fire({
+                            title: 'Payment Successful',
+                            text: 'Money Collected Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        }).then(function () {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: 'Payment Failed',
+                            text: 'Money Collection Failed',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        }).then(function () {
+                            location.reload();
+                        });
+                    }
 
-        })
+                })
         }
-        
-          
-      });
 
-    
+
+    });
+
+
 }
 
 
-function seeMoneyCollection(){
+function seeMoneyCollection() {
     window.location.href = "money_collectin.html";
+}
+
+
+function startTrip() {
+    tripbutton = document.getElementById("startTrip");
+    tripbutton.innerHTML = "End Trip";
+    tripbutton.setAttribute("onclick", "endTrip()");
+    tripbutton.classList.change("add-btn");
+
+    fetch("http://127.0.0.1:8080/try2_war_exploded/createTrip", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }, credentials: "include", body: JSON.stringify({
+            email: email
+        })
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Trip data", data.message);
+            Swal.fire({
+                title: 'Trip Started',
+                text: 'Your trip has been started',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            }).then(function () {
+                //need to implement
+            });
+
+        })
+}
+
+function getCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            // Display alert with latitude and longitude
+            console.log("Latitude: " + position.coords.latitude + "\nLongitude: " + position.coords.longitude);
+
+            fetch("http://127.0.0.1:8080/try2_war_exploded/liveLocationUpdate", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, credentials: "include", body: JSON.stringify({
+                    email: email,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Location data", data.message);
+
+                })
+        });
+    } else {
+        Swal.fire({
+            title: 'Location Service Error',
+            text: 'Geolocation is not supported by this browser',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        }).then(function () {
+            location.reload();
+        });
+    }
 }
