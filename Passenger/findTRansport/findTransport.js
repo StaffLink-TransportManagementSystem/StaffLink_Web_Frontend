@@ -1,3 +1,5 @@
+var vehicles = [];
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
         sub = document.querySelector(".sub");
@@ -43,19 +45,38 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("type error");
             checker = false;
         }
-        if (!startingTime) {
-            startTimeError.innerText = "Please enter a starting time.";
-            startTimeError.style.display = "block";
-            console.log("starting time error");
-            checker = false;
-        }
-        if (!EndingTime) {
-            offTimeError.innerText = "Please enter an off time.";
-            offTimeError.style.display = "block";
-            console.log("off time error");
-            checker = false;
-        }
 
+        if(type === "Morning"){
+            if (!startingTime) {
+                startTimeError.innerText = "Please enter a starting time.";
+                startTimeError.style.display = "block";
+                console.log("starting time error");
+                checker = false;
+            }
+        }
+        if(type === "Evening"){
+            if (!EndingTime) {
+                offTimeError.innerText = "Please enter an off time.";
+                offTimeError.style.display = "block";
+                console.log("off time error");
+                checker = false;
+            }
+        }
+        if(type === "Both"){
+            if (!startingTime) {
+                startTimeError.innerText = "Please enter a starting time.";
+                startTimeError.style.display = "block";
+                console.log("starting time error");
+                checker = false;
+            }
+            if (!EndingTime) {
+                offTimeError.innerText = "Please enter an off time.";
+                offTimeError.style.display = "block";
+                console.log("off time error");
+                checker = false;
+            }
+        }
+        
         // let row = "";
         const resultsContainer = document.getElementById("results");
         resultsContainer.innerHTML = "";
@@ -86,11 +107,49 @@ document.addEventListener("DOMContentLoaded", function () {
         // });
 
         if (checker) {
-            fetch('http://127.0.0.1:8080/try2_war_exploded/findTransport', {
+
+            vehicles = [];
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllRoutes', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
-                }, credentials: "include"
+                }, credentials: "include",
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    data.list.forEach(route => {
+                        console.log(route);
+                        var diff_distance = findDistance(route.routeNo, route.startingLatitude, route.startingLongitude, route.endingLatitude, route.endingLongitude);
+                        if (diff_distance < 10) {
+                            vehicles.push(route.vehicleNo);
+                        }
+                    });
+                    displayVehicles();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+
+            data = {
+                starting_latitude: starting_latitude,
+                starting_longitude: starting_longitude,
+                ending_latitude: ending_latitude,
+                ending_longitude: ending_longitude,
+                distance: distance_in_km,
+                duration: duration_in_minutes,
+                type: type,
+                startingTime: startingTime,
+                EndingTime: EndingTime
+            }
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/findTransport', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, credentials: "include", body: JSON.stringify(data)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data.message);
@@ -259,9 +318,22 @@ function placeMarker(markerName) {
     if (marker1 && marker2) {
         showRoute();
 
-        console.log("marker1", marker1.getPosition().lat(), marker1.getPosition().lng());
-        console.log("marker2", marker2.getPosition().lat(), marker2.getPosition().lng());
-        console.log("distance1  ", google.maps.geometry.spherical.computeDistanceBetween(marker1.getPosition(), marker2.getPosition()));
+        // console.log("marker1", marker1.getPosition().lat(), marker1.getPosition().lng());
+        // console.log("marker2", marker2.getPosition().lat(), marker2.getPosition().lng());
+        // console.log("distance1  ", google.maps.geometry.spherical.computeDistanceBetween(marker1.getPosition(), marker2.getPosition()));
+
+        starting_latitude = marker1.getPosition().lat();
+        starting_longitude = marker1.getPosition().lng();
+
+        ending_latitude = marker2.getPosition().lat();
+        ending_longitude = marker2.getPosition().lng();
+
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(marker1.getPosition(), marker2.getPosition());
+
+        console.log("starting_latitude", starting_latitude, "starting_longitude", starting_longitude);
+        console.log("ending_latitude", ending_latitude, "ending_longitude", ending_longitude);
+        console.log("distance", distance);
+
         
         calculateDistance();
     }
@@ -321,6 +393,10 @@ function callback(response, status) {
                 var from = origins[i];
                 var to = destinations[j];
 
+                distance_in_km = distance;
+                duration_in_minutes = duration;
+
+
                 console.log('Distance from ' + from + ' to ' + to + ' is ' + distance + ' and it will take ' + duration + '.');
                 // alert('Distance from ' + from + ' to ' + to + ' is ' + distance + ' and it will take ' + duration + '.');
             }
@@ -329,3 +405,113 @@ function callback(response, status) {
         window.alert('Error was: ' + status);
     }
 }
+
+
+var starting_latitude = 0;
+var starting_longitude = 0;
+
+var ending_latitude = 0;
+var ending_longitude = 0;
+
+var distance_in_km = 0;
+var duration_in_minutes = 0;
+
+function search(){
+
+}
+
+
+function findDistance(routeNo, startingLatitude, startingLongitude, endingLatitude, endingLongitude) {
+    const startingLocation = { lat: startingLatitude, lng: startingLongitude }; // Example starting location (New York City)
+            const endingLocation = { lat: endingLatitude, lng: endingLongitude }; // Example ending location (Los Angeles)
+            var waypoints = [];
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, credentials: "include",
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    data.list.forEach(waypoint => {
+                        console.log(waypoint);
+                        waypoints.push({ location: { lat: waypoint.latitude, lng: waypoint.longitude }, stopover: true });
+                    });
+                })
+
+            // const waypoints = [ // Example waypoints
+            //     { location: { lat: 41.8781, lng: -87.6298 }, stopover: true }, // Chicago
+            //     { location: { lat: 39.9526, lng: -75.1652 }, stopover: true }  // Philadelphia
+            // ];
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: startingLocation,
+            });
+
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+
+            var current_distance = 0;
+            var after_distance = 0;
+
+            // Define the request for directions
+            const request = {
+                origin: startingLocation,
+                destination: endingLocation,
+                waypoints: waypoints,
+                optimizeWaypoints: true, // Optimize the order of waypoints
+                travelMode: google.maps.TravelMode.DRIVING,
+            };
+
+            // Get the directions and display the route
+            directionsService.route(request, function(response, status) {
+                if (status === "OK") {
+                    directionsRenderer.setDirections(response);
+                    const route = response.routes[0];
+                    let totalDistance = 0;
+                    for (const leg of route.legs) {
+                        totalDistance += leg.distance.value; // Distance in meters
+                    }
+                    totalDistance /= 1000; // Convert meters to kilometers
+                    current_distance = totalDistance;
+                    document.getElementById("distance").innerText = "Total Distance: " + totalDistance.toFixed(2) + " km";
+                } else {
+                    window.alert("Directions request failed due to " + status);
+                }
+            });
+
+
+            waypoints.push({ location: { lat: startingLatitude, lng: startingLongitude }, stopover: true });
+            waypoints.push({ location: { lat: endingLatitude, lng: endingLongitude }, stopover: true });
+            
+            // Define the request for directions
+            const requestwithWaypoint = {
+                origin: startingLocation,
+                destination: endingLocation,
+                waypoints: waypoints,
+                optimizeWaypoints: true, // Optimize the order of waypoints
+                travelMode: google.maps.TravelMode.DRIVING,
+            };
+
+            // Get the directions and display the route
+            directionsService.route(requestwithWaypoint, function(response, status) {
+                if (status === "OK") {
+                    directionsRenderer.setDirections(response);
+                    const route = response.routes[0];
+                    let totalDistance = 0;
+                    for (const leg of route.legs) {
+                        totalDistance += leg.distance.value; // Distance in meters
+                    }
+                    totalDistance /= 1000; // Convert meters to kilometers
+                    after_distance = totalDistance;
+                    document.getElementById("distance").innerText = "Total Distance: " + totalDistance.toFixed(2) + " km";
+                } else {
+                    window.alert("Directions request failed due to " + status);
+                }
+            });
+
+            return after_distance - current_distance;
+        }
