@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
     var row = "";
 
     fetch("http://127.0.0.1:8080/try2_war_exploded/getPaymentCollection?email=" + email, {
@@ -211,4 +210,5 @@ function getCurrentLocation() {
             location.reload();
         });
     }
+
 }

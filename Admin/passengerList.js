@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 passengerList = data.list;
                 data.list.forEach(passenger => {
                 row += `<tr  id="${passenger.NIC}">
+                        <td scope="name" data-label="P ID">p01-`+ passenger.id +`</td>
                         <td scope="name" data-label="P ID">`+ passenger.name +`</td>
                         <td class="email">`+ passenger.email +`</td>
                         <td class="NIC">`+ passenger.NIC +`</td>
@@ -82,7 +83,7 @@ function togglePopup1(id) {
               <form action="">
                 <div class="input-box">
                   <span class="details">Passenger ID</span>
-                  <input disabled type="text" class="passengerID" name="passengerID" placeholder="${passengerList[i].id}">
+                  <input disabled type="text" class="passengerID" name="passengerID" placeholder="p01-${passengerList[i].id}">
                 </div>
                 <div class="input-box">
                     <span class="details">Passenger Name</span>
@@ -96,6 +97,10 @@ function togglePopup1(id) {
                     <span class="details">Email</span>
                     <input disabled type="email" class="email" value name="email" placeholder="${passengerList[i].email}">
                 </div>
+                <div class="input-box">
+                    <span class="details">Registered Date</span>
+                    <input disabled type="text" class="reg-date" value name="reg-date" placeholder="${passengerList[i].created_at}">
+                </div>
                 
               </form>
             </div>       
@@ -105,6 +110,7 @@ function togglePopup1(id) {
         }
     }
 }
+
 
 
 //   function updatefunction(vehicleNo){
