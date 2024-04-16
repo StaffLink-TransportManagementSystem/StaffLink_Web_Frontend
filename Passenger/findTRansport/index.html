@@ -107,37 +107,42 @@
               <div class="input-box">
                 <span class="details">Starting Location</span>
                 <input class="location" id="startingAddressInput" type="text" placeholder="Enter your Starting Location" required>
+                <div id="startLocation-error-message" style="display: none; color: red;"></div>
               </div>
 
               <div class="input-box">
                 <span class="details">End Location</span>
                 <input class="location" id="endingAddressInput" type="text" placeholder="Enter your End Location" required>
+                <div id="endLocation-error-message" style="display: none; color: red;"></div>
               </div>
 
               <div id="map"></div>
 
               <div class="input-box">
                 <span class="details">Trip type</span>
-                <select name="triptype" class="type">
+                <select name="triptype" class="type" id="type">
                   <option class="default" selected disabled value>Select the Trip type</option>
                   <option value="Morning">Morning</option>
                   <option value="Evening">Evening</option>
                   <option value="Both">Both</option>
                 </select>
+                <div id="type-error-message" style="display: none; color: red;"></div>
               </div>
 
               <div class="input-box starting-time hide-input">
                 <span class="details">Starting time</span>
-                <input class="time" type="time" required>
+                <input class="time" type="time" id="startTime">
+                <div id="startTime-error-message" style="display: none; color: red;"></div>
               </div>
 
               <div class="input-box ending-time hide-input">
                 <span class="details">Ending time</span>
-                <input class="time" type="time">
+                <input class="time" type="time" id="offTime">
+                <div id="offTime-error-message" style="display: none; color: red;"></div>
               </div>
             </div>
 
-            <button class="more-btn">Search</button>
+            <button class="more-btn" id="search-btn">Search</button>
           </form>
   
           <div id="results">
@@ -269,6 +274,7 @@
       });
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&libraries=places&callback=initMap" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   </body>
 </html>

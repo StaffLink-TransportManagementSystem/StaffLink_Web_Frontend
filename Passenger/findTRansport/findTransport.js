@@ -2,24 +2,26 @@ var vehicles = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
-        sub = document.querySelector(".sub");
+        // sub = document.querySelector(".sub");
+        sub = document.getElementById("search-btn");
+
 
     sub.addEventListener("click", () => {
-        console.log("form submitted");
+        console.log("search submitted ");
         // Get form elements
-        const startingLocation = form.querySelector('.startLocation').value;
-        const endingLocation = form.querySelector('.endLocation').value;
-        const type = form.querySelector('.type').value;
-        const startingTime = form.querySelector('.startTime').value;
-        const EndingTime = form.querySelector('.offTime').value;
+        // const startingLocation = form.querySelector('.startLocation').value;
+        // const endingLocation = form.querySelector('.endLocation').value;
+        var type = document.getElementById('type').value;
+        var startingTime = document.getElementById('startTime').value;
+        var EndingTime = document.getElementById('offTime').value;
 
         var checker = true;
 
-        var startLocationError = document.querySelector(".startLocation-error-message");
-        var endLocationError = document.querySelector(".endLocation-error-message");
-        var typeError = document.querySelector(".type-error-message");
-        var startTimeError = document.querySelector(".startTime-error-message");
-        var offTimeError = document.querySelector(".offTime-error-message");
+        var startLocationError = document.getElementById("startLocation-error-message");
+        var endLocationError = document.getElementById("endLocation-error-message");
+        var typeError = document.getElementById("type-error-message");
+        var startTimeError = document.getElementById("startTime-error-message");
+        var offTimeError = document.getElementById("offTime-error-message");
 
         startLocationError.style.display = "none";
         endLocationError.style.display = "none";
@@ -27,13 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
         startTimeError.style.display = "none";
         offTimeError.style.display = "none";
 
-        if (!startingLocation) {
+        if (!starting_latitude || !starting_longitude) {
             startLocationError.innerText = "Please enter a starting location.";
             startLocationError.style.display = "block";
             console.log("starting location error");
             checker = false;
         }
-        if (!endingLocation) {
+        if (!ending_latitude || !ending_longitude) {
             endLocationError.innerText = "Please enter an ending location.";
             endLocationError.style.display = "block";
             console.log("ending location error");
@@ -46,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             checker = false;
         }
 
-        if(type === "Morning"){
+        if (type === "Morning") {
             if (!startingTime) {
                 startTimeError.innerText = "Please enter a starting time.";
                 startTimeError.style.display = "block";
@@ -54,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 checker = false;
             }
         }
-        if(type === "Evening"){
+        if (type === "Evening") {
             if (!EndingTime) {
                 offTimeError.innerText = "Please enter an off time.";
                 offTimeError.style.display = "block";
@@ -62,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 checker = false;
             }
         }
-        if(type === "Both"){
+        if (type === "Both") {
             if (!startingTime) {
                 startTimeError.innerText = "Please enter a starting time.";
                 startTimeError.style.display = "block";
@@ -76,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 checker = false;
             }
         }
-        
+
         // let row = "";
         const resultsContainer = document.getElementById("results");
         resultsContainer.innerHTML = "";
@@ -118,15 +120,25 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.message);
-                    data.list.forEach(route => {
-                        console.log(route);
-                        var diff_distance = findDistance(route.routeNo, route.startingLatitude, route.startingLongitude, route.endingLatitude, route.endingLongitude);
-                        if (diff_distance < 10) {
-                            vehicles.push(route.vehicleNo);
-                        }
-                    });
-                    displayVehicles();
+                    if (data.size == 0) {
+                        Swal.fire({
+                            title: "No Vehicles Available!",
+                            icon: "error"
+                        })
+                    }
+                    else {
+
+                        console.log(data.list);
+                        data.list.forEach(route => {
+                            console.log("route", route);
+                            var diff_distance = findDistance(route.routeNo, route.startingLatitude, route.startingLongitude, route.endingLatitude, route.endingLongitude);
+                            if (diff_distance < 10) {
+                                vehicles.push(route.vehicleNo);
+                            }
+                        });
+                        console.log(vehicles);
+                        displayVehicles();
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -145,46 +157,46 @@ document.addEventListener("DOMContentLoaded", function () {
                 EndingTime: EndingTime
             }
 
-            fetch('http://127.0.0.1:8080/try2_war_exploded/findTransport', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }, credentials: "include", body: JSON.stringify(data)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data.message);
-                        data.list.forEach(vehical => {
-                            const resultDiv = document.createElement("div");
-                            resultDiv.classList.add("result-item");
-                            resultDiv.innerHTML = `<p>Transport Vehicle No: ${vehical.vehicleNo}</p>
-                                 <p>Transport Type: ${vehical.type}</p>
-                                 <p>Departure Time: ${vehical.startTime}</p>
-                                 <p>Arrival Time: ${vehical.offTime}</p>`;
+            // fetch('http://127.0.0.1:8080/try2_war_exploded/findTransport', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }, credentials: "include", body: JSON.stringify(data)
+            //         .then(response => response.json())
+            //         .then(data => {
+            //             console.log(data.message);
+            //             data.list.forEach(vehical => {
+            //                 const resultDiv = document.createElement("div");
+            //                 resultDiv.classList.add("result-item");
+            //                 resultDiv.innerHTML = `<p>Transport Vehicle No: ${vehical.vehicleNo}</p>
+            //                      <p>Transport Type: ${vehical.type}</p>
+            //                      <p>Departure Time: ${vehical.startTime}</p>
+            //                      <p>Arrival Time: ${vehical.offTime}</p>`;
 
-                            // Add request and details buttons
-                            const buttonsDiv = document.createElement("div");
-                            buttonsDiv.classList.add("result-buttons");
-                            const requestButton = document.createElement("button");
-                            requestButton.classList.add("request-button");
-                            requestButton.innerText = "Request";
-                            const detailsButton = document.createElement("button");
-                            detailsButton.classList.add("details-button");
-                            detailsButton.innerText = "More Details";
+            //                 // Add request and details buttons
+            //                 const buttonsDiv = document.createElement("div");
+            //                 buttonsDiv.classList.add("result-buttons");
+            //                 const requestButton = document.createElement("button");
+            //                 requestButton.classList.add("request-button");
+            //                 requestButton.innerText = "Request";
+            //                 const detailsButton = document.createElement("button");
+            //                 detailsButton.classList.add("details-button");
+            //                 detailsButton.innerText = "More Details";
 
-                            buttonsDiv.appendChild(requestButton);
-                            buttonsDiv.appendChild(detailsButton);
-                            resultDiv.appendChild(buttonsDiv);
+            //                 buttonsDiv.appendChild(requestButton);
+            //                 buttonsDiv.appendChild(detailsButton);
+            //                 resultDiv.appendChild(buttonsDiv);
 
-                            resultsContainer.appendChild(resultDiv);
-                            // row += ``;
-                        });
-                        document.querySelector(".table").innerHTML = row;
-                    })
+            //                 resultsContainer.appendChild(resultDiv);
+            //                 // row += ``;
+            //             });
+            //             document.querySelector(".table").innerHTML = row;
+            //         })
 
-            })
-                .catch(error => {
-                    console.log(error);
-                })
+            // })
+            //     .catch(error => {
+            //         console.log(error);
+            //     })
         }
     })
 })
@@ -334,7 +346,7 @@ function placeMarker(markerName) {
         console.log("ending_latitude", ending_latitude, "ending_longitude", ending_longitude);
         console.log("distance", distance);
 
-        
+
         calculateDistance();
     }
 }
@@ -364,7 +376,7 @@ function showRoute() {
 function calculateDistance() {
     var origin = document.getElementById('startingAddressInput').value;
     var destination = document.getElementById('endingAddressInput').value;
-    
+
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
         {
@@ -374,7 +386,7 @@ function calculateDistance() {
             unitSystem: google.maps.UnitSystem.METRIC, // Change to METRIC for kilometers
             avoidHighways: false,
             avoidTolls: false
-        }, 
+        },
         callback
     );
 }
@@ -416,102 +428,129 @@ var ending_longitude = 0;
 var distance_in_km = 0;
 var duration_in_minutes = 0;
 
-function search(){
+function search() {
 
 }
 
 
 function findDistance(routeNo, startingLatitude, startingLongitude, endingLatitude, endingLongitude) {
     const startingLocation = { lat: startingLatitude, lng: startingLongitude }; // Example starting location (New York City)
-            const endingLocation = { lat: endingLatitude, lng: endingLongitude }; // Example ending location (Los Angeles)
-            var waypoints = [];
+    const endingLocation = { lat: endingLatitude, lng: endingLongitude }; // Example ending location (Los Angeles)
+    var waypoints = [];
 
-            fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }, credentials: "include",
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.message);
-                    data.list.forEach(waypoint => {
-                        console.log(waypoint);
-                        waypoints.push({ location: { lat: waypoint.latitude, lng: waypoint.longitude }, stopover: true });
-                    });
-                })
-
-            // const waypoints = [ // Example waypoints
-            //     { location: { lat: 41.8781, lng: -87.6298 }, stopover: true }, // Chicago
-            //     { location: { lat: 39.9526, lng: -75.1652 }, stopover: true }  // Philadelphia
-            // ];
-
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: startingLocation,
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }, credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            data.list.forEach(waypoint => {
+                console.log(waypoint);
+                waypoints.push({ location: { lat: waypoint.latitude, lng: waypoint.longitude }, stopover: true });
             });
+        })
 
-            const directionsService = new google.maps.DirectionsService();
-            const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+    // const waypoints = [ // Example waypoints
+    //     { location: { lat: 41.8781, lng: -87.6298 }, stopover: true }, // Chicago
+    //     { location: { lat: 39.9526, lng: -75.1652 }, stopover: true }  // Philadelphia
+    // ];
 
-            var current_distance = 0;
-            var after_distance = 0;
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: startingLocation,
+    });
 
-            // Define the request for directions
-            const request = {
-                origin: startingLocation,
-                destination: endingLocation,
-                waypoints: waypoints,
-                optimizeWaypoints: true, // Optimize the order of waypoints
-                travelMode: google.maps.TravelMode.DRIVING,
-            };
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
-            // Get the directions and display the route
-            directionsService.route(request, function(response, status) {
-                if (status === "OK") {
-                    directionsRenderer.setDirections(response);
-                    const route = response.routes[0];
-                    let totalDistance = 0;
-                    for (const leg of route.legs) {
-                        totalDistance += leg.distance.value; // Distance in meters
-                    }
-                    totalDistance /= 1000; // Convert meters to kilometers
-                    current_distance = totalDistance;
-                    document.getElementById("distance").innerText = "Total Distance: " + totalDistance.toFixed(2) + " km";
-                } else {
-                    window.alert("Directions request failed due to " + status);
-                }
-            });
+    var current_distance = 0;
+    var after_distance = 0;
 
+    // Define the request for directions
+    const request = {
+        origin: startingLocation,
+        destination: endingLocation,
+        waypoints: waypoints,
+        optimizeWaypoints: true, // Optimize the order of waypoints
+        travelMode: google.maps.TravelMode.DRIVING,
+    };
 
-            waypoints.push({ location: { lat: startingLatitude, lng: startingLongitude }, stopover: true });
-            waypoints.push({ location: { lat: endingLatitude, lng: endingLongitude }, stopover: true });
-            
-            // Define the request for directions
-            const requestwithWaypoint = {
-                origin: startingLocation,
-                destination: endingLocation,
-                waypoints: waypoints,
-                optimizeWaypoints: true, // Optimize the order of waypoints
-                travelMode: google.maps.TravelMode.DRIVING,
-            };
-
-            // Get the directions and display the route
-            directionsService.route(requestwithWaypoint, function(response, status) {
-                if (status === "OK") {
-                    directionsRenderer.setDirections(response);
-                    const route = response.routes[0];
-                    let totalDistance = 0;
-                    for (const leg of route.legs) {
-                        totalDistance += leg.distance.value; // Distance in meters
-                    }
-                    totalDistance /= 1000; // Convert meters to kilometers
-                    after_distance = totalDistance;
-                    document.getElementById("distance").innerText = "Total Distance: " + totalDistance.toFixed(2) + " km";
-                } else {
-                    window.alert("Directions request failed due to " + status);
-                }
-            });
-
-            return after_distance - current_distance;
+    // Get the directions and display the route
+    directionsService.route(request, function (response, status) {
+        if (status === "OK") {
+            directionsRenderer.setDirections(response);
+            const route = response.routes[0];
+            let totalDistance = 0;
+            for (const leg of route.legs) {
+                totalDistance += leg.distance.value; // Distance in meters
+            }
+            totalDistance /= 1000; // Convert meters to kilometers
+            current_distance = totalDistance;
+            document.getElementById("distance").innerText = "Total Distance: " + totalDistance.toFixed(2) + " km";
+        } else {
+            window.alert("Directions request failed due to " + status);
         }
+    });
+
+
+    waypoints.push({ location: { lat: startingLatitude, lng: startingLongitude }, stopover: true });
+    waypoints.push({ location: { lat: endingLatitude, lng: endingLongitude }, stopover: true });
+
+    // Define the request for directions
+    const requestwithWaypoint = {
+        origin: startingLocation,
+        destination: endingLocation,
+        waypoints: waypoints,
+        optimizeWaypoints: true, // Optimize the order of waypoints
+        travelMode: google.maps.TravelMode.DRIVING,
+    };
+
+    // Get the directions and display the route
+    directionsService.route(requestwithWaypoint, function (response, status) {
+        if (status === "OK") {
+            directionsRenderer.setDirections(response);
+            const route = response.routes[0];
+            let totalDistance = 0;
+            for (const leg of route.legs) {
+                totalDistance += leg.distance.value; // Distance in meters
+            }
+            totalDistance /= 1000; // Convert meters to kilometers
+            after_distance = totalDistance;
+            document.getElementById("distance").innerText = "Total Distance: " + totalDistance.toFixed(2) + " km";
+        } else {
+            window.alert("Directions request failed due to " + status);
+        }
+    });
+
+    return after_distance - current_distance;
+}
+
+function displayVehicles(){
+    var row = "";
+    vehicles.forEach(vehicle => {
+        fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + vehicle, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }, credentials: "include",
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.vehicle);
+                vehicleObject = data.vehicle;
+                row += `<tr>
+                    <td>${vehicleObject.vehicleNo}</td>
+                    <td>${vehicleObject.type}</td>
+                    <td>${vehicleObject.startTime}</td>
+                    <td>${vehicleObject.offTime}</td>
+                    <td><button class="request-button" onclick="requestVehicle(${vehicleObject.vehicleNo})">Request</button></td>
+                </tr>`;
+            })
+        
+    });
+
+    document.querySelector(".table").innerHTML = row;
+}
