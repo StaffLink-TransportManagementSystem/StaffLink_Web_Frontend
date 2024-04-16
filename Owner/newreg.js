@@ -8,6 +8,7 @@ const chart1 = new Chart(ctx, {
                 label: 'Passengers',
                 data: [20, 25, 27, 24, 32],
                 backgroundColor: '#003566',
+                barThickness: 50
             }
         ]
       },
