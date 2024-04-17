@@ -20,9 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.list.forEach(inquiry => {
                 row += `<tr  id="${inquiry.inquiry_id}">
                         <td scope="inquiry_id">`+ inquiry.inquiry_id +`</td>
-                        <td class="email">`+ inquiry.email +`</td>
+                        <td class="email" id="email">`+ inquiry.email +`</td>
                         <td scope="name">`+ inquiry.name +`</td>
                         <td class="message">`+ inquiry.message +`</td>
+                        <td class="message">
+                            <button class="submit-btn" id="openPopupButton" onclick="togglePopupEmail('${inquiry.email}')">SEND EMAIL</button>
+                        </td>
                     </tr>`
                 });
 
@@ -48,3 +51,35 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     
   });
+
+
+
+
+
+
+  function togglePopupEmail(email) {
+    // alert(email);
+    const popup = document.getElementById("email-popup");
+    popup.classList.toggle("active");
+    var popupData = ""
+    for (var i = 0; i < inquiryList.length; i++) {
+        if (inquiryList[i].email == email) {
+            console.log(inquiryList[i]);
+            popupData = `<div class="popup-content">
+            <i class="fas fa-xmark" id="close" onclick="togglePopupEmail()"></i>
+    
+            <p class="topic">Send a Reply Email</p>       
+            
+            <div class="detail-box">
+              <form action="" id="email-form">
+                <label for=".message">Message</label>
+                <textarea class="message" id="message" rows="6" cols="30" required></textarea>
+              </form>
+              <button class="submit-btn" onclick="sendMail('${inquiryList[i].email}')">Send</button>
+            </div>       
+          </div>`
+
+          document.getElementById("email-popup").innerHTML = popupData;
+        }
+    }
+}

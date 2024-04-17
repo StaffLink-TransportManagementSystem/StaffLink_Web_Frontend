@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "NEto35f42CWxV-tKk",
+          });
+      })();
+    </script>
   </head>
 
   <body>
@@ -166,9 +177,10 @@
           <thead>
               <tr>
                 <th scope="col">Inquiry ID</th>
-                <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Name</th>
                 <th scope="col">Message</th>
+                <th scope="col">Send Reply</th>
               </tr>
           </thead>
           
@@ -178,46 +190,21 @@
       </div>      
     </section>
 
-    <!-- <div class="popup" id="popup">
+    <div class="email popup" id="email-popup">
       <div class="popup-content">
-        <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+        <i class="fas fa-xmark" id="close" onclick="togglePopupEmail()"></i>
 
-        <p class="topic">Passenger Details</p>       
+        <p class="topic">Send a Reply Email</p>       
         
         <div class="detail-box">
-          <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-          </div>
-
-          <form action="">
-            <div class="input-box">
-              <span class="details">Passenger ID</span>
-              <input disabled type="text" class="passengerID" name="passengerID" placeholder="p0101">
-            </div>
-            <div class="input-box">
-                <span class="details">Passenger Name</span>
-                <input disabled type="text" class="passengerName" value name="passengerName" placeholder="Ravindu Hasanka">
-            </div>
-            <div class="input-box">
-                <span class="details">NIC No</span>
-                <input disabled type="text" class="NIC" value name="NIC" placeholder="123456789v">
-            </div>
-            <div class="input-box">
-                <span class="details">Email</span>
-                <input disabled type="email" class="email" value name="email" placeholder="rh@gmail.com">
-            </div>
-            <div class="input-box">
-                <span class="details">Telephone</span>
-                <input disabled type="number" class="Telephone" value name="Telephone" placeholder="0123456789">
-            </div>
-            <div class="input-box">
-              <span class="details">Registered Date</span>
-              <input disabled type="date" class="regDate" value name="regDate">
-            </div>
+          <form action="" id="email-form">
+            <label for=".message">Message</label>
+            <textarea class="message" id="message" rows="6" cols="30" required></textarea>
           </form>
+          <button class="submit-btn" onclick="sendMail()">Send</button>
         </div>       
       </div>
-    </div> -->
+    </div>
 
     <script>
       let sidebar = document.querySelector(".sidebar");
@@ -244,6 +231,32 @@
 
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
+
+
+      
+      function sendMail(email){
+        // alert(email);
+        let message = document.getElementById("message").value;
+        let params;
+
+        params = {
+        reply_to : email, 
+        message : message
+        };
+
+        emailjs.send("service_5jxpdi2", "template_trdgsvu", params)
+          .then(function(response) {
+              alert("Email sent! Status: " + response.status);
+          })
+          .catch(function(error) {
+            console.error("Error sending email:", error);
+          });
+
+          var popup = document.getElementById("email-popup");
+          popup.classList.toggle("active");
+
+          document.getElementById("email-form").reset();
       }
     </script>
 

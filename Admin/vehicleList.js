@@ -164,13 +164,9 @@ function togglePopup1(id) {
                   <input disabled type="number" class="totalSeats" value name="totalSeats" placeholder="${vehical.seatsCount}">
                 </div>
                 <div class="input-box">
-                  <span class="details">Available Seats</span>
-                  <input disabled type="number" class="availSeats" value name="availSeats" placeholder="${vehical.availableSeats}">
-                </div>  
-                <div class="input-box">
-                  <span class="details">Registered Date</span>
-                  <input disabled type="date" class="reg-date" value name="reg-date" placeholder="">
-                </div>  
+                    <span class="details">Registered Date</span>
+                    <input disabled type="text" class="reg-date" value name="reg-date" placeholder="${vehical.created_at}">
+                </div> 
               </form>
             </div>       
           </div>`
@@ -260,3 +256,10 @@ async function getOwnerDetais(ownerEmail) {
         throw error; // Rethrow the error for the caller to handle
     }
 }
+
+
+
+{/* <div class="input-box">
+    <span class="details">Available Seats</span>
+    <input disabled type="number" class="availSeats" value name="availSeats" placeholder="${vehical.availableSeats}">
+</div>   */}
