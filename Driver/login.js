@@ -106,9 +106,8 @@ const container = document.querySelector(".container"),
             .then(data => {
                 console.log("message:"+data.message)
                 console.log(data.jwt)
-                if(data.message == "Login successful"){
+                if(data.message == "Login successfully"){
                     window.location.href = "dashboard.html";
-                    
                 }
                 else{
                     Swal.fire({
