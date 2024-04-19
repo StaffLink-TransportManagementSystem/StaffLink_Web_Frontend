@@ -167,6 +167,7 @@ function togglePopup1(id) {
                     <span class="details">Registered Date</span>
                     <input disabled type="text" class="reg-date" value name="reg-date" placeholder="${vehical.created_at}">
                 </div> 
+
               </form>
             </div>       
           </div>`
