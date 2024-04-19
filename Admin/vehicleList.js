@@ -1,22 +1,28 @@
+var vehicleList = ""
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
-    let email = "rhatu2000@gmail.com";
+    const searchInput = document.querySelector("[vehicleList]")
+
+
+    // let email = "rhatu2000@gmail.com";
   
     let row ="";
+    let users = []
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllVehicle',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllVehicle',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },credentials: "include",})
             .then(response => response.json())
             .then(data => {
+                console.log(data)
+                vehicleList = data.list;
                 data.list.forEach(vehical => {
-                row += `<tr>
+                row += `<tr  id="${vehical.vehicleNo}">
                         <td scope="owner" data-label="P ID">`+ vehical.ownerEmail +`</td>
                         <td class="Name">`+ vehical.vehicleNo +`</td>
-                        <td class="Address">`+ vehical.regNo +`</td>
                         <td class="NIC">`+ vehical.vehicleBrand +`</td>
                         <td class="Telephone">`+ vehical.type +`</td>
                         <td class="Email">`+ vehical.driverEmail +`</td>
@@ -25,18 +31,35 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Email">`+ vehical.startingPoint +`</td>
                         <td class="Email">`+ vehical.endingPoint +`</td>
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit">EDIT</button></a>
-                            <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
+                            <button class="more-btn" onclick="togglePopup1(${vehical.id})">MORE</button>
+                            <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
+                            <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });
+                users = data.list;
 
                 document.querySelector(".tbody").innerHTML = row;   
 
             })
             .catch(error => {
                 console.error('Error:', error);
+            });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                users.forEach(data => {
+                    const isVisible =
+                        data.ownerEmail.toLowerCase().includes(value) ||
+                        data.vehicleNo.toLowerCase().includes(value) ||
+                        data.regNo.toLowerCase().includes(value) ||
+                        data.vehicleBrand.toLowerCase().includes(value) ||
+                        data.type.toLowerCase().includes(value) ||
+                        data.startingPoint.toLowerCase().includes(value) ||
+                        data.endingPoint.toLowerCase().includes(value)
+   
+                        document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+                });
             });
     
   });
@@ -46,66 +69,198 @@ function AddVehicle() {
     window.location.href = "./addVehical.html";
 }
 
-//   function updatefunction(vehicleNo){
-//         window.location.href = "http://localhost:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
-//   }
-  
+function togglePopup1(id) {
+    // alert(id);
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+    var popupData = ""
+    for (var i = 0; i < vehicleList.length; i++) {
+        if (vehicleList[i].id == id) {
+            var vehical = vehicleList[i];
+        
+
+            var driverDetails = ""
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+vehical.driverEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include",})
+            .then(response => response.json())
+            .then(driver => {
+
+                console.log("Driver Details", driver);
+                fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email='+vehical.ownerEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include",})
+            .then(response => response.json())
+            .then(owner => {
+                driver = driver.driver;
+                owner = owner.owner;
+
+                popupData = `<div class="popup-content">
+            <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+    
+            <p class="topic">Vehicle Details</p>       
+            
+            <div class="detail-box">
+              <div class="slider">           
+                <div class="vehicle-images">
+                  <input type="radio" name="slide" id="img-outside">
+                  <input type="radio" name="slide" id="img-inside">
+    
+                  <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
+                  <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+                </div>
+    
+                <div class="dots">
+                  <label for="img-outside"></label>
+                  <label for="img-inside"></label>
+                </div>
+    
+                <a href="map">Show on Google Map</a>
+              </div>
+    
+              <form action="">
+                <div class="input-box">
+                  <span class="details">Vehicle ID</span>
+                  <input disabled type="text" class="vehicleID" name="vehicleID" placeholder="${vehical.id}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Vehicle No</span>
+                    <input disabled type="text" class="vehicleNo" value name="vehicleNo" placeholder="${vehical.vehicleNo}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Brand</span>
+                    <input disabled type="text" class="Brand" value name="Brand" placeholder="${vehical.vehicleBrand}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Type</span>
+                  <input disabled type="text" class="type" value name="type" placeholder="${vehical.type}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Owner</span>
+                  <input disabled type="text" class="owner" value name="owner" placeholder="${owner.name}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Owner Email</span>
+                    <input disabled type="text" class="ownerEmail" value name="ownerEmail" placeholder="${vehical.ownerEmail}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Driver</span>
+                  <input disabled type="text" class="driver" value name="driver" placeholder="${driver.name}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Email</span>
+                    <input disabled type="text" class="drivererEmail" value name="drivererEmail" placeholder="${vehical.driverEmail}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Telephone</span>
+                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${driver.contact}">
+                </div>
+                <div class="input-box">
+                  <span class="details">Total Seats</span>
+                  <input disabled type="number" class="totalSeats" value name="totalSeats" placeholder="${vehical.seatsCount}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Registered Date</span>
+                    <input disabled type="text" class="reg-date" value name="reg-date" placeholder="${vehical.created_at}">
+                </div> 
+
+              </form>
+            </div>       
+          </div>`
+
+          document.getElementById("popup").innerHTML = popupData;
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            console.log("Driver Details", driverDetails.driver);
+            // console.log("Driver Details", dr);
 
 
+            
+
+          
+        }
+    }
+}
 
 
+function getDriverDetais(driverEmail) {
+    let driverDetails = ""
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+driverEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },credentials: "include",})
+            .then(response => response.json())
+            .then(data => {
+                driverDetails = data;
+                return data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    // return driverDetails;
+}
 
-
-
-// function fetchAllData() {
-//     fetch('http://localhost:15000/ecoswapperbackend_war/admin/centers', {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//     })
-//         .then(response => {
-//             if (response.ok) {
-//                 return response.json();
-//             } else {
-//                 console.error('Error:', response.status);
-//             }
-//         })
-//         .then(data => {
-//             displayDataAsTable(data);
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
+// function getOwnerDetais(ownerEmail) {
+//     let ownerDetails = ""
+//     fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email='+ownerEmail,{
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },credentials: "include",})
+//             .then(response => response.json())
+//             .then(data => {
+//                 ownerDetails = data.owner;
+//                 console.log("Owner", ownerDetails);
+//                 // console.log("Owner", data.owner);
+//                 // return data.owner;
+//             })
+//             .catch(error => {
+//                 console.error('Error:', error);
+//             });
+//     return ownerDetails;
+//     // return ownerDetails;
 // }
 
 
-// fetchAllData();
+async function getOwnerDetais(ownerEmail) {
+    try {
+        const response = await fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email=' + ownerEmail, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
 
-// function displayDataAsTable(data) {
-//     const tableBody = document.querySelector("#dataTable tbody");
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
 
-//     data.forEach(center => {
-//         const row = document.createElement("tr");
+        const data = await response.json();
+        console.log('Owner', data);
+        return data.owner;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error; // Rethrow the error for the caller to handle
+    }
+}
 
-//         row.innerHTML = `
-//             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-//             <td>${center.center_id}</td>
-//             <td>${center.business_name}</td>
-//             <td>${center.business_reg_no}</td>
-//             <td>${center.business_type}</td>
-//             <td>${center.center_bio}</td>
-//             <td>${center.center_location_link}</td>
-//             <td>
-//                 <span class="icon-container">
-//                     <i class="fas fa-pencil-alt" style="color: #ff0202"></i>
-//                 </span>
-//                 <span class="icon-container" style="margin-left: 10px;"> <!-- Adjust the margin as needed -->
-//                     <i class="fas fa-trash-alt" style="color: #ff0202"></i>
-//                 </span>
-//             </td>
-//         `;
 
-//         tableBody.appendChild(row);
-//     });
-// }
+
+{/* <div class="input-box">
+    <span class="details">Available Seats</span>
+    <input disabled type="number" class="availSeats" value name="availSeats" placeholder="${vehical.availableSeats}">
+</div>   */}

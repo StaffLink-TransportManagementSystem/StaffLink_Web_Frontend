@@ -1,17 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
-    let email = "rhatu2000@gmail.com";
+
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+      }
+    
+      function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+      }
+    
+      console.log(checkCookie("jwt"))
+    
+      const token = checkCookie("jwt");
+      const payload = getPayload(token);
+      console.log("Payload", payload);
+
+    let email = payload.id;
 
     let data = { email: email };
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getVehicleList',{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicleList',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(data)})
+            },credentials: "include", body: JSON.stringify(data)})
             .then(response => response.json())
             .then(data => {
                 data.list.forEach(vehical => {
@@ -27,9 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Email">`+ vehical.startingPoint +`</td>
                         <td class="Email">`+ vehical.endingPoint +`</td>
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                            <a href="http://127.0.0.1:5501/Admin/editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit">EDIT</button></a>
-                            <a href="http://127.0.0.1:5501/Admin/deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete">DELETE</button></a>
+                            <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                            <a href="http://127.0.0.1:5501/Admin/editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
+                            <a href="http://127.0.0.1:5501/Admin/deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });

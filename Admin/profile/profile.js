@@ -66,7 +66,7 @@ function editAcc(e){
     document.querySelector('.passengerName').disabled = false;
     document.querySelector('.NIC').disabled = false;
     document.querySelector('.Telephone').disabled = false;
-    document.querySelector('.edit').style.display = "none";
+    document.querySelector('.edit-btn').style.display = "none";
     document.querySelector('.save').style.display = "block";
    
 }

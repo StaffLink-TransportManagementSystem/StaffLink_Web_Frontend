@@ -5,13 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="../images/bus.png" type="image/x-icon" style="width: px;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>StaffLink</title>
 </head>
 
 <body>
-    <header>
+    <header id="header"  style="height: 100vh;">
         <nav>
-            <div class="nav_logo"><a href="#">StaffLink</a></div>
+            <div class="nav_logo"><a href="#"><img src="../images/logo1.png"></a></div>
             <ul class="nav_links" id="nav-links">
                 <li class="link"><a href="#home">Home</a></li>
                 <li class="link"><a href="#service">Our Service</a></li>
@@ -22,32 +24,46 @@
                 <li class="link"><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
-        <div class="section_container header_container" id="home" style="height: 100vh;">
-            <h1>Quality Staff Transport Service for all ...</h1>
-            <button class="btn btn_secondary" style="width: 20%;">
+
+        <div class="section_container header_container" id="home">
+            <h1>Quality Staff Transport Service for All ...</h1>
+            <!-- <button class="btn btn_secondary" style="width: 20%;">
                 Our Service
                 <span><i class=""></i></span>
-            </button>
-            <button class="btn btn_secondary" style="width: 20%;">
-                Get Mobile Application
-                <span><i class=""></i></span>
-            </button>
-            <form action="/" style="align-items: center;">
-              <input type="text" placeholder="Home Location" />
-              <input type="text" placeholder="Office Location" />
-              <input type="text" placeholder="Work Starting Time" />
-              <input type="text" placeholder="Work Off Time"/>
-              <button class="btn btn_primary">Search Transport</button>
-            </form>
+            </button> -->
+            <div class="search-tran">
+              <button class="btn btn_secondary">
+                <div class="google-play">
+                  <i class="fa-brands fa-google-play"></i>
+                </div>
+                <div class="mobile-app">
+                  <p class="get-it-on">GET IT ON</p>
+                  <p class="google-play">Google Play</p>
+                </div>
+              </button>
+              <form action="/">
+                <input type="text" placeholder="Home Location" />
+                <input type="text" placeholder="Office Location" />
+                <!-- <input type="text" placeholder="Work Starting Time" />
+                <input type="text" placeholder="Work Off Time"/> -->
+                <button class="search-btn">Search Transport</button>
+              </form>
+            </div>
         </div>
     </header>
+
+    <div class="scroll-top">
+      <a href="#header"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
     <section class="transport" id="service" style="height: 100vh;">
         <div class="section_container transport_container">
           <div class="transport_content">
-            <p class="section_subheader">StaffLink</p>
-            <h2 class="section_header">Our Service</h2>
+            <img src="../images/logo1.png">
+            <!-- <p class="section_subheader">StaffLink</p> -->
+            <!-- <h2 class="section_header">Our Service</h2> -->
             <p class="para">
-                we are dedicated to redefining your journey through a commitment to quality and service that knows no bounds. As a leading name in the transportation industry, we pride ourselves on delivering a superior travel experience that sets us apart.
+              StaffLink offers hassle-free office transport solutions, connecting commuters with convenient rides to work. Our platform ensures reliable, comfortable, and punctual transportation, enhancing daily commutes.<br><span>Say goodbye to commuting stress and join StaffLink for a seamless journey to the workplace.</span>
             </p>
             <div class="transport_grid">
               <div class="transport_card">
@@ -73,11 +89,13 @@
             </div>
           </div>
           <div class="transport_image">
-            <img src="../images/trans1.jpg" alt="transport" />
+            <!-- <img src="../images/trans1.jpg" alt="transport" /> -->
             <img src="../images/trans2.jpg" alt="transport" />
           </div>
         </div>
       </section>
+
+
       <section class="banner1" id="passenger" style="height: 100vh;">
         <div class="section_container banner_container">
           <div class="banner_content" style="vertical-align: middle;">
@@ -86,56 +104,61 @@
               We extend a warm welcome to transport service passengers to join us on our website and enhance your travel experience.
             </h2>
             <p class="para">
-              <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut risus nec augue scelerisque tincidunt. Integer tempus porttitor neque, suscipit pretium massa. Nulla scelerisque dui a interdum euismod. Cras orci felis, ornare at nisl quis, hendrerit hendrerit odio. Integer ac lorem et diam lobortis elementum. Cras scelerisque tempus orci in tincidunt. Vestibulum posuere, ipsum at rhoncus mollis, elit ante tincidunt mauris, eget tincidunt ante ipsum cursus tellus. 
+              Ready for a commute upgrade? StaffLink offers the perfect solution! Enjoy reliable, comfortable, and punctual rides to work, eliminating daily commuting stress. Say hello to hassle-free travel and goodbye to traffic woes. Experience the convenience firsthand – sign up now for a smoother, more enjoyable journey to your destination!
             </p>
             <div class="banner_btns">
               <button class="btn btn_secondary">
                 <a href="../Passenger/login-register/index.html" style="color:white">Register</a>
                 <span><i class="ri-arrow-right-double-line"></i></span>
               </button>
-              <button class="btn btn_primary">
-                <a href="../Passenger/login-register/index.html" style="color:white">Login</a>
-                <span><i class=""></i></span>
-              </button>
+              <!-- <button class="btn btn_primary">
+                <a href="../Passenger/login-register/index.html" style="color:white">Already have an account? Log in</a>
+              </button> -->
+              <a class="login" href="../Passenger/login-register/index.html">Already have an account? Log in</a>
             </div>
           </div>
         </div>
       </section>
+
+
       <section class="banner2" id="owner" style="height: 100vh;">
         <div class="section_container banner_container">
           <div class="banner_content" style="vertical-align: middle;">
-            <p class="section_subheader">As Transport Owner</p>
+            <p class="section_subheader">As Vehicle Owner</p>
             <h2 class="section_header">
               Join us on our website to enhance your transport services and provide a better experience for customers.
             </h2>
             <p class="para">
-              <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut risus nec augue scelerisque tincidunt. Integer tempus porttitor neque, suscipit pretium massa. Nulla scelerisque dui a interdum euismod. Cras orci felis, ornare at nisl quis, hendrerit hendrerit odio. Integer ac lorem et diam lobortis elementum. Cras scelerisque tempus orci in tincidunt. Vestibulum posuere, ipsum at rhoncus mollis, elit ante tincidunt mauris, eget tincidunt ante ipsum cursus tellus. 
+              Calling all vehicle owners! Join StaffLink and revolutionize your business. Increase your earnings and optimize your routes by offering rides through our platform. Benefit from our seamless booking system, ensuring hassle-free transactions and maximizing your vehicle's potential. Don't miss out on this opportunity to expand your business and become a vital part of our transportation network.<br><br> Register now and embark on a journey towards greater success with StaffLink!
             </p>
             <div class="banner_btns">
               <button class="btn btn_secondary">
                 <a href="../Owner/login.html" style="color:white">Register</a>
                 <span><i class="ri-arrow-right-double-line"></i></span>
               </button>
-              <button class="btn btn_primary">
+              <!-- <button class="btn btn_primary">
                 <a href="../Owner/login.html" style="color:white">Login</a>
                 <span><i class=""></i></span>
-              </button>
+              </button> -->
+              <a class="login" href="../Owner/login.html">Already have an account? Log in</a>
             </div>
           </div>
         </div>
       </section>
+
+
       <section class="banner3" id="driver" style="height: 100vh;">
         <div class="section_container banner_container">
           <div class="banner_content">
-            <p class="section_subheader">As Driver</p>
+            <p class="section_subheader">As Vehicle Driver</p>
             <h2 class="section_header">
-              Join us on our website to be a part of our team and provide exceptional transportation services
+              Join us on our website to be a part of our team and provide exceptional transportation services.
             </h2>
             <p class="para">
-              <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut risus nec augue scelerisque tincidunt. Integer tempus porttitor neque, suscipit pretium massa. Nulla scelerisque dui a interdum euismod. Cras orci felis, ornare at nisl quis, hendrerit hendrerit odio. Integer ac lorem et diam lobortis elementum. Cras scelerisque tempus orci in tincidunt. Vestibulum posuere, ipsum at rhoncus mollis, elit ante tincidunt mauris, eget tincidunt ante ipsum cursus tellus. 
+              Attention drivers! Ready to elevate your driving experience? Join StaffLink and unlock a world of opportunities. Maximize your earnings and minimize downtime by connecting with passengers seamlessly through our user-friendly system, all while providing top-notch service to satisfied customers. Take the next step in your driving career and become part of our dynamic community.<br><br> Login now and start driving towards success with StaffLink!"
             </p>
             <div class="banner_btns"  >
-              <button class="btn btn_primary">
+              <button class="btn btn_secondary">
                 <a href="../Driver/login.html" style="color:white">Login</a>
                 <span><i class=""></i></span>
               </button>
@@ -143,27 +166,63 @@
           </div>
         </div>
       </section>
+
+
       <section class="contact" id="contact" st>
         <div class="section_container contact_container">
-          <p class="section_subheader">Contact Us</p>
-          <h2 class="section_header">
-            We invite you to fill out our contact form for more information.
-          </h2>
-          <form action="/" style="align-items: center;">
-            <input type="text" placeholder="Your Email Address" />
-            <input type="text" placeholder="Your Name" />
-            <input type="text" placeholder="Topic" />
-            <input type="text" placeholder="Massage"/>
-            <button class="btn btn_primary">Send</button>
-          </form>
-          <p class="para">
-            By sumbitting this form, our team will contact you back to provide you with the information you need.
-          </p>
+          <div class="phy-contact">
+            <h2 class="section_header">
+              Contact Us
+            </h2>
+            <div class="details">
+              <i class="fas fa-envelope"></i>
+              <p>No. 17A, Dutugemunu Mawatha,<br>Nugegoda.</p>
+            </div>
+            <div class="details">
+              <i class="fas fa-at"></i>
+              <p>stafflink@gmail.com</p>
+            </div>
+            <div class="details">
+              <i class="fas fa-phone"></i>
+              <p>+94 70 123 4567</p>
+            </div>
+            <div class="social-media">
+              <i class="fa-brands fa-square-facebook"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-linkedin"></i>
+            </div>
+          </div>
+          <div class="onl-contact">
+            <h2>Online Inquiry</h2>
+            <form action="#" id="myForm">
+              <input class="email" type="text" placeholder="Your Email Address" required />
+              <input class="name" type="text" placeholder="Your Name" required/>
+              <!-- <input type="text" placeholder="Topic" /> -->
+              <textarea class="message" rows="4" cols="50" placeholder="Message" required></textarea>
+            </form>
+            <div style="display: flex;">
+              <button class="btn btn_secondary" onclick="validate()">Send</button>
+              <div class="error-message"></div>
+            </div>
+            <p class="para">
+              By sumbitting this form, our team will contact you back to provide you with the information you need.
+            </p>
+          </div>         
+        </div>
+
+        <hr>
+
+        <div class="footer">
+          <p>© 2024 StaffLink Technologies Inc.</p>
+          <div class="footer-right">
+            <p>Terms of Service</p>
+            <p>Privacy Policy</p>
+          </div>
         </div>
       </section>
       
 
-    <script src="main.js"></script>
+    <script src="landingpage.js"></script>
 </body>
 
 </html>

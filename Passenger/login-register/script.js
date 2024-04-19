@@ -99,6 +99,7 @@ const container = document.querySelector(".container"),
             return;
         }
 
+        // console.log("getData function calling");
         getData();
     }
     
@@ -111,23 +112,21 @@ const container = document.querySelector(".container"),
             email:lusername.value,
             password:lpassword.value,
         }
-        fetch('http://localhost:8080/try2_war_exploded/passengerLogin',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/passengerLogin',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },
+            credentials: "include", body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                console.log(data.jwt)
                 if(data.message == "Login successfully"){
-                    window.location.href = "../dashboard.html";
-                    // Swal.fire({
-                    //     title: "Login Successful!",
-                    //     icon: "success"
-                    //   }).then(()=>{
-                    //     window.location.href = "../dashboard.html";
-                    //   })
+                    if(data.message === "Login successfully"){
+                        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
                     }
+                    
                     else if(data.message === "Wrong Password"){
                         Swal.fire({
                             title: "Invalid Username or Password!",
@@ -144,23 +143,31 @@ const container = document.querySelector(".container"),
                                 location.reload();
                             })
                     }
-                    // window.location.href = "http://localhost:5501/Passenger/dashboard.html";
-                })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                    // window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                }
+            })
     }
 
 
 
     function validateSignup(){
         console.log("validate function called");
+        // Get the email and password input values
+        var name = document.getElementById("sname").value;
+        var email = document.getElementById("semail").value;
+        var contactNo = document.getElementById("scontactNo").value;
+        var nic = document.getElementById("snic").value;
+        var password = document.getElementById("spassword").value;
+        var confirmPassword = document.getElementById("scpassword").value;
+
+
         
 
         // Get the error message element
         const nameError = document.querySelector(".form.signup .name-error-message");
         const emailError = document.querySelector(".form.signup .email-error-message");
         const nicError = document.querySelector(".form.signup .nic-error-message");
+        const contactError = document.querySelector(".form.signup .contact-error-message");
         const passwordError = document.querySelector(".form.signup .password-error-message");
         const confirmError = document.querySelector(".form.signup .confirm-error-message");
         // const errorMessage1 = document.querySelector(".form.login .email-error-message");
@@ -174,35 +181,41 @@ const container = document.querySelector(".container"),
 
         var checker = true;
         // Check if the name is empty
-        if (sname.value == "") {
+        if (name == "") {
             nameError.innerText = "Please enter your name.";
             nameError.style.display = "block";
             checker = false;
         }
     
         // Check if the email is valid
-        if (!emailPattern.test(semail.value)) {
+        if (!emailPattern.test(email)) {
             emailError.innerText = "Please enter a valid email address.";
             emailError.style.display = "block";
             checker = false;            
         }
 
+        if (contactNo.length < 10) {
+            contactError.innerText = "Please enter a valid contact number.";
+            contactError.style.display = "block";
+            checker = false;
+        }
+
         // Check if the NIC is valid
-        if(!validateNIC(snic.value)){
+        if(!validateNIC(nic)){
             nicError.innerText = "Please enter a valid NIC.";
             nicError.style.display = "block";
             checker = false;
         }
     
         // Check if the password is empty
-        else if (spassword.value === "") {
+        else if (password.value === "") {
             passwordError.innerText = "Please enter a password.";
             passwordError.style.display = "block";
             checker = false;
 
         }
 
-        else if (scpassword.value.length < 6) {
+        else if (confirmPassword.length < 6) {
             passwordError.innerText = "Password must be at least 6 characters long.";
             passwordError.style.display = "block";
             checker = false;
@@ -216,31 +229,34 @@ const container = document.querySelector(".container"),
         // }
 
         // Check if the confirm password matches the password
-        else if (spassword.value !== scpassword.value) {
+        else if (password !== confirmPassword) {
             confirmError.innerText = "Password and confirm password do not match.";
             confirmError.style.display = "block";
             checker = false;
         }
         if(checker){
-            getDataSignup();
+            getDataSignup(name, email, contactNo, nic, password);
         }
+
         
     }
 
 
-   function getDataSignup() {
+   function getDataSignup(name, email, contactNo, nic, password) {
         console.log("getData function called");
         var data ={
-            email:semail.value,
-            password:spassword.value,
-            name:sname.value,
-            NIC:snic.value,
+            email:email,
+            password:password,
+            contactNo: contactNo,
+            name:name,
+            NIC:nic,
         }
-        fetch('http://localhost:8080/try2_war_exploded/passengerRegister',{
+        fetch('http://127.0.0.1:8080/try2_war_exploded/passengerRegister',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),})
+            },
+            credentials: "include", body: JSON.stringify(data),})
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)

@@ -18,16 +18,16 @@ window.onload = () => {
         wifiIcon.innerHTML = "<i class='bx bxs-bus-school'></i>";
   
         // Set different notification messages based on conditions
-        if (/* Condition for bus arrival */) {
-          title.innerText = "Bus Arrived";
-          subTitle.innerText = "Your bus has arrived!";
-        } else if (/* Condition for payment due */) {
-          title.innerText = "Payment Due";
-          subTitle.innerText = "Payment for your reservation is due soon.";
-        } else if (/* Condition for payment received */) {
-          title.innerText = "Payment Received";
-          subTitle.innerText = "Your payment has been received. Thank you!";
-        }
+        // if (/* Condition for bus arrival */) {
+        //   title.innerText = "Bus Arrived";
+        //   subTitle.innerText = "Your bus has arrived!";
+        // } else if (/* Condition for payment due */) {
+        //   title.innerText = "Payment Due";
+        //   subTitle.innerText = "Payment for your reservation is due soon.";
+        // } else if (/* Condition for payment received */) {
+        //   title.innerText = "Payment Received";
+        //   subTitle.innerText = "Your payment has been received. Thank you!";
+        // }
   
         closeIcon.onclick = () => {
           wrapper.classList.add("hide");

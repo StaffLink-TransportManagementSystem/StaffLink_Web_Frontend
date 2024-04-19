@@ -1,42 +1,87 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
     tbody = document.querySelector(".tbody");
+    const searchInput = document.querySelector("[Driver-search]")
   
-    let row ="";
+    function getPayload(token) {
+      return JSON.parse(atob(token.split(".")[1]));
+    }
+  
+    function checkCookie(cName) {
+      const name = cName + "=";
+      const cDecoded = decodeURIComponent(document.cookie); //to be careful
+      const cArr = cDecoded.split("; ");
+      let res;
+      cArr.forEach((val) => {
+        if (val.indexOf(name) === 0) res = val.substring(name.length);
+      });
+      return res;
+    }
+  
+    console.log(checkCookie("jwt"))
+  
+    const token = checkCookie("jwt");
+    const payload = getPayload(token);
+    console.log("Payload", payload);
+  
+    const email = payload.id;
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllDriver',{
+    let row ="";
+    let users = []
+    let data = {
+      email: email
+    }
+
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getDriversByOwner?email='+email,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },credentials: "include",})
             .then(response => response.json())
             .then(data => {
-                data.list.forEach(driver => {
+                data.drivers.forEach(driver => {
+                  console.log(driver);
                 row += `
-                
-                <div class="wrapper">
-                  
-                  
-                  <div class="profile" style="align-items:center;">
-                    <img src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w" class="thumbnail" >
-                    <div class="check"><i class="fas fa-check"></i></div>
-                    <h3 class="name">`+driver.name+`</h3>
-                    <p class="title">Assigned Vehicle</p>
-                    <p class="description" style="text-align:left"><b>Email : </b>`+ driver.email+`<br><b>NIC no : </b>`+driver.NIC+`<br><b>Age : </b>`+driver.age +`<br><b>Contact No : </b>`+driver.contact+` <br></p>
-                    <div style="display: flex;">
-                    <a href="editDriver.html?email=`+ driver.email +`" onclick="updatefunction(driver.email, driver.name, driver.NIC, driver.age, driver.contact, driver.ownerEmail)"><button class="edit">EDIT</button></a>
-                    <a href="deleteDriver.html?email=`+ driver.email +`" onclick=""><button class="delete">DELETE</button></a>
+                <div class="driver">
+                  <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg" alt="driver-photo">
+
+                  <div class="driver-desc">
+                    <div class="topic driver-name">${driver.name}</div>
+
+                    <div class="driver-spec">
+                      <p><b>Email : ${driver.email}</b></p>
+                      <p><b>NIC No : ${driver.NIC}</b></p>
+                      <p><b>Telephone No : ${driver.contact}</b></p>
                     </div>
+
+                    <a href="#"><button class="more-btn">MORE</button></a>
+                    <a href="editDriver.html?email=`+ driver.email+`"><button class="edit-btn">EDIT</button></a>
+                    <a href="deleteDriver.html?email=`+ driver.email+`"><button class="delete-btn">DELETE</button></a>
                   </div>
                 </div>`
                 });
 
-                document.querySelector(".cards").innerHTML = row;   
+                users = data.list;
+
+                document.querySelector(".driver-cards").innerHTML = row;   
 
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            searchInput.addEventListener("input", e => {
+              const value = e.target.value.toLowerCase()
+              users.forEach(data => {
+                const isVisible =
+                    data.name.toLowerCase().includes(value) ||
+                    data.email.toLowerCase().includes(value) ||
+                    data.NIC.toLowerCase().includes(value) ||
+                    data.contact.toLowerCase().includes(value) ||
+                    data.age.toString().toLowerCase().includes(value)
+                document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+              })
+            })
     
   });
 

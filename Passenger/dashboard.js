@@ -1,14 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
+// const { Console } = require("console");
 
-    passengerEmail = "rhatu2000@gmail.com"
+document.addEventListener("DOMContentLoaded", function () {
+    
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+    const token = checkCookie("jwt");
+    
+    const payload = getPayload(token);
+    console.log("Payload",payload);
+
+    passengerEmail = payload.id;
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getPassengerPaymentsByPassenger?passengerEmail='+passengerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getPassengerPaymentsByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
                 data.payments.forEach(payment => {
@@ -33,5 +57,42 @@ document.addEventListener("DOMContentLoaded", function () {
             // }
             // console.log(years);
             // document.getElementById('yearInput').innerHTML = years;
+
+            var row2 = "";
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getReservationsByPassenger?passengerEmail='+passengerEmail,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include", })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.reservations);
+                data.reservations.forEach(reservation => {
+                row2 += `<tr>
+                <td>`+ reservation.startingDate +`</td>
+                <td>`+ reservation.vehicleNo +`</td>
+                <td>`+ reservation.startingWaypoint +`</td>
+                <td>`+ reservation.endingWaypoint +`</td>
+                </tr>`
+                });
+
+                document.querySelector(".tbody").innerHTML = row2;   
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     
   });
+
+
+function seeReservations(){
+    window.location.href = "./Reservations/index.html";
+}
+
+function seePayments(){
+    window.location.href = "./Payments/payments.html";
+}
+  

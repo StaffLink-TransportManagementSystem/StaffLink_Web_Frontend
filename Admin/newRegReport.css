@@ -1,0 +1,65 @@
+.report{
+    margin: 50px 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons{
+    display: flex;
+    gap: 4rem;
+}
+
+.buttons .print i{
+    margin-right: 7px;
+}
+
+.content{
+    width: 700px;
+    margin: 60px 30px;
+}
+
+.header-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    height: 30px;
+}
+
+.header-content .details{
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.header-content .details i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+hr{
+    margin-top: 30px;
+    border-width: 2px;
+}
+
+h1{
+    margin: 30px 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+.time-period{
+    margin: 50px 0;
+    display: flex;
+    font-size: 18px;
+    justify-content: space-between;
+}
+
+pre{
+    font-weight: 600;
+}

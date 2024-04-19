@@ -1,59 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
-    tbody = document.querySelector(".tbody");
+        tbody = document.querySelector(".tbody");
 
     let vehicle = "CBA-1257";
-    
-  
-    let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/viewAllAbsent',{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },})
-            .then(response => response.json())
-            .then(data => {
+
+    let row = "";
+
+    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllAbsent', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }, credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "UnAuthorized" || data.message === "UnAuthorized - JWT cookie not found") {
+                window.location.href = "login.html";
+            }
+            else {
                 data.list.forEach(absents => {
-                row += `<tr>
-                        <td scope="email">`+ absents.vehicleNo +`</td>
-                        <td class="Name">`+ absents.name +`</td>
-                        <td class="Name">`+ absents.contact +`</td>
-                        <td class="NIC">`+ absents.passengerEmail +`</td>
-                        <td class="age">`+ absents.daysOfAbsent +`</td>
-                        <td class="contact">`+ absents.startingDate +`</td>
-                        <td class="ownerEmail">`+ absents.endingDate +`</td>
+                    row += `<tr>
+                        <td scope="email">`+ absents.vehicleNo + `</td>
+                        <td class="Name">`+ absents.name + `</td>
+                        <td class="Name">`+ absents.contact + `</td>
+                        <td class="NIC">`+ absents.passengerEmail + `</td>
+                        <td class="age">`+ absents.daysOfAbsent + `</td>
+                        <td class="contact">`+ absents.startingDate + `</td>
+                        <td class="ownerEmail">`+ absents.endingDate + `</td>
                         
                         <td class="Action">
-                            <a href="#moredetails"><button class="moredetails">VIEW LOCATION</button></a>
+                            <a href="#moredetails"><button class="more-btn">VIEW LOCATION</button></a>
                         </td>
                     </tr>`
                 });
 
-                // data.list.forEach(absents => {
-                //     row += `<tr>
-                //             <td scope="email">`+ absents.vehicleNo +`</td>
-                //             <td class="Name">`+ absents.name +`</td>
-                //             <td class="Name">`+ absents.contact +`</td>
-                //             <td class="NIC">`+ absents.passengerEmail +`</td>
-                //             <td class="age">`+ absents.daysOfAbsent +`</td>
-                //             <td class="contact">`+ absents.startingDate +`</td>
-                //             <td class="ownerEmail">`+ absents.endingDate +`</td>
-                            
-                //             <td class="Action">
-                //                 <a href="#moredetails"><button class="moredetails">MORE</button></a>
-                //                 <a href="http://127.0.0.1:5501/Owner/editAbsent.html?id=`+ absents.id +`" onclick=""><button class="edit">EDIT</button></a>
-                //                 <a href="http://127.0.0.1:5501/Owner/deleteAbsent.html?id=`+ absents.id +`" onclick=""><button class="delete">DELETE</button></a>
-                //             </td>
-                //         </tr>`
-                //     });
-    
 
-                document.querySelector(".tbody").innerHTML = row;   
+                document.querySelector(".tbody").innerHTML = row;
+            }
 
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    
-  });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+});

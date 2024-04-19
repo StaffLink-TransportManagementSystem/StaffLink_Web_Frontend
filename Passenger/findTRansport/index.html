@@ -3,143 +3,173 @@
   <head>
     <meta charset="UTF-8" />
     <title>Find Transport</title>
+
+    <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="style.css" />
-    <!-- Boxicons CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
+
   <body>
     <div class="sidebar">
       <div class="logo-details">
-        <i class="bx bxs-bus"></i>
+        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
         <span class="logo_name">StaffLink</span>
       </div>
+      
       <ul class="nav-links">
         <li>
           <a href="../dashboard.html">
-            <i class="bx bx-grid-alt"></i>
+            <i class="fas fa-chart-line"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
+
         <li>
           <a href="index.html" class="active">
-            <i class="bx bx-search"></i>
+            <i class="fas fa-magnifying-glass"></i>
             <span class="links_name">Find Transport</span>
           </a>
         </li>
+
         <li>
           <a href="../reqTransport/index.html">
-            <i class='bx bx-plus-circle' ></i>
+            <i class='fas fa-plus' ></i>
             <span class="links_name">Request Transport</span>
           </a>
         </li>
+
         <li>
           <a href="../Reservations/index.html">
-            <i class="bx bx-list-ul"></i>
+            <i class="fas fa-calendar-plus"></i>
             <span class="links_name">Reservations</span>
           </a>
         </li>
+
         <li>
           <a href="../Payments/payments.html">
-            <i class="bx bx-coin-stack"></i>
+            <i class="fas fa-credit-card"></i>
             <span class="links_name">Payments</span>
           </a>
         </li>
+
         <li>
           <a href="../Reports/reports.html">
-            <i class="bx bx-pie-chart-alt-2"></i>
+            <i class="fas fa-table-cells"></i>
             <span class="links_name">Reports</span>
           </a>
         </li>
-        <li>
-          <a href="../Notifcation/index.html">
-            <i class="bx bx-message"></i>
-            <span class="links_name">Notifications</span>
-          </a>
-        </li>
-        <!-- <li>
-          <a href="#">
-            <i class="bx bx-help-circle"></i>
-            <span class="links_name">Help</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-cog"></i>
-            <span class="links_name">Settings</span>
-          </a>
-        </li> -->
+        
         <li class="log_out">
-          <a href="#">
-            <i class="bx bx-log-out"></i>
+          <a href="../login-register/index.html" onclick="logout()">
+            <i class="fas fa-right-from-bracket"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
       </ul>
     </div>
+
     <section class="home-section">
       <nav>
         <div class="sidebar-button">
-          <i class="bx bx-menu sidebarBtn"></i>
+          <i class="fas fa-bars sidebarBtn"></i>
           <span class="dashboard">Find Transport</span>
         </div>
-        <!-- <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
-        </div> -->
-        <div class="profile-details">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4S7t2AZFdbS10UqkJCR6T9z0gnrI7Cm9CaWCg18&s" alt="" />
-          <span class="user_name">Madhushan</span>
-          <i class="bx bx-chevron-down"></i>
-          <ul class="dropdown-list">
-            <li><a href="/Admin/profile/profile.html" class="link">Your Profile</a></li>
-            <li><a href="#" class="link">Notifications</a></li>
-          </ul>
+        
+        <div class="profile-details"  onclick="toggleMenu()">
+          <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
+          <span class="user_name">User</span>
+          <i class="fas fa-angle-down"></i>
+        </div>
+
+        <div class="dropdown-list-wrap" id="dropdown1">         
+          <div class="dropdown-list">
+            <a href="../profile/profile.html" class="dropdown-list-link">
+              <i class="fas fa-circle-user"></i>
+              <p>Your Profile</p>
+              <span>></span>
+            </a>
+
+            <a href="#" class="dropdown-list-link">
+              <i class="fas fa-bell"></i>
+              <p>Notifications</p>
+              <span>></span>
+            </a>
+          </div>
         </div>
       </nav>
 
-          <div class="home-content">
-            <div class="container">
-            <form action="#">
-              <div class="Find-transport">
-                <div class="input-box">
-                  <span class="details">Starting Location</span>
-                  <input class="location" type="text" placeholder="Enter your Starting Location" required>
-              </div>
+      <div class="home-content">
+        <div class="container">
+          <form action="#">
+            <div class="Find-transport">
               <div class="input-box">
-                    <span class="details">End Location</span>
-                    <input class="location type="text" placeholder="Enter your End Location" required>
+                <span class="details">Starting Location</span>
+                <input class="location" id="startingAddressInput" type="text" placeholder="Enter your Starting Location" required>
+                <div id="startLocation-error-message" style="display: none; color: red;"></div>
               </div>
+
+              <div class="input-box">
+                <span class="details">End Location</span>
+                <input class="location" id="endingAddressInput" type="text" placeholder="Enter your End Location" required>
+                <div id="endLocation-error-message" style="display: none; color: red;"></div>
+              </div>
+
+              <div id="map"></div>
+
               <div class="input-box">
                 <span class="details">Trip type</span>
-                <select name="triptype" class="type">
+                <select name="triptype" class="type" id="type">
                   <option class="default" selected disabled value>Select the Trip type</option>
                   <option value="Morning">Morning</option>
                   <option value="Evening">Evening</option>
                   <option value="Both">Both</option>
                 </select>
-              </div>
-              <div class="input-box starting-time hide-input">
-                <span class="details">Starting time</span>
-                <input class="time" type="time" required>
-              </div>
-              <div class="input-box ending-time hide-input">
-                <span class="details">Ending time</span>
-                <input class="time" type="time">
-              </div>
-              <div class="button">
-                      <input type="submit" value="Search">
+                <div id="type-error-message" style="display: none; color: red;"></div>
               </div>
 
+              <div class="input-box starting-time hide-input">
+                <span class="details">Starting time</span>
+                <input class="time" type="time" id="startTime">
+                <div id="startTime-error-message" style="display: none; color: red;"></div>
               </div>
+
+              <div class="input-box ending-time hide-input">
+                <span class="details">Ending time</span>
+                <input class="time" type="time" id="offTime">
+                <div id="offTime-error-message" style="display: none; color: red;"></div>
+              </div>
+            </div>
+
+            <button class="more-btn" id="search-btn">Search</button>
           </form>
-      
+  
           <div id="results">
               <!-- Search results will be displayed here -->
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+      };
+
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+      }
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
+    </script>
 
     <!-- <script>
       let sidebar = document.querySelector(".sidebar");
@@ -191,5 +221,60 @@
       });
     </script> -->
     <script src="findTransport.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+
+        function getPayload(token) {
+          return JSON.parse(atob(token.split(".")[1]));
+      }
+  
+      function checkCookie(cName) {
+          const name = cName + "=";
+          const cDecoded = decodeURIComponent(document.cookie); //to be careful
+          const cArr = cDecoded.split("; ");
+          let res;
+          cArr.forEach((val) => {
+              if (val.indexOf(name) === 0) res = val.substring(name.length);
+          });
+          return res;
+      }
+  
+      console.log(checkCookie("jwt"))
+      const token = checkCookie("jwt");
+
+      if(token == null){
+        console.log("No Cookie Found");
+        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+      }
+
+      const payload = getPayload(token);
+      console.log("Payload",payload);
+
+      if (payload.role === "passenger") {
+        console.log("Passenger");
+      } 
+      else if (payload.role === "admin") {
+        console.log("Admin");
+        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+      }
+      else if (payload.role === "owner") {
+        console.log("Passenger");
+        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+      }
+      else if (payload.role === "driver") {
+        console.log("Driver");
+        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+      }
+      else {
+        console.log("No Cookie Found");
+        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        
+      }
+      });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&libraries=places&callback=initMap" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   </body>
 </html>

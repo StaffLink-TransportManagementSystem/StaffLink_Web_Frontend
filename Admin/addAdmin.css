@@ -1,0 +1,89 @@
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: #dfe8f9;
+}
+
+.container{
+    width: 50%;
+    background: white;
+    padding: 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.container .card-header{
+    margin-bottom: 30px;
+}
+
+.container form .admin-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .admin-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 20px;
+}
+
+.admin-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
+}
+
+input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+input:focus{
+    border-color: #0A2558;
+}
+
+.container .sub-topic{
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    color: #0A2558;
+    margin-top: 20px;
+}
+
+.passw p{
+    color: #949292;
+    font-size: 15px;
+}
+
+.passw input{
+    width: calc(100% / 2 - 20px);
+    margin-top: 20px;
+}
+
+form{
+    margin-bottom: 40px;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn{
+    margin-right: 10px;
+}
+
+.cancel-btn{
+    margin-left: 10px;
+}

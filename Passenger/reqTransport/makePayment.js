@@ -12,18 +12,40 @@ function makePayment(){
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
-    passengerEmail = "passenger@gmail.com"
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+    const token = checkCookie("jwt");
+
+    const payload = getPayload(token);
+    console.log("Payload",payload);
+
+    passengerEmail = payload.id;
   
     let row ="";
 
-    fetch('http://localhost:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },})
+            },
+            credentials: "include", })
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 let i = 0;
                 while (i < data.requests.length) {
                     const request = data.requests[i];
@@ -42,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         rowData += `<button class="reserve" onclick="reserve('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >RESERVE</button>
                         `
                     }
-                    rowData += `<a href="./editRequest.html" onclick=""><button class="edit">EDIT</button></a>
-                    <button class="delete" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >DELETE</button></td>
+                    rowData += `<a href="./editRequest.html?email=`+ request.vehicleNo +`" onclick=""><button class="edit-btn">EDIT</button></a>
+                    <button class="delete-btn" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >DELETE</button></td>
                 </tr>`;
                     row += rowData;
                     i++;
@@ -80,11 +102,11 @@ function deleteRequest(vehicleNo, passengerEmail) {
       }).then((result) => {
         if (result.isConfirmed) {
             let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
-            fetch('http://localhost:8080/try2_war_exploded/requestDelete', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/requestDelete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }, body: JSON.stringify(data)
+                }, body: JSON.stringify(data), credentials: "include",
             })
             .then(response => response.json())
             .then(data => {
