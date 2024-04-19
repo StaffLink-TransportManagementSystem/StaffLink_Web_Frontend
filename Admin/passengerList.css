@@ -97,3 +97,73 @@
 .popup.active .content{
     transition: all ease-in-out;
 }
+
+
+
+.email .popup-content{
+    width: 40%;
+}
+
+.email .detail-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.email form{
+    display: flex;
+    flex-direction: column;
+}
+
+.email form div{
+    display: flex;
+    /* align-items: center; */
+    justify-content: left;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.email form label{
+    margin-bottom: 10px;
+}
+
+.email form input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.email form textarea{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.email form input:focus , .email form textarea:focus{
+    border-color: #0A2558;
+}
+
+.email form .sel-all{
+    width: fit-content;
+    margin-right: 10px;
+}
+
+.email form div label{
+    margin-top: 5px;
+}
+
+.email button{
+    float: left;
+}
