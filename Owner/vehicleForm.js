@@ -1,43 +1,3 @@
-function validateNIC(nic) {
-  // Remove any spaces or non-alphanumeric characters
-  nic = nic.replace(/[^a-zA-Z0-9]/g, '');
-
-  if (nic.length === 12) {
-    // New NIC: Should have 10 numeric characters
-    return /^\d{12}$/.test(nic);
-  } else if (nic.length === 10) {
-    // Old NIC: Should have 9 characters followed by 'V' or 'v'
-    return /^[0-9]{9}[Vv]$/.test(nic);
-  } else {
-    // Invalid length
-    return false;
-  }
-}
-
-function ValidateEmail(input) {
-
-  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-  if (input.match(validRegex)) {
-
-    // alert("Valid email address!");
-
-    // document.form1.text1.focus();
-
-    return true;
-
-  } else {
-
-    // alert("Invalid email address!");
-
-    // document.form1.text1.focus();
-
-    return false;
-
-  }
-
-}
-
 function validateVehicleNumber(vehicleNumber) {
   // Remove any spaces or non-alphanumeric characters
   vehicleNumber = vehicleNumber.replace(/[^a-zA-Z0-9-]/g, '');
@@ -46,6 +6,8 @@ function validateVehicleNumber(vehicleNumber) {
   return /^[A-Za-z]{3}-\d{4}$/.test(vehicleNumber) || /^[A-Za-z]{2}-\d{4}$/.test(vehicleNumber);
 }
 
+
+
 function validateContactNumber(contactNumber) {
   // Remove any spaces or non-numeric characters
   contactNumber = contactNumber.replace(/\D/g, '');
@@ -53,6 +15,23 @@ function validateContactNumber(contactNumber) {
   // Check if the contact number starts with '0' and has exactly 10 digits
   return /^0\d{9}$/.test(contactNumber);
 }
+
+
+
+function ValidateEmail(input) {
+
+  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (input.match(validRegex)) {
+    return true;
+  } 
+  else {
+    return false;
+  }
+}
+
+
+
 
 function usedVehicleNumber(vehicleNumber) {
   console.log(vehicleNumber);
@@ -76,6 +55,8 @@ function usedVehicleNumber(vehicleNumber) {
       console.error('Error:', error);
     });
 }
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form"),
@@ -110,18 +91,24 @@ document.addEventListener("DOMContentLoaded", function () {
     //   event.preventDefault(); // Prevent the default form submission
     console.log("form submitted");
     // Get form elements
-    const ownerEmail = form.querySelector('.ownerEmail').value;
     const vehicleNumber = form.querySelector('.vehicleNumber').value;
     const vehicleType = form.querySelector('.vehicle-type').value;
     const vehicleBrand = form.querySelector('.vehicleBrand').value;
     const vehicleModel = form.querySelector('.vehicleModel').value;
-    const regNumber = form.querySelector('.vehicleRegNo').value;
+    // const regNumber = form.querySelector('.vehicleRegNo').value;
     const driverEmail = form.querySelector('.driverEmail').value;
     const seatCount = form.querySelector('.seatCount').value;
-    const startingLocation = form.querySelector('.startingLocation').value;
-    const endLocation = form.querySelector('.endLocation').value;
-    const vehicleTrips = form.querySelector('.vehicle-trips').value;
-
+    const morningStartingLocation = form.querySelector('.morningStartingLocation').value;
+    const morningEndLocation = form.querySelector('.morningEndingLocation').value;
+    const morningStartingTime = form.querySelector('.morningStartingTime').value;
+    const eveningStartingLocation = form.querySelector('.eveningStartingLocation').value;
+    const eveningEndingLocation = form.querySelector('.eveningEndingLocation').value;
+    const eveningStartingTime = form.querySelector('.eveningStartingTime').value;
+    const insidePhoto = document.querySelector('.photo.inside');
+    const outsidePhoto = document.querySelector('.photo.outside');
+    const revenuePhoto = document.querySelector('.photo.revenue');
+    const registrationPhoto = document.querySelector('.photo.registration');
+    const insurancePhoto = document.querySelector('.photo.insurance');
 
 
     var checker = true;
@@ -132,12 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var typeError = document.getElementById("type-error-message");
     var brandError = document.getElementById("brand-error-message");
     var modelError = document.getElementById("model-error-message");
-    var vehicleRegNoEmailError = document.getElementById("vehicleRegNo-error-message");
-    var driverEmailError = document.getElementById("driverEmail-error-message");
+    // var vehicleRegNoEmailError = document.getElementById("vehicleRegNo-error-message");
+    var driverEmailError = document.getElementById("driver-error-message");
     var seatCountError = document.getElementById("seatCount-error-message");
-    var startingLocationError = document.getElementById("startingLocation-error-message");
-    var endLocationError = document.getElementById("endLocation-error-message");
-    var vehicleTripsError = document.getElementById("vehicleTrips-error-message");
+    var morningTripError = document.getElementById("morningTrip-error-message");
+    var eveningTripError = document.getElementById("eveningTrip-error-message");
+    var photosError = document.getElementById("photo-error-message");
     // var tripError = document.querySelector(".trip-error-message");
 
     ownerEmailError.style.display = "none";
@@ -145,12 +132,12 @@ document.addEventListener("DOMContentLoaded", function () {
     typeError.style.display = "none";
     brandError.style.display = "none";
     modelError.style.display = "none";
-    vehicleRegNoEmailError.style.display = "none";
+    // vehicleRegNoEmailError.style.display = "none";
     driverEmailError.style.display = "none";
     seatCountError.style.display = "none";
-    startingLocationError.style.display = "none";
-    endLocationError.style.display = "none";
-    vehicleTripsError.style.display = "none";
+    morningTripError.style.display = "none";
+    eveningTripError.style.display = "none";
+    photosError.style.display = "none";
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -214,12 +201,12 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("vehicle model error");
       checker = false;
     }
-    if (!regNumber) {
-      vehicleRegNoEmailError.innerText = "Please enter a vehicle registration number.";
-      vehicleRegNoEmailError.style.display = "block";
-      console.log("vehicle registration number error");
-      checker = false;
-    }
+    // if (!regNumber) {
+    //   vehicleRegNoEmailError.innerText = "Please enter a vehicle registration number.";
+    //   vehicleRegNoEmailError.style.display = "block";
+    //   console.log("vehicle registration number error");
+    //   checker = false;
+    // }
     if (!seatCount) {
       seatCountError.innerText = "Please enter a seat count.";
       seatCountError.style.display = "block";

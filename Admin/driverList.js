@@ -193,6 +193,12 @@ function togglePopup1(id) {
                     <span class="details">Owner Email</span>
                     <input disabled type="text" class="NIC" value name="NIC" placeholder="${owner.email}">
                 </div>
+
+                <div class="input-box">
+                    <span class="details">Registered Date</span>
+                    <input disabled type="date" class="reg-date" value name="reg-date" placeholder="">
+                </div>
+
                           
               </form>
             </div>       
