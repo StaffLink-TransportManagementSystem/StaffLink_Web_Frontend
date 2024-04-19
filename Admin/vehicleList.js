@@ -164,9 +164,20 @@ function togglePopup1(id) {
                   <input disabled type="number" class="totalSeats" value name="totalSeats" placeholder="${vehical.seatsCount}">
                 </div>
                 <div class="input-box">
+<<<<<<< HEAD
                     <span class="details">Registered Date</span>
                     <input disabled type="text" class="reg-date" value name="reg-date" placeholder="${vehical.created_at}">
                 </div> 
+=======
+                  <span class="details">Available Seats</span>
+                  <input disabled type="number" class="availSeats" value name="availSeats" placeholder="${vehical.availableSeats}">
+                </div>  
+
+                <div class="input-box">
+                  <span class="details">Registered Date</span>
+                  <input disabled type="date" class="reg-date" value name="reg-date" placeholder="">
+                </div>  
+>>>>>>> dd1f930024aed8eb2264cf3d4fb38090375270a4
               </form>
             </div>       
           </div>`

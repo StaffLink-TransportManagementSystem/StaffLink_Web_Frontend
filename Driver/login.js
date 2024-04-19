@@ -106,7 +106,16 @@ const container = document.querySelector(".container"),
             .then(data => {
                 console.log("message:"+data.message)
                 console.log(data.jwt)
-                window.location.href = "dashboard.html";
+                if(data.message == "Login successful"){
+                    window.location.href = "dashboard.html";
+                    
+                }
+                else{
+                    Swal.fire({
+                        title: "Incorrect username or password!",
+                        icon: "error"
+                    })
+                }
                 // document.getElementById("demo").innerHTML = data.message;
             })
             .catch(error => {
