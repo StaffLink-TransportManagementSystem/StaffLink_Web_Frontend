@@ -13,10 +13,10 @@
 
   <body>   
     <section class="report">
-        <div class="buttons">
-            <button onclick="printDiv('printableArea')" class="submit-btn print"><i class="fa-solid fa-print"></i>Print</button>
+        <!-- <div class="buttons">
+            <button class="submit-btn"><i class="fa-solid fa-print"></i>Print</button>
             <a href="reports.html"><button class="cancel-btn">Back to Home</button></a>
-        </div>
+        </div> -->
 
         <div class="content" id="printableArea">
             <div class="header-content">
@@ -71,11 +71,6 @@
         </div>
 
     <script>
-      function printPage() {
-        window.print();
-      }
-
-
       function printDiv(divName) {
         var printContents = document.getElementById(divName).innerHTML;
         document.body.innerHTML = printContents;
@@ -85,7 +80,7 @@
     </script>
 
 
-    <script src="./reports.js"></script>
+    <script src="./newRegReport.js"></script>
 
 
     <script>

@@ -160,7 +160,7 @@
                     <input type="date" class="to-date">
                 </div>
 
-                <a href="newRegReport.html"><button class="more-btn">View Report</button></a>
+                <a href="newRegReport.html" id="newRegReport"><button class="more-btn">View Report</button></a>
             </div>
         </div>
 
@@ -247,6 +247,13 @@
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+
+      const link = document.getElementById('newRegReport');
+        link.addEventListener('click', function(event) {
+          event.preventDefault(); 
+          window.open(this.href, '_blank'); 
+        });
     </script>
 
 
