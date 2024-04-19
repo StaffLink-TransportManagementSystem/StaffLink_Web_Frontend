@@ -191,26 +191,35 @@ function startTrip() {
         .then(response => response.json())
         .then(data => {
             console.log("Trip data", data.message);
-            if(data.message === "Trip Created"){
+            if(data.message == "Trip Created"){
+                console.log("Trip Created successfully");
                 Swal.fire({
-                    title: 'Trip Started',
-                    text: 'Your trip has been started',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                }).then(function () {
-                    window.location.href = "tripDirections.html";
-                    //need to implement
+                    title: "Trip Started!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "./tripDirections.html";
+                  })
+                // Swal.fire({
+                //     title: 'Trip Started',
+                //     text: 'Your trip has been started',
+                //     icon: 'success',
+                //     confirmButtonText: 'Ok'
+                // }).then(function () {
+                //     console.log("Trip Started successfully");
+                //     window.location.href = "tripDirections.html";
+                //     //need to implement
 
-                });
+                // });
             }
-            if(data.message === "Driver is already on a trip"){
+            else if(data.message == "Driver is already on a trip"){
                 Swal.fire({
-                    title: 'Trip Already Started',
+                    title: 'Already on a trip',
                     text: 'Your trip is already started',
                     icon: 'warning',
                     confirmButtonText: 'Ok'
                 }).then(function () {
-                    window.location.href = "tripDirections.html";
+                    console.log("Trip Already Started");
+                    window.location.href = "./tripDirections.html";
                     //need to implement
 
                 });
