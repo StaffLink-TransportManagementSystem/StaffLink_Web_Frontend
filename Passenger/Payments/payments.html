@@ -48,6 +48,13 @@
         </li>
 
         <li>
+          <a href="../Absence/index.html">
+            <i class="fa-solid fa-user-minus"></i>
+            <span class="links_name">Absence</span>
+          </a>
+        </li>
+
+        <li>
           <a href="payments.html" class="active">
             <i class="fas fa-credit-card"></i>
             <span class="links_name">Payments</span>
@@ -76,8 +83,8 @@
           <i class="fas fa-bars sidebarBtn"></i>
           <span class="dashboard">Payments</span>
         </div>
-      
-        <div class="profile-details">
+
+        <div class="profile-details"  onclick="toggleMenu()">
           <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
           <span class="user_name">User</span>
           <i class="fas fa-angle-down"></i>
@@ -85,7 +92,7 @@
 
         <div class="dropdown-list-wrap" id="dropdown1">         
           <div class="dropdown-list">
-            <a href="../profile/profile.html" class="dropdown-list-link">
+            <a href="./profile/profile.html" class="dropdown-list-link">
               <i class="fas fa-circle-user"></i>
               <p>Your Profile</p>
               <span>></span>
@@ -130,18 +137,25 @@
 
     <script>
 
-      function logout(){
-        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-      }
-
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
         sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        // if (sidebar.classList.contains("active")) {
+        //   sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        // } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+      }
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
 
       document.querySelector('.card-number-input').oninput = () =>{
         document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;
