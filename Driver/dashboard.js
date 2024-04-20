@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Payload", payload);
 
     const email = payload.id;
+    const OnTrip = payload.OnTrip;
     
 
     console.log("email", email);
@@ -35,7 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log(data.message);
             if (data.message === "On Trip") {
-                onTheTrip();
+                // onTheTrip();
+                var tripbutton = document.getElementById("startTrip");
+                tripbutton.innerHTML = "End Trip";
+                tripbutton.setAttribute("onclick", "endTrip()");
+                tripbutton.classList.add("delete-btn");
             }
         })
         .catch(error => {
@@ -43,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         })
-
 
 
 
@@ -270,4 +274,101 @@ function getCurrentLocation() {
             location.reload();
         });
     }
+
+}
+
+function endTrip() {
+    console.log("Trip Ending ...");
+
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+
+    const token = checkCookie("jwt");
+    const payload = getPayload(token);
+    console.log("Payload", payload);
+
+    const email = payload.id;
+    console.log("email", email);
+
+    fetch("http://127.0.0.1:8080/try2_war_exploded/endTrip?email="+email, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Trip data", data.message);
+            if(data.message == "Trip Ended"){
+                Swal.fire({
+                    title: "Trip Ended!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "./dashboard.html";
+                  })
+                // Swal.fire({
+                //     title: 'Trip Started',
+                //     text: 'Your trip has been started',
+                //     icon: 'success',
+                //     confirmButtonText: 'Ok'
+                // }).then(function () {
+                //     console.log("Trip Started successfully");
+                //     window.location.href = "tripDirections.html";
+                //     //need to implement
+
+                // });
+            }
+            else if(data.message == "All passengers are not picked"){
+                Swal.fire({
+                    title: 'Passenger not picked',
+                    text: 'All passengers are not picked',
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                }).then(function () {
+                    console.log("Passenger Not Picked");
+                    window.location.href = "./tripDirections.html";
+                    //need to implement
+
+                });
+            }
+
+            else if(data.message == "No ongoing trip found"){
+                Swal.fire({
+                    title: 'Not on a trip',
+                    text: 'Your trip is not started',
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                }).then(function () {
+                    console.log("Trip Not Started");
+                    window.location.href = "./dashboard.html";
+                    //need to implement
+
+                });
+            }
+            else{
+                Swal.fire({
+                    title: 'Something went wrong!',
+                    text: 'Trip ending Failed',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                }).then(function () {
+                    location.reload();
+                });
+            }
+
+        })
 }
