@@ -455,7 +455,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 
 
-@media(max-width: 900px) {
+/* @media(max-width: 900px) {
     .table {
         border: 0;
         width: 50px;
@@ -487,7 +487,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
         float: left;
         font-weight: bold;
     }
-}
+} */
 
 
 
