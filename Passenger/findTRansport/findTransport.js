@@ -134,17 +134,179 @@ document.addEventListener("DOMContentLoaded", function () {
                     // }
                     // else {
 
-                        console.log(data.list);
-                        data.list.forEach(route => {
-                            console.log("route", route);
-                            var diff_distance = findDistance(parseFloat(route.routeNo), parseFloat(route.startingLatitude), parseFloat(route.startingLongitude), parseFloat(route.endingLatitude), parseFloat(route.endingLongitude));
-                            console.log("diff_distance", diff_distance);
-                            if (diff_distance < 10) {
-                                vehicles.push(route.vehicleNo);
-                            }
+                    console.log(data.list);
+                    data.list.forEach(route => {
+                        console.log("route", route);
+                        // var diff_distance = findDistance(parseFloat(route.routeNo), parseFloat(route.startingLatitude), parseFloat(route.startingLongitude), parseFloat(route.endingLatitude), parseFloat(route.endingLongitude));
+
+                        var routeNo = parseFloat(route.routeNo);
+                        var startingLatitude = parseFloat(route.startingLatitude);
+                        var startingLongitude = parseFloat(route.startingLongitude);
+                        var endingLatitude = parseFloat(route.endingLatitude);
+                        var endingLongitude = parseFloat(route.endingLongitude);
+
+
+                        var startingLocation = { lat: startingLatitude, lng: startingLongitude }; // Example starting location (New York City)
+                        var endingLocation = { lat: endingLatitude, lng: endingLongitude }; // Example ending location (Los Angeles)
+                        waypoints_list = [];
+                        var differance = 0;
+
+
+
+                        fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }, credentials: "include",
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                                data.waypoints.forEach(waypoint => {
+                                    console.log(waypoint);
+                                    waypoints_list.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
+                                    waypoints_list1.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
+                                    console.log("waypoints_list1", waypoints_list);
+                                });
+
+                            })
+                        console.log("waypoints_list2", waypoints_list);
+
+
+                        //   console.log("waypoints_list3", waypoints_list);
+
+                        // fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
+                        //     method: 'GET',
+                        //     headers: {
+                        //         'Content-Type': 'application/json'
+                        //     }, credentials: "include",
+                        // })
+                        //     .then(response => response.json())
+                        //     .then(data => {
+                        //         console.log(data);
+                        //         data.waypoints.forEach(waypoint => {
+                        //             console.log(waypoint);
+                        //             waypoints_list.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
+                        //             waypoints_list1.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
+                        //         });
+
+                        //     })
+
+
+                        console.log("waypoints_list", waypoints_list);
+                        const map = new google.maps.Map(document.getElementById("map"), {
+                            zoom: 4,
+                            center: startingLocation,
                         });
-                        console.log(vehicles);
-                        // displayVehicles();
+
+                        const directionsService = new google.maps.DirectionsService();
+                        const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+
+                        var current_distance = 0;
+                        var after_distance = 0;
+
+                        // Define the request for directions
+                        var request = {
+                            origin: startingLocation,
+                            destination: endingLocation,
+                            waypoints: waypoints_list,
+                            optimizeWaypoints: true, // Optimize the order of waypoints
+                            travelMode: google.maps.TravelMode.DRIVING,
+                        };
+
+                        var request1 = {
+                            origin: startingLocation,
+                            destination: endingLocation,
+                            waypoints: waypoints_list1,
+                            optimizeWaypoints: true, // Optimize the order of waypoints
+                            travelMode: google.maps.TravelMode.DRIVING,
+                        };
+
+                        waypoints_list.push({ location: { lat: startingLatitude, lng: startingLongitude }, stopover: true });
+                        waypoints_list.push({ location: { lat: endingLatitude, lng: endingLongitude }, stopover: true });
+                        waypoints_list.push({ location: { lat: starting_latitude_new, lng: starting_longitude_new }, stopover: true });
+                        waypoints_list.push({ location: { lat: ending_latitude_new, lng: ending_longitude_new }, stopover: true });
+
+
+
+                        // Define the request for directions
+                        requestwithWaypoint = {
+                            origin: startingLocation,
+                            destination: endingLocation,
+                            waypoints: waypoints_list,
+                            optimizeWaypoints: true, // Optimize the order of waypoints
+                            travelMode: google.maps.TravelMode.DRIVING,
+                        };
+
+                        // Get the directions and display the route
+
+                        directionsService.route(request, function (response, status) {
+                            if (status === "OK") {
+                                // directionsRenderer.setDirections(response);
+                                var route = response.routes[0];
+                                let totalDistance = 0;
+                                for (const leg of route.legs) {
+                                    totalDistance += leg.distance.value; // Distance in meters
+                                }
+                                totalDistance /= 1000; // Convert meters to kilometers
+                                // current_distance = totalDistance;
+                                console.log("Waypoints 01", waypoints_list);
+                                console.log("Total Distance test 01: " + totalDistance.toFixed(2) + " km");
+                                after_distance = totalDistance.toFixed(2);
+                            } else {
+                                window.alert("Directions request failed due to " + status);
+                            }
+                        })
+                            .then(() => {
+
+
+
+
+                                // Get the directions and display the route
+                                directionsService.route(request1, function (response, status) {
+                                    if (status === "OK") {
+                                        // directionsRenderer.setDirections(response);
+                                        var route2 = response.routes[0];
+                                        let totalDistance = 0;
+                                        for (const leg of route2.legs) {
+                                            totalDistance += leg.distance.value; // Distance in meters
+                                        }
+                                        totalDistance /= 1000; // Convert meters to kilometers
+                                        // after_distance = totalDistance;
+                                        console.log("Waypoints 02", waypoints_list);
+                                        console.log("Total Distance test 02: " + totalDistance.toFixed(2) + " km");
+                                        current_distance = totalDistance.toFixed(2);
+                                        console.log("current_distance", current_distance);
+                                    } else {
+                                        window.alert("Directions request failed due to " + status);
+                                    }
+
+                                })
+                                    .then(() => {
+                                        differance = after_distance - current_distance;
+                                        console.log("diff_distance range", differance);
+                                        if (differance < 10) {
+                                            vehicles.push(route.vehicleNo);
+                                        }
+                                        // console.log("differance", after_distance - current_distance);
+                                        // return (after_distance - current_distance);
+                                        // return differance;
+                                    })
+                            }
+                            )
+
+
+
+
+
+                        // console.log("diff_distance range", differance);
+                        // if (differance < 10) {
+                        //     vehicles.push(route.vehicleNo);
+                        // }
+                    });
+                    console.log(vehicles);
+
+                    // displayVehicles();
                     // }
                 })
                 .catch(error => {
@@ -436,6 +598,7 @@ var distance_in_km = 0;
 var duration_in_minutes = 0;
 
 var waypoints_list = [];
+var waypoints_list1 = [];
 
 function search() {
 
@@ -446,110 +609,138 @@ function findDistance(routeNo, startingLatitude, startingLongitude, endingLatitu
     const startingLocation = { lat: startingLatitude, lng: startingLongitude }; // Example starting location (New York City)
     const endingLocation = { lat: endingLatitude, lng: endingLongitude }; // Example ending location (Los Angeles)
     waypoints_list = [];
+    var differance = 0;
 
-    fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }, credentials: "include",
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            data.waypoints.forEach(waypoint => {
-                console.log(waypoint);
-                waypoints_list.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
-            });
-            
+
+
+    try {
+        fetch('http://127.0.0.1:8080/try2_war_exploded/getWaypoints?routeNo=' + routeNo, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }, credentials: "include",
         })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                data.waypoints.forEach(waypoint => {
+                    console.log(waypoint);
+                    waypoints_list.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
+                    waypoints_list1.push({ location: { lat: parseFloat(waypoint.latitude), lng: parseFloat(waypoint.longitude) }, stopover: true });
+                    console.log("waypoints_list1", waypoints_list);
+                });
 
-    // const waypoints = [ // Example waypoints
-    //     { location: { lat: 41.8781, lng: -87.6298 }, stopover: true }, // Chicago
-    //     { location: { lat: 39.9526, lng: -75.1652 }, stopover: true }  // Philadelphia
-    // ];
+            })
+        console.log("waypoints_list2", waypoints_list);
 
-    console.log("waypoints_list", waypoints_list);
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4,
-        center: startingLocation,
-    });
 
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+        console.log("waypoints_list", waypoints_list);
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: startingLocation,
+        });
 
-    var current_distance = 0;
-    var after_distance = 0;
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
-    // Define the request for directions
-    var request = {
-        origin: startingLocation,
-        destination: endingLocation,
-        waypoints: waypoints_list,
-        optimizeWaypoints: true, // Optimize the order of waypoints
-        travelMode: google.maps.TravelMode.DRIVING,
-    };
+        var current_distance = 0;
+        var after_distance = 0;
 
-    // Get the directions and display the route
-    directionsService.route(request, function (response, status) {
-        if (status === "OK") {
-            // directionsRenderer.setDirections(response);
-            var route = response.routes[0];
-            let totalDistance = 0;
-            for (const leg of route.legs) {
-                totalDistance += leg.distance.value; // Distance in meters
+        // Define the request for directions
+        var request = {
+            origin: startingLocation,
+            destination: endingLocation,
+            waypoints: waypoints_list,
+            optimizeWaypoints: true, // Optimize the order of waypoints
+            travelMode: google.maps.TravelMode.DRIVING,
+        };
+
+        var request1 = {
+            origin: startingLocation,
+            destination: endingLocation,
+            waypoints: waypoints_list1,
+            optimizeWaypoints: true, // Optimize the order of waypoints
+            travelMode: google.maps.TravelMode.DRIVING,
+        };
+
+        waypoints_list.push({ location: { lat: startingLatitude, lng: startingLongitude }, stopover: true });
+        waypoints_list.push({ location: { lat: endingLatitude, lng: endingLongitude }, stopover: true });
+        waypoints_list.push({ location: { lat: starting_latitude_new, lng: starting_longitude_new }, stopover: true });
+        waypoints_list.push({ location: { lat: ending_latitude_new, lng: ending_longitude_new }, stopover: true });
+
+
+
+        // Define the request for directions
+        requestwithWaypoint = {
+            origin: startingLocation,
+            destination: endingLocation,
+            waypoints: waypoints_list,
+            optimizeWaypoints: true, // Optimize the order of waypoints
+            travelMode: google.maps.TravelMode.DRIVING,
+        };
+
+        // Get the directions and display the route
+
+        directionsService.route(request, function (response, status) {
+            if (status === "OK") {
+                // directionsRenderer.setDirections(response);
+                var route = response.routes[0];
+                let totalDistance = 0;
+                for (const leg of route.legs) {
+                    totalDistance += leg.distance.value; // Distance in meters
+                }
+                totalDistance /= 1000; // Convert meters to kilometers
+                // current_distance = totalDistance;
+                console.log("Waypoints 01", waypoints_list);
+                console.log("Total Distance test 01: " + totalDistance.toFixed(2) + " km");
+                after_distance = totalDistance.toFixed(2);
+            } else {
+                window.alert("Directions request failed due to " + status);
             }
-            totalDistance /= 1000; // Convert meters to kilometers
-            current_distance = totalDistance;
-            console.log("Waypoints 01",waypoints_list);
-            console.log("Total Distance: " + totalDistance.toFixed(2) + " km");
-        } else {
-            window.alert("Directions request failed due to " + status);
-        }
-    })
-
-
-    waypoints_list.push({ location: { lat: startingLatitude, lng: startingLongitude }, stopover: true });
-    waypoints_list.push({ location: { lat: endingLatitude, lng: endingLongitude }, stopover: true });
-    waypoints_list.push({ location: { lat: starting_latitude_new, lng: starting_longitude_new }, stopover: true });
-    waypoints_list.push({ location: { lat: ending_latitude_new, lng: ending_longitude_new }, stopover: true });
+        })
+            .then(() => {
 
 
 
-    // Define the request for directions
-    requestwithWaypoint = {
-        origin: startingLocation,
-        destination: endingLocation,
-        waypoints: waypoints_list,
-        optimizeWaypoints: true, // Optimize the order of waypoints
-        travelMode: google.maps.TravelMode.DRIVING,
-    };
 
-    // Get the directions and display the route
-    directionsService.route(requestwithWaypoint, function (response, status) {
-        if (status === "OK") {
-            // directionsRenderer.setDirections(response);
-            var route2 = response.routes[0];
-            let totalDistance = 0;
-            for (const leg of route2.legs) {
-                totalDistance += leg.distance.value; // Distance in meters
+                // Get the directions and display the route
+                directionsService.route(request1, function (response, status) {
+                    if (status === "OK") {
+                        // directionsRenderer.setDirections(response);
+                        var route2 = response.routes[0];
+                        let totalDistance = 0;
+                        for (const leg of route2.legs) {
+                            totalDistance += leg.distance.value; // Distance in meters
+                        }
+                        totalDistance /= 1000; // Convert meters to kilometers
+                        // after_distance = totalDistance;
+                        console.log("Waypoints 02", waypoints_list);
+                        console.log("Total Distance test 02: " + totalDistance.toFixed(2) + " km");
+                        current_distance = totalDistance.toFixed(2);
+                        console.log("current_distance", current_distance);
+                    } else {
+                        window.alert("Directions request failed due to " + status);
+                    }
+
+                })
+                    .then(() => {
+                        differance = after_distance - current_distance;
+                        // console.log("differance", after_distance - current_distance);
+                        // return (after_distance - current_distance);
+                        // return differance;
+                    })
             }
-            totalDistance /= 1000; // Convert meters to kilometers
-            after_distance = totalDistance;
-            console.log("Waypoints 02",waypoints_list);
-            console.log("Total Distance: " + totalDistance.toFixed(2) + " km");
-        } else {
-            window.alert("Directions request failed due to " + status);
-        }
-    });
+            )
 
+        return differance;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
 
-    console.log("differance", after_distance - current_distance);
-
-    return after_distance - current_distance;
-    
 }
 
-function displayVehicles(){
+function displayVehicles() {
     var row = "";
     vehicles.forEach(vehicle => {
         fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + vehicle, {
@@ -570,7 +761,7 @@ function displayVehicles(){
                     <td><button class="request-button" onclick="requestVehicle(${vehicleObject.vehicleNo})">Request</button></td>
                 </tr>`;
             })
-        
+
     });
 
     document.querySelector(".table").innerHTML = row;
