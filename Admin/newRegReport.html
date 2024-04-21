@@ -45,38 +45,75 @@
             <div class="time-period">
                 <div style="display: flex;">
                     <pre>FROM    </pre>
-                    <p>2023.02.13</p>
+                    <p id="from-date"></p>
                 </div>
                 <div style="display: flex;">
                     <pre>TO    </pre>
-                    <p>2023.02.13</p>
+                    <p id="to-date"></p>
                 </div>               
             </div>
 
-            <table class="table">
+            <div style="display: flex; flex-direction: row;">
+              <table class="table vehicle" style="width: 25%; height: fit-content;">
                 <thead>
                     <tr>
-                      <th scope="col">Date</th>
                       <th scope="col">Vehicle Owners</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="owners">                  
+                </tbody>
+              </table>
+              <table class="table vehicle" style="width: 25%; height: fit-content;">
+                <thead>
+                    <tr>
                       <th scope="col">Vehicles</th>
-                      <th scope="col">Drivers</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="vehicles">                  
+                </tbody>
+              </table>
+              <table class="table passenger" style="width: 25%; height: fit-content;">
+                <thead>
+                    <tr>
                       <th scope="col">Passengers</th>
                     </tr>
                 </thead>
                 
-                <tbody class="tbody">                  
+                <tbody class="passengers">                  
                 </tbody>
-            </table>
+              </table>
+              <table class="table driver" style="width: 25%; height: fit-content;">
+                <thead>
+                    <tr>
+                      <th scope="col">Drivers</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="drivers">                  
+                </tbody>
+              </table>
+            </div>
 
         </div>
 
     <script>
-      function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        document.body.innerHTML = printContents;
-
-        window.print();
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
       }
+
+      const fromDate = getUrlParameter('fromDate');
+      const toDate = getUrlParameter('toDate');
+
+      console.log('From Date:', fromDate);
+      console.log('To Date:', toDate);
+
+      document.getElementById('from-date').textContent = fromDate;
+      document.getElementById('to-date').textContent = toDate;
     </script>
 
 
