@@ -1,0 +1,207 @@
+.home-content table{
+    width: 100%;
+    overflow: auto;
+    table-layout: auto;
+    border-collapse: collapse;
+
+}
+td button{
+    color: white;
+    background-color: #003566;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+td button:hover {
+    color:#DAA600;
+}
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #e7f2fe;
+    color: #000;
+    border-top: 1px solid #dddddd;
+}
+th, td {
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    padding: 10px 8px;
+    word-break: break-all;
+    text-align: center;
+    font-size: 15px;
+}
+/* absent form */
+
+.container{
+  width: 60%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.container form{
+  padding: 20px;
+  width: flex;
+  min-width: 500px;
+  position: relative;
+}
+
+.container form .inputBox{
+  margin-top: 25px;
+}
+
+.container form .inputBox span{
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.container form .inputBox input,
+.container form .inputBox select{
+  height: 35px;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  padding-right: 10px;
+  font-size: 14px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.container form .flexbox .inputBox{
+  flex:1 1 150px;
+}
+
+.container form .inputBox input:focus{
+  border-color: #0A2558;
+}
+
+.container form .button{
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(max-width: 1060px) {
+  .container{
+    width: 90%;
+  }
+}
+
+@media(max-width: 800px) {
+  .container{
+    width: 100%;
+  }
+}
+
+@media(max-width: 580px) {
+  .container form{
+    min-width: 350px;
+  }
+}
+
+@media(max-width: 415px) {
+  .container form{
+    min-width: 300px;
+  }
+}
+
+@media(max-width: 1410px) {
+    table {
+        border: 0;
+        width: 50px;
+    }
+
+
+    table thead{
+        display: none;
+    }
+
+
+    table tr{
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+
+    table td{
+        border-bottom: 1px solid #ddd;
+        display: block;
+        text-align: right;
+    }
+
+
+    table th{
+        border-bottom: 1px solid #ddd;
+        display: block;
+        text-align: left;
+    }
+
+
+    table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+
+    table td:last-child { 
+        border-bottom: 0; 
+    }
+
+
+    .searchpass {
+        width: 100%;
+    }
+
+}
+
+
+.status.reserved {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.pending {
+  padding: 2px 4px;
+  background: #e9b10a;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.approved {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}

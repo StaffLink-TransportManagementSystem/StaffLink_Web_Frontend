@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Payload", payload);
 
     const email = payload.id;
+    
 
     console.log("email", email);
 
@@ -150,30 +151,88 @@ function seeMoneyCollection() {
 
 
 function startTrip() {
-    tripbutton = document.getElementById("startTrip");
-    tripbutton.innerHTML = "End Trip";
-    tripbutton.setAttribute("onclick", "endTrip()");
-    tripbutton.classList.change("add-btn");
+    // tripbutton = document.getElementById("startTrip");
+    // tripbutton.innerHTML = "End Trip";
+    // tripbutton.setAttribute("onclick", "endTrip()");
+    // tripbutton.classList.change("add-btn");
+    console.log("Trip Starting ...");
 
-    fetch("http://127.0.0.1:8080/try2_war_exploded/createTrip", {
-        method: 'POST',
+
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+
+    const token = checkCookie("jwt");
+    const payload = getPayload(token);
+    console.log("Payload", payload);
+
+    const email = payload.id;
+
+    fetch("http://127.0.0.1:8080/try2_war_exploded/createTrip?email="+email, {
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json'
-        }, credentials: "include", body: JSON.stringify({
-            email: email
-        })
+        },credentials: "include",
     })
         .then(response => response.json())
         .then(data => {
             console.log("Trip data", data.message);
-            Swal.fire({
-                title: 'Trip Started',
-                text: 'Your trip has been started',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-            }).then(function () {
-                //need to implement
-            });
+            if(data.message == "Trip Created"){
+                console.log("Trip Created successfully");
+                Swal.fire({
+                    title: "Trip Started!",
+                    icon: "success"
+                  }).then(()=>{
+                    window.location.href = "./tripDirections.html";
+                  })
+                // Swal.fire({
+                //     title: 'Trip Started',
+                //     text: 'Your trip has been started',
+                //     icon: 'success',
+                //     confirmButtonText: 'Ok'
+                // }).then(function () {
+                //     console.log("Trip Started successfully");
+                //     window.location.href = "tripDirections.html";
+                //     //need to implement
+
+                // });
+            }
+            else if(data.message == "Driver is already on a trip"){
+                Swal.fire({
+                    title: 'Already on a trip',
+                    text: 'Your trip is already started',
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                }).then(function () {
+                    console.log("Trip Already Started");
+                    window.location.href = "./tripDirections.html";
+                    //need to implement
+
+                });
+            }
+            else{
+                Swal.fire({
+                    title: 'Trip Failed',
+                    text: 'Trip Creation Failed',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                }).then(function () {
+                    location.reload();
+                });
+            }
 
         })
 }
