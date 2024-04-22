@@ -1,4 +1,5 @@
 var vehicles = [];
+var row_data = "";
 
 var starting_latitude_new = 0;
 var starting_longitude_new = 0;
@@ -6,13 +7,41 @@ var starting_longitude_new = 0;
 var ending_latitude_new = 0;
 var ending_longitude_new = 0;
 
+var passengerEmail = "";
+document.addEventListener("DOMContentLoaded", function () {
+
+    function getPayload(token) {
+        return JSON.parse(atob(token.split(".")[1]));
+    }
+
+    function checkCookie(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        const cArr = cDecoded.split("; ");
+        let res;
+        cArr.forEach((val) => {
+            if (val.indexOf(name) === 0) res = val.substring(name.length);
+        });
+        return res;
+    }
+
+    console.log(checkCookie("jwt"))
+    const token = checkCookie("jwt");
+
+    const payload = getPayload(token);
+    console.log("Payload",payload);
+    
+    passengerEmail = payload.id;
+})
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
         // sub = document.querySelector(".sub");
         sub = document.getElementById("search-btn");
 
 
-    sub.addEventListener("click", () => {
+    sub.addEventListener("click", (e) => {
+        e.preventDefault();
         console.log("search submitted ");
         // Get form elements
         // const startingLocation = form.querySelector('.startLocation').value;
@@ -117,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (checker) {
 
             vehicles = [];
+            row_data = "";
 
             fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllRoutes', {
                 method: 'GET',
@@ -286,7 +316,49 @@ document.addEventListener("DOMContentLoaded", function () {
                                         differance = after_distance - current_distance;
                                         console.log("diff_distance range", differance);
                                         if (differance < 10) {
-                                            vehicles.push(route.vehicleNo);
+                                            fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + route.vehicleNo, {
+                                                method: 'GET',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                }, credentials: "include",
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log("Inside fetch", data);
+                                                    vehical = data.vehicle;
+                                                    row_data += `<div class="vehicle-card">
+                                                    <div class="slider">
+                                                      <div class="vehicle-images">
+                                                        <input type="radio" name="slide" id="img-outside">
+                                                        <input type="radio" name="slide" id="img-inside">
+                                          
+                                                        <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
+                                                        <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+                                                      </div>
+                                          
+                                                      <div class="dots">
+                                                        <label for="img-outside"></label>
+                                                        <label for="img-inside"></label>
+                                                      </div>
+                                                    </div>
+                                          
+                                                    <div class="vehicle-desc">
+                                                      <div class="topic vehicle-card-title">${vehical.vehicleNo}</div>
+                                          
+                                                      <div class="vehicle-spec">
+                                                        <p><b>Vehicle Type :</b> ${vehical.type}</p>
+                                                        <p><b>Vehicle Brand :</b> ${vehical.vehicleBrand}</p>
+                                                        <p><b>Type of Trips :</b> ${vehical.trips}</p>
+                                                        <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
+                                                        <p><b>Starting Location :</b> ${vehical.startingPoint}</p>
+                                                        <p><b>Destination :</b> ${vehical.endingPoint}</p>
+                                                      </div>
+                                                      <a href="#"><button class="add-btn" onclick="createRequest(${vehical.vehicleNo},${passengerEmail})">REQUEST TO RESERVATION</button></a>
+                                                    </div>
+                                                  </div>`;
+                                                    // console.log("row_data1", row_data);
+                                                })
+                                            // vehicles.push(route.vehicleNo);
                                         }
                                         // console.log("differance", after_distance - current_distance);
                                         // return (after_distance - current_distance);
@@ -294,24 +366,30 @@ document.addEventListener("DOMContentLoaded", function () {
                                     })
                             }
                             )
+                            // .then(() => {
 
 
 
-
+                            //     console.log("vehicles", vehicles);
+                            //     console.log("row data", row_data);
+                            //     document.getElementById("tbody").innerHTML = row_data;
+                            // })
+                        // displayVehicles(vehicles);
 
                         // console.log("diff_distance range", differance);
                         // if (differance < 10) {
                         //     vehicles.push(route.vehicleNo);
                         // }
-                    });
-                    console.log(vehicles);
+                    })
+
+                    // console.log("Vehicles "+vehicles);
 
                     // displayVehicles();
                     // }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                });
+                })
 
 
             // data = {
@@ -740,9 +818,48 @@ function findDistance(routeNo, startingLatitude, startingLongitude, endingLatitu
 
 }
 
-function displayVehicles() {
+// async function displayVehicles() {
+//     try {
+//         // console.log("Inside Display vehicles", vehicles, vehicles[0]);
+//         // document.getElementById("result1").innerHTML =vehicles;
+//         let row = "";
+//         for (let i = 0; i < vehicles.length; i++) {
+//             // const vehicle = vehicles[i];
+//             const response = await fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + 'CBA7454', {
+//                 method: 'GET',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 credentials: "include",
+//             });
+//             const data = await response.json();
+//             const vehicleObject = data.vehicle;
+//             row += `<tr>
+//                         <td>${vehicleObject.vehicleNo}</td>
+//                         <td>${vehicleObject.type}</td>
+//                         <td>${vehicleObject.startTime}</td>
+//                         <td>${vehicleObject.offTime}</td>
+//                     </tr>`;
+//         }
+//         console.log("row", row);
+//         document.getElementById("tbody").innerHTML = row;
+//     } catch (error) {
+//         console.error('Error occurred:', error);
+//         // Handle error appropriately, e.g., show error message to the user
+//     }
+// }
+
+
+function displayVehicles(Vehicle_List) {
+    console.log("Vehicle_List", Vehicle_List[0]);
+
     var row = "";
-    vehicles.forEach(vehicle => {
+    console.log("Vehicle_List", Vehicle_List);
+    console.log("Vehicle_List", Vehicle_List[0]);
+    console.log("Vehicle_List", Vehicle_List.length);
+
+    console.log("length", Vehicle_List);
+    Vehicle_List.forEach(vehicle => {
         fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + vehicle, {
             method: 'GET',
             headers: {
@@ -765,4 +882,25 @@ function displayVehicles() {
     });
 
     document.querySelector(".table").innerHTML = row;
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const intervalId = setInterval(myFunction, 1000);
+
+})
+function myFunction() {
+    // console.log('Function called');
+    document.querySelector(".table").innerHTML = row_data;  
+
+}
+
+function createRequest(vehicleNo, passengerEmail){
+    console.log("Vehicle No", vehicleNo);
+    console.log("Passenger Email", passengerEmail);
+    data = {
+        vehicleNo: vehicleNo,
+        passengerEmail: passengerEmail
+    }
+    // fetch('http://
 }
