@@ -201,6 +201,65 @@ nav .profile-details i{
   font-size: 25px;
   color: #333;
 }
+
+nav .dropdown-list-wrap{
+  right: 20px;
+  width: 220px;
+}
+
+nav .dropdown-list-wrap .dropdown-list .dropdown-list-link i{
+  width: 40px;
+  background: #efebeb;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 15px;
+}
+
+nav .dropdown-list-wrap .dropdown-list .dropdown-list-link span{
+  font-size: 22px;
+  transition: transform 0.5s;
+}
+
+nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
+  transform: translateX(5px);
+}
+
+.dropdown-list-wrap{
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-list-wrap.open-menu{
+  max-height: 200px;
+}
+
+.dropdown-list-wrap .dropdown-list{
+  background: #fff;
+  padding: 5px 20px;
+}
+
+.dropdown-list-wrap .dropdown-list .dropdown-list-link{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  margin: 12px 0;
+}
+
+.dropdown-list-wrap .dropdown-list .dropdown-list-link p{
+  width: 100%;
+}
+
+.dropdown-list-wrap .dropdown-list .dropdown-list-link:hover p{
+  font-weight: 600;
+}
+
 .home-section .home-content{
   position: relative;
   padding-top: 104px;

@@ -6,9 +6,22 @@
 
     <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="passengerList.css"/>
+    <link rel="stylesheet" href="passengerList.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  (function(){
+      emailjs.init({
+        publicKey: "NEto35f42CWxV-tKk",
+      });
+  })();
+</script>
+
   </head>
 
   <body>
@@ -62,14 +75,14 @@
         </li>
 
         <li>
-          <a href="#">
-            <i class="fas fa-route"></i>
-            <span class="links_name">Routes</span>
+          <a href="onlineInquiry.html">
+            <i class="fas fa-comment-dots"></i>
+            <span class="links_name">Online Inquiries</span>
           </a>
         </li>
 
         <li>
-          <a href="#">
+          <a href="reports.html">
             <i class="fas fa-table-cells"></i>
             <span class="links_name">Reports</span>
           </a>
@@ -163,6 +176,8 @@
           </div>
         </div>
 
+        <button class="email-all submit-btn" id="openPopupButton">SEND EMAIL</button>
+
         <table class="table">
             <thead>
                 <tr>
@@ -181,8 +196,36 @@
       </div>      
     </section>
 
-    <div class="popup" id="popup">
+    <!-- <div class="popup" id="popup">
       
+    </div> -->
+
+    <div class="email popup" id="email-popup">
+      <div class="popup-content">
+        <i class="fas fa-xmark" id="close" onclick="togglePopupEmail()"></i>
+
+        <p class="topic">Send an email</p>       
+        
+        <div class="detail-box">
+          <form action="" id="email-form">
+            <label for=".to" class="to-label">To</label>
+            <div style="display: flex; gap: 2rem;">
+              <div>
+                <input type="radio" class="sel-all" id="sel-all" onclick="toggleToInput()">
+                <label for=".sel-all">All</label>
+              </div>
+              <input type="email" class="to" id="to" name="to">
+            </div>
+
+            <label for=".subject" style="margin-top: 30px;">Subject</label>
+            <input type="text" id="subject" class="subject" name="subject" required>
+
+            <label for=".message">Message</label>
+            <textarea class="message" id="message" rows="6" cols="30" required></textarea>
+          </form>
+          <button class="submit-btn" onclick="sendMail()">Send</button>
+        </div>       
+      </div>
     </div>
 
 
@@ -264,6 +307,76 @@
         
       }
       });
+
+      function togglePopupEmail() {
+        var popup = document.getElementById("email-popup");
+        popup.classList.toggle("active");
+      }
+
+      document.getElementById("openPopupButton").addEventListener("click", function() {
+        togglePopupEmail();
+      });
+
+
+
+      function toggleToInput() {
+        var toInput = document.getElementById("to");
+        var selectAll = document.getElementById("sel-all");
+
+        if(selectAll.checked){
+          toInput.style.display = "none";
+        }
+      }
+
+
+
+      function sendMail(){
+        let emailElements = document.getElementsByClassName("email");
+        
+        let emails = [];
+        let toEmail;
+
+        if(document.getElementById("sel-all").checked){
+          for (let i = 0; i < emailElements.length; i++) {
+            emails.push(emailElements[i].textContent.trim());
+          }
+        }
+        else{
+          toEmail = document.getElementById("to").value;
+        }
+
+        let subject = document.getElementById("subject").value;
+        let message = document.getElementById("message").value;
+        let params;
+
+        if(toEmail){
+          params = {
+          reply_to : toEmail, 
+          subject : subject,
+          message : message
+          };
+        }
+        else{
+          params = {
+          reply_to : emails.join(","), 
+          subject : subject,
+          message : message
+          };
+        }
+
+        emailjs.send("service_5jxpdi2", "template_da690z8", params)
+          .then(function(response) {
+              alert("Email sent! Status: " + response.status);
+          })
+          .catch(function(error) {
+            console.error("Error sending email:", error);
+          });
+
+          var popup = document.getElementById("email-popup");
+          popup.classList.toggle("active");
+
+          document.getElementById("email-form").reset()
+      }
     </script>
     
   </body>
