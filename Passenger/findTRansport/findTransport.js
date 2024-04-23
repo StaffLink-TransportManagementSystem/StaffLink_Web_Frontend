@@ -1,3 +1,5 @@
+//const { type } = require("express/lib/response");
+
 var vehicles = [];
 var row_data = "";
 
@@ -352,8 +354,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
                                                         <p><b>Starting Location :</b> ${vehical.startingPoint}</p>
                                                         <p><b>Destination :</b> ${vehical.endingPoint}</p>
+                                                        <p><b>Price :</b> RS. ${final_distance*90}</p>
                                                       </div>
-                                                      <a href="#"><button class="add-btn" onclick="createRequest(${vehical.vehicleNo},${passengerEmail})">REQUEST TO RESERVATION</button></a>
+                                                      <a href="#"><button class="add-btn" onclick="createRequest('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
                                                     </div>
                                                   </div>`;
                                                     // console.log("row_data1", row_data);
@@ -595,6 +598,7 @@ function placeMarker(markerName) {
 
 
         calculateDistance();
+        
     }
 }
 
@@ -653,6 +657,7 @@ function callback(response, status) {
                 var to = destinations[j];
 
                 distance_in_km = distance;
+                final_distance = parseFloat(element.distance.value) / 1000;
                 duration_in_minutes = duration;
 
 
@@ -672,6 +677,7 @@ var starting_longitude = 0;
 var ending_latitude = 0;
 var ending_longitude = 0;
 
+var final_distance = 0.0;
 var distance_in_km = 0;
 var duration_in_minutes = 0;
 
@@ -896,11 +902,39 @@ function myFunction() {
 }
 
 function createRequest(vehicleNo, passengerEmail){
+
+    console.log("Inside create request");
     console.log("Vehicle No", vehicleNo);
     console.log("Passenger Email", passengerEmail);
+    console.log("starting_latitude_new", starting_latitude_new);
+    console.log("starting_longitude_new", starting_longitude_new);
+    console.log("ending_latitude_new", ending_latitude_new);
+    console.log("ending_longitude_new", ending_longitude_new);
+    console.log("distance_in_km", final_distance);
+    console.log("duration_in_minutes", duration_in_minutes);
     data = {
         vehicleNo: vehicleNo,
-        passengerEmail: passengerEmail
+        passengerEmail: passengerEmail,
+        startingLatitute: starting_latitude_new,
+        startingLongitude: starting_longitude_new,
+        endingLatitute: ending_latitude_new,
+        endingLongitude: ending_longitude_new,
+        distance: final_distance,
+        duration: duration_in_minutes
     }
-    // fetch('http://
+    console.log("Data", data);
+    fetch('http://127.0.0.1:8080/try2_war_exploded/createRequest',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },body: JSON.stringify(data),credentials: "include",})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message)
+                
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+      
 }

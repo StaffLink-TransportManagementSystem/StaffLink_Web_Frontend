@@ -42,11 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.querySelector(".vehicleNo").value = data.Request.vehicleNo;
                 // form.querySelector(".model").value = data.Request.model;
                 // form.querySelector(".type").value = data.Request.type;
-                form.querySelector(".passengerEmail").value = data.Request.passengerEmail;
+                //form.querySelector(".passengerEmail").value = data.Request.passengerEmail;
                 form.querySelector(".amount").value = data.Request.price;
                 form.querySelector(".startingDate").value = data.Request.startingDate;
                 form.querySelector(".endingDate").value = data.Request.endingDate;
-                form.querySelector(".status").value = data.Request.status;
+                form.querySelector(".tripStatus").value = data.Request.status;
+                document.getElementById("type").value = data.Request.type;
+                // form.querySelector(".triptype").value = data.Request.type;
+                form.querySelector(".startTime").value = data.Request.onTime;
+                form.querySelector(".offTime").value = data.Request.offTime;
+                
                 fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo='+data.Request.vehicleNo,{
                     method: 'GET',
                     headers: {
@@ -57,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.log(data);
                         form.querySelector(".model").value = data.vehicle.model;
                         form.querySelector(".type").value = data.vehicle.type;
-                        form.querySelector(".status").value = data.Request.status;
+                        //form.querySelector(".tripStatus").value = data.Request.status;
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -78,7 +83,7 @@ function updatefunction(){
         amount: form.querySelector(".amount").value, 
         startingDate: form.querySelector(".startingDate").value, 
         endingDate: form.querySelector(".endingDate").value, 
-        status: form.querySelector(".status").value };
+        status: form.querySelector(".tripStatus").value };
 
     fetch('http://127.0.0.1:8080/try2_war_exploded/requestEdit', {
         method: 'POST',

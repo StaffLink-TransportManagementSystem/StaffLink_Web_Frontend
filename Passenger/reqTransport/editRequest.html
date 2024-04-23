@@ -6,6 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="vehicleform.css">
+        <link rel="stylesheet" href="/main.css" />
 
         <title>Request Edit</title>
     </head>
@@ -31,16 +32,18 @@
                         <input type="text" class="vehicleNo" placeholder="Enter vehicle no" readonly>
                         <div class="vehicleNo-error-message" style="display: none; color: red;"></div>
                     </div>
+                    
                     <div class="input-box">
-                        <span class="details">Vehicle Model</span>
-                        <input type="text" class="model" placeholder="Enter vehicle Model" readonly>
-                        <div class="model-error-message" style="display: none; color: red;"></div>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Vehicle Type</span>
-                        <input type="text" class="type" placeholder="Enter vehicle type" readonly>
-                        <div class="type-error-message" style="display: none; color: red;"></div>
-                    </div>
+                        <span class="details triptype">Trip type</span>
+                        <select name="triptype" class="type" id="type">
+                          <option class="default" selected disabled value>Select the Trip type</option>
+                          <option value="Morning">Morning</option>
+                          <option value="Evening">Evening</option>
+                          <option value="Both">Both</option>
+                        </select>
+                        <div id="type-error-message" style="display: none; color: red;"></div>
+                      </div>
+        
                     <div class="input-box">
                         <span class="details">Amount</span>
                         <input type="text" class="amount" placeholder="Enter Amount" readonly>
@@ -58,7 +61,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Status</span>
-                        <input type="text" class="status" placeholder="Enter status" readonly>
+                        <input type="text" class="tripStatus" id="status" placeholder="Enter status" readonly>
                         <div class="status-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box" style="display: none;">
