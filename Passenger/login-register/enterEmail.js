@@ -42,3 +42,44 @@ async function validate() {
         sendOTP();
     }
 }
+
+
+
+
+function getOTP(otp, email){
+    console.log(otp,email)
+    var data = {
+        otp : otp,
+        email : email,
+    }
+
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getOTP',{
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials : "include", 
+        body : JSON.stringify(data),})
+        
+        .then(response => response.json())
+
+        .then(data => {
+            console.log(data.message)
+            if(data.message === "Stored successfully"){
+                // Swal.fire({
+                //     title: "Stored Successful!",
+                //     icon: "success"
+                // })
+               
+                window.location.href = "enterotp.html?email=" + encodeURIComponent(email);
+            }
+
+            else if(data.message === "Stored unsuccessful"){
+                window.location.href = "enterotp.html?email=" + encodeURIComponent(email);
+            }
+        })
+
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
