@@ -17,6 +17,7 @@
             <div class="title">Change Request</div>
             <form action="#">
                 <div class="vehicle-details">
+                    <div class="map" id="map"></div>
                     <div class="input-box">
                         <span class="details">Request Id</span>
                         <input type="text" class="id" placeholder="Enter request id" readonly>
@@ -131,5 +132,6 @@
             }
             });
           </script>
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&callback=initMap"></script>
     </body>
 </html>
