@@ -379,6 +379,8 @@ function endTrip() {
         })
 }
 
+
+//Live location sharing
 document.addEventListener("DOMContentLoaded", function () {
     function getPayload(token) {
         return JSON.parse(atob(token.split(".")[1]));
