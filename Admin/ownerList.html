@@ -375,7 +375,10 @@
           var popup = document.getElementById("email-popup");
           popup.classList.toggle("active");
 
-          document.getElementById("email-form").reset()
+          document.getElementById("email-form").reset();
+          var toInput = document.getElementById("to");
+          toInput.style.display = "block";
+
       }
     </script>
     

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Owner data",data.list)
                 data.list.forEach(owner => {
                 row += `<tr  id="${owner.NIC}">
-                        <td scope="email" data-label="P ID">`+ owner.email +`</td>
+                        <td scope="email" data-label="P ID" class="email">`+ owner.email +`</td>
                         <td class="Name">`+ owner.name +`</td>
                         <td class="NIC">`+ owner.NIC +`</td>
                         
