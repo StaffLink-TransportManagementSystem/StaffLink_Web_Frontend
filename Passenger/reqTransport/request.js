@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // form.querySelector(".model").value = data.Request.model;
                 // form.querySelector(".type").value = data.Request.type;
                 //form.querySelector(".passengerEmail").value = data.Request.passengerEmail;
-                form.querySelector(".amount").value = data.Request.price;
+                form.querySelector(".amount").value = "Rs. " + data.Request.price;
                 form.querySelector(".startingDate").value = data.Request.startingDate;
                 form.querySelector(".endingDate").value = data.Request.endingDate;
                 form.querySelector(".tripStatus").value = data.Request.status;
