@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${passengers[i].email}</td>
                 <td>${passengers[i].contactNo}</td>
                 <td class="Action">`
-                if(tripPassengers[i].status == "ongoing"){
+                if(tripPassengers[i].status == "notpicked"){
                     row += `<a href="#moredetails" onclick="ViewLoction('${passengers[i].email}')"><button class="more-btn">View Location</button></a>
                             <a href="#moredetails" onclick="MarkPicked('${passengers[i].email}')"><button class="edit-btn">Pick Passenger</button></a>`
                 }
