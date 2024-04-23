@@ -79,9 +79,9 @@ body{
 
 .form .input-field{
     position: relative;
-    height: 50px;
+    height: 45px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .input-field input{

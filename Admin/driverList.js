@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             driverList = data.list;
             data.list.forEach(driver => {
                 row += `<tr  id="${driver.NIC}">
-                        <td scope="email">`+ driver.email + `</td>
+                        <td scope="email" class="email">`+ driver.email + `</td>
                         <td class="Name">`+ driver.name + `</td>
                         <td class="NIC">`+ driver.NIC + `</td>
                         <td class="age">`+ driver.age + `</td>

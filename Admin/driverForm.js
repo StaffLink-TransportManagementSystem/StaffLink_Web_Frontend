@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("ownerEmail error");
         checker = false;
       }
-      else if (!usedEmail(ownerEmail)){
+      else if (usedOwnerEmail(ownerEmail)){
         ownerEmailError.innerText = "This owner is not registered.";
         ownerEmailError.style.display = "block";
         console.log("ownerEmail error");
