@@ -1,4 +1,5 @@
 //const { type } = require("express/lib/response");
+var requested_vehicle = "";
 
 var vehicles = [];
 var row_data = "";
@@ -354,9 +355,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
                                                         <p><b>Starting Location :</b> ${vehical.startingPoint}</p>
                                                         <p><b>Destination :</b> ${vehical.endingPoint}</p>
-                                                        <p><b>Price :</b> RS. ${final_distance*90}</p>
+                                                        <p><b>Price :</b> RS. ${final_distance*90} (per day)</p>
                                                       </div>
-                                                      <a href="#"><button class="add-btn" onclick="createRequest('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
+                                                      <a href="#"><button class="add-btn" onclick="requestPopup('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
                                                     </div>
                                                   </div>`;
                                                     // console.log("row_data1", row_data);
@@ -901,10 +902,31 @@ function myFunction() {
 
 }
 
-function createRequest(vehicleNo, passengerEmail){
+function createRequest(){
+
+    // var onTime = document.getElementById('pstartTime').value;
+    // var offTime = document.getElementById('poffTime').value;
+    // var type = document.getElementById('ptype').value;
+    // var startingTime = document.getElementById('pstartTime').value;
+    // var EndingTime = document.getElementById('poffTime').value;
+
+    // Get references to the input elements
+    var tripType = document.getElementById('ptype').value;
+    var startTime = document.getElementById('pstartTime').value;
+    var offTime = document.getElementById('poffTime').value;
+    var startDate = document.getElementById('pstartDate').value;
+    var endDate = document.getElementById('pendDate').value;
+
+    // Print or display the reservation details
+    console.log("Trip Type: " + tripType);
+    console.log("Start Time: " + startTime);
+    console.log("Off Time: " + offTime);
+    console.log("Start Date: " + startDate);
+    console.log("End Date: " + endDate);
+
 
     console.log("Inside create request");
-    console.log("Vehicle No", vehicleNo);
+    console.log("Vehicle No", requested_vehicle);
     console.log("Passenger Email", passengerEmail);
     console.log("starting_latitude_new", starting_latitude_new);
     console.log("starting_longitude_new", starting_longitude_new);
@@ -912,15 +934,28 @@ function createRequest(vehicleNo, passengerEmail){
     console.log("ending_longitude_new", ending_longitude_new);
     console.log("distance_in_km", final_distance);
     console.log("duration_in_minutes", duration_in_minutes);
+
+    // console.log("onTime", onTime);
+    // console.log("offTime", offTime);
+    // console.log("type", type);
+    // console.log("startingTime", startingTime);
+    // console.log("EndingTime", EndingTime);
+
     data = {
-        vehicleNo: vehicleNo,
+        vehicleNo: requested_vehicle,
         passengerEmail: passengerEmail,
         startingLatitude: starting_latitude_new,
         startingLongitude: starting_longitude_new,
         endingLatitude: ending_latitude_new,
         endingLongitude: ending_longitude_new,
         distance: final_distance,
-        duration: duration_in_minutes
+        duration: duration_in_minutes,
+        onTime: startTime,
+        offTime: offTime,
+        type: tripType,
+        startingDate: startDate,
+        endingDate: endDate
+
     }
     console.log("Data", data);
     fetch('http://127.0.0.1:8080/try2_war_exploded/createRequest',{
@@ -931,14 +966,14 @@ function createRequest(vehicleNo, passengerEmail){
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                if(data.message === "Request created successfully"){
+                if(data.message === "Registration successfully"){
                     Swal.fire({
                         title: "Requested successfully!",
                         icon: "success"
                     })
-                    // .then(() => {
-                    //     location.reload();
-                    // })
+                    .then(() => {
+                        togglePopup()
+                    })
                 }
                 
             })
@@ -946,4 +981,14 @@ function createRequest(vehicleNo, passengerEmail){
                 console.error('Error:', error);
             });
       
+}
+
+function requestPopup(vehicleNo, passengerEmail){
+    console.log("Vehicle No", vehicleNo);
+    console.log("Passenger Email", passengerEmail);
+    requested_vehicle = vehicleNo
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+
+    
 }

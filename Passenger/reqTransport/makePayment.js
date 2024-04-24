@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     const request = data.requests[i];
                     const vehicle = data.vehicles[i];
                     var rowData = `<tr>
-                    <td>${request.id}</td>
-                    <td>${vehicle.vehicleNo}</td>
+                    <td>${request.vehicleNo}</td>
                     <td>${vehicle.type}</td>
-                    <td>${vehicle.model}</td>
+                    <td>${request.onTime}</td>
+                    <td>${request.offTime}</td>
                     <td>${request.startingDate}</td>
                     <td>${request.endingDate}</td>
                     <td>Rs. ${request.price}</td>
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     else if(request.status.toLowerCase() == "pending"){
                         rowData += `<a href="./editRequest.html?email=`+ request.vehicleNo +`" onclick=""><button class="edit-btn">EDIT</button></a> `
                     }
-                    rowData += `<button class="delete-btn" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >DELETE</button></td>
+                    rowData += `<button class="delete-btn" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`', '`+ request.id +`')" >DELETE</button></td>
                 </tr>`;
                     row += rowData;
                     i++;
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-function deleteRequest(vehicleNo, passengerEmail) {
+function deleteRequest(vehicleNo, passengerEmail,id) {
 
     console.log(vehicleNo);
     console.log(passengerEmail);
@@ -103,7 +103,7 @@ function deleteRequest(vehicleNo, passengerEmail) {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
+            let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail, id: id};
             fetch('http://127.0.0.1:8080/try2_war_exploded/requestDelete', {
                 method: 'POST',
                 headers: {
