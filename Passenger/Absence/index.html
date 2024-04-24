@@ -141,25 +141,30 @@
         </form>
       </div>
 
-      <div class="container">
-        <p class="topic">Absence History</p>
+      <div class="home-content">
+        <div class="details">
+          <div class="recentOrders">
+            <div class="cardHeader">
+              <!-- <p class="topic">Payments History</p> -->
+              <!-- <button class="more-btn">View All</a> -->
+            </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Reservation ID</th>
-            <th scope="col">Vehicle NO</th>
-            <th scope="col">Days of absent</th>
-            <!-- <th scope="col">DRIVER</th> -->
-            <th scope="col">Starting Date</th>
-            <th scope="col">End Date</th>
-            <!-- <th scope="col">ACTION</th> -->
-          </tr>
-        </thead>
+            <table class="table">
+              <thead>
+                  <tr>
+                      <th>Absent Id</th>
+                      <th>Vehicle No</th>
+                      <th>Days of Absent</th>
+                      <th>Starting Date</th>
+                      <th>Ending Date</th>
+                  </tr>
+              </thead>
 
-        <tbody class="tbody"></tbody>
-      </table>
-      </div>
+              <tbody class="tbody"></tbody>
+            </table>
+          </div> 
+        </div>
+      </div>    
     </div>
   </section>
 
@@ -183,8 +188,8 @@
 
   </script>
   <script src="absent.js"></script>
-  <script src="reservation.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <script src="reservation.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

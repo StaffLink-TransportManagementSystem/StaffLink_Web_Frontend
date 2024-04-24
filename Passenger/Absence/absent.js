@@ -89,8 +89,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 let i = 0;
                 let reservation = "";
                 let vehicle = "";
-                if(data.reservation == "No reservations"){
-                    alert("No reservations")
+                if(data.reservations == "No reservations"){
+                    Swal.fire({
+                        title: "No Reservations!",
+                        icon: "error"
+                    })
+                    .then(()=>
+                    window.location.href = "../dashboard.html"
+                    )
                     //TO BE HANDLE
                 }
                 else{

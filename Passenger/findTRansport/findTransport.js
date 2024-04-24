@@ -915,9 +915,9 @@ function createRequest(vehicleNo, passengerEmail){
     data = {
         vehicleNo: vehicleNo,
         passengerEmail: passengerEmail,
-        startingLatitute: starting_latitude_new,
+        startingLatitude: starting_latitude_new,
         startingLongitude: starting_longitude_new,
-        endingLatitute: ending_latitude_new,
+        endingLatitude: ending_latitude_new,
         endingLongitude: ending_longitude_new,
         distance: final_distance,
         duration: duration_in_minutes
@@ -931,6 +931,15 @@ function createRequest(vehicleNo, passengerEmail){
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
+                if(data.message === "Request created successfully"){
+                    Swal.fire({
+                        title: "Requested successfully!",
+                        icon: "success"
+                    })
+                    // .then(() => {
+                    //     location.reload();
+                    // })
+                }
                 
             })
             .catch(error => {
