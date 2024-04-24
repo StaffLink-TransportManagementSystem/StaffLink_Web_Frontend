@@ -14,23 +14,19 @@
     <body>
         <div class="container">
             <p class="topic">Verify Your Account</p>
+            <p class="sub-topic">STEP 2</p>
             <p>
-                We emailed the verification code to personal@gmail.com<br>
+                We emailed the verification code to <b><span id="emailPlaceholder"></span></b><br>
                 Enter the code below to confirm your email address.
             </p>
 
             <div class="code-container">
-                <input type="number" class="code" min="0" max="9" required>
-                <input type="number" class="code" min="0" max="9" required>
-                <input type="number" class="code" min="0" max="9" required>
-                <input type="number" class="code" min="0" max="9" required>
-                <!-- <input type="number" class="code" min="0" max="9" required> -->
-                <!-- <input type="number" class="code" min="0" max="9" required> -->
+                <input type="number" class="code" id="code" min="0" max="9999" required>
             </div>
 
             <div class="buttons">
-                <button class="submit-btn">Verify</button>
-                <button class="cancel-btn">Cancel</button>
+                <button class="submit-btn" onclick="verifyOTP()">Verify</button>
+                <a href="index.html"><button class="cancel-btn">Cancel</button></a>
             </div>
 
             <!-- <div>
@@ -44,7 +40,7 @@
         </div>
 
 
-        <!-- <script src="enterotp.js"></script> -->
+        <script src="enterotp.js"></script>
         <!-- <script>
             document.addEventListener("DOMContentLoaded", function () {
       

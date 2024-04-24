@@ -34,11 +34,12 @@ p{
     border-radius: 10px;
     border: 1px solid #0A2558;
     font-size: 24px;
-    width: 40px;
+    width: 150px;
     height: 45px;
     margin: 8px;
     text-align: center;
     font-weight: 400;
+    letter-spacing: 10px;
 }
 
 .code::-webkit-outer-spin-button,
