@@ -47,9 +47,9 @@
         <script>
             function sendOTP(){
                 let email = document.getElementById("email").value;
-                // console.log(email)
+                console.log(email)
                 let otp = Math.floor(Math.random() * 9000) + 1000;
-                // console.log(otp)
+                console.log(otp)
 
                 let params;
 
@@ -62,7 +62,7 @@
 
                 emailjs.send("service_s4lzhbl", "template_f9p6gdd", params)
                 .then(function(response) {
-                    // alert("Email sent! Status: " + response.status);
+                    alert("Email sent! Status: " + response.status);
                     getOTP(otp, email);
                     // enterOTP();  
                 })
