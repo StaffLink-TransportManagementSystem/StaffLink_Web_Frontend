@@ -12,7 +12,7 @@
 }
 
 .popup-content{
-    width: 55%;
+    width:650px;
     height: max-content;
     background-color: white;
     border-radius: 10px;
@@ -34,11 +34,61 @@
     justify-content: center;
 }
 
-.popup-content .detail-box{
+.popup-content .detail-box form{
     display: flex;
+    flex-direction: column;
 }
 
-.image{
+.popup-content form .details{
+    font-size: 15px;
+    color: #5c5c5c;
+    margin-bottom: 10px;
+}
+
+.popup-content form .input-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box input, select{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.upper-row{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.upper-row .trip-type {
+    width: 50%;
+}
+
+.upper-row .hide-input {
+    width: calc(50% / 2);
+}
+
+.lower-row{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.lower-row .input-box{
+    width: calc(100% / 2);
+}
+
+/* .image{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,9 +109,9 @@
     margin-top: 20px;
     color: #129912;
     font-weight: 500;
-}
+} */
 
-.popup-content form{
+/* .popup-content .detail-box form{
     display: flex;
     float: right;
     flex-wrap: wrap;
@@ -74,8 +124,9 @@
 }
 
 .popup-content form .input-box{
-    width: calc(100% / 2 - 20px);
+    width: calc(100% / 3 - 20px);
     margin-bottom: 25px;
+    display: flex;
 }
 
 .popup-content form .input-box input{
@@ -87,7 +138,7 @@
     padding-left: 10px;
     color: #0a2558;
     font-weight: 500;
-}
+} */
 
 
 .popup.active{
