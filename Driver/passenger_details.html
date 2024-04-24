@@ -137,6 +137,8 @@
         </div>
     </section>
 
+    <div class="popup" id="popup"></div>
+
     <div class="email popup" id="email-popup">
       <div class="popup-content">
         <i class="fas fa-xmark" id="close" onclick="togglePopupEmail()"></i>
@@ -181,6 +183,10 @@
 
       function toggleMenu(){
         dropdown1.classList.toggle("open-menu");
+      }
+
+      function togglePopup(){
+        document.getElementById("popup").classList.toggle("active");
       }
 
       function logout(){
