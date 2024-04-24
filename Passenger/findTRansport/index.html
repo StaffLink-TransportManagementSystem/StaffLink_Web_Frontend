@@ -179,11 +179,58 @@
         </div>
       </div>
 
-      <button class="submit-btn" id="openPopupButton" onclick="togglePopup1()">SEND</button> 
+      <!-- <button class="submit-btn" id="openPopupButton" onclick="togglePopup1()">SEND</button>  -->
     </section>
 
-
     <div class="popup" id="popup">
+      <div class="popup-content">
+        <!-- <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i> -->
+  
+        <p class="topic">Make Reservation</p>
+  
+  
+  
+        <div class="detail-box">
+          <form action="">
+            <div class="input-box">
+              <span class="details">Trip type</span>
+              <select name="triptype" class="type" id="ptype">
+                <option class="default" selected disabled value>Select the Trip type</option>
+                <option value="Morning">Morning</option>
+                <option value="Evening">Evening</option>
+                <option value="Both">Both</option>
+              </select>
+              <div id="type-error-message" style="display: none; color: red;"></div>
+            </div>
+  
+            <div class="input-box starting-time hide-input">
+              <span class="details">On time</span>
+              <input class="time" type="time" id="pstartTime">
+              <div id="startTime-error-message" style="display: none; color: red;"></div>
+            </div>
+  
+            <div class="input-box ending-time hide-input">
+              <span class="details">Off time</span>
+              <input class="time" type="time" id="poffTime">
+              <div id="offTime-error-message" style="display: none; color: red;"></div>
+            </div>
+        </div>
+        <div class="input-box">
+          <span class="details">Starting Date</span>
+          <input type="date" class="date" id="pstartDate">
+          <div id="startDate-error-message" style="display: none; color: red;"></div>
+        </div>
+        <div class="input-box">
+          <span class="details">Ending Date</span>
+          <input type="date" class="date" id="pendDate">
+          <div id="endDate-error-message" style="display: none; color: red;"></div>
+        </div>
+        </form>
+        <button class="add-btn" id="requestVehicle" onclick="createRequest()">REQUEST TO RESERVATION</button>
+      </div>
+    </div>
+
+    <!-- <div class="popup" id="popup">
       <div class="popup-content">
         <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
   
@@ -232,7 +279,9 @@
         
         </form>
       </div>
-    </div>
+    </div> -->
+
+
     
 
     <script>
@@ -260,8 +309,8 @@
 
       function togglePopup1() {
     // alert(id);
-        const popup = document.getElementById("popup");
-        popup.classList.toggle("active");
+          const popup = document.getElementById("popup");
+          popup.classList.toggle("active");
       }
     </script>
 

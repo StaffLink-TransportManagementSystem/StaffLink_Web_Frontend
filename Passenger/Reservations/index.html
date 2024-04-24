@@ -110,56 +110,34 @@
         </div>
       </div>
     </nav>
-
     <div class="home-content">
-      <div class="container">
-        <p class="topic">Reservation History</p>
-  
+      <div class="details">
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <!-- <p class="topic">Payments History</p> -->
+            <!-- <button class="more-btn">View All</a> -->
+          </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">VEHICLE NO</th>
-            <th scope="col">VEHICLE TYPE</th>
-            <th scope="col">Service Provider</th>
-            <!-- <th scope="col">DRIVER</th> -->
-            <th scope="col">Reservation Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Payment Status</th>
-            <!-- <th scope="col">ACTION</th> -->
-          </tr>
-        </thead>
-
-        <tbody class="tbody">
-          <!-- <tr>
-                    <td data-label="Vehicle-no">KD 1234</td>
-                    <td data-label="Type">Bus</td>
-                    <td data-label="Service Provider">xyz Trnasportation</td>
-                    <td data-label="Driver">Kamal Perera</td>
-                    <td data-label="Reservation Date">20:09:2023</td>
-                    <td data-label="End Date">20:09:2023</td>
-                    <td data-label="Status">Active</td>
-                    <td data-label="Action">
-                        <a href="#edit"></a><button class="edit">Edit</button></a>
-                        <a href="#Cancel"></a><button class="Cancel">Cancel</button></a>
-                    </td>
-                </tr>
+          <table class="table">
+            <thead>
                 <tr>
-                  <td data-label="Vehicle-no">KD 1234</td>
-                  <td data-label="Type">Bus</td>
-                  <td data-label="Service Provider">xyz Trnasportation</td>
-                  <td data-label="Driver">Kamal Perera</td>
-                  <td data-label="Reservation Date">20:07:2023</td>
-                  <td data-label="End Date">20:09:2023</td>
-                  <td data-label="Status">Completed</td>
-                  <td data-label="Action">
-                      <a href="#edit"></a><button class="edit">Edit</button></a>
-                      <a href="#Cancel"></a><button class="Cancel">Cancel</button></a>
-                  </td>
-              </tr> -->
-        </tbody>
-      </table>
-    </div>
+                    <th>Payment Id</th>
+                    <th>Vehicle No</th>
+                    <th>Reservation Date</th>
+                    <th>Payment Date</th>
+                    <th>Payment</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody class="tbody"></tbody>
+          </table>
+        </div> 
+      </div>
+    </div>       
+
+    
     </div>
   </section>
 
@@ -184,7 +162,7 @@
   </script>
   <script src="absent.js"></script>
   <script src="reservation.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
