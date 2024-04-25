@@ -168,11 +168,23 @@
           <div class="box">
             <p class="topic">Vehicles</p>
                 
-            <form action="" class="search-bar">
-              
-              <input type="text" placeholder="Type Anything" vehicle-search>
-              <button type="submit"><i class="fas fa-search"></i></button>
-            </form>           
+            <div class="search_box">
+              <div class="dropdown">
+                    <div class="default_option">All</div>  
+                    <ul>
+                      <li>Vehicle No</li>
+                      <li>Vehicle Type</li>
+                      <li>Vehicle Brand</li>
+                      <li>Starting Location</li>
+                      <li>Destination</li>
+                    </ul>
+                </div>
+                <form action="" class="search-bar">
+            
+                  <input type="text" placeholder="Type Anything" vehicle-search>
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form> 
+            </div>         
               
             <a href="addVehical.html"><button class="add-new">+ Add New</button></a>            
           </div>
@@ -219,6 +231,27 @@
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+            var searchCriteria = "All";
+
+        document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
 
     </script>
     <script src="./vehicles.js"></script>
