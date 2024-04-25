@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector(".cashPay").innerHTML = `Rs. `+ data.payments.cash ;
                 document.querySelector(".subscription").innerHTML = `Rs. -`+ data.payments.subscription ;  
                 document.querySelector(".balance").innerHTML = `<b>Rs. `+ (data.payments.card + data.payments.cash - data.payments.subscription)+`</b>`; 
-
+                document.getElementById("ownerPayment").innerHTML = `<button class="submit-btn" onclick="pay('${(data.payments.card + data.payments.cash - data.payments.subscription)}')">Pay Through System</button>`;
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -125,3 +125,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     
   });
+
+function pay(amount){
+    console.log("Payment", amount);
+    location.href = "./ownerPayments/cardPayment.html?amount="+amount;
+    // alert("Payment Successful", amount);
+}
