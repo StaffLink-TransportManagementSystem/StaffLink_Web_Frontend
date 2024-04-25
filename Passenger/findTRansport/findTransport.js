@@ -1,4 +1,4 @@
-//const { type } = require("express/lib/response");
+
 var requested_vehicle = "";
 
 var vehicles = [];
@@ -49,23 +49,23 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get form elements
         // const startingLocation = form.querySelector('.startLocation').value;
         // const endingLocation = form.querySelector('.endLocation').value;
-        var type = document.getElementById('type').value;
-        var startingTime = document.getElementById('startTime').value;
-        var EndingTime = document.getElementById('offTime').value;
+        // var type = document.getElementById('type').value;
+        // var startingTime = document.getElementById('startTime').value;
+        // var EndingTime = document.getElementById('offTime').value;
 
         var checker = true;
 
         var startLocationError = document.getElementById("startLocation-error-message");
         var endLocationError = document.getElementById("endLocation-error-message");
-        var typeError = document.getElementById("type-error-message");
-        var startTimeError = document.getElementById("startTime-error-message");
-        var offTimeError = document.getElementById("offTime-error-message");
+        // var typeError = document.getElementById("type-error-message");
+        // var startTimeError = document.getElementById("startTime-error-message");
+        // var offTimeError = document.getElementById("offTime-error-message");
 
         startLocationError.style.display = "none";
         endLocationError.style.display = "none";
-        typeError.style.display = "none";
-        startTimeError.style.display = "none";
-        offTimeError.style.display = "none";
+        // typeError.style.display = "none";
+        // startTimeError.style.display = "none";
+        // offTimeError.style.display = "none";
 
         if (!starting_latitude_new || !starting_longitude_new) {
             startLocationError.innerText = "Please enter a starting location.";
@@ -920,7 +920,14 @@ function createRequest() {
     var typeError = document.getElementById('ptype-error-message');
     var startTimeError = document.getElementById('pstartTime-error-message');
     var offTimeError = document.getElementById('poffTime-error-message');
-    
+    var startDateError = document.getElementById('pstartDate-error-message');
+    var endDateError = document.getElementById('pendDate-error-message');    
+
+    typeError.style.display = "none";
+    startTimeError.style.display = "none";
+    offTimeError.style.display = "none";
+    startDateError.style.display = "none";
+    endDateError.style.display = "none";
 
     // Print or display the reservation details
     console.log("Trip Type: " + tripType);
@@ -945,6 +952,7 @@ function createRequest() {
     // console.log("type", type);
     // console.log("startingTime", startingTime);
     // console.log("EndingTime", EndingTime);
+    onTimeValidation(startTime);
 
     data = {
         vehicleNo: requested_vehicle,
@@ -975,12 +983,24 @@ function createRequest() {
             console.log("starting time error");
             checker = false;
         }
+        else if(!onTimeValidation(startTime)){
+            startTimeError.innerText = "Please enter time before 12.00 PM";
+            startTimeError.style.display = "block";
+            console.log("starting time error");
+            checker = false;
+        }
     }
     if (tripType === "Evening") {
         if (!offTime) {
             offTimeError.innerText = "Please enter an off time.";
             offTimeError.style.display = "block";
             console.log("off time error");
+            checker = false;
+        }
+        else if(onTimeValidation(offTime)){
+            offTimeError.innerText = "Please enter time after 12.00 PM";
+            offTimeError.style.display = "block";
+            console.log("starting time error");
             checker = false;
         }
     }
@@ -991,13 +1011,51 @@ function createRequest() {
             console.log("starting time error");
             checker = false;
         }
+        else if(!onTimeValidation(startTime)){
+            startTimeError.innerText = "Please enter time before 12.00 PM";
+            startTimeError.style.display = "block";
+            console.log("starting time error");
+            checker = false;
+        }
         if (!offTime) {
             offTimeError.innerText = "Please enter an off time.";
             offTimeError.style.display = "block";
             console.log("off time error");
             checker = false;
         }
+        else if(onTimeValidation(offTime)){
+            offTimeError.innerText = "Please enter time after 12.00 PM";
+            offTimeError.style.display = "block";
+            console.log("starting time error");
+            checker = false;
+        }
     }
+    if (!startDate) {
+        startDateError.innerText = "Please enter a starting date.";
+        startDateError.style.display = "block";
+        console.log("starting date error");
+        checker = false;
+    }
+    else if(!validateStartDate(startDate)){
+        startDateError.innerText = "Starting date must be after today.";
+        startDateError.style.display = "block";
+        console.log("starting date error");
+        checker = false;
+    }
+    if (!endDate) {
+        endDateError.innerText = "Please enter an ending date.";
+        endDateError.style.display = "block";
+        console.log("ending date error");
+        checker = false;
+    }
+    else if(!validateEndDate(startDate, endDate)){
+        endDateError.innerText = "Ending date must be after starting date.";
+        endDateError.style.display = "block";
+        console.log("ending date error");
+        checker = false;
+    }
+    
+
     if (checker) {
 
         console.log("Data", data);
@@ -1060,3 +1118,62 @@ typeToggle.addEventListener('change', function () {
         endTimeDiv.style.display = 'block';
     }
 })
+
+function onTimeValidation(startTime) {
+    var timeParts = startTime.split(":");
+    var hours = parseInt(timeParts[0], 10);
+    var minutes = parseInt(timeParts[1], 10);
+    var period = startTime.split(" ")[1]; // Extract AM/PM
+
+    // Convert hours to 24-hour format if it's PM
+    if (period === "PM" && hours < 12) {
+        hours += 12;
+    }
+
+    // Check if the time is before or equal to 12:00 PM
+    if (hours < 12 || (hours === 12 && minutes === 0)) {
+        return true;
+        // console.log("Time is on or before 12:00 PM");
+        // Do something here if the time is on or before 12:00 PM
+    } else {
+        return false;
+        // console.log("Time is after 12:00 PM");
+        // Do something here if the time is after 12:00 PM
+    }
+}
+
+function validateStartDate(startDateInput) {
+    // Get today's date
+    var today = new Date();
+    today.setHours(0, 0, 0, 0); // Set hours to 0 to compare only dates
+
+    // Get the starting and ending dates from the inputs
+    var startDate = new Date(startDateInput);
+    
+
+    // Compare starting date with today
+    if (startDate <= today) {
+        console.log("Starting date must be after today.");
+        return false;
+        // You can display an error message or take other actions here
+    }
+    return true;    
+}
+
+function validateEndDate(startDateInput, endDateInput) {
+    // Get today's date
+    var today = new Date();
+    today.setHours(0, 0, 0, 0); // Set hours to 0 to compare only dates
+
+    // Get the starting and ending dates from the inputs
+    var startDate = new Date(startDateInput);
+    var endDate = new Date(endDateInput);
+
+    // Compare ending date with starting date
+    if (endDate <= startDate) {
+        console.log("Ending date must be after starting date.");
+        return false;
+        // You can display an error message or take other actions here
+    }
+    return true;
+}
