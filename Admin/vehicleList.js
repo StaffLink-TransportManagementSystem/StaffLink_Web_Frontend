@@ -48,21 +48,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
             searchInput.addEventListener("input", e => {
                 const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
                 users.forEach(data => {
+                    switch (searchOption) {
+                        case "owner email":
+                            searchValue = data.ownerEmail.toLowerCase().includes(value);
+                            break;
+                        case "vehicle no":
+                            searchValue = data.vehicleNo.toLowerCase().includes(value);
+                            break;
+                        case "driver email":
+                            searchValue = data.driverEmail.toLowerCase().includes(value);
+                            break;
+                        case "starting point":
+                            searchValue = data.startingPoint.toLowerCase().includes(value);
+                            break;
+                        case "ending point":
+                            searchValue = data.endingPoint.toLowerCase().includes(value);
+                            break;
+                        case "all":
+                            searchValue =   data.ownerEmail.toLowerCase().includes(value) ||
+                            data.vehicleNo.toLowerCase().includes(value) ||
+                            data.regNo.toLowerCase().includes(value) ||
+                            data.vehicleBrand.toLowerCase().includes(value) ||
+                            data.type.toLowerCase().includes(value) ||
+                            data.startingPoint.toLowerCase().includes(value) ||
+                            data.driverEmail.toLowerCase().includes(value) ||
+                            data.endingPoint.toLowerCase().includes(value)
+                          
+                    }
                     const isVisible =
-                        data.ownerEmail.toLowerCase().includes(value) ||
-                        data.vehicleNo.toLowerCase().includes(value) ||
-                        data.regNo.toLowerCase().includes(value) ||
-                        data.vehicleBrand.toLowerCase().includes(value) ||
-                        data.type.toLowerCase().includes(value) ||
-                        data.startingPoint.toLowerCase().includes(value) ||
-                        data.endingPoint.toLowerCase().includes(value)
+                    searchValue
    
-                        document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+                    document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
                 });
             });
     
   });
+
 
 
 function AddVehicle() {

@@ -44,13 +44,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     searchInput.addEventListener("input", e => {
         const value = e.target.value.toLowerCase();
+        const searchOption = searchCriteria.toLowerCase();
         users.forEach(data => {
+            switch (searchOption) {
+                case "name":
+                    searchValue = data.name.toLowerCase().includes(value);
+                    break;
+                case "email":
+                    searchValue = data.email.toLowerCase().includes(value);
+                    break;
+                case "nic":
+                    searchValue = data.NIC.toLowerCase().includes(value);
+                    break;
+                case "contact no":
+                    searchValue = data.contact.toLowerCase().includes(value);
+                    break;
+                case "owner email":
+                    searchValue = data.ownerEmail.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.name.toLowerCase().includes(value) ||
+                    data.email.toLowerCase().includes(value) ||
+                    data.contact.toLowerCase().includes(value) ||
+                    data.ownerEmail.toLowerCase().includes(value) ||
+                    data.NIC.toLowerCase().includes(value)
+            }
             const isVisible =
-                data.name.toLowerCase().includes(value) ||
-                data.email.toLowerCase().includes(value) ||
-                data.contact.toLowerCase().includes(value) ||
-                data.ownerEmail.toLowerCase().includes(value) ||
-                data.NIC.toLowerCase().includes(value)
+            searchValue
 
             document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
         });
