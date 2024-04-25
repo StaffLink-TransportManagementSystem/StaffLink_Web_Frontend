@@ -126,7 +126,7 @@
 
               <div id="map"></div>
 
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <span class="details">Trip type</span>
                 <select name="triptype" class="type" id="type">
                   <option class="default" selected disabled value>Select the Trip type</option>
@@ -148,7 +148,7 @@
                 <input class="time" type="time" id="offTime">
                 <div id="offTime-error-message" style="display: none; color: red;"></div>
               </div>
-            </div>
+            </div> -->
 
             <button class="more-btn" id="search-btn">Search</button>
           </form>
@@ -158,21 +158,7 @@
                
           </div>
           <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Owner Email</th>
-                    <th scope="col">Vehicle No</th>
-                    <!-- <th scope="col">Reg. No</th> -->
-                    <th scope="col">Brand</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Driver Email</th>
-                    <th scope="col">Seats Count</th>
-                    <th scope="col">Trips</th>
-                    <th scope="col">Starting Point</th>
-                    <th scope="col">Ending Point</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
+            
 
             <tbody id="tbody"></tbody>
         </table>
@@ -200,30 +186,30 @@
                 <option value="Evening">Evening</option>
                 <option value="Both">Both</option>
               </select>
-              <div id="type-error-message" style="display: none; color: red;"></div>
+              <div id="ptype-error-message" style="display: none; color: red;"></div>
             </div>
   
-            <div class="input-box starting-time hide-input">
+            <div class="input-box starting-time hide-input" id="pStartTimeDiv">
               <span class="details">On time</span>
               <input class="time" type="time" id="pstartTime">
-              <div id="startTime-error-message" style="display: none; color: red;"></div>
+              <div id="pstartTime-error-message" style="display: none; color: red;"></div>
             </div>
   
-            <div class="input-box ending-time hide-input">
+            <div class="input-box ending-time hide-input" id="pEndTimeDiv">
               <span class="details">Off time</span>
               <input class="time" type="time" id="poffTime">
-              <div id="offTime-error-message" style="display: none; color: red;"></div>
+              <div id="poffTime-error-message" style="display: none; color: red;"></div>
             </div>
         </div>
         <div class="input-box">
           <span class="details">Starting Date</span>
           <input type="date" class="date" id="pstartDate">
-          <div id="startDate-error-message" style="display: none; color: red;"></div>
+          <div id="pstartDate-error-message" style="display: none; color: red;"></div>
         </div>
         <div class="input-box">
           <span class="details">Ending Date</span>
           <input type="date" class="date" id="pendDate">
-          <div id="endDate-error-message" style="display: none; color: red;"></div>
+          <div id="pendDate-error-message" style="display: none; color: red;"></div>
         </div>
         </form>
         <button class="add-btn" id="requestVehicle" onclick="createRequest()">REQUEST TO RESERVATION</button>
