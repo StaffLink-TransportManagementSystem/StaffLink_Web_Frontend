@@ -377,12 +377,13 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     top: 70px;
     left: -10px;
     background: #fff;
-    width: 150px;
+    width: 95%;
     border-radius: 5px;
     padding: 20px;
     display: none;
     box-shadow: 8px 8px 6px -10px #b3c6ff;
     z-index: 1000;
+    list-style: none;
   }
   
   .detail-bar .search_box .dropdown ul.active{
@@ -401,7 +402,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     color: #6f768d;
   }
   
-  .detail-bar .search_box .dropdown:before{
+  .detail-bar .box .search_box .dropdown:before{
     content: "";
     position: absolute;
     top: 18px;
