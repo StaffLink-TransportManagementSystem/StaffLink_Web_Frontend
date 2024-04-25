@@ -356,13 +356,14 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
   }
   
   .detail-bar .box .search_box .dropdown{
-    width: 30%;
+    width: 40%;
     /* border-right: 2px solid #dde2f1; */
     /* color: #9fa3b1; */
     position: relative;
     cursor: pointer;
     box-shadow: 0 8px 50px -10px #e0e0e1;
     border-radius: 10px;
+    
     
   }
   
@@ -377,7 +378,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
     top: 70px;
     left: -10px;
     background: #fff;
-    width: 95%;
+    width: 100%;
     border-radius: 5px;
     padding: 20px;
     display: none;
