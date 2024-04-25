@@ -72,9 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.reservations.forEach(reservation => {
                 row2 += `<tr>
                 <td>`+ reservation.startingDate +`</td>
+                <td>`+ reservation.endingDate +`</td>
                 <td>`+ reservation.vehicleNo +`</td>
-                <td>`+ reservation.startingWaypoint +`</td>
-                <td>`+ reservation.endingWaypoint +`</td>
+                <td>`+ reservation.status +`</td>
+                <td><button class="add-btn" class="Payment-btn" style="padding-top:2px" onclick="seeRoute(${reservation.startingLatitude},${reservation.startingLongitude},${reservation.endingLatitude},${reservation.endingLongitude})">See route</button>
+                </td>
                 </tr>`
                 });
 
@@ -96,3 +98,8 @@ function seePayments(){
     window.location.href = "./Payments/payments.html";
 }
   
+function seeRoute(startingLatitude,startingLongitude,endingLatitude,endingLongitude){
+    console.log(startingLatitude,startingLongitude,endingLatitude,endingLongitude);
+    // window.location.href = `https://www.google.com/maps/dir/${startingLatitude},${startingLongitude}/${endingLatitude},${endingLongitude}`;
+    window.open(`https://www.google.com/maps/dir/${startingLatitude},${startingLongitude}/${endingLatitude},${endingLongitude}`);
+}
