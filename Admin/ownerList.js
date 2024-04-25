@@ -41,16 +41,32 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             searchInput.addEventListener("input", e => {
-                const value = e.target.value.toLowerCase();
-                users.forEach(data => {
-                    const isVisible =
-                        data.name.toLowerCase().includes(value) ||
-                        data.email.toLowerCase().includes(value) ||
-                        data.NIC.toLowerCase().includes(value)
-   
-                        document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
-                });
-            });
+              const value = e.target.value.toLowerCase();
+              const searchOption = searchCriteria.toLowerCase();
+              users.forEach(data => {
+                   switch (searchOption) {
+              case "name":
+                  searchValue = data.name.toLowerCase().includes(value);
+                  break;
+              case "email":
+                  searchValue = data.email.toLowerCase().includes(value);
+                  break;
+              case "nic":
+                  searchValue = data.NIC.toLowerCase().includes(value);
+                  break;
+              case "all":
+                  searchValue = data.name.toLowerCase().includes(value) ||
+                  data.email.toLowerCase().includes(value) ||
+                  data.NIC.toLowerCase().includes(value)
+                
+          }
+
+          const isVisible =
+          searchValue
+        
+          document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+              });
+          });
     
   });
 
