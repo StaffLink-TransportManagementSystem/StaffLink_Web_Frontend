@@ -200,30 +200,30 @@
                 <option value="Evening">Evening</option>
                 <option value="Both">Both</option>
               </select>
-              <div id="type-error-message" style="display: none; color: red;"></div>
+              <div id="ptype-error-message" style="display: none; color: red;"></div>
             </div>
   
-            <div class="input-box starting-time hide-input">
+            <div class="input-box starting-time hide-input" id="pStartTimeDiv">
               <span class="details">On time</span>
               <input class="time" type="time" id="pstartTime">
-              <div id="startTime-error-message" style="display: none; color: red;"></div>
+              <div id="pstartTime-error-message" style="display: none; color: red;"></div>
             </div>
   
-            <div class="input-box ending-time hide-input">
+            <div class="input-box ending-time hide-input" id="pEndTimeDiv">
               <span class="details">Off time</span>
               <input class="time" type="time" id="poffTime">
-              <div id="offTime-error-message" style="display: none; color: red;"></div>
+              <div id="poffTime-error-message" style="display: none; color: red;"></div>
             </div>
         </div>
         <div class="input-box">
           <span class="details">Starting Date</span>
           <input type="date" class="date" id="pstartDate">
-          <div id="startDate-error-message" style="display: none; color: red;"></div>
+          <div id="pstartDate-error-message" style="display: none; color: red;"></div>
         </div>
         <div class="input-box">
           <span class="details">Ending Date</span>
           <input type="date" class="date" id="pendDate">
-          <div id="endDate-error-message" style="display: none; color: red;"></div>
+          <div id="pendDate-error-message" style="display: none; color: red;"></div>
         </div>
         </form>
         <button class="add-btn" id="requestVehicle" onclick="createRequest()">REQUEST TO RESERVATION</button>

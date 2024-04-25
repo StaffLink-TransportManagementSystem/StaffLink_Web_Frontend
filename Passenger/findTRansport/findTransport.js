@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const token = checkCookie("jwt");
 
     const payload = getPayload(token);
-    console.log("Payload",payload);
-    
+    console.log("Payload", payload);
+
     passengerEmail = payload.id;
 })
 
@@ -79,43 +79,43 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("ending location error");
             checker = false;
         }
-        if (!type) {
-            typeError.innerText = "Please enter a type.";
-            typeError.style.display = "block";
-            console.log("type error");
-            checker = false;
-        }
+        // if (!type) {
+        //     typeError.innerText = "Please enter a type.";
+        //     typeError.style.display = "block";
+        //     console.log("type error");
+        //     checker = false;
+        // }
 
-        if (type === "Morning") {
-            if (!startingTime) {
-                startTimeError.innerText = "Please enter a starting time.";
-                startTimeError.style.display = "block";
-                console.log("starting time error");
-                checker = false;
-            }
-        }
-        if (type === "Evening") {
-            if (!EndingTime) {
-                offTimeError.innerText = "Please enter an off time.";
-                offTimeError.style.display = "block";
-                console.log("off time error");
-                checker = false;
-            }
-        }
-        if (type === "Both") {
-            if (!startingTime) {
-                startTimeError.innerText = "Please enter a starting time.";
-                startTimeError.style.display = "block";
-                console.log("starting time error");
-                checker = false;
-            }
-            if (!EndingTime) {
-                offTimeError.innerText = "Please enter an off time.";
-                offTimeError.style.display = "block";
-                console.log("off time error");
-                checker = false;
-            }
-        }
+        // if (type === "Morning") {
+        //     if (!startingTime) {
+        //         startTimeError.innerText = "Please enter a starting time.";
+        //         startTimeError.style.display = "block";
+        //         console.log("starting time error");
+        //         checker = false;
+        //     }
+        // }
+        // if (type === "Evening") {
+        //     if (!EndingTime) {
+        //         offTimeError.innerText = "Please enter an off time.";
+        //         offTimeError.style.display = "block";
+        //         console.log("off time error");
+        //         checker = false;
+        //     }
+        // }
+        // if (type === "Both") {
+        //     if (!startingTime) {
+        //         startTimeError.innerText = "Please enter a starting time.";
+        //         startTimeError.style.display = "block";
+        //         console.log("starting time error");
+        //         checker = false;
+        //     }
+        //     if (!EndingTime) {
+        //         offTimeError.innerText = "Please enter an off time.";
+        //         offTimeError.style.display = "block";
+        //         console.log("off time error");
+        //         checker = false;
+        //     }
+        // }
 
         // let row = "";
         const resultsContainer = document.getElementById("results");
@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
                                                         <p><b>Starting Location :</b> ${vehical.startingPoint}</p>
                                                         <p><b>Destination :</b> ${vehical.endingPoint}</p>
-                                                        <p><b>Price :</b> RS. ${final_distance*90} (per day)</p>
+                                                        <p><b>Price :</b> RS. ${final_distance * 90} (per day)</p>
                                                       </div>
                                                       <a href="#"><button class="add-btn" onclick="requestPopup('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
                                                     </div>
@@ -370,14 +370,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                     })
                             }
                             )
-                            // .then(() => {
+                        // .then(() => {
 
 
 
-                            //     console.log("vehicles", vehicles);
-                            //     console.log("row data", row_data);
-                            //     document.getElementById("tbody").innerHTML = row_data;
-                            // })
+                        //     console.log("vehicles", vehicles);
+                        //     console.log("row data", row_data);
+                        //     document.getElementById("tbody").innerHTML = row_data;
+                        // })
                         // displayVehicles(vehicles);
 
                         // console.log("diff_distance range", differance);
@@ -599,7 +599,7 @@ function placeMarker(markerName) {
 
 
         calculateDistance();
-        
+
     }
 }
 
@@ -898,11 +898,11 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 function myFunction() {
     // console.log('Function called');
-    document.querySelector(".table").innerHTML = row_data;  
+    document.querySelector(".table").innerHTML = row_data;
 
 }
 
-function createRequest(){
+function createRequest() {
 
     // var onTime = document.getElementById('pstartTime').value;
     // var offTime = document.getElementById('poffTime').value;
@@ -916,6 +916,11 @@ function createRequest(){
     var offTime = document.getElementById('poffTime').value;
     var startDate = document.getElementById('pstartDate').value;
     var endDate = document.getElementById('pendDate').value;
+
+    var typeError = document.getElementById('ptype-error-message');
+    var startTimeError = document.getElementById('pstartTime-error-message');
+    var offTimeError = document.getElementById('poffTime-error-message');
+    
 
     // Print or display the reservation details
     console.log("Trip Type: " + tripType);
@@ -955,40 +960,103 @@ function createRequest(){
         type: tripType,
         startingDate: startDate,
         endingDate: endDate
-
     }
-    console.log("Data", data);
-    fetch('http://127.0.0.1:8080/try2_war_exploded/createRequest',{
+    var checker = true;
+    if (!tripType) {
+        typeError.innerText = "Please enter a type.";
+        typeError.style.display = "block";
+        console.log("type error");
+        checker = false;
+    }
+    if (tripType === "Morning") {
+        if (!startTime) {
+            startTimeError.innerText = "Please enter a starting time.";
+            startTimeError.style.display = "block";
+            console.log("starting time error");
+            checker = false;
+        }
+    }
+    if (tripType === "Evening") {
+        if (!offTime) {
+            offTimeError.innerText = "Please enter an off time.";
+            offTimeError.style.display = "block";
+            console.log("off time error");
+            checker = false;
+        }
+    }
+    if (tripType === "Both") {
+        if (!startTime) {
+            startTimeError.innerText = "Please enter a starting time.";
+            startTimeError.style.display = "block";
+            console.log("starting time error");
+            checker = false;
+        }
+        if (!offTime) {
+            offTimeError.innerText = "Please enter an off time.";
+            offTimeError.style.display = "block";
+            console.log("off time error");
+            checker = false;
+        }
+    }
+    if (checker) {
+
+        console.log("Data", data);
+        fetch('http://127.0.0.1:8080/try2_war_exploded/createRequest', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            },body: JSON.stringify(data),credentials: "include",})
+            }, body: JSON.stringify(data), credentials: "include",
+        })
             .then(response => response.json())
             .then(data => {
                 console.log(data.message)
-                if(data.message === "Registration successfully"){
+                if (data.message === "Registration successfully") {
                     Swal.fire({
                         title: "Requested successfully!",
                         icon: "success"
                     })
-                    .then(() => {
-                        togglePopup()
-                    })
+                        .then(() => {
+                            togglePopup()
+                        })
                 }
-                
+
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-      
+    }
+
 }
 
-function requestPopup(vehicleNo, passengerEmail){
+function requestPopup(vehicleNo, passengerEmail) {
     console.log("Vehicle No", vehicleNo);
     console.log("Passenger Email", passengerEmail);
     requested_vehicle = vehicleNo
+
+    const startTimeDiv = document.getElementById('pStartTimeDiv');
+    const endTimeDiv = document.getElementById('pEndTimeDiv');
+
+    startTimeDiv.style.display = 'none';
+    endTimeDiv.style.display = 'none';
+
     const popup = document.getElementById("popup");
     popup.classList.toggle("active");
 
-    
 }
+
+const typeToggle = document.getElementById('ptype');
+typeToggle.addEventListener('change', function () {
+    const startTimeDiv = document.getElementById('pStartTimeDiv');
+    const endTimeDiv = document.getElementById('pEndTimeDiv');
+
+    if (typeToggle.value === 'Morning') {
+        startTimeDiv.style.display = 'block';
+        endTimeDiv.style.display = 'none';
+    } else if (typeToggle.value === 'Evening') {
+        startTimeDiv.style.display = 'none';
+        endTimeDiv.style.display = 'block';
+    } else if (typeToggle.value === 'Both') {
+        startTimeDiv.style.display = 'block';
+        endTimeDiv.style.display = 'block';
+    }
+})
