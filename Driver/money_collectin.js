@@ -73,16 +73,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
             searchInput.addEventListener("input", e => {
                 const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
                 users.forEach(data => {
-                    const isVisible =
-                        data.id.toString().toLowerCase().includes(value) ||
-                        data.vehicleNo.toLowerCase().includes(value) ||
-                        data.passengerName.toLowerCase().includes(value)
-   
-                        document.getElementById(data.id).classList.toggle("hide", !isVisible)
+                     switch (searchOption) {
+                case "payment id":
+                    searchValue = data.id.toString().toLowerCase().includes(value);
+                    break;
+                case "vehicle no":
+                    searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    break;
+                case "passenger name":
+                    searchValue = data.passengerName.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.id.toString().toLowerCase().includes(value) ||
+                    data.vehicleNo.toLowerCase().includes(value) ||
+                    data.passengerName.toLowerCase().includes(value)
+                  
+            }
+
+            const isVisible =
+            searchValue
+          
+            document.getElementById(data.id).classList.toggle("hide", !isVisible)
                 });
             });
         });
+
+
 
 
 function collectedMoney(id){
