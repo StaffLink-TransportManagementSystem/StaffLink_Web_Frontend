@@ -1,0 +1,21 @@
+*{
+    background: #f5f5f5;
+}
+
+.topic{
+    margin: 50px 0 70px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.topic pre{
+    font-size: 24px;
+}
+
+.table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

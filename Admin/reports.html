@@ -169,7 +169,7 @@
             <div class="period">
                 <div>
                     <label for=".from-date">From</label>
-                    <select id="month" name="month">
+                    <select id="month" name="month" class="from-month">
                         <option value="01">January</option>
                         <option value="02">February</option>
                         <option value="03">March</option>
@@ -183,7 +183,7 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <select id="year" name="year">
+                    <select id="year" name="year" class="from-year">
                         <option value="2022">2022</option>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
@@ -191,7 +191,7 @@
                 </div>
                 <div>
                     <label for=".to-date">To</label>
-                    <select id="month" name="month">
+                    <select id="month" name="month" class="to-month">
                         <option value="01">January</option>
                         <option value="02">February</option>
                         <option value="03">March</option>
@@ -205,14 +205,14 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <select id="year" name="year">
+                    <select id="year" name="year" class="to-year">
                         <option value="2022">2022</option>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
                     </select>
                 </div>
 
-                <button class="more-btn">View Report</button>
+                <a href="#" id="revenueReport"><button class="more-btn" id="btn-two">View Report</button></a>
             </div>
         </div>
 
@@ -262,6 +262,22 @@
 
         window.open(url, '_blank');
       });
+
+
+
+
+      document.getElementById('btn-two').addEventListener("click", function () {
+
+            var fromMonth = document.querySelector(".from-month").value;
+            var fromYear = document.querySelector(".from-year").value;
+            var toMonth = document.querySelector(".to-month").value;
+            var toYear = document.querySelector(".to-year").value;
+
+            var url = "revenueReport.html?fromMonth=" + fromMonth + "&fromYear=" + fromYear + "&toMonth=" + toMonth + "&toYear=" + toYear;
+            window.open(url, '_blank');
+      });
+</script>
+
     </script>
 
 
