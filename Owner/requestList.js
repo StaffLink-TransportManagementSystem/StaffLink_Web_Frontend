@@ -175,7 +175,7 @@ function rejectedfunction(id, vehicleNo, passengerEmail, startingPoint, endingPo
 }
 
 function togglePopup1(id) {
-    alert("clicked"+id);
+    // alert("clicked"+id);
       const popup = document.getElementById("popup");
       popup.classList.toggle("active");
       fetch('http://127.0.0.1:8080/try2_war_exploded/getRequest?id='+id,{
