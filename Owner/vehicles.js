@@ -97,20 +97,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     searchInput.addEventListener("input", e => {
         const value = e.target.value.toLowerCase()
+        const searchOption = searchCriteria.toLowerCase();
         users.forEach(data => {
+            switch (searchOption) {
+                case "vehicle no":
+                    searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    break;
+                case "vehicle type":
+                    searchValue = data.type.toLowerCase().includes(value);
+                    break;
+                case "vehicle brand":
+                    searchValue = data.vehicleBrand.toLowerCase().includes(value);
+                    break;
+                case "starting location":
+                    searchValue = data.startingPoint.toLowerCase().includes(value);
+                    break;
+                case "destination":
+                    searchValue = data.endingPoint.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.vehicleNo.toLowerCase().includes(value) ||
+                    data.type.toLowerCase().includes(value) ||
+                    data.vehicleBrand.toLowerCase().includes(value) ||
+                    data.model.toLowerCase().includes(value) ||
+                    data.startingPoint.toLowerCase().includes(value) ||
+                    data.endingPoint.toLowerCase().includes(value) ||
+                    data.trips.toLowerCase().includes(value)
+                  
+            }
             const isVisible =
-                data.vehicleNo.toLowerCase().includes(value) ||
-                data.type.toLowerCase().includes(value) ||
-                data.vehicleBrand.toLowerCase().includes(value) ||
-                data.model.toLowerCase().includes(value) ||
-                data.startingPoint.toLowerCase().includes(value) ||
-                data.endingPoint.toLowerCase().includes(value) ||
-                data.trips.toLowerCase().includes(value)
+            searchValue
+
             document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
         })
     })
 
 });
+
+
 
 var vehicleList = "";
 
