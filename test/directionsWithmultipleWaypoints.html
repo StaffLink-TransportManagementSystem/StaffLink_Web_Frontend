@@ -22,28 +22,57 @@
 
 <script>
     function openMap() {
-        var mapUrl = 'https://www.google.com/maps/dir/';
-
         // Waypoints with coordinates
         var waypoints = [
-            {location: {lat: 37.7749, lng: -122.4194}, stopover: true}, // San Francisco
-            {location: {lat: 34.0522, lng: -118.2437}, stopover: true}, // Los Angeles
-            {location: {lat: 41.8781, lng: -87.6298}, stopover: true}, // Chicago
-            {location: {lat: 36.1699, lng: -115.1398}, stopover: true} // Las Vegas
+            {lat: 41.8781, lng: -87.6298}, // Chicago
+            {lat: 37.7749, lng: -122.4194}, // San Francisco
+            {lat: 34.0522, lng: -118.2437}, // Los Angeles
+            {lat: 36.1699, lng: -115.1398}  // Las Vegas
             // Add more waypoints as needed
         ];
 
-        // Add waypoints to URL
-        waypoints.forEach(function(waypoint, index) {
-            mapUrl += waypoint.location.lat + ',' + waypoint.location.lng;
-            if (index < waypoints.length - 1) {
-                mapUrl += '/';
+        // Calculate optimal route
+        calculateOptimalRoute(waypoints);
+    }
+
+    function calculateOptimalRoute(waypoints) {
+        var mapUrl = 'https://www.google.com/maps/dir/';
+        var directionsService = new google.maps.DirectionsService();
+        var start = new google.maps.LatLng(waypoints[0].lat, waypoints[0].lng);
+        var end = new google.maps.LatLng(waypoints[waypoints.length - 1].lat, waypoints[waypoints.length - 1].lng);
+        var waypointsLatLng = waypoints.slice(1, -1).map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}));
+
+        var request = {
+            origin: start,
+            destination: end,
+            waypoints: waypointsLatLng,
+            optimizeWaypoints: true,
+            travelMode: 'DRIVING'
+        };
+
+        directionsService.route(request, function(result, status) {
+            if (status == 'OK') {
+                result.routes[0].legs.forEach(function(leg) {
+                    leg.steps.forEach(function(step) {
+                        console.log(step.instructions);
+                    });
+                });
+
+                // Construct optimized URL
+                result.routes[0].waypoint_order.forEach(function(index) {
+                    mapUrl += waypoints[index].lat + ',' + waypoints[index].lng + '/';
+                });
+                mapUrl += waypoints[waypoints.length - 1].lat + ',' + waypoints[waypoints.length - 1].lng;
+
+                // Open map in new tab
+                window.open(mapUrl);
+            } else {
+                console.error('Directions request failed due to ' + status);
             }
         });
-
-        // Open map in new tab
-        window.open(mapUrl);
     }
 </script>
+<!-- Load the Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&callback=openMap" async defer></script>
 </body>
 </html>
