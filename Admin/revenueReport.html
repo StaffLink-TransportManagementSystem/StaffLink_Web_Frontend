@@ -53,11 +53,11 @@
                 </div>               
             </div>
 
-            <div style="display: flex; flex-direction: row;">
+            <div style="display: flex; flex-direction: row; gap: 10px;">
               <table class="table passenger" style="width: 50%; height: fit-content;">
                 <thead>
                     <tr>
-                      <th scope="col">Cash Payments</th>
+                      <th scope="col" colspan="2">Cash Revenue (Rs.)</th>
                     </tr>
                 </thead>
                 
@@ -67,7 +67,7 @@
               <table class="table driver" style="width: 50%; height: fit-content;">
                 <thead>
                     <tr>
-                      <th scope="col">Card Payments</th>
+                      <th scope="col" colspan="2">Card Revenue (Rs.)</th>
                     </tr>
                 </thead>
                 
@@ -75,7 +75,6 @@
                 </tbody>
               </table>
             </div>
-
         </div>
 
     <script>
@@ -94,11 +93,14 @@
         const fromDate = `${fromYear}/${fromMonth}/01`;
         const toDate = `${toYear}/${toMonth}/01`;
 
-        const fromDateValue = document.getElementById('from-date');
-        const toDateValue = document.getElementById('to-date');
+        const fromDate2 = `${fromYear}-${fromMonth}-01`;
+        const toDate2 = `${toYear}-${toMonth}-01`;
 
-        document.getElementById("from-date").textContent = fromDate;
-        document.getElementById("to-date").textContent = toDate;
+        // const fromDateValue = document.getElementById('from-date');
+        // const toDateValue = document.getElementById('to-date');
+
+        document.getElementById("from-date").textContent = fromDate2;
+        document.getElementById("to-date").textContent = toDate2;
 
         console.log("From Date:", fromDate);
         console.log("To Date:", toDate);
