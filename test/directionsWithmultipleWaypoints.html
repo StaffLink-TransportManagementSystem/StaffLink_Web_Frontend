@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimal Route Finder</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    #directions {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<h2>Optimal Route Finder</h2>
+<button onclick="openMap()">Open Map</button>
+<div id="directions"></div>
+
+<script>
+    function openMap() {
+        var mapUrl = 'https://www.google.com/maps/dir/';
+
+        // Waypoints with coordinates
+        var waypoints = [
+            {location: {lat: 37.7749, lng: -122.4194}, stopover: true}, // San Francisco
+            {location: {lat: 34.0522, lng: -118.2437}, stopover: true}, // Los Angeles
+            {location: {lat: 41.8781, lng: -87.6298}, stopover: true}, // Chicago
+            {location: {lat: 36.1699, lng: -115.1398}, stopover: true} // Las Vegas
+            // Add more waypoints as needed
+        ];
+
+        // Add waypoints to URL
+        waypoints.forEach(function(waypoint, index) {
+            mapUrl += waypoint.location.lat + ',' + waypoint.location.lng;
+            if (index < waypoints.length - 1) {
+                mapUrl += '/';
+            }
+        });
+
+        // Open map in new tab
+        window.open(mapUrl);
+    }
+</script>
+</body>
+</html>

@@ -37,10 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
     })
         .then(response => response.json())
         .then(data => {
+            console.log("data: ",data)
             console.log("reservations: ",data.list)
             row = "";
             tripPassengers = data.tripPassengers;
             passengers = data.list;
+            reservations = data.reservations;
             console.log("tripPassengers: ", tripPassengers);
             console.log("passengers: ", passengers);
 
@@ -54,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${passengers[i].contactNo}</td>
                 <td class="Action">`
                 if(tripPassengers[i].status == "notpicked"){
-                    row += `<a href="#moredetails" onclick="ViewLoction('${passengers[i].email}')"><button class="more-btn">View Location</button></a>
+                    // row += `<a href="#moredetails" onclick="ViewLoction('${reservations[i].reservationId}')"><button class="more-btn">View Location</button></a>
+                    //         <a href="#moredetails" onclick="MarkPicked('${passengers[i].email}')"><button class="edit-btn">Pick Passenger</button></a>`
+                    row += `<a href="#moredetails" onclick="ViewLoction('${reservations[i].startingLatitude}','${reservations[i].startingLongitude}','${reservations[i].endingLatitude}','${reservations[i].endingLongitude}')"><button class="more-btn">View Location</button></a>
                             <a href="#moredetails" onclick="MarkPicked('${passengers[i].email}')"><button class="edit-btn">Pick Passenger</button></a>`
                 }
                 else if(tripPassengers[i].status == "picked"){
@@ -249,5 +253,14 @@ function showPosition(position) {
             console.log("Location data", data.message);
 
         })
+
+}
+
+function ViewLoction(startingLatitude,startingLongitude,endingLatitude,endingLongitude){
+    // console.log("Email: "+email);
+    // fetch("http://127.0.0.1:8080/try2_war_exploded/getLocationTracking?email="+email, {
+    window.open(`https://www.google.com/maps/dir/${startingLatitude},${startingLongitude}/${endingLatitude},${endingLongitude}`);
+        
+
 
 }
