@@ -23,8 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     
                         <td class="Action">
                             <button class="more-btn" onclick="togglePopup1(${passenger.id})">MORE</button>
-                            <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit-btn">EDIT</button></a>
-                            <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });
@@ -39,13 +37,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
             searchInput.addEventListener("input", e => {
                 const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
                 users.forEach(data => {
-                    const isVisible =
-                        data.name.toLowerCase().includes(value) ||
-                        data.email.toLowerCase().includes(value) ||
-                        data.NIC.toLowerCase().includes(value)
-   
-                        document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+                     switch (searchOption) {
+                case "name":
+                    searchValue = data.name.toLowerCase().includes(value);
+                    break;
+                case "email":
+                    searchValue = data.email.toLowerCase().includes(value);
+                    break;
+                case "nic":
+                    searchValue = data.NIC.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.name.toLowerCase().includes(value) ||
+                    data.email.toLowerCase().includes(value) ||
+                    data.NIC.toLowerCase().includes(value)
+                  
+            }
+
+            const isVisible =
+            searchValue
+          
+            document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
                 });
             });
     

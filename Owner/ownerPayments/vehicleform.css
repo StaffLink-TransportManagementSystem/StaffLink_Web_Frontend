@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #0A2558;
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: #0A2558;
+}
+
+.container form .vehicle-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .vehicle-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 17px;
+}
+
+.vehicle-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 15px;
+}
+
+.vehicle-details .input-box input{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.vehicle-details .input-box select{
+    height: 32px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.vehicle-details .input-box .photo{
+    border: none;
+}
+
+.vehicle-details .input-box input:focus{
+    border-color: #0A2558;
+}
+
+form .button{
+    height: 38px;
+    margin: 15px 0 -10px 0;
+}
+
+form .button input{
+    height: 100%;
+    width: 130px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #0A2558;
+}
+
+form .button input:hover{
+    color: #DAA600;
+}
+
+@media (max-width: 584px) {
+    .container{
+        max-width: 100%;
+    }
+
+    form .vehicle-details .input-box{
+        width: 100%;
+        margin-bottom: 17px;
+    }
+
+    .container form .vehicle-details{
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .vehicle-details::-webkit-scrollbar{
+        width: 0;
+    }
+}
+
+
+form .button{
+    height: 38px;
+    margin: 15px 0 -10px 0;
+}
+
+form .button input{
+    height: 100%;
+    width: 130px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: #0A2558;
+}
+
+form .button input:hover{
+    color: #DAA600;
+}
+
+
+
+
+
+/* ------------------------------------------ */
+
+.content {
+    padding: 24px;
+    flex-grow: 1;
+    height: fit-content;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0px 18px 36px -18px 
+    rgba(0,0,0,0.1),
+    0px 30px 45px -30px rgba(50,50,93,0.25);
+    background-color: white;
+    cursor: pointer;
+    width: 50%;
+    flex-basis: 330px;
+    padding: 4px;
+    height: fit-content;
+    min-height: 500px;
+    /* transition: all 0.2s ease-in-out; */
+}
+
+.card:hover {
+    box-shadow: 0px 18px 36px -18px 
+    rgba(0,0,0,0.2),
+    0px 30px 45px -30px rgba(50,50,93,0.3);
+}
+
+.content > h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    line-height: 1.384615385;
+}
+
+.content > p {
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 500;
+}
+
+.content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.content a:hover {
+    color: #0a2540;
+}
+
+/* .card-background {
+    height: 200px;
+    transition: all 0.2s ease-in-out;
+} */
+
+/* .card:hover .card-background {
+    height: 160px;
+} */
+
+.card-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-background:hover {
+    opacity: 0.8;
+}
+
+.card:hover .action-bottom-bar a {
+    opacity: 1;
+}
+
+.action-bottom-bar {
+    display: flex;
+    font-size: 18px;
+    height: 42px;
+    width: 100%;
+}
+
+.action-bottom-bar a {
+    display: flex;
+    gap: 6px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 800;
+    opacity: 0;
+    padding: 0 24px;
+    transition: all 0.2s ease-in-out;
+}
+
+.action-bottom-bar a:hover {
+    color: var(--secondary);
+}
+
+.action-bottom-bar a:hover svg {
+    color: var(--secondary);
+}
+
+.action-bottom-bar a svg {
+    transition: all 0.2s ease-in-out;
+}
+
+.arrow {
+    display: none;
+}
+
+.action-bottom-bar a:hover .arrow {
+    display: block;
+}
+
+.action-bottom-bar a:hover .chevron {
+    display: none;
+}
+
+
+.map {
+    border: #0A2558;
+    height: 250px;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}

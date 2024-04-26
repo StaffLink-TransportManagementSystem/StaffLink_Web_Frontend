@@ -50,16 +50,28 @@
                         <input type="text" class="amount" placeholder="Enter Amount" readonly>
                         <div class="amount-error-message" style="display: none; color: red;"></div>
                     </div>
+                    
                     <div class="input-box">
-                        <span class="details">Reservation Starting Date</span>
-                        <input type="text" class="startingDate" placeholder="Enter starting date" required>
-                        <div class="startingDate-error-message" style="display: none; color: red;"></div>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Ending Date</span>
-                        <input type="text" class="endingDate" placeholder="Enter ending date" required>
-                        <div class="endingDate-error-message" style="display: none; color: red;"></div>
-                    </div>
+                      <span class="details">Starting Date</span>
+                      <input type="date" class="startingDate" placeholder="Enter starting date" required>
+                      <div class="startingDate-error-message" style="display: none; color: red;"></div>
+                  </div>
+                  
+                <div class="input-box">
+                    <span class="details">Ending Date</span>
+                    <input type="date" class="endingDate" placeholder="Enter ending date" required>
+                    <div class="endingDate-error-message" style="display: none; color: red;"></div>
+                </div>
+                <div class="input-box" id="onTimeBlock">
+                  <span class="details">On Time</span>
+                  <input type="time" class="ontime" placeholder="Enter On Time" required>
+                  <div class="ontime-error-message" style="display: none; color: red;"></div>
+              </div>
+              <div class="input-box" id="offTimeBlock">
+                <span class="details">Off Time</span>
+                <input type="time" class="offTime" placeholder="Enter Off Time" required>
+                <div class="offTime-error-message" style="display: none; color: red;"></div>
+            </div>
                     <div class="input-box">
                         <span class="details">Status</span>
                         <input type="text" class="tripStatus" id="status" placeholder="Enter status" readonly>
@@ -76,7 +88,7 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+            <input type="submit" class="sub edit-btn" value="update" onclick="updatefunction()">
         </div>
         <script src="request.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

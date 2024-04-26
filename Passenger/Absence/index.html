@@ -118,48 +118,60 @@
           <div class="flexbox">
             <div class="inputBox">
               <span>Reservation</span>
-              <select name="Provider" id="Provider-name" class="type">
-                <option class="default" selected disabled value>Select the Reservation ID</option>
-                <option value="provider1">nw123</option>
-                <option value="provider2">nw234</option>
-              </select>
+              <div class="reservation-dropdown" id="reservation-dropdown">
+                <select name="Reservation" id="Reservation-name" class="type">
+                  <option class="default" selected disabled value>Select the Reservation ID</option>
+                  
+                  <!-- <option value="reservation1">nw123</option>
+                  <option value="reservation2">nw234</option> -->
+                </select>
             </div>
-
+            <div id="reservation-error-message" style="display: none; color: red;"></div>
           </div>
           <div class="inputBox">
-            <span>Days of Absence</span>
-            <input type="text" maxlength="16" class="daysOfAbsent">
+            <span>Days of Absent</span>
+            <input type="number" maxlength="3" class="daysOfAbsent">
+            <div id="daysOfAbsent-error-message" style="display: none; color: red;"></div>
           </div>
           <div class="inputBox">
             <span>Starting date</span>
             <input type="date" class="startingDate">
+            <div id="startingDate-error-message" style="display: none; color: red;"></div>
           </div>
           <div class="button">
-            <button type="submit" value="submit" class="more-btn submit-btn" onclick="createAbsent()">Submit</button>
+            
+            <input type="button" class="sub add-btn" value="Submit" onclick="createAbsent()">
           </div>
 
         </form>
+        <!--  -->
+
       </div>
 
       <div class="container">
-        <p class="topic">Absence History</p>
+        <div class="details">
+          <div class="recentOrders">
+            <div class="cardHeader">
+              <!-- <p class="topic">Payments History</p> -->
+              <!-- <button class="more-btn">View All</a> -->
+            </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Reservation ID</th>
-            <th scope="col">Vehicle NO</th>
-            <th scope="col">Days of absent</th>
-            <!-- <th scope="col">DRIVER</th> -->
-            <th scope="col">Starting Date</th>
-            <th scope="col">End Date</th>
-            <!-- <th scope="col">ACTION</th> -->
-          </tr>
-        </thead>
+            <table class="table">
+              <thead>
+                  <tr>
+                      <th>Absent Id</th>
+                      <th>Reservation No</th>
+                      <th>Days of Absent</th>
+                      <th>Starting Date</th>
+                      <th>Ending Date</th>
+                  </tr>
+              </thead>
 
-        <tbody class="tbody"></tbody>
-      </table>
-      </div>
+              <tbody class="tbody"></tbody>
+            </table>
+          </div> 
+        </div>
+      </div>    
     </div>
   </section>
 
@@ -183,8 +195,8 @@
 
   </script>
   <script src="absent.js"></script>
-  <script src="reservation.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <script src="reservation.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

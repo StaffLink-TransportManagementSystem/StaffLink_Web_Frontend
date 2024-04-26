@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector("[MoneyCollection]")
+
+
     function getPayload(token) {
         return JSON.parse(atob(token.split(".")[1]));
       }
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Payment data",data.paymentCollection)
                 data.paymentCollection.forEach(payment => {
                     row += `
-                    <tr>
+                    <tr id = "${payment.id}">
                     <td>${payment.id}</td>
                     <td>${payment.vehicleNo}</td>
                     <td>${payment.passengerName}</td>
@@ -59,13 +62,45 @@ document.addEventListener("DOMContentLoaded", function () {
                     row += `</tr>`
                 });
 
+                    users = data.paymentCollection;
+
                     document.querySelector(".tbody").innerHTML = row;   
     
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
+                users.forEach(data => {
+                     switch (searchOption) {
+                case "payment id":
+                    searchValue = data.id.toString().toLowerCase().includes(value);
+                    break;
+                case "vehicle no":
+                    searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    break;
+                case "passenger name":
+                    searchValue = data.passengerName.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.id.toString().toLowerCase().includes(value) ||
+                    data.vehicleNo.toLowerCase().includes(value) ||
+                    data.passengerName.toLowerCase().includes(value)
+                  
+            }
+
+            const isVisible =
+            searchValue
+          
+            document.getElementById(data.id).classList.toggle("hide", !isVisible)
+                });
+            });
         });
+
+
 
 
 function collectedMoney(id){

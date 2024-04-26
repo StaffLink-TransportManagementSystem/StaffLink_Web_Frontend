@@ -1,4 +1,10 @@
+
+var passengerList = ""
+
 document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector("[PassengerDetails]")
+
+
     function getPayload(token) {
         return JSON.parse(atob(token.split(".")[1]));
       }
@@ -34,27 +40,61 @@ document.addEventListener('DOMContentLoaded', function() {
     })
         .then(response => response.json())
         .then(data => {
+            passengerList = data.reservations;
             console.log("reservations: ",data.reservations)
             row = "";
             data.reservations.forEach(reservation => {
                 row += `
-                <tr>
+                <tr id= "${reservation.NIC}">
                 <td>${reservation.id}</td>
                 <td>${reservation.name}</td>
                 <td>${reservation.email}</td>
                 <td>${reservation.NIC}</td>
                 <td class="Action">
-                  <a href="#moredetails"><button class="more-btn">MORE</button></a>
+                <button class="more-btn" onclick="togglePopup1(${reservation.id})">MORE</button>
                 </td>
                 <tr>`
                 
         })
+
+        users = data.reservations;
         document.querySelector('.tbody').innerHTML = row;
         })
         .catch(error => {
             console.error('Error:', error);
             
         });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
+                users.forEach(data => {
+                     switch (searchOption) {
+                case "passenger id":
+                    searchValue = data.id.toString().toLowerCase().includes(value);
+                    break;
+                case "name":
+                    searchValue = data.name.toLowerCase().includes(value);
+                    break;
+                case "email":
+                    searchValue = data.email.toLowerCase().includes(value);
+                    break;
+                case "nic":
+                    searchValue = data.NIC.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.name.toLowerCase().includes(value) ||
+                    data.email.toLowerCase().includes(value) ||
+                    data.NIC.toLowerCase().includes(value)
+                  
+            }
+
+            const isVisible =
+            searchValue
+          
+            document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+                });
+            });
     });
             
 
@@ -148,4 +188,57 @@ function showPosition(position) {
 
       })
 
+}
+
+function togglePopup1(id) {
+    // alert(id);
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+    var popupData = ""
+    for (var i = 0; i < passengerList.length; i++) {
+        if (passengerList[i].id == id) {
+            console.log(passengerList[i]);
+            popupData = `<div class="popup-content">
+            <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+    
+            <p class="topic">Passenger Details</p>       
+            
+            <div class="detail-box">
+              <div class="image">
+                <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+              </div>
+    
+              <form action="">
+                <div class="input-box">
+                  <span class="details">Passenger ID</span>
+                  <input disabled type="text" class="passengerID" name="passengerID" placeholder="p01-${passengerList[i].id}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Passenger Name</span>
+                    <input disabled type="text" class="passengerName" value name="passengerName" placeholder="${passengerList[i].name}">
+                </div>
+                <div class="input-box">
+                    <span class="details">NIC No</span>
+                    <input disabled type="text" class="NIC" value name="NIC" placeholder="${passengerList[i].NIC}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input disabled type="email" class="email" value name="email" placeholder="${passengerList[i].email}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Contact No</span>
+                    <input disabled type="text" class="ContactNo" value name="ContactNo" placeholder="${passengerList[i].contactNo}">
+                </div>
+                <div class="input-box">
+                    <span class="details">Registered Date</span>
+                    <input disabled type="text" class="reg-date" value name="reg-date" placeholder="${passengerList[i].created_at}">
+                </div>
+                
+              </form>
+            </div>       
+          </div>`
+
+          document.getElementById("popup").innerHTML = popupData;
+        }
+    }
 }
