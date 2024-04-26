@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <a href="deleteVehicle.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="delete-btn" onclick="deleteVehicle(${vehical.vehicleNo})">DELETE</button></a>
             <a href="vehicleAbsents.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="cancel-btn" onclick="absantList(${vehical.vehicleNo})">ABSENT LIST</button></a>
             <a href="vehicleRequests.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="add-btn" onclick="requestList(${vehical.vehicleNo})">REQUESTS</button></a>
+            <a href="reservations.html?vehicleNo=`+ vehical.vehicleNo+`"><button class="reservation-btn" onclick="reservationList(${vehical.vehicleNo})">RESERVATIONS</button></a>
           </div>
         </div>
         </div>`
