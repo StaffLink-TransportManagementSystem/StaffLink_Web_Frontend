@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Route</title>
+</head>
+<body>
+    <button onclick="calculateOptimalRoute()">Show Optimal Route</button>
+
+    <script>
+        function calculateOptimalRoute() {
+            // Function to calculate distance between two points using Haversine formula
+            function calculateDistance(lat1, lon1, lat2, lon2) {
+                // Haversine formula
+                const R = 6371e3; // Earth radius in meters
+                const φ1 = lat1 * Math.PI / 180; // φ, λ in radians
+                const φ2 = lat2 * Math.PI / 180;
+                const Δφ = (lat2 - lat1) * Math.PI / 180;
+                const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+                const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                          Math.cos(φ1) * Math.cos(φ2) *
+                          Math.sin(Δλ/2) * Math.sin(Δλ/2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+                return R * c; // Distance in meters
+            }
+
+            // Function to generate all permutations of waypoints
+            function permute(array) {
+                var permutations = [];
+
+                function permuteHelper(arr, startIndex) {
+                    if (startIndex === arr.length - 1) {
+                        permutations.push([...arr]);
+                        return;
+                    }
+                    for (let i = startIndex; i < arr.length; i++) {
+                        [arr[startIndex], arr[i]] = [arr[i], arr[startIndex]]; // Swap elements
+                        permuteHelper(arr, startIndex + 1);
+                        [arr[startIndex], arr[i]] = [arr[i], arr[startIndex]]; // Backtrack
+                    }
+                }
+
+                permuteHelper(array, 0);
+                return permutations;
+            }
+
+            // Function to calculate the total distance of a route
+            function calculateTotalDistance(route) {
+                let totalDistance = 0;
+                for (let i = 0; i < route.length - 1; i++) {
+                    totalDistance += calculateDistance(
+                        route[i].location.lat,
+                        route[i].location.lng,
+                        route[i + 1].location.lat,
+                        route[i + 1].location.lng
+                    );
+                }
+                return totalDistance;
+            }
+
+            // Sample waypoints array with 5 waypoints
+            var waypoints = [
+             { "location": { "lat": 6.5822, "lng": 79.9607 } }, // Kalutara
+             { "location": { "lat": 6.8741, "lng": 79.8895 } }, // Nugegoda
+             { "location": { "lat": 6.9015, "lng": 79.8607 } }, // University of Colombo
+             { "location": { "lat": 6.7152, "lng": 79.9309 } }, // Panadura
+             
+             { "location": { "lat": 6.9219, "lng": 79.8578 } } // Galle Face
+            ]
+            ;
+
+            // Find the optimal route
+            var allPermutations = permute(waypoints);
+            var shortestDistance = Infinity;
+            var optimalRoute = [];
+
+            allPermutations.forEach(permutation => {
+                let distance = calculateTotalDistance(permutation);
+                if (distance < shortestDistance) {
+                    shortestDistance = distance;
+                    optimalRoute = permutation;
+                }
+            });
+
+            // Construct URL for Google Maps directions
+            var mapUrl = 'https://www.google.com/maps/dir/';
+            optimalRoute.forEach(waypoint => {
+                mapUrl += waypoint.location.lat + ',' + waypoint.location.lng + '/';
+            });
+
+            // Open Google Maps directions in new tab
+            window.open(mapUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

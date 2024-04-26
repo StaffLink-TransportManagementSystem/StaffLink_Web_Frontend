@@ -118,30 +118,37 @@
           <div class="flexbox">
             <div class="inputBox">
               <span>Reservation</span>
-              <select name="Provider" id="Provider-name" class="type">
-                <option class="default" selected disabled value>Select the Reservation ID</option>
-                <option value="provider1">nw123</option>
-                <option value="provider2">nw234</option>
-              </select>
+              <div class="reservation-dropdown" id="reservation-dropdown">
+                <select name="Reservation" id="Reservation-name" class="type">
+                  <option class="default" selected disabled value>Select the Reservation ID</option>
+                  
+                  <!-- <option value="reservation1">nw123</option>
+                  <option value="reservation2">nw234</option> -->
+                </select>
             </div>
-
+            <div id="reservation-error-message" style="display: none; color: red;"></div>
           </div>
           <div class="inputBox">
-            <span>Days of Absence</span>
-            <input type="text" maxlength="16" class="daysOfAbsent">
+            <span>Days of Absent</span>
+            <input type="number" maxlength="3" class="daysOfAbsent">
+            <div id="daysOfAbsent-error-message" style="display: none; color: red;"></div>
           </div>
           <div class="inputBox">
             <span>Starting date</span>
             <input type="date" class="startingDate">
+            <div id="startingDate-error-message" style="display: none; color: red;"></div>
           </div>
           <div class="button">
-            <button type="submit" value="submit" class="more-btn submit-btn" onclick="createAbsent()">Submit</button>
+            
+            <input type="button" class="sub add-btn" value="Submit" onclick="createAbsent()">
           </div>
 
         </form>
+        <!--  -->
+
       </div>
 
-      <div class="home-content">
+      <div class="container">
         <div class="details">
           <div class="recentOrders">
             <div class="cardHeader">
@@ -153,7 +160,7 @@
               <thead>
                   <tr>
                       <th>Absent Id</th>
-                      <th>Vehicle No</th>
+                      <th>Reservation No</th>
                       <th>Days of Absent</th>
                       <th>Starting Date</th>
                       <th>Ending Date</th>

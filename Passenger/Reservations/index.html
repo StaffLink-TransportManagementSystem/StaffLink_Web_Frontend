@@ -121,19 +121,21 @@
           <table class="table">
             <thead>
                 <tr>
-                    <th>Payment Id</th>
                     <th>Vehicle No</th>
-                    <th>Reservation Date</th>
-                    <th>Payment Date</th>
-                    <th>Payment</th>
-                    <th>Method</th>
-                    <th>Status</th>
+                    <th>Vehicle Type</th>
+                    <th>Vehicle Model</th>
+                    <th>Starting Date</th>
+                    <th>Ending Date</th>
+                    <th>Payment Status</th>
+                    <th>Vehicle Location</th>
                 </tr>
             </thead>
 
             <tbody class="tbody"></tbody>
           </table>
         </div> 
+        <!-- <input type="submit" class="sub edit-btn" value="Send Email" onclick="togglePopup()"> -->
+        <div class="popup" id="popup"></div>
       </div>
     </div>       
 
@@ -165,6 +167,10 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
+    <!-- function togglePopup(){
+      document.getElementById("popup").classList.toggle("active");
+    } -->
+
     document.addEventListener("DOMContentLoaded", function () {
 
       function getPayload(token) {
@@ -215,6 +221,7 @@
       }
     });
   </script>
+  
 
 </body>
 

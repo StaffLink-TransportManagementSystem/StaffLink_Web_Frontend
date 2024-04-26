@@ -23,8 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     
                         <td class="Action">
                             <button class="more-btn" onclick="togglePopup1(${passenger.id})">MORE</button>
-                            <a href="editPassenger.html?email=`+ passenger.email +`" onclick="updatefunction(passenger.name,passenger.email,passenger.NIC)"><button class="edit-btn">EDIT</button></a>
-                            <a href="deletePassenger.html?email=`+ passenger.email +`" onclick=""><button class="delete-btn">DELETE</button></a>
                         </td>
                     </tr>`
                 });

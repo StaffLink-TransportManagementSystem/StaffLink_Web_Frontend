@@ -277,6 +277,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.location.href = "drivers.html";
                   })
                 }
+                if(data.message === "Driver is still assigned to a vehicle"){
+                  Swal.fire({
+                    title: "Driver is still assigned to a vehicle!",
+                    icon: "warning"
+                  }).then(()=>{
+                    window.location.href = "drivers.html";
+                  })
+                }
                 else{
                   Swal.fire({
                     title: "Driver Delete Failed!",
