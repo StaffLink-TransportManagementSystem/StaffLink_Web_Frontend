@@ -21,16 +21,19 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Pass ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Starting Location</th>
-            <th scope="col">Ending Location</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Request ID</th>
+            <th scope="col">PassengerEmail</th>
+            <th scope="col">Trip Type</th>
+            <th scope="col">OnTime</th>
+            <th scope="col">offTime</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
             </tr>
         </thead>
         
         <tbody class="tbody">  
-            <tr>
+            <!-- <tr>
                 <td>p01-23</td>
                 <td>Sandani Gunawardhana</td>
                 <td>Pitakotte</td>
@@ -40,7 +43,7 @@
                     <button class="submit-btn">ACCEPT</button>
                     <button class="delete-btn">REJECT</button>
                 </td>
-            </tr>                
+            </tr>                 -->
         </tbody>
     </table>
 
@@ -85,20 +88,20 @@
                 <span class="details">Date</span>
                 <input disabled type="date" class="date" value name="date">
               </div>
+              <div id="map"></div>
             </form>
           </div>       
         </div>
       </div>
       
       <script>
-        function togglePopup1() {
-            const popup = document.getElementById("popup");
-            popup.classList.toggle("active");
-        }
+        
 
         function togglePopup(){
             document.getElementById("popup").classList.toggle("active");
         }
       </script>
+      <script src="requestList.js"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&callback=initMap"></script>
   </body>
 </html>
