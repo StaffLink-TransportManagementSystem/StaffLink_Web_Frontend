@@ -67,22 +67,22 @@
             <i class="fas fa-route"></i>
             <span class="links_name">Routes</span>
           </a>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <a href="./requestList.html">
             <i class="fas fa-hand"></i>
             <span class="links_name">Requests</span>
           </a>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <a href="./reservations.html">
             <i class="fas fa-calendar-day"></i>
             <span class="links_name">Reservations</span>
           </a>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <a href="./absentList.html">
             <i class="fas fa-calendar-minus"></i>
             <span class="links_name">Absents</span>
@@ -185,11 +185,22 @@
             <div class="box">
               <p class="topic">Drivers</p>
                   
-              <form action="" class="search-bar">
-                
-                <input type="text" placeholder="Type Anything" Driver-search>
-                <button type="submit"><i class="fas fa-search"></i></button>
-              </form>           
+              <div class="search_box">
+                <div class="dropdown">
+                      <div class="default_option">All</div>  
+                      <ul>
+                        <li>Name</li>
+                        <li>Email</li>
+                        <li>NIC</li>
+                        <li>Telephone No</li>
+                      </ul>
+                  </div>
+                  <form action="" class="search-bar">
+              
+                    <input type="text" placeholder="Type Anything" Driver-search>
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                  </form> 
+              </div>         
                 
               <button class="add-new" onclick="AddPassenger()">+ Add New</button>                
             </div>
@@ -351,6 +362,27 @@
 
           document.getElementById("email-form").reset()
       }
+
+            var searchCriteria = "All";
+
+        document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
 
     </script>
     <script src="./driverList.js"></script>

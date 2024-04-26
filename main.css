@@ -674,7 +674,7 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 
 
 
-.delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn, .submit-btn{
+.delete-btn, .edit-btn, .more-btn, .cancel-btn, .update-btn, .change-btn, .add-btn, .submit-btn, .reservation-btn{
     padding: 6px 13px;
     border-radius: 10px;
     font-weight: 500;
@@ -748,4 +748,17 @@ nav .dropdown-list-wrap .dropdown-list .dropdown-list-link:hover span{
 .email-all{
     float: right;
     margin: 20px 0;
+}
+
+.reservation-btn{
+    background-color: #da8a19;
+    color: white;
+    border: 1px solid #da8a19;
+}
+
+.reservation-btn:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #da8a19;
+    border: 1px solid #da8a19;
 }
