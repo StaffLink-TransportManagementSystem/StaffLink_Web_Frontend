@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Email">`+ vehical.driverEmail +`</td>
                         <td class="Telephone">`+ vehical.seatsCount +`</td>
                         <td class="Email">`+ vehical.trips +`</td>
-                        <td class="Email">`+ vehical.startingPoint +`</td>
-                        <td class="Email">`+ vehical.endingPoint +`</td>
                         <td class="Action">
                             <button class="more-btn" onclick="togglePopup1(${vehical.id})">MORE</button>
                             <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
