@@ -1,3 +1,6 @@
+const errorMessage = document.querySelector(".error-message");
+
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -51,29 +54,15 @@ function executeAfterOTPVerification() {
         .then(response => response.json())
         .then(data => {
             console.log(data.message)
-                console.log(data.jwt)
-                if(data.message == "Login successfully"){
-                    if(data.message === "Login successfully"){
-                        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
-                    }
-                    
-                    else if(data.message === "Wrong Password"){
-                        Swal.fire({
-                            title: "Invalid Username or Password!",
-                            icon: "error"
-                            }).then(()=>{
-                                location.reload();
-                            })
-                    }
-                    else if(data.message === "Invalid Email"){
-                        Swal.fire({
-                            title: "Invalid Username or Password!",
-                            icon: "error"
-                            }).then(()=>{
-                                location.reload();
-                            })
-                    }
-                    // window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                // console.log(data.jwt)
+                if(data.message == "Correct otp"){
+                    if(data.message === "Correct otp"){
+                        window.location.href = "changePass.html?email=" + encodeURIComponent(email);
+                    }                   
+                }
+                if(data.message === "Wrong otp"){
+                    errorMessage.innerText = "Wrong OTP";
+                    errorMessage.style.display = "block";
                 }
         })
         .catch(error => {
