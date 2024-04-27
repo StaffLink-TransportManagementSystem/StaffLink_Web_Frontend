@@ -16,6 +16,7 @@
         <div class="container">
             <div class="topic">Vehicle Registration</div>
             <form action="#">
+                <!-- <div id="map"></div> -->
                 <div class="vehicle-details">
                     <div class="input-box">
                         <span class="details">Owner Email</span>
@@ -25,35 +26,36 @@
                     <div class="input-box">
                         <div style="display: flex; gap: 5px;">
                             <span class="details">Vehicle Number</span>
-                            <div id="vehicleNo-error-message" style="color:red; display: none;"></div>
+                            
                         </div>
                         <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" required>
+                        <div id="vehicleNo-error-message" style="color:red; display: none;"></div>
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Vehicle Type</span>
-                            <div id="type-error-message" style="display: none; color: red;"></div>
                         </div>                       
                         <select class="vehicle-type" id="vehicle-type">
                             <option class="default" value>Select the vehicle type</option>
                             <option value="Van">Van</option>
                             <option value="Bus">Bus</option>
                             <option value="Car">Car</option>
-                        </select>                        
+                        </select>  
+                        <div id="type-error-message" style="display: none; color: red;"></div>                      
                     </div>
                     <div class="input-box">
                         <div>
-                            <span class="details">Vehicle Brand</span>
-                            <div id="brand-error-message" style="display: none; color: red;"></div>
+                            <span class="details">Vehicle Brand</span> 
                         </div>                       
-                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>                       
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>   
+                        <div id="brand-error-message" style="display: none; color: red;"></div>                    
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Vehicle Model</span>
-                            <div id="model-error-message" style="display: none; color: red;"></div>
                         </div>                       
-                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>                        
+                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>  
+                        <div id="model-error-message" style="display: none; color: red;"></div>                      
                     </div>
                 </div>
 
@@ -61,44 +63,44 @@
                     <div class="input-box">
                         <div>
                             <span class="details">Number of Seats</span>
-                            <div id="seatCount-error-message" style="display: none; color: red;"></div>
                         </div>                        
-                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required>                       
+                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required> 
+                        <div id="seatCount-error-message" style="display: none; color: red;"></div>                      
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Driver Email</span>
-                            <div id="driver-error-message" style="display: none; color: red;"></div>
                         </div>                        
-                        <input type="email" class="driverEmail" placeholder="Enter the driver's email" required>                       
+                        <input type="email" class="driverEmail" placeholder="Enter the driver's email" required>  
+                        <div id="driverEmail-error-message" style="display: none; color: red;"></div>                     
                     </div>
-                    <!-- <div class="input-box">
+                    <div class="input-box">
                         <span class="details">Vehicle Trips</span>
-                        <select class="vehicle-trips" id="vehicle-trips">
+                        <select class="vehicleTrips" id="vehicle-trips">
                             <option class="default" value>Select the relevent type</option>
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
                             <option value="Both">Both</option>
                         </select>
                         <div id="vehicleTrips-error-message" style="display: none; color: red;"></div>
-                    </div> -->
+                    </div> 
                     <div class="input-box">
                         <div>
                             <span class="details">Starting Point</span>
-                            <div id="morningTrip-error-message" style="display: none; color: red;"></div>
                         </div>                        
                         <div class="trips">
-                            <input type="text" class="startingLocation" placeholder="Starting location">                       
+                            <input type="text" class="startingLocation" placeholder="Starting location" id="startingLocation">                       
                         </div>
+                        <div id="startingLocation-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Ending Point</span>
-                            <div id="eveningTrip-error-message" style="display: none; color: red;"></div>
                         </div>                        
                         <div class="trips">
-                            <input type="text" class="endtingLocation" placeholder="Ending location">  
+                            <input type="text" class="endingLocation" placeholder="Ending location" id="endingLocation">  
                         </div>
+                        <div id="endingLocation-error-message" style="display: none; color: red;"></div>
                     </div>
                 </div>
 
@@ -107,31 +109,31 @@
                     <div style="display: flex;">
                         <div class="input-box">
                             <pre>   1. Inside</pre>
-                            <input class="photo inside" type="file" placeholder="Select the photo" accept="image/*" required>
+                            <input class="insideImage" type="file" placeholder="Select the photo" accept="image/*" required>
                         </div>
                         <div class="input-box">
                             <pre>   2. Outside</pre>
-                            <input class="photo outside" type="file" placeholder="Select the photo" accept="image/*" required>
+                            <input class="outsideImage" type="file" placeholder="Select the photo" accept="image/*" required>
                         </div>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Revenue License</span>
-                        <input class="photo revenue" type="file" placeholder="Select the photo" accept="image/*" required>
+                        <input class="revenueLicenseImage" type="file" placeholder="Select the photo" accept="image/*" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Vehicle Registration Document</span>
-                        <input class="photo registration" type="file" placeholder="Select the photo" accept="image/*" required>
+                        <input class="vehicleRegistrationImage" type="file" placeholder="Select the photo" accept="image/*" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Vehicle Insurance</span>
-                        <input class="photo insurance" type="file" placeholder="Select the photo" accept="image/*" required>
+                        <input class="insuranceImage" type="file" placeholder="Select the photo" accept="image/*" required>
                     </div>
                     <div id="photo-error-message" style="display: none; color: red;"></div>
                 </div>                   
             </form>
 
             <div class="buttons">
-                <a href="#"><button class="submit-btn">Register</button></a>
+                <a href="#"><button class="submit-btn" onclick="addVehicle()">Register</button></a>
                 <a href="vehicles.html"><button class="cancel-btn">Cancel</button></a>
             </div>
         </div>
@@ -189,5 +191,9 @@
             }
             });
           </script>
+          <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&libraries=places&callback=initMap" async defer></script> -->
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&libraries=places"></script>
+
+
     </body>
 </html>

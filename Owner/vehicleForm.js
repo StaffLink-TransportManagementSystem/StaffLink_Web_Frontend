@@ -1,3 +1,8 @@
+var starting_latitude;
+var starting_longitude;
+var ending_latitude;
+var ending_longitude;
+
 function validateVehicleNumber(vehicleNumber) {
   // Remove any spaces or non-alphanumeric characters
   vehicleNumber = vehicleNumber.replace(/[^a-zA-Z0-9-]/g, '');
@@ -86,58 +91,71 @@ document.addEventListener("DOMContentLoaded", function () {
   let owner = payload.id;
 
   form.querySelector('.ownerEmail').value = owner;
+});
 
-  sub.addEventListener("click", () => {
+  // sub.addEventListener("click", () => {
+function addVehicle(){
     //   event.preventDefault(); // Prevent the default form submission
     console.log("form submitted");
     // Get form elements
-    const ownerEmail = form.querySelector('.ownerEmail').value;
-    const vehicleNumber = form.querySelector('.vehicleNumber').value;
-    const vehicleType = form.querySelector('.vehicle-type').value;
-    const vehicleBrand = form.querySelector('.vehicleBrand').value;
-    const vehicleModel = form.querySelector('.vehicleModel').value;
-    const driverEmail = form.querySelector('.driverEmail').value;
-    const seatCount = form.querySelector('.seatCount').value;
-    const morningStartingLocation = form.querySelector('.morningStartingLocation').value;
-    const morningEndLocation = form.querySelector('.morningEndingLocation').value;
-    const morningStartingTime = form.querySelector('.morningStartingTime').value;
-    const eveningStartingLocation = form.querySelector('.eveningStartingLocation').value;
-    const eveningEndingLocation = form.querySelector('.eveningEndingLocation').value;
-    const eveningStartingTime = form.querySelector('.eveningStartingTime').value;
-    const insidePhoto = document.querySelector('.photo.inside');
-    const outsidePhoto = document.querySelector('.photo.outside');
-    const revenuePhoto = document.querySelector('.photo.revenue');
-    const registrationPhoto = document.querySelector('.photo.registration');
-    const insurancePhoto = document.querySelector('.photo.insurance');
-
-
-    var checker = true;
-
+    const ownerEmail = document.querySelector('.ownerEmail').value;
+    const vehicleNumber = document.querySelector('.vehicleNumber').value;
+    const vehicleType = document.querySelector('.vehicle-type').value;
+    const vehicleBrand = document.querySelector('.vehicleBrand').value;
+    const vehicleModel = document.querySelector('.vehicleModel').value;
+    const driverEmail = document.querySelector('.driverEmail').value;
+    const seatCount = document.querySelector('.seatCount').value;
+    const startingLocation = document.querySelector('.startingLocation').value;
+    const endLocation = document.querySelector('.endingLocation').value;
+    const vehicleTrips = document.querySelector('.vehicleTrips').value;
+    const insideImage = document.querySelector('.insideImage').value;
+    const outsideImage = document.querySelector('.outsideImage').value;
+    const insuranceImage = document.querySelector('.insuranceImage').value;
+    const revenueLicenseImage = document.querySelector('.revenueLicenseImage').value;
+    const vehicleRegistrationImage = document.querySelector('.vehicleRegistrationImage').value;
 
     var ownerEmailError = document.getElementById("ownerEmail-error-message");
+    var driverEmailError = document.getElementById("driverEmail-error-message");
     var vehicleNoError = document.getElementById("vehicleNo-error-message");
     var typeError = document.getElementById("type-error-message");
     var brandError = document.getElementById("brand-error-message");
     var modelError = document.getElementById("model-error-message");
-    // var vehicleRegNoEmailError = document.getElementById("vehicleRegNo-error-message");
-    var driverEmailError = document.getElementById("driver-error-message");
     var seatCountError = document.getElementById("seatCount-error-message");
-    var morningTripError = document.getElementById("morningTrip-error-message");
-    var eveningTripError = document.getElementById("eveningTrip-error-message");
-    var photosError = document.getElementById("photo-error-message");
-    // var tripError = document.querySelector(".trip-error-message");
+    var startingLocationError = document.getElementById("startingLocation-error-message");
+    var endLocationError = document.getElementById("endingLocation-error-message");
+    var vehicleTripsError = document.getElementById("vehicleTrips-error-message");
+    var photoError = document.getElementById("photo-error-message");
 
     ownerEmailError.style.display = "none";
+    driverEmailError.style.display = "none";
     vehicleNoError.style.display = "none";
     typeError.style.display = "none";
     brandError.style.display = "none";
     modelError.style.display = "none";
-    // vehicleRegNoEmailError.style.display = "none";
-    driverEmailError.style.display = "none";
     seatCountError.style.display = "none";
-    morningTripError.style.display = "none";
-    eveningTripError.style.display = "none";
-    photosError.style.display = "none";
+    startingLocationError.style.display = "none";
+    endLocationError.style.display = "none";
+    vehicleTripsError.style.display = "none";
+    photoError.style.display = "none";
+
+    console.log("ownerEmail", ownerEmail);
+    console.log("vehicleNumber", vehicleNumber);
+    console.log("vehicleType", vehicleType);
+    console.log("vehicleBrand", vehicleBrand);
+    console.log("vehicleModel", vehicleModel);
+    console.log("driverEmail", driverEmail);
+    console.log("seatCount", seatCount);
+    console.log("startingLocation", startingLocation);
+    console.log("endLocation", endLocation);
+    console.log("vehicleTrips", vehicleTrips);
+    console.log("insideImage", insideImage);
+    console.log("outsideImage", outsideImage);
+    console.log("insuranceImage", insuranceImage);
+    console.log("revenueLicenseImage", revenueLicenseImage);
+    console.log("vehicleRegistrationImage", vehicleRegistrationImage);
+    
+
+    var checker = true;
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -249,7 +267,14 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("vehicle trips error");
       checker = false;
     }
-    if (checker === true) {
+    if (!insideImage || !outsideImage || !insuranceImage || !revenueLicenseImage || !vehicleRegistrationImage) {
+      photoError.innerText = "Please upload all the required images.";
+      photoError.style.display = "block";
+      console.log("photo error");
+      checker = false;
+    }
+    
+    if (checker == true) {
 
 
       const data = {
@@ -258,13 +283,21 @@ document.addEventListener("DOMContentLoaded", function () {
         type: vehicleType,
         vehicleBrand: vehicleBrand,
         model: vehicleModel,
-        regNo: regNumber,
         driverEmail: driverEmail,
-        seatsCount: seatCount,
-        startingPoint: startingLocation,
-        endingPoint: endLocation,
+        seatCount: seatCount,
+        startingLatitude: starting_latitude,
+        startingLongitude:starting_longitude,
+        endingLatitude: ending_latitude,
+        endingLongitude: ending_longitude,
         trips: vehicleTrips,
+        insideImage: insideImage,
+        outsideImage: outsideImage,
+        insuranceImage: insuranceImage,
+        revenueLicenseImage: revenueLicenseImage,
+        vehicleRegistrationImage: vehicleRegistrationImage
       };
+
+      console.log(data);
 
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
       fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister', {
@@ -275,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data.message)
+          console.log(data)
           if (data.message === "Registration successfully") {
             Swal.fire({
               title: "Vehicle Registered Successfully!",
@@ -298,6 +331,50 @@ document.addEventListener("DOMContentLoaded", function () {
           console.error('Error:', error);
         });
     }
-  });
+  
+    }
 
-});
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize Autocomplete for starting and ending points
+      var startingInput = document.getElementById('startingLocation');
+      var endingInput = document.getElementById('endingLocation');
+      
+      var options = {
+          types: ['geocode'] // Return only geocoding results, rather than business results.
+      };
+  
+      var startingAutocomplete = new google.maps.places.Autocomplete(startingInput, options);
+      var endingAutocomplete = new google.maps.places.Autocomplete(endingInput, options);
+      
+      // Event listeners for selecting a suggested location
+      startingAutocomplete.addListener('place_changed', function () {
+          var place = startingAutocomplete.getPlace();
+          if (place.geometry) {
+              var startingCoords = {
+                  lat: place.geometry.location.lat(),
+                  lng: place.geometry.location.lng()
+              };
+              starting_latitude = place.geometry.location.lat();
+              starting_longitude = place.geometry.location.lng();
+              console.log("Starting Coordinates:", startingCoords);
+          } else {
+              console.log("Location not found for starting point.");
+          }
+      });
+  
+      endingAutocomplete.addListener('place_changed', function () {
+          var place = endingAutocomplete.getPlace();
+          if (place.geometry) {
+              var endingCoords = {
+                  lat: place.geometry.location.lat(),
+                  lng: place.geometry.location.lng()
+              };
+              ending_latitude = place.geometry.location.lat();
+              ending_longitude = place.geometry.location.lng();
+              console.log("Ending Coordinates:", endingCoords);
+          } else {
+              console.log("Location not found for ending point.");
+          }
+      });
+  });
+  
