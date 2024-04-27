@@ -91,11 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
     //   event.preventDefault(); // Prevent the default form submission
     console.log("form submitted");
     // Get form elements
+    const ownerEmail = form.querySelector('.ownerEmail').value;
     const vehicleNumber = form.querySelector('.vehicleNumber').value;
     const vehicleType = form.querySelector('.vehicle-type').value;
     const vehicleBrand = form.querySelector('.vehicleBrand').value;
     const vehicleModel = form.querySelector('.vehicleModel').value;
-    // const regNumber = form.querySelector('.vehicleRegNo').value;
     const driverEmail = form.querySelector('.driverEmail').value;
     const seatCount = form.querySelector('.seatCount').value;
     const morningStartingLocation = form.querySelector('.morningStartingLocation').value;

@@ -98,3 +98,11 @@
 .popup.active .content{
     transition: all ease-in-out;
 }
+
+#map {
+    height: 15rem;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+  

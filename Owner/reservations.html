@@ -21,16 +21,18 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Pass ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Starting Location</th>
-            <th scope="col">Ending Location</th>
+            <th scope="col">Reservation ID</th>
+            <th scope="col">Passenger Email</th>
+            <th scope="col">Passenger Name</th>
+            <th scope="col">Starting Date</th>
+            <th scope="col">Ending Date</th>
+            <th scope="col">Payment Status</th>
             <th scope="col">Actions</th>
             </tr>
         </thead>
         
         <tbody class="tbody">  
-            <tr>
+            <!-- <tr>
                 <td>p01-23</td>
                 <td>Sandani Gunawardhana</td>
                 <td>Pitakotte</td>
@@ -39,13 +41,13 @@
                     <button class="more-btn" onclick="togglePopup1()">MORE</button>
                     <button class="delete-btn">DELETE</button>
                 </td>
-            </tr>                
+            </tr>                 -->
         </tbody>
     </table>
 
 
     <div class="popup" id="popup">
-        <div class="popup-content">
+        <!-- <div class="popup-content">
           <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
   
           <p class="topic">Request Details</p>       
@@ -90,7 +92,7 @@
               </div>
             </form>
           </div>       
-        </div>
+        </div> -->
       </div>
       
       <script>
@@ -103,5 +105,7 @@
             document.getElementById("popup").classList.toggle("active");
         }
       </script>
+      <script src="reservationList.js"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&callback=initMap"></script>
   </body>
 </html>

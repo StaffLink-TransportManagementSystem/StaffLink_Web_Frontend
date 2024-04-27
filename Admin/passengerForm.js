@@ -1,5 +1,3 @@
-const e = require("express");
-
 function validateNIC(nic) {
   // Remove any spaces or non-alphanumeric characters
   nic = nic.replace(/[^a-zA-Z0-9]/g, '');
@@ -83,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = form.querySelector('.name').value;
       const email = form.querySelector('.email').value;
       const NIC = form.querySelector('.NIC').value;
-      // const contact = form.querySelector('.contact').value;
+      const contact = form.querySelector('.contact').value;
       const password = form.querySelector('.password').value;
  
 
@@ -94,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var emailError = document.querySelector(".email-error-message");
       var nameError = document.querySelector(".name-error-message");
       // var ageError = document.querySelector(".age-error-message");
-      // var contactError = document.querySelector(".contact-error-message");
+      var contactError = document.querySelector(".contact-error-message");
       var NICError = document.querySelector(".NIC-error-message");
       // var ownerEmailError = document.querySelector(".ownerEmail-error-message");
       var passwordError = document.querySelector(".password-error-message");
@@ -155,6 +153,18 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("password error");
         checker = false;
       }
+      if(!contact){
+        contactError.innerText = "Please enter a contact number.";
+        contactError.style.display = "block";
+        console.log("contact error");
+        checker = false;
+      }
+      else if(contact.length < 10 || contact.length > 10){
+        contactError.innerText = "Please enter a valid contact number.";
+        contactError.style.display = "block";
+        console.log("contact error");
+        checker = false;
+      }
 
       if(checker === true) {
             // All form data are valid, so submit to the server
@@ -166,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name:name,
         NIC:NIC,
         password:password,
+        contactNo:contact
       };
   
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
@@ -179,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(data.message);
                 if(data.message==="Registration successfully"){
                   Swal.fire({
-                    title: "Vehicle Registered Successfully!",
+                    title: "Passenger Registered Successfully!",
                     icon: "success"
                   }).then(()=>{
                     window.location.href = "passengerLIst.html";
@@ -187,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 else{
                   Swal.fire({
-                    title: "Vehicle Registration Failed!",
+                    title: "Passenger Registration Failed!",
                     icon: "error"
                   }).then(()=>{
                     window.location.href = "passengerLIst.html";

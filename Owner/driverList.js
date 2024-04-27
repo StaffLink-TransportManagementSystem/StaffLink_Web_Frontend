@@ -251,3 +251,7 @@ function togglePopup1(id) {
       }
   }
 }
+
+function AddPassenger() {
+  window.location.href = "addDriver.html";
+}
