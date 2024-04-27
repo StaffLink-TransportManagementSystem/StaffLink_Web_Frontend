@@ -5,8 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="vehicleform.css">
         <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="vehicleform.css">
+
         <title>Vehicle Delete</title>
     </head>
 
@@ -15,76 +16,105 @@
         <div class="container">
             <div class="title">Vehicle Delete Confirmation</div>
             <form action="#">
+                <!-- <div id="map"></div> -->
                 <div class="vehicle-details">
                     <div class="input-box">
                         <span class="details">Owner Email</span>
                         <input type="text" class="ownerEmail" placeholder="Enter your owner email" readonly>
+                        <div id="ownerEmail-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Vehicle Number</span>
-                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" readonly>
+                        <div style="display: flex; gap: 5px;">
+                            <span class="details">Vehicle Number</span>
+                            
+                        </div>
+                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" disabled>
+                        <div id="vehicleNo-error-message" style="color:red; display: none;"></div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Vehicle Type</span>
+                        <div>
+                            <span class="details">Vehicle Type</span>
+                        </div>                       
                         <select class="vehicle-type" id="vehicle-type" disabled>
                             <option class="default" value>Select the vehicle type</option>
                             <option value="Van">Van</option>
                             <option value="Bus">Bus</option>
                             <option value="Car">Car</option>
-                        </select>
+                        </select>  
+                        <div id="type-error-message" style="display: none; color: red;"></div>                      
                     </div>
                     <div class="input-box">
-                        <span class="details">Vehicle Brand</span>
-                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" readonly>
+                        <div>
+                            <span class="details">Vehicle Brand</span> 
+                        </div>                       
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>   
+                        <div id="brand-error-message" style="display: none; color: red;"></div>                    
+                    </div>
+                    
+                </div>
+
+                <div class="transport-info">
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Vehicle Model</span>
+                        </div>                       
+                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>  
+                        <div id="model-error-message" style="display: none; color: red;"></div>                      
                     </div>
                     <div class="input-box">
-                        <span class="details">Vehicle Model</span>
-                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" readonly>
+                        <div>
+                            <span class="details">Number of Seats</span>
+                        </div>                        
+                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required> 
+                        <div id="seatCount-error-message" style="display: none; color: red;"></div>                      
                     </div>
                     <div class="input-box">
-                        <span class="details">Registration Number</span>
-                        <input type="text" class="vehicleRegNo" placeholder="Enter your vehicle reg no" readonly>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Driver Email</span>
-                        <input type="text" class="driverEmail" placeholder="Enter the driver email" readonly>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Number of Seats</span>
-                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" readonly>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Starting Location</span>
-                        <input type="text" class="startingLocation" placeholder="Select the starting location" readonly>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">End Location</span>
-                        <input type="text" class="endLocation" placeholder="Select the end location" readonly>
+                        <div>
+                            <span class="details">Driver Email</span>
+                        </div>                        
+                        <input type="email" class="driverEmail" placeholder="Enter the driver's email" required>  
+                        <div id="driverEmail-error-message" style="display: none; color: red;"></div>                     
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Trips</span>
-                        <select class="vehicle-trips" id="vehicle-trips" disabled>
+                        <select class="vehicleTrips" id="vehicle-trips">
                             <option class="default" value>Select the relevent type</option>
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
                             <option value="Both">Both</option>
                         </select>
-                    </div>
+                        <div id="vehicleTrips-error-message" style="display: none; color: red;"></div>
+                    </div> 
                     <!-- <div class="input-box">
-                        <span class="details">Photo of the Vehicle</span>
-                        <input class="photo" type="file" placeholder="Select the photo" accept="image/*">
-                    </div> -->
-                    <div class="button">
+                        <div>
+                            <span class="details">Starting Point</span>
+                        </div>                        
+                        <div class="trips">
+                            <input type="text" class="startingLocation" placeholder="Starting location" id="startingLocation">                       
+                        </div>
+                        <div id="startingLocation-error-message" style="display: none; color: red;"></div>
                     </div>
-                    
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Ending Point</span>
+                        </div>                        
+                        <div class="trips">
+                            <input type="text" class="endingLocation" placeholder="Ending location" id="endingLocation">  
+                        </div>
+                        <div id="endingLocation-error-message" style="display: none; color: red;"></div>
+                    </div> -->
                 </div>
+                 
             </form>
-            <button class="delete-btn" onclick="deletefunction()">Delete</button>
             <button class="cancel-btn" onclick="cancel()">Cancel</button>
-            <!-- <input type="submit" class="sub" value="remove" onclick="deletefunction()"> -->
+            <button type="submit" class="sub delete-btn" value="remove" onclick="deletefunction()">Remove</button>
         </div>
         <script src="vehicleEditForm.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function cancel(){
+                window.location.href = "vehicleList.html";
+            }
+        </script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
       
@@ -108,18 +138,18 @@
       
             if(token == null){
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
             }
       
             const payload = getPayload(token);
             console.log("Payload",payload);
       
-            if (payload.role === "owner") {
-              console.log("Owner");
-            } 
-            else if (payload.role === "admin") {
+            if (payload.role === "admin") {
               console.log("Admin");
-              window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+            } 
+            else if (payload.role === "owner") {
+              console.log("Admin");
+              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
             }
             else if (payload.role === "passenger") {
               console.log("Passenger");
@@ -131,15 +161,12 @@
             }
             else {
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
               
             }
             });
-
-
-            function cancel(){
-                window.location.href = "vehicles.html";
-            }
           </script>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&libraries=places"></script>
     </body>
 </html>

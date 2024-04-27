@@ -162,3 +162,11 @@ form .button input{
 form .button input:hover{
     color: #DAA600;
 }
+
+
+#map {
+    height: 18rem;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
