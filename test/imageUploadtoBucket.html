@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File to Google Cloud Storage</title>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
+
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const bucketName = 'stafflink_bucket';
+            const filename = file.name;
+            const contentType = file.type;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('PUT', `https://storage.googleapis.com/${bucketName}/${filename}`, true);
+            xhr.setRequestHeader('Content-Type', contentType);
+            xhr.send(file);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        alert('File uploaded successfully!');
+                    } else {
+                        alert('Failed to upload file.');
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+</html>

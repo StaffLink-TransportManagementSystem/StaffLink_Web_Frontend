@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.absents.forEach(absent => {
                     row += `<tr>
                     <td>${absent.id}</td>
-                    <td>${absent.reservationIdg}</td>
+                    <td>${absent.reservationId}</td>
                     <td>${absent.daysOfAbsent}</td>
                     <td>${absent.startingDate}</td>
                     <td>${absent.endingDate}</td>
