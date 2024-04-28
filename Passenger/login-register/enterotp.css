@@ -52,9 +52,9 @@ p{
     box-shadow: 0 10px 10px -5px rgba(0,0,0,0.2);
 }
 
-.buttons{
+/* .buttons{
     margin-bottom: 30px;
-}
+} */
 
 small a{
     text-decoration: none;
@@ -81,7 +81,7 @@ small a{
 
 .error-message{
     color: red;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .sub-topic{
@@ -89,6 +89,29 @@ small a{
     font-weight: 600;
     position: relative;
     color: #0A2558;
+}
+
+
+.input-box{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.passw{
+    height: 37px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus{
+    border-color: #0A2558;
 }
 
 
