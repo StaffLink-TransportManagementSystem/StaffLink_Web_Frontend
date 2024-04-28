@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="enterotp.css">
+        <link rel="stylesheet" href="/main.css">
+
+        <title>Enter Email</title>
+
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+            (function(){
+                emailjs.init({
+                    publicKey: "D_yT_0KHn7_jTLoEA",
+                });
+            })();
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <p class="topic">Verify Your Account</p>
+            <p class="sub-topic">STEP 1</p>
+            <p>
+                Please enter the email you are registered with our application.
+            </p>
+
+            <div class="code-container">
+                <input type="email" class="email" id="email" required>
+            </div>
+
+            <div class="error-message"></div>
+
+            <div class="buttons">
+                <a href="#"><button class="submit-btn" onclick="validate()">Submit</button></a>
+                <a href="../login.html"><button class="cancel-btn">Cancel</button></a>
+            </div>
+        </div>
+
+
+
+        <script>
+            function sendOTP(){
+                let email = document.getElementById("email").value;
+                console.log(email)
+                let otp = Math.floor(Math.random() * 9000) + 1000;
+                console.log(otp)
+
+                let params;
+
+                params = {
+                    reply_to : email, 
+                    otp : otp
+                };
+
+                console.log(params)
+
+                emailjs.send("service_s4lzhbl", "template_f9p6gdd", params)
+                .then(function(response) {
+                    // alert("Email sent! Status: " + response.status);
+                    getOTP(otp, email);
+                    // enterOTP();  
+                })
+                .catch(function(error) {
+                    console.error("Error sending email:", error);
+                });              
+            }
+
+
+            // function enterOTP(){
+            //     window.location.href = "enterotp.html";
+            // }
+        </script>
+
+        <script src="enterEmail.js"></script>
+    </body>
+</html>

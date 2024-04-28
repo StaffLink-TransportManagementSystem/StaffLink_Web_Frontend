@@ -29,10 +29,10 @@ function validate() {
 
     errorDiv.textContent = "";
 
-    alert("Password change successful!");
     console.log(email);
     console.log(passw1);
     storePass(email, passw1);
+    alert("Password change successful!");
 }
 
 
@@ -43,10 +43,12 @@ function storePass(email, passw){
 
     var data = {
         email : email,
-        passw : passw,
+        password : passw,
     }
 
-    fetch('http://127.0.0.1:8080/try2_war_exploded/changePasswPassenger',{
+    console.log(data)
+
+    fetch('http://127.0.0.1:8080/try2_war_exploded/changePassPassenger',{
         method : 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,17 +60,17 @@ function storePass(email, passw){
 
         .then(data => {
             console.log(data.message)
-            if(data.message === "Stored successfully"){               
+            if(data.message === "Password is changed"){               
                 window.location.href = "index.html";
             }
 
-            else if(data.message === "Stored unsuccessful"){
+            else if(data.message === "Password is not changed"){
                 alert("An error occured !");
                 window.location.reload();
             }
         })
 
         .catch(error => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
 }
