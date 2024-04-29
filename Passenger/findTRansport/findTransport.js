@@ -453,9 +453,9 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 document.addEventListener("DOMContentLoaded", function () {
-    let tripTypeSelect = document.querySelector(".type");
-    let startingTimeInput = document.querySelector(".starting-time");
-    let endingTimeInput = document.querySelector(".ending-time");
+    let tripTypeSelect = document.getElementById("type");
+    let startingTimeInput = document.getElementById("pStartTimeDiv");
+    let endingTimeInput = document.getElementById("pEndTimeDiv");
 
     // Initially hide the starting time and ending time input boxes
     startingTimeInput.classList.add("hide-input");

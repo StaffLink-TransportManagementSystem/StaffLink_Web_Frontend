@@ -20,7 +20,7 @@
                 <div class="vehicle-details">
                     <div class="input-box">
                         <span class="details">Owner Email</span>
-                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" readonly>
+                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" required>
                         <div id="ownerEmail-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
@@ -47,7 +47,7 @@
                         <div>
                             <span class="details">Vehicle Brand</span> 
                         </div>                       
-                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>   
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" id="vehicleBrand" required>   
                         <div id="brand-error-message" style="display: none; color: red;"></div>                    
                     </div>
                     <div class="input-box">
@@ -133,7 +133,7 @@
             </form>
 
             <div class="buttons">
-                <a href="#"><button class="submit-btn" onclick="addVehicle()">Register</button></a>
+                <a href="#"><button class="submit-btn" onclick="addVehicle1()">Register</button></a>
                 <a href="vehicles.html"><button class="cancel-btn">Cancel</button></a>
             </div>
         </div>
@@ -163,7 +163,7 @@
       
             if(token == null){
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+              window.location.href = "../Admin/login.html";
             }
       
             const payload = getPayload(token);
@@ -174,19 +174,19 @@
             } 
             else if (payload.role === "owner") {
               console.log("Admin");
-              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+              window.location.href = "../Owner/ownerDashboard.html";
             }
             else if (payload.role === "passenger") {
               console.log("Passenger");
-              window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+              window.location.href = "../Passenger/dashboard.html";
             }
             else if (payload.role === "driver") {
               console.log("Driver");
-              window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+              window.location.href = "../Driver/dashboard.html";
             }
             else {
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+              window.location.href = "../Admin/login.html";
               
             }
             });

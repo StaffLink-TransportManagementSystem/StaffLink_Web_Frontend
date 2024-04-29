@@ -73,11 +73,11 @@
                         <input disabled type="ownerEmail" class="ownerEmail" value name="ownerEmail">
                         <div class="ownerEmail-error-message" style="display: none; color: red;"></div>
                     </div>
-                    <!-- <div class="input-box">
+                    <div class="input-box">
                         <span class="details">Telephone</span>
                         <input disabled type="number" class="Telephone" value name="Telephone">
                         <div class="contact-error-message" style="display: none; color: red;"></div>
-                    </div> -->
+                    </div>
                     <div class="save" style="display: none; margin: 25px 0 0 0;">
                         <button class="submit-btn" onclick="updateProfile(event)">Save Changes</button>
                     </div>
@@ -117,7 +117,7 @@
       
             if(token == null){
                 console.log("No Cookie Found");
-                window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+                window.location.href = "../Driver/login.html";
               }
         
               const payload = getPayload(token);
@@ -128,19 +128,19 @@
               } 
               else if (payload.role === "admin") {
                 console.log("Admin");
-                window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+                window.location.href = "../Admin/dashboard.html";
               }
               else if (payload.role === "owner") {
                 console.log("Owner");
-                window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+                window.location.href = "../Owner/ownerDashboard.html"
               }
               else if (payload.role === "Passenger") {
                 console.log("Driver");
-                window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                window.location.href = "../Passenger/dashboard.html";
               }
               else {
                 console.log("No Cookie Found");
-                window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+                window.location.href = "../Passenger/login-register/index.html";
                 
               }
               });

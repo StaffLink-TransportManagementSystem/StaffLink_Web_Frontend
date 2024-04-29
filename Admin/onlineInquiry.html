@@ -139,7 +139,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of Passengers</div>
-              <div class="number">400</div>
+              <div id="totalPassengers" class="number">0</div>
             </div>
             <i class="fas fa-user-group cart"></i>
           </div>
@@ -147,7 +147,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of vehicles</div>
-              <div class="number">30</div>
+              <div id="totalVehicles" class="number">0</div>
             </div>
             <i class="fas fa-bus cart two"></i>
           </div>
@@ -155,7 +155,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of vehicle owners</div>
-              <div class="number">23</div>
+              <div id="totalOwners" class="number">0</div>
             </div>
             <i class="fas fa-user cart three"></i>
           </div>
@@ -290,7 +290,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
       }
 
       const payload = getPayload(token);
@@ -301,19 +301,19 @@
       } 
       else if (payload.role === "owner") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+        window.location.href = "../Owner/ownerDashboard.html";
       }
       else if (payload.role === "passenger") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = "../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
         
       }
       });

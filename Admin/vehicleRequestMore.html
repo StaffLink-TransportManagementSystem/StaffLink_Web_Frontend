@@ -21,35 +21,35 @@
         <form action="">
             <div class="input-box">
                 <span class="details">Request ID</span>
-                <input disabled type="text" class="requestID" value name="requestID" placeholder="r01-001">
+                <input disabled type="text" class="requestID" value name="requestID" placeholder="r01-001" id="vehicleRequestID">
             </div>
             <div class="input-box">
                 <span class="details">Owner Email</span>
-                <input disabled type="email" class="ownerEmail" value name="ownerEmail" placeholder="sandun@gmail.com">
+                <input disabled type="email" class="ownerEmail" value name="ownerEmail" placeholder="sandun@gmail.com" id="ownerEmail">
             </div>
             <div class="input-box">
                 <span class="details">Vehicle Number</span>
-                <input disabled type="text" class="vehicleNo" value name="vehicleNo" placeholder="NB 4536">
+                <input disabled type="text" class="vehicleNo" value name="vehicleNo" placeholder="NB 4536" id="vehicleNo">
             </div>
             <div class="input-box">
                 <span class="details">Vehicle Type</span>
-                <input disabled type="text" class="vehicletype" value name="vehicletype" placeholder="Van">
+                <input disabled type="text" class="vehicletype" value name="vehicletype" placeholder="Van" id="type">
             </div>
             <div class="input-box">
                 <span class="details">Vehicle Brand</span>
-                <input disabled type="text" class="vehicleBrand" value name="vehicleBrand" placeholder="Toyota">
+                <input disabled type="text" class="vehicleBrand" value name="vehicleBrand" placeholder="Toyota" id="brand">
             </div>
             <div class="input-box">
                 <span class="details">Vehicle Model</span>
-                <input disabled type="text" class="vehicleModel" value name="vehicleModel" placeholder="Hiace">
+                <input disabled type="text" class="vehicleModel" value name="vehicleModel" placeholder="Hiace" id="model">
             </div>
             <div class="input-box">
                 <span class="details">No of Seats</span>
-                <input disabled type="number" class="seatCount" value name="seatCount" placeholder="12">
+                <input disabled type="number" class="seatCount" value name="seatCount" placeholder="12" id="seatsCount">
             </div>
             <div class="input-box">
                 <span class="details">Type of Trips</span>
-                <input disabled type="text" class="tripType" value name="tripType" placeholder="Evening">
+                <input disabled type="text" class="tripType" value name="tripType" placeholder="Evening" id="tripType">
             </div>
             <div class="input-box">
                 <span class="details">Starting Location</span>
@@ -73,17 +73,17 @@
 
         <div class="photo">
             <span class="details">Photo of the Revenue License</span>
-            <img id="rev-lic" src="../images/trans1.jpg" alt="rev-lic">
+            <img id="revenueImage" src="../images/trans1.jpg" alt="rev-lic">
         </div>
 
         <div class="photo">
             <span class="details">Photo of the Vehicle Registration Document</span>
-            <img id="reg-doc" src="../images/trans1.jpg" alt="reg-doc">
+            <img id="registrationImage" src="../images/trans1.jpg" alt="reg-doc">
         </div>
 
         <div class="photo">
             <span class="details">Photo of the Vehicle Insurance</span>
-            <img id="insurance" src="../images/trans1.jpg" alt="insurance">
+            <img id="insuranceImage" src="../images/trans1.jpg" alt="insurance">
         </div>
     </div>
     
@@ -112,6 +112,7 @@
         });
     </script>
     <!-- <script src="./driverList.js"></script> -->
+    <script src="vehicleRequestMore.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
 
@@ -135,7 +136,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
       }
 
       const payload = getPayload(token);
@@ -146,19 +147,19 @@
       } 
       else if (payload.role === "owner") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+        window.location.href = "../Owner/ownerDashboard.html";
       }
       else if (payload.role === "passenger") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = "../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
         
       }
       });
