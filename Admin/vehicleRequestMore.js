@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.getElementById("brand").placeholder = data.vehicle.vehicleBrand;
             document.getElementById("seatsCount").placeholder = data.vehicle.seatsCount;
-            document.getElementById("inside").src = "http://127.0.0.1:5559/Public/Images/"+data.vehicle.insideImage;
-            document.getElementById("outside").src = "http://127.0.0.1:5559/Public/Images/"+data.vehicle.outsideImage;
-            document.getElementById("revenueImage").src = "http://127.0.0.1:5559/Public/Images/"+data.vehicle.revenueLicenseImage;
-            document.getElementById("insuranceImage").src = "http://127.0.0.1:5559/Public/Images/"+data.vehicle.insuranceImage;
-            document.getElementById("registrationImage").src = "http://127.0.0.1:5559/Public/Images/"+data.vehicle.vehicleRegistrationImage;
+            document.getElementById("inside").src = "http://127.0.0.1:5558/Public/Images/"+data.vehicle.insideImage;
+            document.getElementById("outside").src = "http://127.0.0.1:5558/Public/Images/"+data.vehicle.outsideImage;
+            document.getElementById("revenueImage").src = "http://127.0.0.1:5558/Public/Images/"+data.vehicle.revenueLicenseImage;
+            document.getElementById("insuranceImage").src = "http://127.0.0.1:5558/Public/Images/"+data.vehicle.insuranceImage;
+            document.getElementById("registrationImage").src = "http://127.0.0.1:5558/Public/Images/"+data.vehicle.vehicleRegistrationImage;
             // document.getElementById("vehicleRequestPassengerEmail").placeholder = data.vehicle.verifiedState;
             // document.getElementById("vehicleRequestStatus").placeholder = data.vehicle.insideImage;
             // document.getElementById("vehicleRequestDate").placeholder = data.vehicle.outsideImage;
