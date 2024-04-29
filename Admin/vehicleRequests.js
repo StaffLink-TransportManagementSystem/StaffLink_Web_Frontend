@@ -1,89 +1,108 @@
 var vehicleList = ""
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"),
-    tbody = document.querySelector(".tbody");
+        tbody = document.querySelector(".tbody");
     const searchInput = document.querySelector("[vehicleList]")
 
 
     // let email = "rhatu2000@gmail.com";
-  
-    let row ="";
+
+    let row = "";
     let users = []
 
-    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllVerifyVehicle',{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },credentials: "include",})
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                vehicleList = data.list;
-                data.list.forEach(vehical => {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/viewAllVerifyVehicle', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }, credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            vehicleList = data.list;
+            data.list.forEach(vehical => {
                 row += `<tr  id="${vehical.vehicleNo}">
-                        <td scope="owner" data-label="P ID">`+ vehical.id +`</td>
-                        <td scope="owner" data-label="P ID">`+ vehical.ownerEmail +`</td>
-                        <td class="Name">`+ vehical.vehicleNo +`</td>
-                        <td class="NIC">`+ vehical.vehicleBrand +`</td>
-                        <td class="Telephone">`+ vehical.type +`</td>
-                        <td class="Email">`+ vehical.driverEmail +`</td>
-                        <td class="Telephone">`+ vehical.seatsCount +`</td>
-                        <td class="Email">`+ vehical.trips +`</td>
-                        <td class="Action">
-                        <a href="vehicleRequestMore.html?id=`+ vehical.id +`"><button class="more-btn">MORE</button></a>
+                        <td scope="owner" data-label="P ID">`+ vehical.id + `</td>
+                        <td scope="owner" data-label="P ID">`+ vehical.ownerEmail + `</td>
+                        <td class="Name">`+ vehical.vehicleNo + `</td>
+                        <td class="NIC">`+ vehical.vehicleBrand + `</td>
+                        <td class="Telephone">`+ vehical.type + `</td>
+                        <td class="Email">`+ vehical.driverEmail + `</td>
+                        <td class="Telephone">`+ vehical.seatsCount + `</td>
+                        <td class="Email">`+ vehical.trips + `</td>`
+
+                console.log("Verified State", vehical.varifiedState , typeof(vehical.varifiedState));
+                if (vehical.varifiedState == "0") {
+                    console.log("pending");
+                    row += `<td class="Action">
+                        <a href="vehicleRequestMore.html?id=`+ vehical.id + `"><button class="more-btn">MORE</button></a>
                         <button class="add-btn" onclick="approvefunction(${vehical.id})">Approve</button>
                         <button class="delete-btn" onclick="rejectfunction(${vehical.id})">Reject</button>
-                        </td>
-                    </tr>`
-                });
-                users = data.list;
+                        </td>`
+                }
+                if (vehical.varifiedState == "1") {
+                    console.log("Rejected");
+                    row += `<td class="Action">
+                        <button class="add-btn" disabled>Approved</button>
+                        </td>`
+                }
+                if (vehical.varifiedState == "2") {
+                    console.log("Rejected");
+                    row += `<td class="Action">
+                        <button class="delete-btn" disabled>Rejected</button>
+                        </td>`
+                }
 
-                document.querySelector(".tbody").innerHTML = row;   
-
-            })
-            .catch(error => {
-                console.error('Error:', error);
+                row += `</tr>`
             });
+            users = data.list;
 
-            searchInput.addEventListener("input", e => {
-                const value = e.target.value.toLowerCase();
-                const searchOption = searchCriteria.toLowerCase();
-                users.forEach(data => {
-                    switch (searchOption) {
-                        case "owner email":
-                            searchValue = data.ownerEmail.toLowerCase().includes(value);
-                            break;
-                        case "vehicle no":
-                            searchValue = data.vehicleNo.toLowerCase().includes(value);
-                            break;
-                        case "driver email":
-                            searchValue = data.driverEmail.toLowerCase().includes(value);
-                            break;
-                        case "starting point":
-                            searchValue = data.startingPoint.toLowerCase().includes(value);
-                            break;
-                        case "ending point":
-                            searchValue = data.endingPoint.toLowerCase().includes(value);
-                            break;
-                        case "all":
-                            searchValue =   data.ownerEmail.toLowerCase().includes(value) ||
-                            data.vehicleNo.toLowerCase().includes(value) ||
-                            data.regNo.toLowerCase().includes(value) ||
-                            data.vehicleBrand.toLowerCase().includes(value) ||
-                            data.type.toLowerCase().includes(value) ||
-                            data.startingPoint.toLowerCase().includes(value) ||
-                            data.driverEmail.toLowerCase().includes(value) ||
-                            data.endingPoint.toLowerCase().includes(value)
-                          
-                    }
-                    const isVisible =
-                    searchValue
-   
-                    document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
-                });
-            });
-    
-  });
+            document.querySelector(".tbody").innerHTML = row;
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    searchInput.addEventListener("input", e => {
+        const value = e.target.value.toLowerCase();
+        const searchOption = searchCriteria.toLowerCase();
+        users.forEach(data => {
+            switch (searchOption) {
+                case "owner email":
+                    searchValue = data.ownerEmail.toLowerCase().includes(value);
+                    break;
+                case "vehicle no":
+                    searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    break;
+                case "driver email":
+                    searchValue = data.driverEmail.toLowerCase().includes(value);
+                    break;
+                case "starting point":
+                    searchValue = data.startingPoint.toLowerCase().includes(value);
+                    break;
+                case "ending point":
+                    searchValue = data.endingPoint.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue = data.ownerEmail.toLowerCase().includes(value) ||
+                        data.vehicleNo.toLowerCase().includes(value) ||
+                        data.regNo.toLowerCase().includes(value) ||
+                        data.vehicleBrand.toLowerCase().includes(value) ||
+                        data.type.toLowerCase().includes(value) ||
+                        data.startingPoint.toLowerCase().includes(value) ||
+                        data.driverEmail.toLowerCase().includes(value) ||
+                        data.endingPoint.toLowerCase().includes(value)
+
+            }
+            const isVisible =
+                searchValue
+
+            document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+        });
+    });
+
+});
 
 
 
@@ -99,29 +118,31 @@ function togglePopup1(id) {
     for (var i = 0; i < vehicleList.length; i++) {
         if (vehicleList[i].id == id) {
             var vehical = vehicleList[i];
-        
+
 
             var driverDetails = ""
-            fetch('http://127.0.0.1:8080/try2_war_exploded/getVerifyVehicle?id='+id,{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },credentials: "include",})
-            .then(response => response.json())
-            .then(driver => {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/getVerifyVehicle?id=' + id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, credentials: "include",
+            })
+                .then(response => response.json())
+                .then(driver => {
 
-                console.log("Driver Details", driver);
-                fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email='+vehical.ownerEmail,{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },credentials: "include",})
-            .then(response => response.json())
-            .then(owner => {
-                driver = driver.driver;
-                owner = owner.owner;
+                    console.log("Driver Details", driver);
+                    fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email=' + vehical.ownerEmail, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }, credentials: "include",
+                    })
+                        .then(response => response.json())
+                        .then(owner => {
+                            driver = driver.driver;
+                            owner = owner.owner;
 
-                popupData = `<div class="popup-content">
+                            popupData = `<div class="popup-content">
             <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
     
             <p class="topic">Vehicle Details</p>       
@@ -194,24 +215,24 @@ function togglePopup1(id) {
             </div>       
           </div>`
 
-          document.getElementById("popup").innerHTML = popupData;
+                            document.getElementById("popup").innerHTML = popupData;
 
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
 
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             console.log("Driver Details", driverDetails.driver);
             // console.log("Driver Details", dr);
 
 
-            
 
-          
+
+
         }
     }
 }
@@ -219,19 +240,20 @@ function togglePopup1(id) {
 
 function getDriverDetais(driverEmail) {
     let driverDetails = ""
-    fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email='+driverEmail,{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },credentials: "include",})
-            .then(response => response.json())
-            .then(data => {
-                driverDetails = data;
-                return data;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    fetch('http://127.0.0.1:8080/try2_war_exploded/getDriver?email=' + driverEmail, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }, credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            driverDetails = data;
+            return data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     // return driverDetails;
 }
 
@@ -289,7 +311,7 @@ async function getOwnerDetais(ownerEmail) {
 
 //Top Informations 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     fetch('http://127.0.0.1:8080/try2_war_exploded/adminDashbordInfo', {
         method: 'GET',
         headers: {
@@ -310,3 +332,70 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 }
 );
+
+
+function approvefunction(id) {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/approveVehicleRequest?id=' + id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.message == "Vehicle request approved") {
+                Swal.fire({
+                    title: "Vehicle request approved!",
+                    icon: "success"
+                }).then(() => {
+                    location.reload();
+                })
+            }
+            else {
+                Swal.fire({
+                    title: "Vehicle request approve failed!",
+                    icon: "error"
+                }).then(() => {
+                    location.reload();
+                })
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function rejectfunction(id) {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/rejectVehicleRequest?id=' + id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.message == "Vehicle request rejected") {
+                Swal.fire({
+                    title: "Vehicle request rejected!",
+                    icon: "success"
+                }).then(() => {
+                    location.reload();
+                })
+            }
+            else {
+                Swal.fire({
+                    title: "Vehicle request reject failed!",
+                    icon: "error"
+                }).then(() => {
+                    location.reload();
+                })
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
