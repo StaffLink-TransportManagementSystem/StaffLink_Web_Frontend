@@ -281,7 +281,7 @@ function addVehicle(){
         ownerEmail: ownerEmail,
         vehicleNo: vehicleNumber,
         type: vehicleType,
-        vehicleBrand: vehicleBrand,
+        brand: vehicleBrand,
         model: vehicleModel,
         driverEmail: driverEmail,
         seatCount: seatCount,
@@ -385,13 +385,13 @@ function addVehicle(){
     const ownerEmail = document.querySelector('.ownerEmail').value;
     const vehicleNumber = document.querySelector('.vehicleNumber').value;
     const vehicleType = document.querySelector('.vehicle-type').value;
-    const vehicleBrand = document.querySelector('.vehicleBrand').value;
+    const vehicleBrand = document.getElementById('vehicleBrand').value;
     const vehicleModel = document.querySelector('.vehicleModel').value;
     const driverEmail = document.querySelector('.driverEmail').value;
-    const seatCount = document.querySelector('.seatCount').value;
+    const seatCount = document.getElementById('avalableSeats').value;
     const startingLocation = document.querySelector('.startingLocation').value;
     const endLocation = document.querySelector('.endingLocation').value;
-    const vehicleTrips = document.querySelector('.vehicle-type').value;
+    const vehicleTrips = document.querySelector('.vehicleTrips').value;
     const insideImage = document.querySelector('.insideImage').files[0];
     const outsideImage = document.querySelector('.outsideImage').files[0];
     const insuranceImage = document.querySelector('.insuranceImage').files[0];
@@ -589,7 +589,8 @@ function addVehicle(){
       formData.append('vehicleBrand', vehicleBrand);
       formData.append('model', vehicleModel);
       formData.append('driverEmail', driverEmail);
-      formData.append('seatsCount', seatCount);
+      console.log("seatCount", seatCount);
+      formData.append('availableSeats', seatCount.toString());
       formData.append('startingLatitude', starting_latitude);
       formData.append('startingLongitude', starting_longitude);
       formData.append('endingLatitude', ending_latitude);
@@ -603,8 +604,9 @@ function addVehicle(){
       formData.append('vehicleRegistrationImage', vehicleRegistrationImage);
 
 
-      console.log(data);
+      console.log(formData);
 
+      alert("Vehicle Registered Successfully!");
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
       fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1', {
         method: 'POST',

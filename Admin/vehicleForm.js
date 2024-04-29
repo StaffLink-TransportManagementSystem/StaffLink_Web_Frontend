@@ -107,7 +107,7 @@ function addVehicle(){
     const seatCount = document.querySelector('.seatCount').value;
     const startingLocation = document.querySelector('.startingLocation').value;
     const endLocation = document.querySelector('.endingLocation').value;
-    const vehicleTrips = document.querySelector('.vehicleTrips').value;
+    const vehicleTrips = document.querySelector('.vehicle-trips').value;
     const insideImage = document.querySelector('.insideImage').value;
     const outsideImage = document.querySelector('.outsideImage').value;
     const insuranceImage = document.querySelector('.insuranceImage').value;
@@ -281,7 +281,7 @@ function addVehicle(){
         ownerEmail: ownerEmail,
         vehicleNo: vehicleNumber,
         type: vehicleType,
-        vehicleBrand: vehicleBrand,
+        brand: vehicleBrand,
         model: vehicleModel,
         driverEmail: driverEmail,
         seatCount: seatCount,
@@ -385,7 +385,7 @@ function addVehicle(){
     const ownerEmail = document.querySelector('.ownerEmail').value;
     const vehicleNumber = document.querySelector('.vehicleNumber').value;
     const vehicleType = document.querySelector('.vehicle-type').value;
-    const vehicleBrand = document.querySelector('.vehicleBrand').value;
+    const vehicleBrand = document.getElementById('vehicleBrand').value;
     const vehicleModel = document.querySelector('.vehicleModel').value;
     const driverEmail = document.querySelector('.driverEmail').value;
     const seatCount = document.querySelector('.seatCount').value;
