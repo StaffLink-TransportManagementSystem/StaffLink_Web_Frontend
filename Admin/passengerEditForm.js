@@ -40,7 +40,7 @@ function ValidateEmail(input) {
 
 }
 
-function validateContactNumber(contactNumber) {
+function validatecontactNumber(contactNumber) {
   // Remove any spaces or non-numeric characters
   contactNumber = contactNumber.replace(/\D/g, '');
 
@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.querySelector('.name').value = data.passenger.name;  
                 form.querySelector('.email').value = data.passenger.email;
                 form.querySelector('.NIC').value = data.passenger.NIC;
+                form.querySelector('.contactNo').value = data.passenger.contactNo;
                 
                 // form.querySelector('.vehicleTrips').value = data.vehicle.trips;
                 
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = form.querySelector('.name').value;
       const email = form.querySelector('.email').value;
       const NIC = form.querySelector('.NIC').value;
+      const contactNo = form.querySelector('.contactNo').value;
       // const password = form.querySelector('.password').value;       
 
   
@@ -102,14 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var emailError = document.querySelector(".email-error-message");
       var nameError = document.querySelector(".name-error-message");
       // var ageError = document.querySelector(".age-error-message");
-      // var contactError = document.querySelector(".contact-error-message");
+      var contactError = document.querySelector(".contact-error-message");
       var NICError = document.querySelector(".NIC-error-message");
       // var ownerEmailError = document.querySelector(".ownerEmail-error-message");
       // var passwordError = document.querySelector(".password-error-message");
 
       emailError.style.display = "none";
       nameError.style.display = "none";
-      // contactError.style.display = "none";
+      contactError.style.display = "none";
       NICError.style.display = "none";
       // ownerEmailError.style.display = "none";
       // passwordError.style.display = "none";
@@ -148,7 +150,19 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("NIC error");
         checker = false;
       }
-      
+      if (!contactNo) {
+        contactError.innerText = "Please enter an contact number.";
+        contactError.style.display = "block";
+        console.log("contact error");
+        checker = false;
+      }
+      else if(validatecontactNumber(contactNo) === false){
+        contactError.innerText = "Please enter a Valid contact number.";
+        contactError.style.display = "block";
+        console.log("contact error");
+        checker = false;
+      }
+  
 
       if(checker === true) {
 
@@ -156,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name:name,
         email:email,
         NIC:NIC,
+        contactNo:contactNo,
         
       };
   
