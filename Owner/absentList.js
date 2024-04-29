@@ -28,13 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
             else {
                 data.list.forEach(absents => {
                     row += `<tr>
-                        <td scope="email">`+ absents.vehicleNo + `</td>
-                        <td class="Name">`+ absents.name + `</td>
-                        <td class="Name">`+ absents.contact + `</td>
-                        <td class="NIC">`+ absents.passengerEmail + `</td>
-                        <td class="age">`+ absents.daysOfAbsent + `</td>
-                        <td class="contact">`+ absents.startingDate + `</td>
-                        <td class="ownerEmail">`+ absents.endingDate + `</td>
+                        <td class="Name">`+ absents.passengerEmail + `</td>
+                        <td class="Name">`+ absents.reservationId + `</td>
+                        <td class="NIC">`+ absents.daysOfAbsent + `</td>
+                        <td class="age">`+ absents.startingDate + `</td>
+                        <td class="contact">`+ absents.endingDate + `</td>
                         
                         <td class="Action">
                             <a href="#moredetails"><button class="more-btn">VIEW LOCATION</button></a>

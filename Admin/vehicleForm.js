@@ -378,6 +378,268 @@ function addVehicle(){
       });
   });
 
+
+  // function addVehicle1(){
+  //   //   event.preventDefault(); // Prevent the default form submission
+  //   console.log("form submitted");
+  //   // Get form elements
+  //   const ownerEmail = document.querySelector('.ownerEmail').value;
+  //   const vehicleNumber = document.querySelector('.vehicleNumber').value;
+  //   const vehicleType = document.querySelector('.vehicle-type').value;
+  //   const vehicleBrand = document.getElementById('vehicleBrand').value;
+  //   const vehicleModel = document.querySelector('.vehicleModel').value;
+  //   const driverEmail = document.querySelector('.driverEmail').value;
+  //   const seatCount = document.querySelector('.seatCount').value;
+  //   const startingLocation = document.querySelector('.startingLocation').value;
+  //   const endLocation = document.querySelector('.endingLocation').value;
+  //   const vehicleTrips = document.querySelector('.vehicle-type').value;
+  //   const insideImage = document.querySelector('.insideImage').files[0];
+  //   const outsideImage = document.querySelector('.outsideImage').files[0];
+  //   const insuranceImage = document.querySelector('.insuranceImage').files[0];
+  //   const revenueLicenseImage = document.querySelector('.revenueLicenseImage').files[0];
+  //   const vehicleRegistrationImage = document.querySelector('.vehicleRegistrationImage').files[0];
+
+  //   var ownerEmailError = document.getElementById("ownerEmail-error-message");
+  //   var driverEmailError = document.getElementById("driverEmail-error-message");
+  //   var vehicleNoError = document.getElementById("vehicleNo-error-message");
+  //   var typeError = document.getElementById("type-error-message");
+  //   var brandError = document.getElementById("brand-error-message");
+  //   var modelError = document.getElementById("model-error-message");
+  //   var seatCountError = document.getElementById("seatCount-error-message");
+  //   var startingLocationError = document.getElementById("startingLocation-error-message");
+  //   var endLocationError = document.getElementById("endingLocation-error-message");
+  //   var vehicleTripsError = document.getElementById("vehicleTrips-error-message");
+  //   var photoError = document.getElementById("photo-error-message");
+
+  //   ownerEmailError.style.display = "none";
+  //   driverEmailError.style.display = "none";
+  //   vehicleNoError.style.display = "none";
+  //   typeError.style.display = "none";
+  //   brandError.style.display = "none";
+  //   modelError.style.display = "none";
+  //   seatCountError.style.display = "none";
+  //   startingLocationError.style.display = "none";
+  //   endLocationError.style.display = "none";
+  //   vehicleTripsError.style.display = "none";
+  //   photoError.style.display = "none";
+
+  //   console.log("ownerEmail", ownerEmail);
+  //   console.log("vehicleNumber", vehicleNumber);
+  //   console.log("vehicleType", vehicleType);
+  //   console.log("vehicleBrand", vehicleBrand);
+  //   console.log("vehicleModel", vehicleModel);
+  //   console.log("driverEmail", driverEmail);
+  //   console.log("seatCount", seatCount);
+  //   console.log("startingLocation", startingLocation);
+  //   console.log("endLocation", endLocation);
+  //   console.log("vehicleTrips", vehicleTrips);
+  //   console.log("insideImage", insideImage);
+  //   console.log("outsideImage", outsideImage);
+  //   console.log("insuranceImage", insuranceImage);
+  //   console.log("revenueLicenseImage", revenueLicenseImage);
+  //   console.log("vehicleRegistrationImage", vehicleRegistrationImage);
+    
+
+  //   var checker = true;
+
+  //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //   if (!ownerEmail) {
+  //     ownerEmailError.innerText = "Please enter an email address.";
+  //     ownerEmailError.style.display = "block";
+  //     console.log("email error");
+  //     checker = false;
+  //   }
+  //   else if (!ValidateEmail(ownerEmail)) {
+  //     ownerEmailError.innerText = "Please enter a valid email address.";
+  //     ownerEmailError.style.display = "block";
+  //     console.log("email error");
+  //     checker = false;
+  //   }
+  //   if (!driverEmail) {
+  //     driverEmailError.innerText = "Please enter an email address.";
+  //     driverEmailError.style.display = "block";
+  //     console.log("email error");
+  //     checker = false;
+  //   }
+  //   else if (!ValidateEmail(driverEmail)) {
+  //     driverEmailError.innerText = "Please enter a valid email address.";
+  //     driverEmailError.style.display = "block";
+  //     console.log("email error");
+  //     checker = false;
+  //   }
+  //   if (!vehicleNumber) {
+  //     vehicleNoError.innerText = "Please enter a vehicle number.";
+  //     vehicleNoError.style.display = "block";
+  //     console.log("vehicle number error");
+  //     checker = false;
+  //   }
+  //   else if (validateVehicleNumber(vehicleNumber) === false) {
+  //     vehicleNoError.innerText = "Please enter a valid vehicle number.";
+  //     vehicleNoError.style.display = "block";
+  //     console.log("vehicle number error");
+  //     checker = false;
+  //   }
+  //   else if (usedVehicleNumber(vehicleNumber) === true) {
+  //     vehicleNoError.innerText = "This vehicle number is already registered.";
+  //     vehicleNoError.style.display = "block";
+  //     console.log("vehicle number error");
+  //     checker = false;
+  //   }
+  //   if (!vehicleType) {
+  //     typeError.innerText = "Please enter a vehicle type.";
+  //     typeError.style.display = "block";
+  //     console.log("vehicle type error");
+  //     checker = false;
+  //   }
+  //   if (!vehicleBrand) {
+  //     brandError.innerText = "Please enter a vehicle brand.";
+  //     brandError.style.display = "block";
+  //     console.log("vehicle brand error");
+  //     checker = false;
+  //   }
+  //   if (!vehicleModel) {
+  //     modelError.innerText = "Please enter a vehicle model.";
+  //     modelError.style.display = "block";
+  //     console.log("vehicle model error");
+  //     checker = false;
+  //   }
+  //   // if (!regNumber) {
+  //   //   vehicleRegNoEmailError.innerText = "Please enter a vehicle registration number.";
+  //   //   vehicleRegNoEmailError.style.display = "block";
+  //   //   console.log("vehicle registration number error");
+  //   //   checker = false;
+  //   // }
+  //   if (!seatCount) {
+  //     seatCountError.innerText = "Please enter a seat count.";
+  //     seatCountError.style.display = "block";
+  //     console.log("seat count error");
+  //     checker = false;
+  //   }
+  //   if (vehicleType === "Bus" && (seatCount <= 0 || seatCount > 80)) {
+  //     seatCountError.innerText = "Please enter a valid seat count.";
+  //     seatCountError.style.display = "block";
+  //     console.log("seat count error");
+  //     checker = false;
+  //   }
+  //   else if (vehicleType === "Van" && (seatCount <= 0 || seatCount > 15)) {
+  //     seatCountError.innerText = "Please enter a valid seat count.";
+  //     seatCountError.style.display = "block";
+  //     console.log("seat count error");
+  //     checker = false;
+  //   }
+  //   else if (vehicleType === "Car" && (seatCount <= 0 || seatCount > 5)) {
+  //     seatCountError.innerText = "Please enter a valid seat count.";
+  //     seatCountError.style.display = "block";
+  //     console.log("seat count error");
+  //     checker = false;
+  //   }
+  //   if (!startingLocation) {
+  //     startingLocationError.innerText = "Please enter a starting location.";
+  //     startingLocationError.style.display = "block";
+  //     console.log("starting location error");
+  //     checker = false;
+  //   }
+  //   if (!endLocation) {
+  //     endLocationError.innerText = "Please enter an end location.";
+  //     endLocationError.style.display = "block";
+  //     console.log("end location error");
+  //     checker = false;
+  //   }
+  //   if (!vehicleTrips) {
+  //     vehicleTripsError.innerText = "Please enter vehicle trips.";
+  //     vehicleTripsError.style.display = "block";
+  //     console.log("vehicle trips error");
+  //     checker = false;
+  //   }
+  //   if (!insideImage || !outsideImage || !insuranceImage || !revenueLicenseImage || !vehicleRegistrationImage) {
+  //     photoError.innerText = "Please upload all the required images.";
+  //     photoError.style.display = "block";
+  //     console.log("photo error");
+  //     checker = false;
+  //   }
+    
+  //   if (checker == true) {
+
+
+  //     const data = {
+  //       ownerEmail: ownerEmail,
+  //       vehicleNo: vehicleNumber,
+  //       type: vehicleType,
+  //       vehicleBrand: vehicleBrand,
+  //       model: vehicleModel,
+  //       driverEmail: driverEmail,
+  //       seatCount: seatCount,
+  //       startingLatitude: starting_latitude,
+  //       startingLongitude:starting_longitude,
+  //       endingLatitude: ending_latitude,
+  //       endingLongitude: ending_longitude,
+  //       trips: vehicleTrips,
+  //       insideImage: insideImage,
+  //       outsideImage: outsideImage,
+  //       insuranceImage: insuranceImage,
+  //       revenueLicenseImage: revenueLicenseImage,
+  //       vehicleRegistrationImage: vehicleRegistrationImage
+  //     };
+
+  //     let formData = new FormData();
+  //     // formData.append('vehicle', JSON.stringify(data));
+  //     formData.append('ownerEmail', ownerEmail);
+  //     formData.append('vehicleNo', vehicleNumber);
+  //     formData.append('type', vehicleType);
+  //     formData.append('vehicleBrand', vehicleBrand);
+  //     formData.append('model', vehicleModel);
+  //     formData.append('driverEmail', driverEmail);
+  //     formData.append('seatsCount', seatCount);
+  //     formData.append('startingLatitude', starting_latitude);
+  //     formData.append('startingLongitude', starting_longitude);
+  //     formData.append('endingLatitude', ending_latitude);
+  //     formData.append('endingLongitude', ending_longitude);
+  //     formData.append('trips', vehicleTrips);
+
+  //     formData.append('insideImage', insideImage);
+  //     formData.append('outsideImage', outsideImage);
+  //     formData.append('insuranceImage', insuranceImage);
+  //     formData.append('revenueLicenseImage', revenueLicenseImage);
+  //     formData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+
+
+  //     console.log(data);
+
+  //     // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
+  //     fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1', {
+  //       method: 'POST',
+  //       credentials: "include",
+  //       body: formData
+  //     })
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         console.log(data)
+  //         if (data.message === "Registration successfully") {
+  //           Swal.fire({
+  //             title: "Vehicle Registered Successfully!",
+  //             icon: "success"
+  //           }).then(() => {
+  //             window.location.href = "vehicles.html";
+  //           })
+  //         }
+  //         else {
+  //           Swal.fire({
+  //             title: "Vehicle Registration Failed!",
+  //             icon: "error"
+  //           }).then(() => {
+  //             window.location.href = "vehicles.html";
+  //           })
+  //         }
+  //         // document.getElementById("demo").innerHTML = data.message;
+  //       })
+  //       .catch(error => {
+  //         console.error('Error:', error);
+  //       });
+  //   }
+  
+  //   }
+
   function addVehicle1(){
     //   event.preventDefault(); // Prevent the default form submission
     console.log("form submitted");
@@ -388,10 +650,10 @@ function addVehicle(){
     const vehicleBrand = document.getElementById('vehicleBrand').value;
     const vehicleModel = document.querySelector('.vehicleModel').value;
     const driverEmail = document.querySelector('.driverEmail').value;
-    const seatCount = document.querySelector('.seatCount').value;
+    const seatCount = document.getElementById('avalableSeats').value;
     const startingLocation = document.querySelector('.startingLocation').value;
     const endLocation = document.querySelector('.endingLocation').value;
-    const vehicleTrips = document.querySelector('.vehicle-type').value;
+    const vehicleTrips = document.querySelector('.vehicleTrips').value;
     const insideImage = document.querySelector('.insideImage').files[0];
     const outsideImage = document.querySelector('.outsideImage').files[0];
     const insuranceImage = document.querySelector('.insuranceImage').files[0];
@@ -557,6 +819,7 @@ function addVehicle(){
       console.log("photo error");
       checker = false;
     }
+    // checker = true;
     
     if (checker == true) {
 
@@ -581,60 +844,120 @@ function addVehicle(){
         vehicleRegistrationImage: vehicleRegistrationImage
       };
 
-      let formData = new FormData();
+      // let approvalRequestFormData = new FormData();
+// approvalRequestFormData.append('offset', 0);
+// approvalRequestFormData.append('limit', 5);
+// // approvalRequestFormData.append('vehicle', JSON.stringify(data));
+// approvalRequestFormData.append('ownerEmail', ownerEmail);
+// approvalRequestFormData.append('vehicleNo', vehicleNumber);
+// approvalRequestFormData.append('vehicleType', vehicleType);
+// // console.log("Brand", vehicleBrand);
+// approvalRequestFormData.append('brand', vehicleBrand);
+// approvalRequestFormData.append('model', vehicleModel);
+// approvalRequestFormData.append('driverEmail', driverEmail);
+// // console.log("seatCount", seatCount);
+// approvalRequestFormData.append('availableSeats', seatCount);
+// approvalRequestFormData.append('startingLatitude', starting_latitude);
+// approvalRequestFormData.append('startingLongitude', starting_longitude);
+// approvalRequestFormData.append('endingLatitude', ending_latitude);
+// approvalRequestFormData.append('endingLongitude', ending_longitude);
+// approvalRequestFormData.append('trips', vehicleTrips);
+// approvalRequestFormData.append('insideImage', insideImage);
+// approvalRequestFormData.append('outsideImage', outsideImage);
+// approvalRequestFormData.append('insuranceImage', insuranceImage);
+// approvalRequestFormData.append('revenueLicenseImage', revenueLicenseImage);
+// approvalRequestFormData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+
+// console.log("Brand", vehicleBrand);
+let verifyVehicle = document.getElementById('verifyVehicle');
+console.log(verifyVehicle);
+verifyVehicle.submit();
+Swal.fire({
+  title: "Vehicle Registered Successfully!",
+  icon: "success"
+}).then(() => {
+  location.href = "vehicleList.html";
+})
+// fetch("http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1",
+//     {
+//         method: 'POST',
+//         enctype: "multipart/form-data",
+//         body: approvalRequestFormData
+  // })
+
+
+      // let formData = new FormData();
       // formData.append('vehicle', JSON.stringify(data));
-      formData.append('ownerEmail', ownerEmail);
-      formData.append('vehicleNo', vehicleNumber);
-      formData.append('type', vehicleType);
-      formData.append('vehicleBrand', vehicleBrand);
-      formData.append('model', vehicleModel);
-      formData.append('driverEmail', driverEmail);
-      formData.append('seatsCount', seatCount);
-      formData.append('startingLatitude', starting_latitude);
-      formData.append('startingLongitude', starting_longitude);
-      formData.append('endingLatitude', ending_latitude);
-      formData.append('endingLongitude', ending_longitude);
-      formData.append('trips', vehicleTrips);
+      // formData.append('ownerEmail', ownerEmail);
+      // formData.append('vehicleNo', vehicleNumber);
+      // formData.append('vehicleType', vehicleType);
+      // console.log("Brand", vehicleBrand);
+      // formData.append('brand', vehicleBrand);
+      // formData.append('model', vehicleModel);
+      // formData.append('driverEmail', driverEmail);
+      // console.log("seatCount", seatCount);
+      // formData.append('availableSeats', seatCount);
+      // formData.append('startingLatitude', starting_latitude);
+      // formData.append('startingLongitude', starting_longitude);
+      // formData.append('endingLatitude', ending_latitude);
+      // formData.append('endingLongitude', ending_longitude);
+      // formData.append('trips', vehicleTrips);
 
-      formData.append('insideImage', insideImage);
-      formData.append('outsideImage', outsideImage);
-      formData.append('insuranceImage', insuranceImage);
-      formData.append('revenueLicenseImage', revenueLicenseImage);
-      formData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+      // formData.append('insideImage', insideImage);
+      // formData.append('outsideImage', outsideImage);
+      // formData.append('insuranceImage', insuranceImage);
+      // formData.append('revenueLicenseImage', revenueLicenseImage);
+      // formData.append('vehicleRegistrationImage', vehicleRegistrationImage);
 
 
-      console.log(data);
+      // console.log(formData);
 
+      // alert("Vehicle Registered Successfully!");
+      
       // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1', {
-        method: 'POST',
-        credentials: "include",
-        body: formData
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          if (data.message === "Registration successfully") {
-            Swal.fire({
-              title: "Vehicle Registered Successfully!",
-              icon: "success"
-            }).then(() => {
-              window.location.href = "vehicles.html";
-            })
-          }
-          else {
-            Swal.fire({
-              title: "Vehicle Registration Failed!",
-              icon: "error"
-            }).then(() => {
-              window.location.href = "vehicles.html";
-            })
-          }
-          // document.getElementById("demo").innerHTML = data.message;
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+      // fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1', {
+      //   enctype: 'multipart/form-data',
+      //   method: 'POST',
+      //   credentials: "include",
+      //   body: formData
+      // })
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     console.log(data)
+      //     if (data.message === "Registration successfully") {
+      //       Swal.fire({
+      //         title: "Vehicle Registered Successfully!",
+      //         icon: "success"
+      //       }).then(() => {
+      //         // window.location.href = "vehicles.html";
+      //       })
+      //     }
+      //     else {
+      //       Swal.fire({
+      //         title: "Vehicle Registration Failed!",
+      //         icon: "error"
+      //       }).then(() => {
+      //         // window.location.href = "vehicles.html";
+      //       })
+      //     }
+      //     // document.getElementById("demo").innerHTML = data.message;
+      //   })
+      //   .catch(error => {
+      //     console.error('Error:', error);
+      //   });
     }
   
+    }
+
+
+    let verifyVehicle = document.getElementById("verifyVehicle");
+    console.log(verifyVehicle);
+    verifyVehicle.onsubmit = function (e) {
+      e.preventDefault();
+      fetch(this.action, {
+        method: this.method,
+        enctype: "multipart/form-data",
+        body: new FormData(this),
+        credentials: "include"
+      })
     }

@@ -35,14 +35,23 @@ document.addEventListener("DOMContentLoaded", function () {
             }, credentials: "include",})
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 data.payments.forEach(payment => {
                 row += `<tr>
                 <td>`+ payment.date +`</td>
                 <td>`+ payment.passengerEmail +`</td>
                 <td>`+ payment.paymentType +`</td>
-                <td>`+ payment.amount +`</td>
-                <td><span class="status pending">Pending</span></td>
+                <td>`+ payment.amount +`</td>`
+                if(payment.status == "Pending" || payment.status == "pending"){
+                    row+=`<td><span class="status pending">Pending</span></td>
             </tr>`
+                }
+                else if(payment.status == "Paid" || payment.status == "paid"){
+                    row+=`<td><span class="status delivered">Paid</span></td>
+            </tr>`
+                    
+                }
+                
                 });
 
                 document.querySelector(".table1").innerHTML = row;   
@@ -59,10 +68,17 @@ document.addEventListener("DOMContentLoaded", function () {
             }, credentials: "include",})
             .then(response => response.json())
             .then(data => {
-                document.querySelector(".cardPay").innerHTML = `Rs. `+ data.payments.card ;
-                document.querySelector(".cashPay").innerHTML = `Rs. `+ data.payments.cash ;
-                document.querySelector(".subscription").innerHTML = `Rs. -`+ data.payments.subscription ;  
-                document.querySelector(".balance").innerHTML = `<b>Rs. `+ (data.payments.card + data.payments.cash - data.payments.subscription)+`</b>`; 
+                document.querySelector(".cardPay").innerHTML = `Rs. `+ data.payments.card.toFixed(2) ;
+                document.querySelector(".cashPay").innerHTML = `Rs. `+ data.payments.cash.toFixed(2) ;
+                document.querySelector(".subscription").innerHTML = `Rs. -`+ ((data.payments.card + data.payments.cash)*0.12).toFixed(2) ;  
+                document.querySelector(".balance").innerHTML = `<b>Rs. `+ (data.payments.card + data.payments.cash - ((data.payments.card + data.payments.cash)*0.12)).toFixed(2) +`</b>`; 
+                var balance = (data.payments.card - ((data.payments.card + data.payments.cash)*0.12)).toFixed(2);
+                if(balance < 0){
+                    document.getElementById("ownerPayment").innerHTML = `<button class="submit-btn" onclick="pay('`+balance+`')">Pay Through System</button>`;
+                }
+                else{
+                    document.getElementById("ownerPayment").innerHTML = `<button class="submit-btn" onclick="pay('0')">Pay Through System</button>`;
+                }
                 document.getElementById("ownerPayment").innerHTML = `<button class="submit-btn" onclick="pay('${(data.payments.subscription - data.payments.cash)}')">Pay Through System</button>`;
             })
             .catch(error => {
@@ -131,3 +147,4 @@ function pay(amount){
     location.href = "./ownerPayments/cardPayment.html?amount="+amount;
     // alert("Payment Successful", amount);
 }
+

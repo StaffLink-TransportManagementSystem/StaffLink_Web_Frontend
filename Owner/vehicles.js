@@ -307,3 +307,4 @@ async function getOwnerDetais(ownerEmail) {
         throw error; // Rethrow the error for the caller to handle
     }
 }
+
