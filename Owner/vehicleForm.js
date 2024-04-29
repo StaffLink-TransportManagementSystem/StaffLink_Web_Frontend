@@ -391,7 +391,7 @@ function addVehicle(){
     const seatCount = document.querySelector('.seatCount').value;
     const startingLocation = document.querySelector('.startingLocation').value;
     const endLocation = document.querySelector('.endingLocation').value;
-    const vehicleTrips = document.querySelector('.vehicleTrips').value;
+    const vehicleTrips = document.querySelector('.vehicle-type').value;
     const insideImage = document.querySelector('.insideImage').files[0];
     const outsideImage = document.querySelector('.outsideImage').files[0];
     const insuranceImage = document.querySelector('.insuranceImage').files[0];

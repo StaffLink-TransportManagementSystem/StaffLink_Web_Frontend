@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Telephone">`+ vehical.seatsCount +`</td>
                         <td class="Email">`+ vehical.trips +`</td>
                         <td class="Action">
-                        <a href="vehicleRequestMore.html?id=`+ vehical.id +`"><button class="more-btn" onclick="togglePopup1(${vehical.id})">MORE</button></a>
+                        <a href="vehicleRequestMore.html?id=`+ vehical.id +`"><button class="more-btn">MORE</button></a>
                         <button class="add-btn" onclick="approvefunction(${vehical.id})">Approve</button>
                         <button class="delete-btn" onclick="rejectfunction(${vehical.id})">Reject</button>
                         </td>
