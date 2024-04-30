@@ -12,6 +12,7 @@ function makePayment(){
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector("[Request-search]")
     function getPayload(token) {
         return JSON.parse(atob(token.split(".")[1]));
     }
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     passengerEmail = payload.id;
   
     let row ="";
+    let users = []
 
     fetch('http://127.0.0.1:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
@@ -50,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 while (i < data.requests.length) {
                     const request = data.requests[i];
                     const vehicle = data.vehicles[i];
-                    var rowData = `<tr>
+                    var rowData = `<tr id="${request.vehicleNo}">
                     <td>${request.vehicleNo}</td>
                     <td>${vehicle.type}</td>
                     <td>${request.onTime}</td>
@@ -72,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     row += rowData;
                     i++;
                 }
+                users = data.vehicles;
 
 
                 document.querySelector(".tbody").innerHTML = row;   
@@ -79,6 +82,24 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => {
                 console.error('Error:', error);
+            });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
+                users.forEach(data => {
+                    switch (searchOption) {
+                        case "vehicle no":
+                            searchValue = data.vehicleNo.toLowerCase().includes(value);
+
+                        case "all":
+                            searchValue = searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    }
+                    const isVisible =
+                    searchValue
+        
+                    document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+                });
             });
         });
 

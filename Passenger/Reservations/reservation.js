@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector("[Reservation-search]")
 
     function getPayload(token) {
         return JSON.parse(atob(token.split(".")[1]));
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     passengerEmail = payload.id;
   
     let row ="";
+    let users = []
 
     fetch('http://127.0.0.1:8080/try2_war_exploded/getReservationsByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
@@ -54,17 +56,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         vehicle = data.vehicles[i];
                         console.log("reservation: "+reservation);
                         console.log("vehicle : "+vehicle.vehicleNo);
-                        row += `<tr>
-                            <td>${vehicle.vehicleNo}</td>
-                            <td>${vehicle.type}</td>
-                            <td>${vehicle.model}</td>
-                            <td>${reservation.startingDate}</td>
-                            <td>${reservation.endingDate}</td>
-                            <td><span class="status ${reservation.status.toLowerCase()}">${reservation.status}</span></td>
-                            <td><button class="btn more-btn" onclick="vehicleLocation('${reservation.reservationId}')">Vehicle Location</button></td>
-                        </tr>`;
+                        row +=`<tr id="${vehicle.vehicleNo}">
+                        <td>${vehicle.vehicleNo}</td>
+                        <td>${vehicle.type}</td>
+                        <td>${vehicle.model}</td>
+                        <td>${reservation.startingDate}</td>
+                        <td>${reservation.endingDate}</td>
+                        <td><span class="status ${reservation.status.toLowerCase()}">${reservation.status}</span></td>
+                        <td><button class="btn more-btn" onclick="vehicleLocation('${reservation.reservationId}')">Vehicle Location</button></td>
+                    </tr>`;
                         i++;
                     }
+
+                    users = data.vehicles;
 
 
                     document.querySelector(".tbody").innerHTML = row; 
@@ -74,6 +78,32 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
+                users.forEach(data => {
+                     switch (searchOption) {
+                case "vehicle no":
+                    searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    break;
+                case "vehicle model":
+                    searchValue = data.model.toLowerCase().includes(value);
+                    break;
+                case "all":
+                    searchValue =  data.vehicleNo.toLowerCase().includes(value) ||
+                    data.model.toLowerCase().includes(value)
+                  
+            }
+  
+            const isVisible =
+            searchValue
+          
+            document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+                });
+            });
+      
         });
 
 
