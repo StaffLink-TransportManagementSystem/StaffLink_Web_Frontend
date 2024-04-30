@@ -573,21 +573,86 @@ function addVehicle(){
         ownerEmail: ownerEmail,
         vehicleNo: vehicleNumber,
         type: vehicleType,
-        vehicleBrand: vehicleBrand,
+        brand: vehicleBrand,
         model: vehicleModel,
         driverEmail: driverEmail,
-        seatCount: seatCount,
+        seatsCount: seatCount,
         startingLatitude: starting_latitude,
         startingLongitude:starting_longitude,
         endingLatitude: ending_latitude,
         endingLongitude: ending_longitude,
-        trips: vehicleTrips,
-        insideImage: insideImage,
-        outsideImage: outsideImage,
-        insuranceImage: insuranceImage,
-        revenueLicenseImage: revenueLicenseImage,
-        vehicleRegistrationImage: vehicleRegistrationImage
+        trips: vehicleTrips
       };
+
+      console.log(data);
+      alert("Vehicle Registered Successfully!");
+
+      fetch('http://127.0.0.1:8080/try2_war_exploded/createVehicleWithoutImages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },credentials: "include", body: JSON.stringify(data),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          if (data.message === "Vehicle created successfully") {
+            var approvalRequestFormData = new FormData();
+            approvalRequestFormData.append('insideImage', insideImage);
+            approvalRequestFormData.append('outsideImage', outsideImage);
+            approvalRequestFormData.append('insuranceImage', insuranceImage);
+            approvalRequestFormData.append('revenueLicenseImage', revenueLicenseImage);
+            approvalRequestFormData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+            approvalRequestFormData.append('vehicleNo', vehicleNumber);
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/ ', {
+              method: 'POST',
+              enctype: "multipart/form-data",
+              body: approvalRequestFormData,
+              credentials: "include"
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data)
+                if (data.message === "Images uploaded successfully") {
+                  Swal.fire({
+                    title: "Vehicle Registered Successfully!",
+                    icon: "success"
+                  }).then(() => {
+                    window.location.href = "vehicles.html";
+                  })
+                }
+                else {
+                  Swal.fire({
+                    title: "Vehicle Registration Failed!",
+                    icon: "error"
+                  }).then(() => {
+                    window.location.href = "vehicles.html";
+                  })
+                }
+              })
+            // Swal.fire({
+            //   title: "Vehicle Registered Successfully!",
+            //   icon: "success"
+            // }).then(() => {
+            //   window.location.href = "vehicles.html";
+            // })
+          }
+          else {
+            Swal.fire({
+              title: "Vehicle Registration Failed!",
+              icon: "error"
+            }).then(() => {
+              window.location.href = "vehicles.html";
+            })
+          }
+          // document.getElementById("demo").innerHTML = data.message;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+      
 
       // let approvalRequestFormData = new FormData();
 // approvalRequestFormData.append('offset', 0);
@@ -614,15 +679,23 @@ function addVehicle(){
 // approvalRequestFormData.append('vehicleRegistrationImage', vehicleRegistrationImage);
 
 // console.log("Brand", vehicleBrand);
-let verifyVehicle = document.getElementById('verifyVehicle');
-console.log(verifyVehicle);
-verifyVehicle.submit();
-Swal.fire({
-  title: "Vehicle Registered Successfully!",
-  icon: "success"
-}).then(() => {
-  location.href = "vehicles.html";
-})
+
+
+
+
+// let verifyVehicle = document.getElementById('verifyVehicle');
+// console.log(verifyVehicle);
+// verifyVehicle.submit();
+// Swal.fire({
+//   title: "Vehicle Registered Successfully!",
+//   icon: "success"
+// }).then(() => {
+//   location.href = "vehicles.html";
+// })
+
+
+
+
 // fetch("http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1",
 //     {
 //         method: 'POST',
@@ -695,14 +768,14 @@ Swal.fire({
     }
 
 
-    let verifyVehicle = document.getElementById("verifyVehicle");
-    console.log(verifyVehicle);
-    verifyVehicle.onsubmit = function (e) {
-      e.preventDefault();
-      fetch(this.action, {
-        method: this.method,
-        enctype: "multipart/form-data",
-        body: new FormData(this),
-        credentials: "include"
-      })
-    }
+    // let verifyVehicle = document.getElementById("verifyVehicle");
+    // console.log(verifyVehicle);
+    // verifyVehicle.onsubmit = function (e) {
+    //   e.preventDefault();
+    //   fetch(this.action, {
+    //     method: this.method,
+    //     enctype: "multipart/form-data",
+    //     body: new FormData(this),
+    //     credentials: "include"
+    //   })
+    // }
