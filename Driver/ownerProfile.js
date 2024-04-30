@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.querySelector('.ownerEmail').innerText = data.owner.email;
                     document.querySelector('.ownerName').innerText = data.owner.name;
                     document.querySelector('.ownerContact').innerText = data.owner.NIC;
+                    document.querySelector('.ownerNIC').innerText = data.owner.contactNo;
                 })
                 .catch(error => {
                     console.error('Error:', error);

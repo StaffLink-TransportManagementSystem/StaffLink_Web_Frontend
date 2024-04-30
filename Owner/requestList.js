@@ -49,9 +49,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     rowData = `<tr  id="${request.id}">
                     <td scope="email" data-label="P ID">`+ request.id +`</td>
                     <td class="NIC">`+ request.passengerEmail +`</td>
-                    <td class="contact">`+ request.type +`</td>
-                    <td class="contact">`+ request.onTime +`</td>
-                    <td class="contact">`+ request.offTime +`</td>
+                    <td class="contact">`+ request.type +`</td>`
+                    if(request.type == "Morning"){
+                        rowData += `<td class="contact">`+ request.onTime +`</td>
+                        <td class="contact">-</td>`
+                    }
+                    if(request.type == "Evening"){
+                        rowData += `<td class="contact">-</td>
+                        <td class="contact">`+ request.offTime +`</td>`
+                    }
+                    if(request.type == "Both"){
+                        rowData += `<td class="contact">`+ request.onTime +`</td>
+                        <td class="contact">`+ request.offTime +`</td>`
+                    }
+                    rowData += `
                     <td class="contact">`+ request.price +`</td>
 
                     <td class="contact"> <span class="status `+ request.status.toLowerCase() +`">`+ request.status +`</span></td>`

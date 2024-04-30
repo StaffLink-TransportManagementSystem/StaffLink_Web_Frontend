@@ -15,12 +15,12 @@
     <body>
         <div class="container">
             <div class="topic">Vehicle Registration</div>
-            <form action="#">
+            <form id="verifyVehicle" action="http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1" method="post" enctype="multipart/form-data">
                 <!-- <div id="map"></div> -->
                 <div class="vehicle-details">
                     <div class="input-box">
                         <span class="details">Owner Email</span>
-                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" readonly>
+                        <input type="text" name="ownerEmail" class="ownerEmail" placeholder="Enter your owner email" readonly>
                         <div id="ownerEmail-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
@@ -28,15 +28,15 @@
                             <span class="details">Vehicle Number</span>
                             
                         </div>
-                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" required>
+                        <input type="text" name="vehicleNo" class="vehicleNumber" placeholder="Enter your vehicle number" required>
                         <div id="vehicleNo-error-message" style="color:red; display: none;"></div>
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Vehicle Type</span>
                         </div>                       
-                        <select class="vehicle-type" id="vehicle-type">
-                            <option class="default" value>Select the vehicle type</option>
+                        <select class="vehicle-type" id="vehicle-type" name="vehicleType">
+                            <option class="default" value="">Select the vehicle type</option>
                             <option value="Van">Van</option>
                             <option value="Bus">Bus</option>
                             <option value="Car">Car</option>
@@ -47,14 +47,14 @@
                         <div>
                             <span class="details">Vehicle Brand</span> 
                         </div>                       
-                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" id="vehicleBrand" required>   
+                        <input type="text" name="vehicleBrand" class="vehicleBrand" placeholder="Enter your vehicle brand" id="vehicleBrand" required>   
                         <div id="brand-error-message" style="display: none; color: red;"></div>                    
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Vehicle Model</span>
                         </div>                       
-                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>  
+                        <input type="text" name="model" class="vehicleModel" placeholder="Enter your vehicle model" required>  
                         <div id="model-error-message" style="display: none; color: red;"></div>                      
                     </div>
                 </div>
@@ -64,19 +64,19 @@
                         <div>
                             <span class="details">Number of Seats</span>
                         </div>                        
-                        <input type="text" class="seatCount" id="avalableSeats" placeholder="Enter the total no of seats" required> 
+                        <input type="number" name="availableSeats" class="seatCount" id="avalableSeats" placeholder="Enter the total no of seats" required> 
                         <div id="seatCount-error-message" style="display: none; color: red;"></div>                      
                     </div>
                     <div class="input-box">
                         <div>
                             <span class="details">Driver Email</span>
                         </div>                        
-                        <input type="email" class="driverEmail" placeholder="Enter the driver's email" required>  
+                        <input type="email" name="driverEmail" class="driverEmail" placeholder="Enter the driver's email" required>  
                         <div id="driverEmail-error-message" style="display: none; color: red;"></div>                     
                     </div>
                     <div class="input-box">
                         <span class="details">Vehicle Trips</span>
-                        <select class="vehicleTrips" id="vehicle-trips">
+                        <select class="vehicleTrips" id="vehicle-trips" name="trips">
                             <option class="default" value>Select the relevent type</option>
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
@@ -102,6 +102,10 @@
                         </div>
                         <div id="endingLocation-error-message" style="display: none; color: red;"></div>
                     </div>
+                    <input type="hidden" name="startingLatitude" id="startingLatitude">
+                    <input type="hidden" name="startingLongitude" id="startingLongitude">
+                    <input type="hidden" name="endingLatitude" id="endingLatitude">
+                    <input type="hidden" name="endingLongitude" id="endingLongitude">
                 </div>
 
                 <div class="photos">
@@ -109,27 +113,28 @@
                     <div style="display: flex;">
                         <div class="input-box">
                             <pre>   1. Inside</pre>
-                            <input class="insideImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                            <input class="insideImage" name="insideImage" type="file" placeholder="Select the photo" accept="image/*" required>
                         </div>
                         <div class="input-box">
                             <pre>   2. Outside</pre>
-                            <input class="outsideImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                            <input class="outsideImage" name="outsideImage" type="file" placeholder="Select the photo" accept="image/*" required>
                         </div>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Revenue License</span>
-                        <input class="revenueLicenseImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                        <input class="revenueLicenseImage" name="revenueLicenseImage" type="file" placeholder="Select the photo" accept="image/*" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Vehicle Registration Document</span>
-                        <input class="vehicleRegistrationImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                        <input class="vehicleRegistrationImage" name="vehicleRegistrationImage" type="file" placeholder="Select the photo" accept="image/*" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Photo of the Vehicle Insurance</span>
-                        <input class="insuranceImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                        <input class="insuranceImage" type="file" name="insuranceImage" placeholder="Select the photo" accept="image/*" required>
                     </div>
                     <div id="photo-error-message" style="display: none; color: red;"></div>
-                </div>                   
+                </div>  
+
             </form>
 
             <div class="buttons">

@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td scope="email" data-label="P ID" class="email">`+ owner.email +`</td>
                         <td class="Name">`+ owner.name +`</td>
                         <td class="NIC">`+ owner.NIC +`</td>
+                        <td class="contact">`+ owner.contactNo +`</td>
                         
                         
                         <td class="Action">
@@ -154,10 +155,7 @@ function togglePopup1(id) {
     
             <p class="topic">Vehicle Owner Details</p>       
             
-            <div class="detail-box">
-              <div class="image">
-                <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-              </div>
+            
     
               <form action="">
                 <div class="input-box">
@@ -176,22 +174,12 @@ function togglePopup1(id) {
                     <span class="details">Email</span>
                     <input disabled type="email" class="email" value name="email" placeholder="${owner.email}">
                 </div>
-                <div class="input-box">
-                  <span class="details">No of Vehicles</span>
-                  <input disabled type="number" class="vehicleCount" value name="vehicleCount" placeholder="${owner.vehicleCount}">
-                </div>
-                <div class="input-box">
-                  <span class="details">No of Drivers</span>
-                  <input disabled type="number" class="driverCount" value name="driverCount" placeholder="${owner.driverCount}">
-                </div>
+                
                 <div class="input-box">
                     <span class="details">Telephone</span>
-                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${owner.contact}">
+                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${owner.contactNo}">
                 </div>
-                <div class="input-box">
-                  <span class="details">Registered Date</span>
-                  <input disabled type="date" class="regDate" value name="regDate">
-                </div>
+                
               </form>
             </div>       
           </div>`

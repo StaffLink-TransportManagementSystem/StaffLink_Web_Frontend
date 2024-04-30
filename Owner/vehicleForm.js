@@ -356,6 +356,10 @@ function addVehicle(){
               };
               starting_latitude = place.geometry.location.lat();
               starting_longitude = place.geometry.location.lng();
+              document.getElementById('startingLatitude').value = starting_latitude;
+              document.getElementById('startingLongitude').value = starting_longitude;
+
+
               console.log("Starting Coordinates:", startingCoords);
           } else {
               console.log("Location not found for starting point.");
@@ -371,6 +375,9 @@ function addVehicle(){
               };
               ending_latitude = place.geometry.location.lat();
               ending_longitude = place.geometry.location.lng();
+              document.getElementById('endingLatitude').value = ending_latitude;
+              document.getElementById('endingLongitude').value = ending_longitude;
+
               console.log("Ending Coordinates:", endingCoords);
           } else {
               console.log("Location not found for ending point.");
@@ -557,6 +564,7 @@ function addVehicle(){
       console.log("photo error");
       checker = false;
     }
+    // checker = true;
     
     if (checker == true) {
 
@@ -565,64 +573,70 @@ function addVehicle(){
         ownerEmail: ownerEmail,
         vehicleNo: vehicleNumber,
         type: vehicleType,
-        vehicleBrand: vehicleBrand,
+        brand: vehicleBrand,
         model: vehicleModel,
         driverEmail: driverEmail,
-        seatCount: seatCount,
+        seatsCount: seatCount,
         startingLatitude: starting_latitude,
         startingLongitude:starting_longitude,
         endingLatitude: ending_latitude,
         endingLongitude: ending_longitude,
-        trips: vehicleTrips,
-        insideImage: insideImage,
-        outsideImage: outsideImage,
-        insuranceImage: insuranceImage,
-        revenueLicenseImage: revenueLicenseImage,
-        vehicleRegistrationImage: vehicleRegistrationImage
+        trips: vehicleTrips
       };
 
-      let formData = new FormData();
-      // formData.append('vehicle', JSON.stringify(data));
-      formData.append('ownerEmail', ownerEmail);
-      formData.append('vehicleNo', vehicleNumber);
-      formData.append('type', vehicleType);
-      formData.append('vehicleBrand', vehicleBrand);
-      formData.append('model', vehicleModel);
-      formData.append('driverEmail', driverEmail);
-      console.log("seatCount", seatCount);
-      formData.append('availableSeats', seatCount.toString());
-      formData.append('startingLatitude', starting_latitude);
-      formData.append('startingLongitude', starting_longitude);
-      formData.append('endingLatitude', ending_latitude);
-      formData.append('endingLongitude', ending_longitude);
-      formData.append('trips', vehicleTrips);
-
-      formData.append('insideImage', insideImage);
-      formData.append('outsideImage', outsideImage);
-      formData.append('insuranceImage', insuranceImage);
-      formData.append('revenueLicenseImage', revenueLicenseImage);
-      formData.append('vehicleRegistrationImage', vehicleRegistrationImage);
-
-
-      console.log(formData);
-
+      console.log(data);
       alert("Vehicle Registered Successfully!");
-      // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
-      fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1', {
+
+      fetch('http://127.0.0.1:8080/try2_war_exploded/createVehicleWithoutImages', {
         method: 'POST',
-        credentials: "include",
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },credentials: "include", body: JSON.stringify(data),
       })
         .then(response => response.json())
         .then(data => {
           console.log(data)
-          if (data.message === "Registration successfully") {
-            Swal.fire({
-              title: "Vehicle Registered Successfully!",
-              icon: "success"
-            }).then(() => {
-              window.location.href = "vehicles.html";
+          if (data.message === "Vehicle created successfully") {
+            var approvalRequestFormData = new FormData();
+            approvalRequestFormData.append('insideImage', insideImage);
+            approvalRequestFormData.append('outsideImage', outsideImage);
+            approvalRequestFormData.append('insuranceImage', insuranceImage);
+            approvalRequestFormData.append('revenueLicenseImage', revenueLicenseImage);
+            approvalRequestFormData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+            approvalRequestFormData.append('vehicleNo', vehicleNumber);
+
+            fetch('http://127.0.0.1:8080/try2_war_exploded/ ', {
+              method: 'POST',
+              enctype: "multipart/form-data",
+              body: approvalRequestFormData,
+              credentials: "include"
             })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data)
+                if (data.message === "Images uploaded successfully") {
+                  Swal.fire({
+                    title: "Vehicle Registered Successfully!",
+                    icon: "success"
+                  }).then(() => {
+                    window.location.href = "vehicles.html";
+                  })
+                }
+                else {
+                  Swal.fire({
+                    title: "Vehicle Registration Failed!",
+                    icon: "error"
+                  }).then(() => {
+                    window.location.href = "vehicles.html";
+                  })
+                }
+              })
+            // Swal.fire({
+            //   title: "Vehicle Registered Successfully!",
+            //   icon: "success"
+            // }).then(() => {
+            //   window.location.href = "vehicles.html";
+            // })
           }
           else {
             Swal.fire({
@@ -637,6 +651,131 @@ function addVehicle(){
         .catch(error => {
           console.error('Error:', error);
         });
+
+      
+
+      // let approvalRequestFormData = new FormData();
+// approvalRequestFormData.append('offset', 0);
+// approvalRequestFormData.append('limit', 5);
+// // approvalRequestFormData.append('vehicle', JSON.stringify(data));
+// approvalRequestFormData.append('ownerEmail', ownerEmail);
+// approvalRequestFormData.append('vehicleNo', vehicleNumber);
+// approvalRequestFormData.append('vehicleType', vehicleType);
+// // console.log("Brand", vehicleBrand);
+// approvalRequestFormData.append('brand', vehicleBrand);
+// approvalRequestFormData.append('model', vehicleModel);
+// approvalRequestFormData.append('driverEmail', driverEmail);
+// // console.log("seatCount", seatCount);
+// approvalRequestFormData.append('availableSeats', seatCount);
+// approvalRequestFormData.append('startingLatitude', starting_latitude);
+// approvalRequestFormData.append('startingLongitude', starting_longitude);
+// approvalRequestFormData.append('endingLatitude', ending_latitude);
+// approvalRequestFormData.append('endingLongitude', ending_longitude);
+// approvalRequestFormData.append('trips', vehicleTrips);
+// approvalRequestFormData.append('insideImage', insideImage);
+// approvalRequestFormData.append('outsideImage', outsideImage);
+// approvalRequestFormData.append('insuranceImage', insuranceImage);
+// approvalRequestFormData.append('revenueLicenseImage', revenueLicenseImage);
+// approvalRequestFormData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+
+// console.log("Brand", vehicleBrand);
+
+
+
+
+// let verifyVehicle = document.getElementById('verifyVehicle');
+// console.log(verifyVehicle);
+// verifyVehicle.submit();
+// Swal.fire({
+//   title: "Vehicle Registered Successfully!",
+//   icon: "success"
+// }).then(() => {
+//   location.href = "vehicles.html";
+// })
+
+
+
+
+// fetch("http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1",
+//     {
+//         method: 'POST',
+//         enctype: "multipart/form-data",
+//         body: approvalRequestFormData
+  // })
+
+
+      // let formData = new FormData();
+      // formData.append('vehicle', JSON.stringify(data));
+      // formData.append('ownerEmail', ownerEmail);
+      // formData.append('vehicleNo', vehicleNumber);
+      // formData.append('vehicleType', vehicleType);
+      // console.log("Brand", vehicleBrand);
+      // formData.append('brand', vehicleBrand);
+      // formData.append('model', vehicleModel);
+      // formData.append('driverEmail', driverEmail);
+      // console.log("seatCount", seatCount);
+      // formData.append('availableSeats', seatCount);
+      // formData.append('startingLatitude', starting_latitude);
+      // formData.append('startingLongitude', starting_longitude);
+      // formData.append('endingLatitude', ending_latitude);
+      // formData.append('endingLongitude', ending_longitude);
+      // formData.append('trips', vehicleTrips);
+
+      // formData.append('insideImage', insideImage);
+      // formData.append('outsideImage', outsideImage);
+      // formData.append('insuranceImage', insuranceImage);
+      // formData.append('revenueLicenseImage', revenueLicenseImage);
+      // formData.append('vehicleRegistrationImage', vehicleRegistrationImage);
+
+
+      // console.log(formData);
+
+      // alert("Vehicle Registered Successfully!");
+      
+      // Simulate an HTTP POST request to a backend endpoint (replace with your actual backend URL)
+      // fetch('http://127.0.0.1:8080/try2_war_exploded/vehicleRegister1', {
+      //   enctype: 'multipart/form-data',
+      //   method: 'POST',
+      //   credentials: "include",
+      //   body: formData
+      // })
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     console.log(data)
+      //     if (data.message === "Registration successfully") {
+      //       Swal.fire({
+      //         title: "Vehicle Registered Successfully!",
+      //         icon: "success"
+      //       }).then(() => {
+      //         // window.location.href = "vehicles.html";
+      //       })
+      //     }
+      //     else {
+      //       Swal.fire({
+      //         title: "Vehicle Registration Failed!",
+      //         icon: "error"
+      //       }).then(() => {
+      //         // window.location.href = "vehicles.html";
+      //       })
+      //     }
+      //     // document.getElementById("demo").innerHTML = data.message;
+      //   })
+      //   .catch(error => {
+      //     console.error('Error:', error);
+      //   });
     }
   
     }
+
+
+    // let verifyVehicle = document.getElementById("verifyVehicle");
+    // console.log(verifyVehicle);
+    // verifyVehicle.onsubmit = function (e) {
+    //   e.preventDefault();
+    //   fetch(this.action, {
+    //     method: this.method,
+    //     enctype: "multipart/form-data",
+    //     body: new FormData(this),
+    //     credentials: "include"
+    //   })
+    // }
