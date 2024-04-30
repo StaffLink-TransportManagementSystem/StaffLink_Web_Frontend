@@ -585,7 +585,7 @@ function addVehicle(){
       };
 
       console.log(data);
-      alert("Vehicle Registered Successfully!");
+      // alert("Vehicle Registered Successfully!");
 
       fetch('http://127.0.0.1:8080/try2_war_exploded/createVehicleWithoutImages', {
         method: 'POST',
@@ -605,7 +605,7 @@ function addVehicle(){
             approvalRequestFormData.append('vehicleRegistrationImage', vehicleRegistrationImage);
             approvalRequestFormData.append('vehicleNo', vehicleNumber);
 
-            fetch('http://127.0.0.1:8080/try2_war_exploded/ ', {
+            fetch('http://127.0.0.1:8080/try2_war_exploded/createVehicleImages', {
               method: 'POST',
               enctype: "multipart/form-data",
               body: approvalRequestFormData,
@@ -779,3 +779,62 @@ function addVehicle(){
     //     credentials: "include"
     //   })
     // }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form"),
+    sub = document.querySelector(".sub");
+
+  function getPayload(token) {
+    return JSON.parse(atob(token.split(".")[1]));
+  }
+
+  function checkCookie(cName) {
+    const name = cName + "=";
+    const cDecoded = decodeURIComponent(document.cookie); //to be careful
+    const cArr = cDecoded.split("; ");
+    let res;
+    cArr.forEach((val) => {
+      if (val.indexOf(name) === 0) res = val.substring(name.length);
+    });
+    return res;
+  }
+
+  console.log(checkCookie("jwt"))
+
+  const token = checkCookie("jwt");
+  const payload = getPayload(token);
+  console.log("Payload", payload);
+
+  let owner = payload.id;
+
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getDriversByOwner?email='+owner, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },credentials: "include",
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      var row = `<select class="driverEmail" id="driverEmail" name="driverEmail">
+      <option class="default" value>Select the relevent email</option>`
+      if(data.drivers == "No driver"){
+        Swal.fire({
+          title: "No drivers found!",
+          icon: "error"
+        }).then(() => {
+          window.location.href = "vehicles.html";
+        })
+      }
+      // var driverEmail = document.getElementById('driverEmail');
+      data.drivers.forEach(driver => {
+        row += `<option value="${driver.email}">${driver.email}</option>`;
+        
+      });
+      row += `</select>`;
+      document.getElementById('driverSet').innerHTML = row;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });

@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
               <input type="radio" name="slide" id="img-outside">
               <input type="radio" name="slide" id="img-inside">
 
-              <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
-              <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+              <img src="http://127.0.0.1:5560/Public/Images/${vehical.outsideImage}" class="img-outside" alt="img-outside">
+              <img src="http://127.0.0.1:5560/Public/Images/${vehical.insideImage}" class="img-inside" alt="img-inside">
             </div>
 
             <div class="dots">
@@ -182,8 +182,8 @@ function togglePopup1(id) {
                   <input type="radio" name="slide" id="img-outside">
                   <input type="radio" name="slide" id="img-inside">
     
-                  <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
-                  <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+                  <img src="http://127.0.0.1:5560/Public/Images/${vehical.outsideImage}" class="img-outside" alt="img-outside">
+                  <img src="http://127.0.0.1:5560/Public/Images/${vehical.insideImage}" class="img-inside" alt="img-inside">
                 </div>
     
                 <div class="dots">

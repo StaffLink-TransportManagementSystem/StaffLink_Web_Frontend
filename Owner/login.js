@@ -1,10 +1,12 @@
 // const { get } = require("http");
 
+// const e = require("express");
+
 const container = document.querySelector(".container"),
     pwShowHide = document.querySelectorAll(".showHidePw"),
     signUp = document.querySelector(".signup-link"),
-    lusername = document.querySelector("#lusername"),
-    lpassword = document.querySelector("#lpassword"),
+    lusername = document.getElementById("lusername"),
+    lpassword = document.getElementById("lpassword"),
     sname = document.querySelector("#sname"),
     semail = document.querySelector("#semail"),
     snic = document.querySelector("#snic"),
@@ -50,34 +52,34 @@ login.addEventListener("click", () => {
 
 
 // validation javascript
-function validate() {
-    console.log("validate function called");
+function validateSigin() {
+    console.log("validate  signin function called");
     // Get the email and password input values
+    var name = document.getElementById("loginusername").value;
+    var password = document.getElementById("loginpassword").value;
 
     // Get the error message element
     const errorMessage1 = document.querySelector(".form.login .email-error-message");
     const errorMessage2 = document.querySelector(".form.login .password-error-message");
-    const signUpErrorMessage1 = document.querySelector(".form.signup .nic-error-message");
-    const signUpErrorMessage2 = document.querySelector(".form.signup .confirm-error-message");
 
     // Regular expression for validating an email address
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Check if the email is valid
-    if (!emailPattern.test(lusername.value)) {
+    if (!emailPattern.test(name)) {
         errorMessage1.innerText = "Please enter a valid email address.";
         errorMessage1.style.display = "block";
         return;
     }
 
     // Check if the password is empty
-    if (lpassword.value === "") {
+    if (password === "") {
         errorMessage2.innerText = "Please enter a password.";
         errorMessage2.style.display = "block";
         return;
     }
 
-    if (lpassword.value.length < 6) {
+    if (password < 6) {
         errorMessage2.innerText = "Password must be at least 6 characters long.";
         errorMessage2.style.display = "block";
         return;
@@ -91,10 +93,13 @@ function validate() {
 
 function getData() {
     console.log("getData function called");
+    var name = document.getElementById("loginusername").value;
+    var password = document.getElementById("loginpassword").value;
     var data = {
-        email: lusername.value,
-        password: lpassword.value,
+        email: name,
+        password: password,
     }
+    console.log(data);
     fetch('http://127.0.0.1:8080/try2_war_exploded/ownerLogin', {
         method: 'POST',
         headers: {
@@ -105,13 +110,26 @@ function getData() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data.jwt)
+            console.log(data)
 
             if(data.message === "Login successfully"){
 
             // document.cookie = "jwt=" + data.jwt + "; expires=2024-02-14T20:29:05.800Z; path=/";
-            console.log(data.message)
-            window.location.href = "ownerDashboard.html";
+            // console.log(data.message)
+            // window.location.href = "ownerDashboard.html";
+            Swal.fire({
+                title: "Login Successful!",
+                icon: "success"
+                }).then(()=>{
+                    window.location.href = "./ownerDashboard.html";
+                })
+            
+            }
+            else{
+                Swal.fire({
+                    title: "Incorrect email or password!",
+                    icon: "error"
+                })
             }
             // document.getElementById("demo").innerHTML = data.message;
         })
@@ -196,3 +214,12 @@ function getDataSignup() {
             console.error('Error:', error);
         });
 }
+
+
+
+signUp.addEventListener("click", ( )=>{
+    container.classList.add("active");
+});
+login.addEventListener("click", ( )=>{
+    container.classList.remove("active");
+});
