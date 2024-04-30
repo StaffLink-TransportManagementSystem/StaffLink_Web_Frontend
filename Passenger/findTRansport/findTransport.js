@@ -335,8 +335,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         <input type="radio" name="slide" id="img-outside">
                                                         <input type="radio" name="slide" id="img-inside">
                                           
-                                                        <img src="https://lp-cms-production.imgix.net/2020-11/Hemphill%20celebrity%20bus.jpg" class="img-outside" alt="img-outside">
-                                                        <img src="https://t3.ftcdn.net/jpg/02/51/00/36/360_F_251003601_0su7oPQkRf93HTByHOA7oFhC0ZdExXRo.jpg" class="img-inside" alt="img-inside">
+                                                        <img src="http://127.0.0.1:5560/Public/Images/${data.vehicle.outsideImage}" class="img-outside" alt="img-outside">
+                                                        <img src="http://127.0.0.1:5560/Public/Images/${data.vehicle.outsideImage}" class="img-inside" alt="img-inside">
                                                       </div>
                                           
                                                       <div class="dots">
@@ -350,12 +350,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                           
                                                       <div class="vehicle-spec">
                                                         <p><b>Vehicle Type :</b> ${vehical.type}</p>
-                                                        <p><b>Vehicle Brand :</b> ${vehical.vehicleBrand}</p>
                                                         <p><b>Type of Trips :</b> ${vehical.trips}</p>
                                                         <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
-                                                        <p><b>Starting Location :</b> ${vehical.startingPoint}</p>
-                                                        <p><b>Destination :</b> ${vehical.endingPoint}</p>
-                                                        <p><b>Price :</b> RS. ${final_distance * 90} (per day)</p>
+                                                        <p><b>Price :</b> RS. ${(final_distance * 90).toFixed(2)} (per day)</p>
                                                       </div>
                                                       <a href="#"><button class="add-btn" onclick="requestPopup('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
                                                     </div>
