@@ -252,7 +252,7 @@ function updateProfile(e) {
         console.log(data.message);
         if (data.message === "Update successfully") {
           Swal.fire({
-            title: "Passenger Updated Successfully!",
+            title: "Driver Updated Successfully!",
             icon: "success"
           }).then(() => {
             window.location.href = "profile.html";

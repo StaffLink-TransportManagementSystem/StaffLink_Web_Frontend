@@ -318,6 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     .then(() => {
                                         differance = after_distance - current_distance;
                                         console.log("diff_distance range", differance);
+                                        var vehicleType = document.getElementById("vehicleType").value;
                                         if (differance < 10) {
                                             fetch('http://127.0.0.1:8080/try2_war_exploded/getVehicle?vehicleNo=' + route.vehicleNo, {
                                                 method: 'GET',
@@ -329,34 +330,36 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 .then(data => {
                                                     console.log("Inside fetch", data);
                                                     vehical = data.vehicle;
-                                                    row_data += `<div class="vehicle-card">
-                                                    <div class="slider">
-                                                      <div class="vehicle-images">
-                                                        <input type="radio" name="slide" id="img-outside">
-                                                        <input type="radio" name="slide" id="img-inside">
-                                          
-                                                        <img src="http://127.0.0.1:5560/Public/Images/${data.vehicle.outsideImage}" class="img-outside" alt="img-outside">
-                                                        <img src="http://127.0.0.1:5560/Public/Images/${data.vehicle.outsideImage}" class="img-inside" alt="img-inside">
-                                                      </div>
-                                          
-                                                      <div class="dots">
-                                                        <label for="img-outside"></label>
-                                                        <label for="img-inside"></label>
-                                                      </div>
-                                                    </div>
-                                          
-                                                    <div class="vehicle-desc">
-                                                      <div class="topic vehicle-card-title">${vehical.vehicleNo}</div>
-                                          
-                                                      <div class="vehicle-spec">
-                                                        <p><b>Vehicle Type :</b> ${vehical.type}</p>
-                                                        <p><b>Type of Trips :</b> ${vehical.trips}</p>
-                                                        <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
-                                                        <p><b>Price :</b> RS. ${(final_distance * 90).toFixed(2)} (per day)</p>
-                                                      </div>
-                                                      <a href="#"><button class="add-btn" onclick="requestPopup('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
-                                                    </div>
-                                                  </div>`;
+                                                    if(vehical.type == vehicleType){
+                                                        row_data += `<div class="vehicle-card">
+                                                        <div class="slider">
+                                                        <div class="vehicle-images">
+                                                            <input type="radio" name="slide" id="img-outside">
+                                                            <input type="radio" name="slide" id="img-inside">
+                                            
+                                                            <img src="http://127.0.0.1:5560/Public/Images/${data.vehicle.outsideImage}" class="img-outside" alt="img-outside">
+                                                            <img src="http://127.0.0.1:5560/Public/Images/${data.vehicle.outsideImage}" class="img-inside" alt="img-inside">
+                                                        </div>
+                                            
+                                                        <div class="dots">
+                                                            <label for="img-outside"></label>
+                                                            <label for="img-inside"></label>
+                                                        </div>
+                                                        </div>
+                                            
+                                                        <div class="vehicle-desc">
+                                                        <div class="topic vehicle-card-title">${vehical.vehicleNo}</div>
+                                            
+                                                        <div class="vehicle-spec">
+                                                            <p><b>Vehicle Type :</b> ${vehical.type}</p>
+                                                            <p><b>Type of Trips :</b> ${vehical.trips}</p>
+                                                            <p><b>Available Seats :</b> ${vehical.seatsCount}</p>
+                                                            <p><b>Price :</b> RS. ${(final_distance * 90).toFixed(2)} (per day)</p>
+                                                        </div>
+                                                        <a href="#"><button class="add-btn" onclick="requestPopup('${vehical.vehicleNo}', '${passengerEmail}')">REQUEST TO RESERVATION</button></a>
+                                                        </div>
+                                                    </div>`;
+                                                    }
                                                     // console.log("row_data1", row_data);
                                                 })
                                             // vehicles.push(route.vehicleNo);

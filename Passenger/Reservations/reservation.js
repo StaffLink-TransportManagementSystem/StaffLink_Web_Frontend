@@ -1,3 +1,5 @@
+// const { describe } = require("node:test");
+
 document.addEventListener("DOMContentLoaded", function () {
 
     function getPayload(token) {
@@ -60,10 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
                             <td>${vehicle.model}</td>
                             <td>${reservation.startingDate}</td>
                             <td>${reservation.endingDate}</td>
-                            <td><span class="status ${reservation.status.toLowerCase()}">${reservation.status}</span></td>
-                            <td><button class="btn more-btn" onclick="vehicleLocation('${reservation.reservationId}')">Vehicle Location</button></td>
+                            <td><span class="status ${reservation.status.toLowerCase()}">${reservation.status}</span></td>`
+                            if(reservation.status.toLowerCase == "pending"){
+                                row += `<td><button class="btn more-btn" onclick="vehicleLocation('${reservation.reservationId}')" disable>Vehicle Location</button></td>
+                                </tr>`
+                            }
+                            else{
+                             row+=`<td><button class="btn more-btn" onclick="vehicleLocation('${reservation.reservationId}')">Vehicle Location</button></td>
                         </tr>`;
+                            }
                         i++;
+                        
                     }
 
 
@@ -78,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function vehicleLocation(reservationId){
+    
     console.log(reservationId);
     fetch('http://127.0.0.1:8080/try2_war_exploded/liveLocation?reservationId='+reservationId,{
         method: 'GET',
@@ -87,7 +97,19 @@ function vehicleLocation(reservationId){
         credentials: "include", })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log(data.trackId);
+            if(data.trackId > 0){
+                const popup = document.getElementById("popup");
+                popup.classList.toggle("active");
+            }
+            else{
+                Swal.fire({
+                    title: "Vehicle is not on the move!",
+                    describe: "Vehicle is not on the move",
+                    icon: "error"
+                })
+            }
+            
             
         })
         .catch(error => {
