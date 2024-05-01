@@ -19,9 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Owner data",data.list)
                 data.list.forEach(owner => {
                 row += `<tr  id="${owner.NIC}">
-                        <td scope="email" data-label="P ID">`+ owner.email +`</td>
+                        <td scope="email" data-label="P ID" class="email">`+ owner.email +`</td>
                         <td class="Name">`+ owner.name +`</td>
                         <td class="NIC">`+ owner.NIC +`</td>
+                        <td class="contact">`+ owner.contactNo +`</td>
                         
                         
                         <td class="Action">
@@ -41,16 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             searchInput.addEventListener("input", e => {
-                const value = e.target.value.toLowerCase();
-                users.forEach(data => {
-                    const isVisible =
-                        data.name.toLowerCase().includes(value) ||
-                        data.email.toLowerCase().includes(value) ||
-                        data.NIC.toLowerCase().includes(value)
-   
-                        document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
-                });
-            });
+              const value = e.target.value.toLowerCase();
+              const searchOption = searchCriteria.toLowerCase();
+              users.forEach(data => {
+                   switch (searchOption) {
+              case "name":
+                  searchValue = data.name.toLowerCase().includes(value);
+                  break;
+              case "email":
+                  searchValue = data.email.toLowerCase().includes(value);
+                  break;
+              case "nic":
+                  searchValue = data.NIC.toLowerCase().includes(value);
+                  break;
+              case "all":
+                  searchValue = data.name.toLowerCase().includes(value) ||
+                  data.email.toLowerCase().includes(value) ||
+                  data.NIC.toLowerCase().includes(value)
+                
+          }
+
+          const isVisible =
+          searchValue
+        
+          document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+              });
+          });
     
   });
 
@@ -138,10 +155,7 @@ function togglePopup1(id) {
     
             <p class="topic">Vehicle Owner Details</p>       
             
-            <div class="detail-box">
-              <div class="image">
-                <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
-              </div>
+            
     
               <form action="">
                 <div class="input-box">
@@ -160,22 +174,12 @@ function togglePopup1(id) {
                     <span class="details">Email</span>
                     <input disabled type="email" class="email" value name="email" placeholder="${owner.email}">
                 </div>
-                <div class="input-box">
-                  <span class="details">No of Vehicles</span>
-                  <input disabled type="number" class="vehicleCount" value name="vehicleCount" placeholder="${owner.vehicleCount}">
-                </div>
-                <div class="input-box">
-                  <span class="details">No of Drivers</span>
-                  <input disabled type="number" class="driverCount" value name="driverCount" placeholder="${owner.driverCount}">
-                </div>
+                
                 <div class="input-box">
                     <span class="details">Telephone</span>
-                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${owner.contact}">
+                    <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${owner.contactNo}">
                 </div>
-                <div class="input-box">
-                  <span class="details">Registered Date</span>
-                  <input disabled type="date" class="regDate" value name="regDate">
-                </div>
+                
               </form>
             </div>       
           </div>`
@@ -185,3 +189,26 @@ function togglePopup1(id) {
         }
     }
 }
+//Top Informations 
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('http://127.0.0.1:8080/try2_war_exploded/adminDashbordInfo', {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      credentials: "include",
+  })
+      .then(response => response.json())
+      .then(data => {
+          console.log("data", data);
+          // document.getElementById("totalDrivers").innerText = data.totalDrivers;
+          document.getElementById("totalPassengers").innerText = data.noOfPassengers;
+          document.getElementById("totalVehicles").innerText = data.noOfVehicles;
+          document.getElementById("totalOwners").innerText = data.noOfOwners;
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+}
+);

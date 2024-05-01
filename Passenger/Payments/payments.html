@@ -13,10 +13,12 @@
 
   <body>
     <div class="sidebar">
-      <div class="logo-details">
-        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
-        <span class="logo_name">StaffLink</span>
-      </div>
+      <a href="../../landingPage/Index.html" style="text-decoration: none;">
+        <div class="logo-details">
+          <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
+          <span class="logo_name">StaffLink</span>
+        </div>
+      </a>
 
       <ul class="nav-links">
         <li>
@@ -44,6 +46,13 @@
           <a href="../Reservations/index.html">
             <i class="fas fa-calendar-plus"></i>
             <span class="links_name">Reservations</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="../Absence/index.html">
+            <i class="fa-solid fa-user-minus"></i>
+            <span class="links_name">Absence</span>
           </a>
         </li>
 
@@ -76,8 +85,8 @@
           <i class="fas fa-bars sidebarBtn"></i>
           <span class="dashboard">Payments</span>
         </div>
-      
-        <div class="profile-details">
+
+        <div class="profile-details"  onclick="toggleMenu()">
           <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg">
           <span class="user_name">User</span>
           <i class="fas fa-angle-down"></i>
@@ -85,20 +94,24 @@
 
         <div class="dropdown-list-wrap" id="dropdown1">         
           <div class="dropdown-list">
-            <a href="../profile/profile.html" class="dropdown-list-link">
+            <a href="./profile/profile.html" class="dropdown-list-link">
               <i class="fas fa-circle-user"></i>
               <p>Your Profile</p>
               <span>></span>
             </a>
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="../Notifcation/notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
+
+      <script src="../notificationcount.js"></script>
 
       <div class="home-content">
         <div class="details">
@@ -130,18 +143,25 @@
 
     <script>
 
-      function logout(){
-        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-      }
-
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
         sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        // if (sidebar.classList.contains("active")) {
+        //   sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        // } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
+
+
+      let dropdown1 = document.getElementById("dropdown1");
+
+      function toggleMenu(){
+        dropdown1.classList.toggle("open-menu");
+      }
+
+      function logout(){
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      }
 
       document.querySelector('.card-number-input').oninput = () =>{
         document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;
@@ -199,7 +219,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = ".../Passenger/login-register/index.html";
       }
 
       const payload = getPayload(token);
@@ -210,19 +230,19 @@
       } 
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = ".../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = ".../Owner/ownerDashboard.html"
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = ".../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = ".../Passenger/login-register/index.html";
         
       }
       });

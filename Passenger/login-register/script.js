@@ -123,27 +123,39 @@ const container = document.querySelector(".container"),
                 console.log(data.message)
                 console.log(data.jwt)
                 if(data.message == "Login successfully"){
-                    if(data.message === "Login successfully"){
-                        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
-                    }
-                    
-                    else if(data.message === "Wrong Password"){
-                        Swal.fire({
-                            title: "Invalid Username or Password!",
-                            icon: "error"
-                            }).then(()=>{
-                                location.reload();
-                            })
-                    }
-                    else if(data.message === "Invalid Email"){
-                        Swal.fire({
-                            title: "Invalid Username or Password!",
-                            icon: "error"
-                            }).then(()=>{
-                                location.reload();
-                            })
-                    }
-                    // window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                    Swal.fire({
+                        title: "Login Successful!",
+                        icon: "success"
+                        }).then(()=>{
+                            window.location.href = "../dashboard.html";
+                        })
+                    // if(data.message === "Login successfully"){
+                    //     window.location.href = "http://127.0.0.1:5560/Passenger/dashboard.html";
+                    // }
+                    // else{
+                    // // else if(data.message === "Wrong Password"){
+                    //     Swal.fire({
+                    //         title: "Invalid Username or Password!",
+                    //         icon: "error"
+                    //         }).then(()=>{
+                    //             location.reload();
+                    //         })
+                    // }
+                    // else if(data.message === "Invalid Email"){
+                    //     Swal.fire({
+                    //         title: "Invalid Username or Password!",
+                    //         icon: "error"
+                    //         }).then(()=>{
+                    //             location.reload();
+                    //         })
+                    // }
+                    // window.location.href = "http://127.0.0.1:5560/Passenger/dashboard.html";
+                }
+                else{
+                    Swal.fire({
+                        title: "Invalid Username or Password!",
+                        icon: "error"
+                        })
                 }
             })
     }

@@ -100,7 +100,10 @@
               
               <input type="text" placeholder="Type Anything" PassengerDetails>
               <button type="submit"><i class="fas fa-search"></i></button>
-            </form>                          
+            </form> 
+            <form>
+            <button class="add-button" onclick="showRoute()">Show The Route</button>          
+          </form>               
           </div>
         </div>
 
@@ -169,7 +172,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+        window.location.href = "../Driver/login.html";
       }
 
       const payload = getPayload(token);
@@ -180,24 +183,26 @@
       } 
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = "../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Owner");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = "../Owner/ownerDashboard.html"
       }
       else if (payload.role === "Passenger") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = "../Passenger/login-register/index.html";
         
       }
       });
     </script>
     <script src="tripDirections.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&callback=openMap" async defer></script>
   </body>
 </html>

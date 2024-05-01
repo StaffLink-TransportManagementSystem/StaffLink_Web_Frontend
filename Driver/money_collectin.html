@@ -83,25 +83,39 @@
               <span>></span>
             </a>
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
+
+      <script src="notificationcount.js"></script>
 
       <div class="home-content">
         <div class="detail-bar">
           <div class="box">
             <p class="topic">Money Collection</p>
                 
-            <form action="" class="search-bar">
-              
-              <input type="text" placeholder="Type Anything" PassengerDetails>
-              <button type="submit"><i class="fas fa-search"></i></button>
-            </form>                          
+            <div class="search_box">
+              <div class="dropdown">
+                    <div class="default_option">All</div>  
+                    <ul>
+                      <li>PAYMENT ID</li>
+                      <li>VEHICLE NO</li>
+                      <li>PASSENGER NAME</li>
+                    </ul>
+                </div>
+                <form action="" class="search-bar">
+            
+                  <input type="text" placeholder="Type Anything" MoneyCollection>
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form> 
+            </div>                         
           </div>
         </div>
       
@@ -146,17 +160,38 @@
         dropdown1.classList.toggle("open-menu");
       }
       
-    // Get the button element
-    const toggleButton = document.querySelector('.toggle-button');
+    //const toggleButton = document.querySelector('.toggle-button');
 
-    // Toggle active class when the button is clicked
-    toggleButton.addEventListener('click', function() {
-      this.classList.toggle('active');
-    });
+    //toggleButton.addEventListener('click', function() {
+      //this.classList.toggle('active');
+    //});
 
     function logout(){
       document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
     }
+
+        var searchCriteria = "All";
+
+        document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
+
+
     </script>
 
     <script>
@@ -182,7 +217,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+        window.location.href = "../Driver/login.html";
       }
 
       const payload = getPayload(token);
@@ -193,19 +228,19 @@
       } 
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = "../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Owner");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = "../Owner/ownerDashboard.html"
       }
       else if (payload.role === "Passenger") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = "../Passenger/login-register/index.html";
         
       }
       });

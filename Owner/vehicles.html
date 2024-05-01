@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="dashboardStyle.css" />
-    <!-- <link rel="stylesheet" href="vehicleList.css"> -->
+    <link rel="stylesheet" href="vehicleListpop.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,10 +14,12 @@
 
   <body>
     <div class="sidebar">
-      <div class="logo-details">
-        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
-        <span class="logo_name">StaffLink</span>
-      </div>
+      <a href="../landingPage/Index.html" style="text-decoration: none;">
+        <div class="logo-details">
+          <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
+          <span class="logo_name">StaffLink</span>
+        </div>
+      </a>
 
       <ul class="nav-links">
         <li>
@@ -48,33 +50,33 @@
           </a>
         </li>
 
-        <li>
+        <!-- <li>
           <a href="./routes.html">
             <i class="fas fa-route"></i>
             <span class="links_name">Routes</span>
           </a>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <a href="./requestList.html">
             <i class="fas fa-hand"></i>
             <span class="links_name">Requests</span>
           </a>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <a href="./reservations.html">
             <i class="fas fa-calendar-day"></i>
             <span class="links_name">Reservations</span>
           </a>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <a href="./absentList.html">
             <i class="fas fa-calendar-minus"></i>
             <span class="links_name">Absants</span>
           </a>
-        </li>
+        </li> -->
 
         <li>
           <a href="./financial.html">
@@ -120,21 +122,24 @@
               <span>></span>
             </a>
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
+      <script src="notificationcount.js"></script>
 
       <div class="home-content">
         <div class="overview-boxes">
           <div class="box">
             <div class="right-side">
               <div class="topic">Total Passengers</div>
-              <div class="number">50</div>
+              <div id="totalPassengers" class="number">0</div>
             </div>
             <i class="fas fa-user-group cart"></i>
           </div>
@@ -142,7 +147,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total Vehicals</div>
-              <div class="number">3</div>
+              <div id="totalVehicles" class="number">0</div>
             </div>
             <i class="fas fa-bus cart three"></i>
           </div>
@@ -150,7 +155,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Balance</div>
-              <div class="number">Rs.-3,500</div>
+              <div id="balance" class="number">Rs.00</div>
             </div>
             <i class="fas fa-file-invoice-dollar cart two"></i>
           </div>
@@ -158,7 +163,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Revenue</div>
-              <div class="number">50,000</div>
+              <div id="totalRevenue" class="number">00</div>
             </div>
             <i class="fas fa-sack-dollar cart four"></i>
           </div>
@@ -168,11 +173,23 @@
           <div class="box">
             <p class="topic">Vehicles</p>
                 
-            <form action="" class="search-bar">
-              
-              <input type="text" placeholder="Type Anything" PassengerDetails>
-              <button type="submit"><i class="fas fa-search"></i></button>
-            </form>           
+            <div class="search_box">
+              <div class="dropdown">
+                    <div class="default_option">All</div>  
+                    <ul>
+                      <li>Vehicle No</li>
+                      <li>Vehicle Type</li>
+                      <li>Vehicle Brand</li>
+                      <li>Starting Location</li>
+                      <li>Destination</li>
+                    </ul>
+                </div>
+                <form action="" class="search-bar">
+            
+                  <input type="text" placeholder="Type Anything" vehicle-search>
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form> 
+            </div>         
               
             <a href="addVehical.html"><button class="add-new">+ Add New</button></a>            
           </div>
@@ -191,14 +208,16 @@
       
     </section>
 
+    <div class="popup" id="popup"></div>
+
     <script>
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
         sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        // if (sidebar.classList.contains("active")) {
+        //   sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        // } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
 
@@ -209,9 +228,35 @@
         dropdown1.classList.toggle("open-menu");
       }
 
+
+      function togglePopup(){
+        document.getElementById("popup").classList.toggle("active");
+      }
+
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+            var searchCriteria = "All";
+
+        document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
 
     </script>
     <script src="./vehicles.js"></script>

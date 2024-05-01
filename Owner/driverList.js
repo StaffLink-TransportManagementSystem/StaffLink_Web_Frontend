@@ -39,10 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
             },credentials: "include",})
             .then(response => response.json())
             .then(data => {
+              driverList = data.drivers;
                 data.drivers.forEach(driver => {
                   console.log(driver);
                 row += `
-                <div class="driver">
+                <div class="driver" id="${driver.NIC}">
                   <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg" alt="driver-photo">
 
                   <div class="driver-desc">
@@ -54,14 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
                       <p><b>Telephone No : ${driver.contact}</b></p>
                     </div>
 
-                    <a href="#"><button class="more-btn">MORE</button></a>
+                    <button class="more-btn" onclick="togglePopup1(${driver.id})">MORE</button>
                     <a href="editDriver.html?email=`+ driver.email+`"><button class="edit-btn">EDIT</button></a>
                     <a href="deleteDriver.html?email=`+ driver.email+`"><button class="delete-btn">DELETE</button></a>
                   </div>
                 </div>`
                 });
 
-                users = data.list;
+                users = data.drivers;
 
                 document.querySelector(".driver-cards").innerHTML = row;   
 
@@ -71,19 +72,41 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             searchInput.addEventListener("input", e => {
-              const value = e.target.value.toLowerCase()
+              const value = e.target.value.toLowerCase();
+              const searchOption = searchCriteria.toLowerCase();
               users.forEach(data => {
-                const isVisible =
-                    data.name.toLowerCase().includes(value) ||
-                    data.email.toLowerCase().includes(value) ||
-                    data.NIC.toLowerCase().includes(value) ||
-                    data.contact.toLowerCase().includes(value) ||
-                    data.age.toString().toLowerCase().includes(value)
-                document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
-              })
-            })
+                   switch (searchOption) {
+              case "name":
+                  searchValue = data.name.toLowerCase().includes(value);
+                  break;
+              case "email":
+                  searchValue = data.email.toLowerCase().includes(value);
+                  break;
+              case "nic":
+                  searchValue = data.NIC.toLowerCase().includes(value);
+                  break;
+              case "telephone no":
+                  searchValue = data.contact.toLowerCase().includes(value);
+                  break;
+              case "all":
+                  searchValue =   data.name.toLowerCase().includes(value) ||
+                  data.email.toLowerCase().includes(value) ||
+                  data.NIC.toLowerCase().includes(value) ||
+                  data.contact.toLowerCase().includes(value) ||
+                  data.age.toString().toLowerCase().includes(value)
+                
+          }
+
+          const isVisible =
+          searchValue
+        
+          document.getElementById(data.NIC).classList.toggle("hide", !isVisible)
+              });
+          });
     
   });
+
+  var driverList = [];
 
 //   function updatefunction(vehicleNo){
 //         window.location.href = "http://localhost:5501/Owner/editVehical.html?vehicleNo="+vehicleNo;
@@ -148,3 +171,147 @@ document.addEventListener("DOMContentLoaded", function () {
 //         tableBody.appendChild(row);
 //     });
 // }
+
+
+function togglePopup1(id) {
+  // alert(id);
+  const popup = document.getElementById("popup");
+  popup.classList.toggle("active");
+  var popupData = ""
+  for (var i = 0; i < driverList.length; i++) {
+      if (driverList[i].id == id) {
+          var driver = driverList[i];
+          console.log(driver);
+
+          fetch('http://127.0.0.1:8080/try2_war_exploded/getOwner?email=' + driver.ownerEmail, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json'
+              }, credentials: "include",
+          })
+              .then(response => response.json())
+              .then(data => {
+                  console.log("Owner data", data.owner)
+                  owner = data.owner;
+
+                  popupData = `<div class="popup-content">
+          <i class="fas fa-xmark" id="close" onclick="togglePopup()"></i>
+  
+          <p class="topic">Driver Details</p>       
+          
+          <div class="detail-box">
+            <div class="image">
+              <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="default-pic">
+  
+              <a href="driverLicense">Show Driver License</a>
+            </div>
+  
+            <form action="">
+              <div class="input-box">
+                <span class="details">Driver ID</span>
+                <input disabled type="text" class="driverID" name="driverID" placeholder="${driver.id}">
+              </div>
+              <div class="input-box">
+                  <span class="details">Driver Name</span>
+                  <input disabled type="text" class="driverName" value name="driverName" placeholder="${driver.name}">
+              </div>
+              <div class="input-box">
+                  <span class="details">NIC No</span>
+                  <input disabled type="text" class="NIC" value name="NIC" placeholder="${driver.NIC}">
+              </div>
+              <div class="input-box">
+                  <span class="details">Age</span>
+                  <input disabled type="text" class="NIC" value name="NIC" placeholder="${driver.age}">
+              </div>
+              <div class="input-box">
+                  <span class="details">Email</span>
+                  <input disabled type="email" class="email" value name="email" placeholder="${driver.email}">
+              </div>
+              <div class="input-box">
+                <span class="details">Telephone</span>
+                <input disabled type="number" class="Telephone" value name="Telephone" placeholder="${driver.contact}">
+              </div>
+              <div class="input-box">
+                  <span class="details">Registered Date</span>
+                  <input disabled type="date" class="reg-date" value name="reg-date" placeholder="">
+              </div>
+
+                        
+            </form>
+          </div>       
+        </div>`
+
+                  document.getElementById("popup").innerHTML = popupData;
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+
+
+      }
+  }
+}
+
+function AddPassenger() {
+  window.location.href = "addDriver.html";
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  function getPayload(token) {
+      return JSON.parse(atob(token.split(".")[1]));
+  }
+
+  function checkCookie(cName) {
+      const name = cName + "=";
+      const cDecoded = decodeURIComponent(document.cookie); //to be careful
+      const cArr = cDecoded.split("; ");
+      let res;
+      cArr.forEach((val) => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+      });
+      return res;
+  }
+
+  console.log(checkCookie("jwt"))
+
+  const token = checkCookie("jwt");
+  const payload = getPayload(token);
+  console.log("Payload",payload);
+
+
+  var ownerEmail = payload.id;
+
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getOwnerDetails?email='+ownerEmail,{
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }, credentials: "include",})
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+              document.getElementById("totalPassengers").innerHTML = data.passengerCount;
+              document.getElementById("totalVehicles").innerHTML = data.vehicleCount;
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+
+  fetch('http://127.0.0.1:8080/try2_war_exploded/getOwnerFinancials?ownerEmail='+ownerEmail,{
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }, credentials: "include",})
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          var totalRevenue = data.payments.card + data.payments.cash;
+          var balance = data.payments.card - ((data.payments.card + data.payments.cash)*0.12);
+          document.getElementById("totalRevenue").innerHTML = "Rs. " + totalRevenue.toFixed(2);
+          document.getElementById("balance").innerHTML = "Rs. " + balance.toFixed(2);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+
+});

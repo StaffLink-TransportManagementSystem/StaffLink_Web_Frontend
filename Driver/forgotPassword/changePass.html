@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="enterotp.css">
+        <link rel="stylesheet" href="/main.css">
+
+        <title>Change Password</title>
+    </head>
+
+    <body>   
+        <div class="container">
+            <p class="topic">Enter New Password</p>
+            <p class="sub-topic">STEP 3</p>
+
+            <p>Enter a new password below to change your password. Then you can login<br>with your new password.</p>
+
+            <form action="#" class="code-container" style="flex-direction: column;">
+                <div class="input-box">
+                    <span class="details">New Password</span>
+                    <input type="password" class="passw" id="passw1" placeholder="New password">
+                </div>
+                <div class="input-box">
+                    <span class="details">Re-enter New Password</span>
+                    <input type="password" class="passw" id="passw2" placeholder="Re-enter New password">
+                </div>
+            </form>
+            <div class="error-message"></div>
+            <div class="buttons">
+                <button type="submit" class="submit-btn" onclick="validate()">Change</button>
+                <a href="../login.html"><button class="cancel-btn">Cancel</button></a>
+            </div>
+        </div>
+        
+        <script src="changePass.js"></script>
+    </body>

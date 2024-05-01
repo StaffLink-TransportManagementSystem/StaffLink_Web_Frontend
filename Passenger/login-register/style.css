@@ -29,7 +29,7 @@ body{
 .container .forms{
     display: flex;
     align-items: center;
-    height: 440px;
+    height: 400px;
     width: 200%;
     transition: height 0.2s ease;
 }
@@ -79,9 +79,9 @@ body{
 
 .form .input-field{
     position: relative;
-    height: 50px;
+    height: 40px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .input-field input{

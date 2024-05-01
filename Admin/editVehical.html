@@ -13,6 +13,130 @@
 
     <body>
         <div class="container">
+            <div class="topic">Vehicle Registration</div>
+            <form action="#">
+                <!-- <div id="map"></div> -->
+                <div class="vehicle-details">
+                    <div class="input-box">
+                        <span class="details">Owner Email</span>
+                        <input type="text" class="ownerEmail" placeholder="Enter your owner email" readonly>
+                        <div id="ownerEmail-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <div style="display: flex; gap: 5px;">
+                            <span class="details">Vehicle Number</span>
+                            
+                        </div>
+                        <input type="text" class="vehicleNumber" placeholder="Enter your vehicle number" disabled>
+                        <div id="vehicleNo-error-message" style="color:red; display: none;"></div>
+                    </div>
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Vehicle Type</span>
+                        </div>                       
+                        <select class="vehicle-type" id="vehicle-type" disabled>
+                            <option class="default" value>Select the vehicle type</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Car">Car</option>
+                        </select>  
+                        <div id="type-error-message" style="display: none; color: red;"></div>                      
+                    </div>
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Vehicle Brand</span> 
+                        </div>                       
+                        <input type="text" class="vehicleBrand" placeholder="Enter your vehicle brand" required>   
+                        <div id="brand-error-message" style="display: none; color: red;"></div>                    
+                    </div>
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Vehicle Model</span>
+                        </div>                       
+                        <input type="text" class="vehicleModel" placeholder="Enter your vehicle model" required>  
+                        <div id="model-error-message" style="display: none; color: red;"></div>                      
+                    </div>
+                </div>
+
+                <div class="transport-info">
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Number of Seats</span>
+                        </div>                        
+                        <input type="text" class="seatCount" placeholder="Enter the total no of seats" required> 
+                        <div id="seatCount-error-message" style="display: none; color: red;"></div>                      
+                    </div>
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Driver Email</span>
+                        </div>                        
+                        <input type="email" class="driverEmail" placeholder="Enter the driver's email" required>  
+                        <div id="driverEmail-error-message" style="display: none; color: red;"></div>                     
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vehicle Trips</span>
+                        <select class="vehicleTrips" id="vehicle-trips">
+                            <option class="default" value>Select the relevent type</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Evening">Evening</option>
+                            <option value="Both">Both</option>
+                        </select>
+                        <div id="vehicleTrips-error-message" style="display: none; color: red;"></div>
+                    </div> 
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Starting Point</span>
+                        </div>                        
+                        <div class="trips">
+                            <input type="text" class="startingLocation" placeholder="Starting location" id="startingLocation">                       
+                        </div>
+                        <div id="startingLocation-error-message" style="display: none; color: red;"></div>
+                    </div>
+                    <div class="input-box">
+                        <div>
+                            <span class="details">Ending Point</span>
+                        </div>                        
+                        <div class="trips">
+                            <input type="text" class="endingLocation" placeholder="Ending location" id="endingLocation">  
+                        </div>
+                        <div id="endingLocation-error-message" style="display: none; color: red;"></div>
+                    </div>
+                </div>
+
+                <div class="photos">
+                    <span class="details">Photos of the Vehicle</span>
+                    <div style="display: flex;">
+                        <div class="input-box">
+                            <pre>   1. Inside</pre>
+                            <input class="insideImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                        </div>
+                        <div class="input-box">
+                            <pre>   2. Outside</pre>
+                            <input class="outsideImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                        </div>
+                    </div>
+                    <!-- <div class="input-box">
+                        <span class="details">Photo of the Revenue License</span>
+                        <input class="revenueLicenseImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Photo of the Vehicle Registration Document</span>
+                        <input class="vehicleRegistrationImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Photo of the Vehicle Insurance</span>
+                        <input class="insuranceImage" type="file" placeholder="Select the photo" accept="image/*" required>
+                    </div> -->
+                    <div id="photo-error-message" style="display: none; color: red;"></div>
+                </div>                   
+            </form>
+
+            <div class="buttons">
+                <button type="submit" class="sub edit-btn" value="update" onclick="updatefunction()">Update</button>
+                <a href="vehicles.html"><button class="cancel-btn">Cancel</button></a>
+            </div>
+        </div>
+        <!-- <div class="container">
             <div class="title">Vehicle Update</div>
             <form action="#">
                 <div class="vehicle-details">
@@ -81,7 +205,7 @@
             </form>
             <button class="cancel-btn" onclick="cancel()">Cancel</button>
             <button type="submit" class="sub edit-btn" value="update" onclick="updatefunction()">Update</button>
-        </div>
+        </div> -->
         <script src="vehicleEditForm.js"></script>
         <script>
             function cancel(){
@@ -111,7 +235,7 @@
       
             if(token == null){
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+              window.location.href = "../Admin/login.html";
             }
       
             const payload = getPayload(token);
@@ -122,22 +246,24 @@
             } 
             else if (payload.role === "owner") {
               console.log("Admin");
-              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+              window.location.href = "../Owner/ownerDashboard.html";
             }
             else if (payload.role === "passenger") {
               console.log("Passenger");
-              window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+              window.location.href = "../Passenger/dashboard.html";
             }
             else if (payload.role === "driver") {
               console.log("Driver");
-              window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+              window.location.href = "../Driver/dashboard.html";
             }
             else {
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+              window.location.href = "../Admin/login.html";
               
             }
             });
           </script>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&libraries=places"></script>
     </body>
 </html>

@@ -6,6 +6,7 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="vehicleform.css">
+        <link rel="stylesheet" href="/main.css" />
 
         <title>Request Edit</title>
     </head>
@@ -16,6 +17,7 @@
             <div class="title">Change Request</div>
             <form action="#">
                 <div class="vehicle-details">
+                    <div class="map" id="map"></div>
                     <div class="input-box">
                         <span class="details">Request Id</span>
                         <input type="text" class="id" placeholder="Enter request id" readonly>
@@ -31,34 +33,48 @@
                         <input type="text" class="vehicleNo" placeholder="Enter vehicle no" readonly>
                         <div class="vehicleNo-error-message" style="display: none; color: red;"></div>
                     </div>
+                    
                     <div class="input-box">
-                        <span class="details">Vehicle Model</span>
-                        <input type="text" class="model" placeholder="Enter vehicle Model" readonly>
-                        <div class="model-error-message" style="display: none; color: red;"></div>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Vehicle Type</span>
-                        <input type="text" class="type" placeholder="Enter vehicle type" readonly>
-                        <div class="type-error-message" style="display: none; color: red;"></div>
-                    </div>
+                        <span class="details triptype">Trip type</span>
+                        <select name="triptype" class="type" id="type">
+                          <option class="default" selected disabled value>Select the Trip type</option>
+                          <option value="Morning">Morning</option>
+                          <option value="Evening">Evening</option>
+                          <option value="Both">Both</option>
+                        </select>
+                        <div id="type-error-message" style="display: none; color: red;"></div>
+                      </div>
+        
                     <div class="input-box">
                         <span class="details">Amount</span>
                         <input type="text" class="amount" placeholder="Enter Amount" readonly>
                         <div class="amount-error-message" style="display: none; color: red;"></div>
                     </div>
+                    
                     <div class="input-box">
-                        <span class="details">Reservation Starting Date</span>
-                        <input type="text" class="startingDate" placeholder="Enter starting date" required>
-                        <div class="startingDate-error-message" style="display: none; color: red;"></div>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Ending Date</span>
-                        <input type="text" class="endingDate" placeholder="Enter ending date" required>
-                        <div class="endingDate-error-message" style="display: none; color: red;"></div>
-                    </div>
+                      <span class="details">Starting Date</span>
+                      <input type="date" class="startingDate" placeholder="Enter starting date" required>
+                      <div class="startingDate-error-message" style="display: none; color: red;"></div>
+                  </div>
+                  
+                <div class="input-box">
+                    <span class="details">Ending Date</span>
+                    <input type="date" class="endingDate" placeholder="Enter ending date" required>
+                    <div class="endingDate-error-message" style="display: none; color: red;"></div>
+                </div>
+                <div class="input-box" id="onTimeBlock">
+                  <span class="details">On Time</span>
+                  <input type="time" class="ontime" placeholder="Enter On Time" required>
+                  <div class="ontime-error-message" style="display: none; color: red;"></div>
+              </div>
+              <div class="input-box" id="offTimeBlock">
+                <span class="details">Off Time</span>
+                <input type="time" class="offTime" placeholder="Enter Off Time" required>
+                <div class="offTime-error-message" style="display: none; color: red;"></div>
+            </div>
                     <div class="input-box">
                         <span class="details">Status</span>
-                        <input type="text" class="status" placeholder="Enter status" readonly>
+                        <input type="text" class="tripStatus" id="status" placeholder="Enter status" readonly>
                         <div class="status-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box" style="display: none;">
@@ -72,7 +88,7 @@
                     
                 </div>
             </form>
-            <input type="submit" class="sub" value="update" onclick="updatefunction()">
+            <input type="submit" class="sub edit-btn" value="update" onclick="updatefunction()">
         </div>
         <script src="request.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -100,7 +116,7 @@
       
             if(token == null){
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+              window.location.href = ".../Passenger/login-register/index.html";
             }
       
             const payload = getPayload(token);
@@ -111,22 +127,23 @@
             } 
             else if (payload.role === "admin") {
               console.log("Admin");
-              window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+              window.location.href = ".../Admin/dashboard.html";
             }
             else if (payload.role === "owner") {
               console.log("Passenger");
-              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+              window.location.href = ".../Owner/ownerDashboard.html"
             }
             else if (payload.role === "driver") {
               console.log("Driver");
-              window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+              window.location.href = ".../Driver/dashboard.html";
             }
             else {
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+              window.location.href = ".../Passenger/login-register/index.html";
               
             }
             });
           </script>
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRl_dGfneZV9nL002ZSxVvcGNfVYn5b8&callback=initMap"></script>
     </body>
 </html>

@@ -84,14 +84,18 @@
               <span>></span>
             </a>
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
+
+      <script src="notificationcount.js"></script>
         
       <div class="home-content">         
         <div class="owner-profile">
@@ -100,9 +104,10 @@
               <img src="https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg" alt="Owner Profile Image" />
               <div class="profile-info">
                 <h3 class="ownerName">Milinda Jagath</h3>
-                <p><b>Owner ID    :  </b><span class="ownerID"></span></p>
-                <p><b>Email            :  </b> <span class="ownerEmail"></span></p>
-                <p><b>NIC                 :  </b><span class="ownerContact"></span></p>
+                <p><b>Owner ID       :  </b><span class="ownerID"></span></p>
+                <p><b>Email               :  </b> <span class="ownerEmail"></span></p>
+                <p><b>NIC                    :  </b><span class="ownerContact"></span></p>
+                <p><b>Contact No :  </b><span class="ownerNIC"></span></p>
               </div>
             </div>
         </div>
@@ -155,7 +160,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+        window.location.href = "../Driver/login.html";
       }
 
       const payload = getPayload(token);
@@ -166,19 +171,19 @@
       } 
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = "../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Owner");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = "../Owner/ownerDashboard.html"
       }
       else if (payload.role === "Passenger") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = "../Passenger/login-register/index.html";
         
       }
       });

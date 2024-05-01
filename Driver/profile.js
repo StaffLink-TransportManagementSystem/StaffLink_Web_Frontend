@@ -66,6 +66,8 @@ function editAcc(e) {
   document.querySelector('.passengerName').disabled = false;
   document.querySelector('.NIC').disabled = false;
   document.querySelector('.age').disabled = false;
+  document.querySelector('.Telephone').disabled = false;
+
   // document.querySelector('.Telephone').disabled = false;
   document.querySelector('.edit').style.display = "none";
   document.querySelector('.save').style.display = "block";
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       form.querySelector('.NIC').value = data.driver.NIC;
       form.querySelector('.age').value = data.driver.age;
       form.querySelector('.ownerEmail').value = data.driver.ownerEmail;
-      // form.querySelector('.Telephone').value = data.owner.contact;
+      form.querySelector('.Telephone').value = data.driver.contact;
       
 
 
@@ -138,7 +140,8 @@ function updateProfile(e) {
   const id = form.querySelector('.passengerID').value;
   const name = form.querySelector('.passengerName').value;
   const NIC = form.querySelector('.NIC').value;
-  // const contact = form.querySelector('.Telephone').value;
+  const age = form.querySelector('.age').value;
+  const contact = form.querySelector('.Telephone').value;
   const email = form.querySelector('.email').value;
   // const Telephone = form.querySelector('.Telephone').value;
   // const profilePic = document.getElementById("default-pic");
@@ -154,12 +157,14 @@ function updateProfile(e) {
 
   var nameError = document.querySelector(".name-error-message");
   var NICError = document.querySelector(".nic-error-message");
-  // var contactError = document.querySelector(".contact-error-message");
+  var contactError = document.querySelector(".contact-error-message");
   var emailError = document.querySelector(".email-error-message");
+  var ageError = document.querySelector(".age-error-message");
 
   nameError.style.display = "none";
   NICError.style.display = "none";
-  // contactError.style.display = "none";
+  contactError.style.display = "none";
+  ageError.style.display = "none";
   emailError.style.display = "none";
 
   if (!name) {
@@ -193,6 +198,31 @@ function updateProfile(e) {
     console.log("email error");
     checker = false;
   }
+  if (!age) {
+    ageError.innerText = "Please enter your age.";
+    ageError.style.display = "block";
+    console.log("age error");
+    checker = false;
+  }
+  else if (age < 18||age>100) {
+    ageError.innerText = "Please enter a valid age.";
+    ageError.style.display = "block";
+    console.log("age error");
+    checker = false;
+  }
+  if (!contact) {
+    contactError.innerText = "Please enter your contact number.";
+    contactError.style.display = "block";
+    console.log("contact error");
+    checker = false;
+  }
+  else if (!validateContactNumber(contact)) {
+    contactError.innerText = "Please enter a valid contact number.";
+    contactError.style.display = "block";
+    console.log("contact error");
+    checker = false;
+  }
+
   if (checker === true) {
     console.log("update form submitted");
     console.log(id);
@@ -206,10 +236,12 @@ function updateProfile(e) {
       name: name,
       NIC: NIC,
       email: email,
+      age: age,
+      contact: contact,
       // profilePic: profilePic
     }
     // alert("Your profile has been updated successfully!");
-    fetch('http://127.0.0.1:8080/try2_war_exploded/passengerEdit', {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/driverEdit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -220,7 +252,7 @@ function updateProfile(e) {
         console.log(data.message);
         if (data.message === "Update successfully") {
           Swal.fire({
-            title: "Passenger Updated Successfully!",
+            title: "Driver Updated Successfully!",
             icon: "success"
           }).then(() => {
             window.location.href = "profile.html";
@@ -281,7 +313,7 @@ function deleteAccount() {
     confirmButtonText: 'Yes!'
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch("http://127.0.0.1:8080/try2_war_exploded/passengerDelete", {
+      fetch("http://127.0.0.1:8080/try2_war_exploded/driverDelete", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -298,6 +330,14 @@ function deleteAccount() {
               window.location.href = "../login-register/index.html";
             })
           }
+          if (data.message === "Driver is still assigned to a vehicle") {
+            Swal.fire({
+              title: "Driver is still assigned to a vehicle!",
+              icon: "error"
+            }).then(() => {
+              window.location.href = "profile.html";
+            })
+          }
           else {
             Swal.fire({
               title: "Something went wrong!",
@@ -310,4 +350,96 @@ function deleteAccount() {
     }
 
   })
+}
+
+//Live location sharing
+document.addEventListener("DOMContentLoaded", function () {
+  function getPayload(token) {
+      return JSON.parse(atob(token.split(".")[1]));
+  }
+
+  function checkCookie(cName) {
+      const name = cName + "=";
+      const cDecoded = decodeURIComponent(document.cookie); //to be careful
+      const cArr = cDecoded.split("; ");
+      let res;
+      cArr.forEach((val) => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+      });
+      return res;
+  }
+
+  console.log(checkCookie("jwt"))
+
+  const token = checkCookie("jwt");
+  const payload = getPayload(token);
+  console.log("Payload", payload);
+
+  var driverEmail = payload.id;
+
+  
+  fetch("http://127.0.0.1:8080/try2_war_exploded/checkOnTrip?email=" + driverEmail, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }, credentials: "include",
+  })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data.message);
+          if (data.message === "On Trip") {
+              // onTheTrip();
+              var tripbutton = document.getElementById("startTrip");
+              tripbutton.innerHTML = "End Trip";
+              tripbutton.setAttribute("onclick", "endTrip()");
+              tripbutton.classList.add("delete-btn");
+              onTripStatus = "ontrip";
+              console.log("onTripStatus update", onTripStatus);
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+
+
+      })
+
+  var interval = setInterval(getLocation, 30000);
+
+});
+
+function getLocation() {
+  // alert("Getting Location", onTripStatus);
+  if (onTripStatus == "ontrip") {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+          alert("Geolocation is not supported by this browser.");
+      }
+  }
+}
+
+function showPosition(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  // alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+  var data = {
+      email: driverEmail,
+      latitude: latitude,
+      longitude: longitude
+  }
+
+  console.log("data to location",data);
+
+  fetch("http://127.0.0.1:8080/try2_war_exploded/createLocationTracking", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      }, credentials: "include", body: JSON.stringify(data)
+  })
+      .then(response => response.json())
+      .then(data => {
+          console.log("Location data", data.message);
+
+      })
+
 }

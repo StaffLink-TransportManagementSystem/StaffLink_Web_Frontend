@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log(data.message)
                 if(data.message === "Update successfully"){
-                  Swral.fire({
+                  Swal.fire({
                     icon: 'success',
                     title: 'Driver Updated Successfully',
                   }).then(()=> {

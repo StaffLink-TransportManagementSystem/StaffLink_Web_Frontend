@@ -139,3 +139,255 @@ form .Find-transport .input-box{
   width: 100%;
   margin-bottom: 20px;
 }
+
+
+
+
+
+
+
+
+
+/* ===================================================== */
+.overview-boxes .box{
+  width: calc(100% / 4 - 15px);
+}
+
+.home-content .charts{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.home-content .charts .newreg{
+  width: 50%;
+  background: #fff;
+  padding: 20px 20px 0 20px;
+  margin-right: 10px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-content .charts .revenue{
+  width: 50%;
+  background: #fff;
+  padding: 20px 20px 0 20px;
+  margin-left: 10px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 1150px) {
+  .home-content .charts{
+    flex-direction: column;
+  }
+
+  .home-content .charts .box{
+    width: 100%;
+    overflow-x: scroll;
+    margin-bottom: 30px;
+  }
+
+  .home-content .charts .revenue{
+    margin-left: 0px;
+  }
+}
+
+
+
+
+@media (max-width: 1400px) {
+  .home-content .overview-boxes .box{
+    width: calc(100% / 2 - 15px);
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 830px) {
+  .home-content .overview-boxes .box{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+
+
+
+
+/* vehicles.html */
+.vehicle-card{
+  width: 80%;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+}
+
+.vehicle-card .slider{
+  position: relative;
+  width: 40%;
+  overflow: hidden;
+}
+
+.vehicle-images{
+  display: flex;
+  width: 100%;
+}
+
+.vehicle-images img{
+  height: 100%;
+  width: 100%;
+  transition: all 0.5s ease;
+  border-radius: 5px;
+}
+
+.vehicle-images input{
+  display: none;
+}
+
+.dots{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.dots label{
+  border-radius: 50%;
+  border: solid #0A2558 2px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin: 5px 5px 0 5px;
+  width: 12px;
+  height: 12px;
+}
+
+.dots label:hover{
+  background: #0A2558;
+}
+
+#img-outside:checked ~ .img-outside{
+  margin-left: 0;
+}
+
+#img-inside:checked ~ .img-inside{
+  margin-left: -100%;
+}
+
+.vehicle-desc{
+  margin-left: 30px;
+}
+
+.vehicle-spec{
+  margin-top: 20px;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+
+@media(max-width:1050px){
+  .vehicle-card{
+    width: 100%;
+  }
+
+  .vehicle-desc{
+    margin-left: 15px;
+  }
+
+  .vehicle-card .slider{
+    margin-top: 40px;
+  }
+}
+
+@media(max-width:1005px){
+  .vehicle-card{
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+}
+
+@media(max-width:850px){
+  .vehicle-card{
+    width: 100%;
+  }
+
+  .vehicle-card button{
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+/* drivers.html */
+.driver-cards{
+  margin: 50px 20px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.driver-cards .driver{
+  align-items: center;
+  display: flex;
+  width: calc(100% / 2 - 30px);
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.driver img{
+  width: 150px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+.driver .driver-name{
+  margin-bottom: 20px;
+}
+
+.driver .driver-spec{
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+
+@media(max-width: 1350px){
+  .driver-cards{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .driver-cards .driver{
+    width: calc(100% / 2 - 10px);
+  }
+}
+
+@media(max-width: 1250px){
+  .driver-cards{
+    margin: 50px 20px 0 20px;
+  }
+
+  .driver-cards .driver{
+    flex-direction: column;
+    width: calc(100% / 2 - 20px);
+  }
+
+  .driver img{
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 900px){
+  .driver-cards .driver{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}

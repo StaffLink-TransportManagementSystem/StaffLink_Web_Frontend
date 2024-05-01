@@ -4,11 +4,23 @@
     <meta charset="UTF-8" />
     <title>Passenger_details(driver)</title>
     <link rel="stylesheet" href="dbstyle.css" />
-    
+    <link rel="stylesheet" href="../Admin/passengerList.css"/>
     <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  (function(){
+      emailjs.init({
+        publicKey: "Hn0A8xT1xYUuGSYts",
+      });
+  })();
+</script>
+
   </head>
 
   <body>
@@ -82,27 +94,44 @@
               <span>></span>
             </a>
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
+
+      <script src="notificationcount.js"></script>
 
       <div class="home-content">
         <div class="detail-bar">
           <div class="box">
             <p class="topic">Passengers</p>
                 
-            <form action="" class="search-bar">
-              
-              <input type="text" placeholder="Type Anything" PassengerDetails>
-              <button type="submit"><i class="fas fa-search"></i></button>
-            </form>                          
+            <div class="search_box">
+              <div class="dropdown">
+                    <div class="default_option">All</div>  
+                    <ul>
+                      <li>Passenger ID</li>
+                      <li>Name</li>
+                      <li>Email</li>
+                      <li>NIC</li>
+                    </ul>
+                </div>
+                <form action="" class="search-bar">
+            
+                  <input type="text" placeholder="Type Anything" PassengerDetails>
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form> 
+            </div>                         
           </div>
         </div>
+
+        <button class="email-all submit-btn" id="openPopupButton">SEND EMAIL</button>
 
       
         <table class="table">
@@ -122,6 +151,36 @@
   
         </div>
     </section>
+
+    <div class="popup" id="popup"></div>
+
+    <div class="email popup" id="email-popup">
+      <div class="popup-content">
+        <i class="fas fa-xmark" id="close" onclick="togglePopupEmail()"></i>
+
+        <p class="topic">Send an email</p>       
+        
+        <div class="detail-box">
+          <form action="" id="email-form">
+            <label for=".to" class="to-label">To</label>
+            <div style="display: flex; gap: 2rem;">
+              <div>
+                <input type="radio" class="sel-all" id="sel-all" onclick="toggleToInput()">
+                <label for=".sel-all">All</label>
+              </div>
+              <input type="email" class="to" id="to" name="to">
+            </div>
+
+            <label for=".subject" style="margin-top: 30px;">Subject</label>
+            <input type="text" id="subject" class="subject" name="subject" required>
+
+            <label for=".message">Message</label>
+            <textarea class="message" id="message" rows="6" cols="30" required></textarea>
+          </form>
+          <button class="submit-btn" onclick="sendMail()">Send</button>
+        </div>       
+      </div>
+    </div>
      
 
     <script>
@@ -141,9 +200,104 @@
         dropdown1.classList.toggle("open-menu");
       }
 
+      function togglePopup(){
+        document.getElementById("popup").classList.toggle("active");
+      }
+
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+      function togglePopupEmail() {
+        var popup = document.getElementById("email-popup");
+        popup.classList.toggle("active");
+      }
+
+      document.getElementById("openPopupButton").addEventListener("click", function() {
+        togglePopupEmail();
+      });
+
+
+
+      function toggleToInput() {
+        var toInput = document.getElementById("to");
+        var selectAll = document.getElementById("sel-all");
+
+        if(selectAll.checked){
+          toInput.style.display = "none";
+        }
+      }
+
+
+
+      function sendMail(){
+        let emailElements = document.getElementsByClassName("email");
+        
+        let emails = [];
+        let toEmail;
+
+        if(document.getElementById("sel-all").checked){
+          for (let i = 0; i < emailElements.length; i++) {
+            emails.push(emailElements[i].textContent.trim());
+          }
+        }
+        else{
+          toEmail = document.getElementById("to").value;
+        }
+
+        let subject = document.getElementById("subject").value;
+        let message = document.getElementById("message").value;
+        let params;
+
+        if(toEmail){
+          params = {
+          reply_to : toEmail, 
+          subject : subject,
+          message : message
+          };
+        }
+        else{
+          params = {
+          reply_to : emails.join(","), 
+          subject : subject,
+          message : message
+          };
+        }
+
+        emailjs.send("service_umzmquv", "template_glff7yw", params)
+          .then(function(response) {
+              alert("Email sent! Status: " + response.status);
+          })
+          .catch(function(error) {
+            console.error("Error sending email:", error);
+          });
+
+          var popup = document.getElementById("email-popup");
+          popup.classList.toggle("active");
+
+          document.getElementById("email-form").reset()
+      }
+
+            var searchCriteria = "All";
+
+        document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
     </script>
 
     <script>
@@ -169,7 +323,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Driver/login.html";
+        window.location.href = "../Driver/login.html";
       }
 
       const payload = getPayload(token);
@@ -180,19 +334,19 @@
       } 
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = "../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Owner");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = "../Owner/ownerDashboard.html"
       }
       else if (payload.role === "Passenger") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = "../Passenger/login-register/index.html";
         
       }
       });

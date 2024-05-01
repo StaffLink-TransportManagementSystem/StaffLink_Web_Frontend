@@ -112,11 +112,13 @@
               <span>></span>
             </a> -->
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
@@ -126,7 +128,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of Passengers</div>
-              <div class="number">400</div>
+              <div id="totalPassengers" class="number">0</div>
             </div>
             <i class="fas fa-user-group cart"></i>
           </div>
@@ -134,7 +136,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of vehicles</div>
-              <div class="number">30</div>
+              <div id="totalVehicles" class="number">0</div>
             </div>
             <i class="fas fa-bus cart two"></i>
           </div>
@@ -142,7 +144,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of vehicle owners</div>
-              <div class="number">23</div>
+              <div id="totalOwners" class="number">0</div>
             </div>
             <i class="fas fa-user cart three"></i>
           </div>
@@ -154,11 +156,24 @@
             <p class="topic">Vehicles</p>
 
                 
-            <form action="" class="search-bar">
-              
-              <input type="text" placeholder="Type Anything" vehicleList>
-              <button type="submit"><i class="fas fa-search"></i></button>
-            </form>           
+            <div class="search_box">
+              <div class="dropdown">
+                    <div class="default_option">All</div>  
+                    <ul>
+                      <li>Owner Email</li>
+                      <li>Vehicle NO</li>
+                      <li>Driver Email</li>
+                      <li>Starting Point</li>
+                      <li>Ending Point</li>
+                    </ul>
+                </div>
+                <form action="" class="search-bar">
+            
+                  <input type="text" placeholder="Type Anything" vehicleList>
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form> 
+            </div>
+                     
               
             <button class="add-new" onclick="AddVehicle()">+ Add New</button>                
           </div>
@@ -175,8 +190,6 @@
                     <th scope="col">Driver Email</th>
                     <th scope="col">Seats Count</th>
                     <th scope="col">Trips</th>
-                    <th scope="col">Starting Point</th>
-                    <th scope="col">Ending Point</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -294,8 +307,31 @@
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+        var searchCriteria = "All";
+
+        document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
+
     </script>
     <script src="./vehicleList.js"></script>
+    <script src="notificationcount.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
 
@@ -319,7 +355,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
       }
 
       const payload = getPayload(token);
@@ -330,19 +366,19 @@
       } 
       else if (payload.role === "owner") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+        window.location.href = "../Owner/ownerDashboard.html";
       }
       else if (payload.role === "passenger") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = "../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
         
       }
       });

@@ -12,6 +12,7 @@ function makePayment(){
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector("[Request-search]")
     function getPayload(token) {
         return JSON.parse(atob(token.split(".")[1]));
     }
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     passengerEmail = payload.id;
   
     let row ="";
+    let users = []
 
     fetch('http://127.0.0.1:8080/try2_war_exploded/getRequestListByPassenger?passengerEmail='+passengerEmail,{
             method: 'GET',
@@ -50,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 while (i < data.requests.length) {
                     const request = data.requests[i];
                     const vehicle = data.vehicles[i];
-                    var rowData = `<tr>
-                    <td>${request.id}</td>
-                    <td>${vehicle.vehicleNo}</td>
+                    var rowData = `<tr id="${request.vehicleNo}">
+                    <td>${request.vehicleNo}</td>
                     <td>${vehicle.type}</td>
-                    <td>${vehicle.model}</td>
+                    <td>${request.onTime}</td>
+                    <td>${request.offTime}</td>
                     <td>${request.startingDate}</td>
                     <td>${request.endingDate}</td>
                     <td>Rs. ${request.price}</td>
@@ -64,12 +66,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         rowData += `<button class="reserve" onclick="reserve('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >RESERVE</button>
                         `
                     }
-                    rowData += `<a href="./editRequest.html?email=`+ request.vehicleNo +`" onclick=""><button class="edit-btn">EDIT</button></a>
-                    <button class="delete-btn" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`')" >DELETE</button></td>
+                    else if(request.status.toLowerCase() == "pending"){
+                        rowData += `<a href="./editRequest.html?email=`+ request.vehicleNo +`" onclick=""><button class="edit-btn">EDIT</button></a> `
+                    }
+                    rowData += `<button class="delete-btn" onclick="deleteRequest('`+ request.vehicleNo +`', '`+ request.passengerEmail +`', '`+ request.id +`')" >DELETE</button></td>
                 </tr>`;
                     row += rowData;
                     i++;
                 }
+                users = data.vehicles;
 
 
                 document.querySelector(".tbody").innerHTML = row;   
@@ -78,10 +83,28 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
+                users.forEach(data => {
+                    switch (searchOption) {
+                        case "vehicle no":
+                            searchValue = data.vehicleNo.toLowerCase().includes(value);
+
+                        case "all":
+                            searchValue = searchValue = data.vehicleNo.toLowerCase().includes(value);
+                    }
+                    const isVisible =
+                    searchValue
+        
+                    document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+                });
+            });
         });
 
 
-function deleteRequest(vehicleNo, passengerEmail) {
+function deleteRequest(vehicleNo, passengerEmail,id) {
 
     console.log(vehicleNo);
     console.log(passengerEmail);
@@ -101,7 +124,7 @@ function deleteRequest(vehicleNo, passengerEmail) {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail };
+            let data = { vehicleNo: vehicleNo, passengerEmail: passengerEmail, id: id};
             fetch('http://127.0.0.1:8080/try2_war_exploded/requestDelete', {
                 method: 'POST',
                 headers: {

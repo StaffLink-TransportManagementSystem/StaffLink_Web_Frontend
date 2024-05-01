@@ -16,10 +16,12 @@
 
 <body>
   <div class="sidebar">
-    <div class="logo-details">
-      <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
-      <span class="logo_name">StaffLink</span>
-    </div>
+    <a href="../../landingPage/Index.html" style="text-decoration: none;">
+      <div class="logo-details">
+        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
+        <span class="logo_name">StaffLink</span>
+      </div>
+    </a>
 
     <ul class="nav-links">
       <li>
@@ -47,6 +49,13 @@
         <a href="index.html" class="active">
           <i class="fas fa-calendar-plus"></i>
           <span class="links_name">Reservations</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../Absence/index.html">
+          <i class="fa-solid fa-user-minus"></i>
+          <span class="links_name">Absence</span>
         </a>
       </li>
 
@@ -95,83 +104,70 @@
             <span>></span>
           </a>
 
-          <a href="#" class="dropdown-list-link">
-            <i class="fas fa-bell"></i>
+          <a href="../Notifcation/notifications.html" class="dropdown-list-link">
+            <i class="fas fa-bell notification-icon">
+              <span class="notification-badge">2</span>
+            </i>
             <p>Notifications</p>
             <span>></span>
-          </a>
+        </a>
         </div>
       </div>
     </nav>
 
+    <script src="../notificationcount.js"></script>
+
     <div class="home-content">
-      <div class="container">
-        <div class="topic">Inform Absence</div>
-        <form action="">
-          <div class="flexbox">
-            <div class="inputBox">
-              <span>Reservation</span>
-              <div class="reservation-dropdown"></div>
-            </div>
-          </div>
-          <div class="inputBox">
-            <span>Days of Absent</span>
-            <input type="text" maxlength="16" class="daysOfAbsent">
-          </div>
-          <div class="inputBox">
-            <span>Starting date</span>
-            <input type="date" class="startingDate">
-          </div>
-          <div class="button">
-            <button type="submit" value="submit" class="more-btn submit-btn" onclick="createAbsent()">Submit</button>
-          </div>
 
-        </form>
+      <div class="detail-bar">
+        <div class="box">
+          <p class="topic">Reservations</p>
+              
+          <div class="search_box">
+            <div class="dropdown">
+                  <div class="default_option">All</div>  
+                  <ul>
+                    <li>Vehicle No</li>
+                    <li>Vehicle Model</li>
+                  </ul>
+              </div>
+              <form action="" class="search-bar">
+          
+                <input type="text" placeholder="Type Anything" Reservation-search>
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </form> 
+          </div>               
+        </div>
       </div>
+      <div class="details">
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <!-- <p class="topic">Payments History</p> -->
+            <!-- <button class="more-btn">View All</a> -->
+          </div>
 
-      <table class="passtable">
-        <thead>
-          <tr>
-            <th scope="col">VEHICLE NO</th>
-            <th scope="col">VEHICLE TYPE</th>
-            <th scope="col">Service Provider</th>
-            <!-- <th scope="col">DRIVER</th> -->
-            <th scope="col">Reservation Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Payment Status</th>
-            <!-- <th scope="col">ACTION</th> -->
-          </tr>
-        </thead>
-
-        <tbody class="tbody">
-          <!-- <tr>
-                    <td data-label="Vehicle-no">KD 1234</td>
-                    <td data-label="Type">Bus</td>
-                    <td data-label="Service Provider">xyz Trnasportation</td>
-                    <td data-label="Driver">Kamal Perera</td>
-                    <td data-label="Reservation Date">20:09:2023</td>
-                    <td data-label="End Date">20:09:2023</td>
-                    <td data-label="Status">Active</td>
-                    <td data-label="Action">
-                        <a href="#edit"></a><button class="edit">Edit</button></a>
-                        <a href="#Cancel"></a><button class="Cancel">Cancel</button></a>
-                    </td>
-                </tr>
+          <table class="table">
+            <thead>
                 <tr>
-                  <td data-label="Vehicle-no">KD 1234</td>
-                  <td data-label="Type">Bus</td>
-                  <td data-label="Service Provider">xyz Trnasportation</td>
-                  <td data-label="Driver">Kamal Perera</td>
-                  <td data-label="Reservation Date">20:07:2023</td>
-                  <td data-label="End Date">20:09:2023</td>
-                  <td data-label="Status">Completed</td>
-                  <td data-label="Action">
-                      <a href="#edit"></a><button class="edit">Edit</button></a>
-                      <a href="#Cancel"></a><button class="Cancel">Cancel</button></a>
-                  </td>
-              </tr> -->
-        </tbody>
-      </table>
+                    <th>Vehicle No</th>
+                    <th>Vehicle Type</th>
+                    <th>Vehicle Model</th>
+                    <th>Starting Date</th>
+                    <th>Ending Date</th>
+                    <th>Payment Status</th>
+                    <th>Vehicle Location</th>
+                </tr>
+            </thead>
+
+            <tbody class="tbody"></tbody>
+          </table>
+        </div> 
+        <!-- <input type="submit" class="sub edit-btn" value="Send Email" onclick="togglePopup()"> -->
+        <div class="popup" id="popup"></div>
+      </div>
+    </div>       
+
+    
     </div>
   </section>
 
@@ -196,9 +192,34 @@
   </script>
   <script src="absent.js"></script>
   <script src="reservation.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
+    // function togglePopup(){
+    //   document.getElementById("popup").classList.toggle("active");
+    // }
+
+    var searchCriteria = "All";
+
+    document.addEventListener("DOMContentLoaded", function() {
+          var defaultOption = document.querySelector('.default_option');
+          var dropdownList = document.querySelector('.dropdown ul');
+
+          defaultOption.addEventListener('click', function() {
+            dropdownList.classList.toggle('active');
+          });
+
+          var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+          dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+              defaultOption.textContent = item.textContent;
+              dropdownList.classList.remove('active');
+              searchCriteria = item.textContent.trim();
+            });
+          });
+        });
+
     document.addEventListener("DOMContentLoaded", function () {
 
       function getPayload(token) {
@@ -221,7 +242,7 @@
 
       if (token == null) {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = ".../Passenger/login-register/index.html";
       }
 
       const payload = getPayload(token);
@@ -232,23 +253,24 @@
       }
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = ".../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = ".../Owner/ownerDashboard.html"
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = ".../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = ".../Passenger/login-register/index.html";
 
       }
     });
   </script>
+  
 
 </body>
 

@@ -13,10 +13,12 @@
 
   <body>
     <div class="sidebar">
-      <div class="logo-details">
-        <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
-        <span class="logo_name">StaffLink</span>
-      </div>
+      <a href="../../landingPage/Index.html" style="text-decoration: none;">
+        <div class="logo-details">
+          <i class="fas fa-bus fa-xl" style="color: #ffffff;"></i>
+          <span class="logo_name">StaffLink</span>
+        </div>
+      </a>
 
       <ul class="nav-links">
         <li>
@@ -44,6 +46,13 @@
           <a href="../Reservations/index.html">
             <i class="fas fa-calendar-plus"></i>
             <span class="links_name">Reservations</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="../Absence/index.html">
+            <i class="fa-solid fa-user-minus"></i>
+            <span class="links_name">Absence</span>
           </a>
         </li>
 
@@ -91,26 +100,51 @@
               <span>></span>
             </a>
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="../Notifcation/notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
 
+      <script src="../notificationcount.js"></script>
+
       <div class="home-content">
-        <div class="container">
+        <!-- <div class="container"> -->
+
+          <div class="detail-bar Request-Transport">
+            <div class="box">
+              <p class="topic">Request Transport Details</p>
+                  
+              <div class="search_box">
+                <div class="dropdown">
+                      <div class="default_option">All</div>  
+                      <ul>
+                        <li>Vehicle No</li>
+                      </ul>
+                  </div>
+                  <form action="" class="search-bar">
+              
+                    <input type="text" placeholder="Type Anything" Request-search>
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                  </form> 
+              </div>               
+            </div>
+          </div>
 
           <table class="passtable" class="table">
             <thead>
                 <tr>
-                    <th scope="col">Reservation Id</th>
+                    <!-- <th scope="col">Reservation Id</th> -->
                     <th scope="col">Vehicle No</th>
                     <th scope="col">Vehicle Type</th>
-                    <th scope="col">Service Provider</th>
-                    <th scope="col">Reservation Date</th>
+                    <th scope="col">On Time</th>
+                    <th scope="col">Off Time</th>
+                    <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Request Status</th>
@@ -121,7 +155,7 @@
             <tbody class="tbody"></tbody>
           </table>
 
-          <form action="#">
+          <!-- <form action="#">
             <div class="req-transport">
               <div class="input-box">
                 <span class="details">Service provider</span>
@@ -159,7 +193,7 @@
             </div>
           </form>
         </div>
-    </section>
+    </section> -->
 
     <script>
       let sidebar = document.querySelector(".sidebar");
@@ -178,6 +212,27 @@
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+      var searchCriteria = "All";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var defaultOption = document.querySelector('.default_option');
+      var dropdownList = document.querySelector('.dropdown ul');
+
+      defaultOption.addEventListener('click', function() {
+        dropdownList.classList.toggle('active');
+      });
+
+      var dropdownItems = document.querySelectorAll('.dropdown ul li');
+
+      dropdownItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          defaultOption.textContent = item.textContent;
+          dropdownList.classList.remove('active');
+          searchCriteria = item.textContent.trim();
+        });
+      });
+    });
 
     </script>
     <script src="makePayment.js"></script>
@@ -206,7 +261,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = ".../Passenger/login-register/index.html";
       }
 
       const payload = getPayload(token);
@@ -217,19 +272,19 @@
       } 
       else if (payload.role === "admin") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+        window.location.href = ".../Admin/dashboard.html";
       }
       else if (payload.role === "owner") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html"
+        window.location.href = ".../Owner/ownerDashboard.html"
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = ".../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Passenger/login-register/index.html";
+        window.location.href = ".../Passenger/login-register/index.html";
         
       }
       });

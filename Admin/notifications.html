@@ -18,31 +18,7 @@
         <a href="dashboard.html"><button class="cancel-btn">Back to home</button></a>
     </div>
 
-    <div class="container">
-        <div class="notif-card unread">
-            <i class="fas fa-bullhorn"></i>
-            <div class="message">
-                <p class="desc">Your bus has arrived.</p>
-                <p class="time">July 8th 2023 at 10:53:26 am</p>
-                <div class="buttons">
-                  <button class="more-btn">Mark as read</button>
-                  <button class="delete-btn">Delete</button>
-                </div>
-            </div>   
-        </div>
-
-        <div class="notif-card unread">
-            <i class="fas fa-bullhorn"></i>
-            <div class="message">
-                <p class="desc">Your bus has arrived.Your bus has arrived.Your bus has arrived.Your bus has arrived.Your bus has arrived.Your bus has arrived.</p>
-                <p class="time">July 8th 2023 at 10:53:26 am</p>
-                <div class="buttons">
-                  <button class="more-btn">Mark as read</button>
-                  <button class="delete-btn">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container"></div>   
 
     <script>
       let sidebar = document.querySelector(".sidebar");
@@ -67,9 +43,9 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script> 
-    <script src="newreg.js"></script>
+    <!-- <script src="newreg.js"></script>
     <script src="revenue.js"></script> 
-    <script src="dashboard.js"></script>
+    <script src="dashboard.js"></script> -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
 
@@ -93,7 +69,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
       }
 
       const payload = getPayload(token);
@@ -104,19 +80,19 @@
       } 
       else if (payload.role === "owner") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+        window.location.href = "../Owner/ownerDashboard.html";
       }
       else if (payload.role === "passenger") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = "../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
         
       }
       });

@@ -28,6 +28,11 @@
                         <div class="email-error-message" style="display: none; color: red;"></div>
                     </div>
                     <div class="input-box">
+                      <span class="details">Contact No</span>
+                      <input type="text" class="contact" placeholder="Enter contact no" required>
+                      <div class="contact-error-message" style="display: none; color: red;"></div>
+                  </div>
+                    <div class="input-box">
                         <span class="details">NIC</span>
                         <input type="text" class="NIC" placeholder="Enter NIC" required>
                         <div class="NIC-error-message" style="display: none; color: red;"></div>
@@ -67,7 +72,7 @@
       
             if(token == null){
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+              window.location.href = "../Admin/login.html";
             }
       
             const payload = getPayload(token);
@@ -78,22 +83,23 @@
             } 
             else if (payload.role === "owner") {
               console.log("Admin");
-              window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+              window.location.href = "../Owner/ownerDashboard.html";
             }
             else if (payload.role === "passenger") {
               console.log("Passenger");
-              window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+              window.location.href = "../Passenger/dashboard.html";
             }
             else if (payload.role === "driver") {
               console.log("Driver");
-              window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+              window.location.href = "../Driver/dashboard.html";
             }
             else {
               console.log("No Cookie Found");
-              window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+              window.location.href = "../Admin/login.html";
               
             }
             });
           </script>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>

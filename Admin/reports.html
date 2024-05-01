@@ -112,11 +112,13 @@
               <span>></span>
             </a> -->
 
-            <a href="#" class="dropdown-list-link">
-              <i class="fas fa-bell"></i>
+            <a href="notifications.html" class="dropdown-list-link">
+              <i class="fas fa-bell notification-icon">
+                <span class="notification-badge">2</span>
+              </i>
               <p>Notifications</p>
               <span>></span>
-            </a>
+          </a>
           </div>
         </div>
       </nav>
@@ -126,7 +128,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of Passengers</div>
-              <div class="number">400</div>
+              <div id="totalPassengers" class="number">0</div>
             </div>
             <i class="fas fa-user-group cart"></i>
           </div>
@@ -134,7 +136,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of vehicles</div>
-              <div class="number">30</div>
+              <div id="totalVehicles" class="number">0</div>
             </div>
             <i class="fas fa-bus cart two"></i>
           </div>
@@ -142,7 +144,7 @@
           <div class="box">
             <div class="right-side">
               <div class="topic">Total no of vehicle owners</div>
-              <div class="number">23</div>
+              <div id="totalOwners" class="number">0</div>
             </div>
             <i class="fas fa-user cart three"></i>
           </div>
@@ -160,7 +162,7 @@
                     <input type="date" class="to-date">
                 </div>
 
-                <a href="newRegReport.html"><button class="more-btn">View Report</button></a>
+                <a href="#" id="newRegReport"><button class="more-btn" id="btn-one">View Report</button></a>
             </div>
         </div>
 
@@ -169,7 +171,7 @@
             <div class="period">
                 <div>
                     <label for=".from-date">From</label>
-                    <select id="month" name="month">
+                    <select id="month" name="month" class="from-month">
                         <option value="01">January</option>
                         <option value="02">February</option>
                         <option value="03">March</option>
@@ -183,7 +185,7 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <select id="year" name="year">
+                    <select id="year" name="year" class="from-year">
                         <option value="2022">2022</option>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
@@ -191,7 +193,7 @@
                 </div>
                 <div>
                     <label for=".to-date">To</label>
-                    <select id="month" name="month">
+                    <select id="month" name="month" class="to-month">
                         <option value="01">January</option>
                         <option value="02">February</option>
                         <option value="03">March</option>
@@ -205,14 +207,14 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <select id="year" name="year">
+                    <select id="year" name="year" class="to-year">
                         <option value="2022">2022</option>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
                     </select>
                 </div>
 
-                <button class="more-btn">View Report</button>
+                <a href="#" id="revenueReport"><button class="more-btn" id="btn-two">View Report</button></a>
             </div>
         </div>
 
@@ -247,10 +249,42 @@
       function logout(){
         document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       }
+
+
+
+
+
+
+      document.getElementById('btn-one').addEventListener('click', function() {
+   
+        const fromDate = document.querySelector('.from-date').value;
+        const toDate = document.querySelector('.to-date').value;
+
+        const url = `newRegReport.html?fromDate=${encodeURIComponent(fromDate)}&toDate=${encodeURIComponent(toDate)}`;
+
+        window.open(url, '_blank');
+      });
+
+
+
+
+      document.getElementById('btn-two').addEventListener("click", function () {
+
+            var fromMonth = document.querySelector(".from-month").value;
+            var fromYear = document.querySelector(".from-year").value;
+            var toMonth = document.querySelector(".to-month").value;
+            var toYear = document.querySelector(".to-year").value;
+
+            var url = "revenueReport.html?fromMonth=" + fromMonth + "&fromYear=" + fromYear + "&toMonth=" + toMonth + "&toYear=" + toYear;
+            window.open(url, '_blank');
+      });
+</script>
+
     </script>
 
 
     <script src="./reports.js"></script>
+    <script src="notificationcount.js"></script>
 
 
     <script>
@@ -276,7 +310,7 @@
 
       if(token == null){
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
       }
 
       const payload = getPayload(token);
@@ -287,19 +321,19 @@
       } 
       else if (payload.role === "owner") {
         console.log("Admin");
-        window.location.href = "http://127.0.0.1:5558/Owner/ownerDashboard.html";
+        window.location.href = "../Owner/ownerDashboard.html";
       }
       else if (payload.role === "passenger") {
         console.log("Passenger");
-        window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+        window.location.href = "../Passenger/dashboard.html";
       }
       else if (payload.role === "driver") {
         console.log("Driver");
-        window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+        window.location.href = "../Driver/dashboard.html";
       }
       else {
         console.log("No Cookie Found");
-        window.location.href = "http://127.0.0.1:5558/Admin/login.html";
+        window.location.href = "../Admin/login.html";
         
       }
       });

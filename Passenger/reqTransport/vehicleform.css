@@ -277,3 +277,12 @@ form .button input:hover{
 .action-bottom-bar a:hover .chevron {
     display: none;
 }
+
+
+.map {
+    border: #0A2558;
+    height: 250px;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}

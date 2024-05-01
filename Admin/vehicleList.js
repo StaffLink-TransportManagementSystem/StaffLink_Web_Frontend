@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td class="Email">`+ vehical.driverEmail +`</td>
                         <td class="Telephone">`+ vehical.seatsCount +`</td>
                         <td class="Email">`+ vehical.trips +`</td>
-                        <td class="Email">`+ vehical.startingPoint +`</td>
-                        <td class="Email">`+ vehical.endingPoint +`</td>
                         <td class="Action">
                             <button class="more-btn" onclick="togglePopup1(${vehical.id})">MORE</button>
                             <a href="editVehical.html?vehicleNo=`+ vehical.vehicleNo +`" onclick="updatefunction(vehical.ownerEmail,vehical.vehicleNo,vehical.regNo,vehical.vehicleBrand,vehical.type,vehical.driverEmail,vehical.seatsCount,vehical.trips,vehical.startingPoint,vehical.endingPoint)"><button class="edit-btn">EDIT</button></a>
@@ -48,21 +46,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
             searchInput.addEventListener("input", e => {
                 const value = e.target.value.toLowerCase();
+                const searchOption = searchCriteria.toLowerCase();
                 users.forEach(data => {
+                    switch (searchOption) {
+                        case "owner email":
+                            searchValue = data.ownerEmail.toLowerCase().includes(value);
+                            break;
+                        case "vehicle no":
+                            searchValue = data.vehicleNo.toLowerCase().includes(value);
+                            break;
+                        case "driver email":
+                            searchValue = data.driverEmail.toLowerCase().includes(value);
+                        case "all":
+                            searchValue =   data.ownerEmail.toLowerCase().includes(value) ||
+                            data.vehicleNo.toLowerCase().includes(value) ||
+                            data.vehicleBrand.toLowerCase().includes(value) ||
+                            data.type.toLowerCase().includes(value) ||
+                            data.driverEmail.toLowerCase().includes(value)
+                          
+                    }
                     const isVisible =
-                        data.ownerEmail.toLowerCase().includes(value) ||
-                        data.vehicleNo.toLowerCase().includes(value) ||
-                        data.regNo.toLowerCase().includes(value) ||
-                        data.vehicleBrand.toLowerCase().includes(value) ||
-                        data.type.toLowerCase().includes(value) ||
-                        data.startingPoint.toLowerCase().includes(value) ||
-                        data.endingPoint.toLowerCase().includes(value)
+                    searchValue
    
-                        document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
+                    document.getElementById(data.vehicleNo).classList.toggle("hide", !isVisible)
                 });
             });
     
   });
+
 
 
 function AddVehicle() {
@@ -264,3 +275,27 @@ async function getOwnerDetais(ownerEmail) {
     <span class="details">Available Seats</span>
     <input disabled type="number" class="availSeats" value name="availSeats" placeholder="${vehical.availableSeats}">
 </div>   */}
+
+//Top Informations 
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('http://127.0.0.1:8080/try2_war_exploded/adminDashbordInfo', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: "include",
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("data", data);
+            // document.getElementById("totalDrivers").innerText = data.totalDrivers;
+            document.getElementById("totalPassengers").innerText = data.noOfPassengers;
+            document.getElementById("totalVehicles").innerText = data.noOfVehicles;
+            document.getElementById("totalOwners").innerText = data.noOfOwners;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+);

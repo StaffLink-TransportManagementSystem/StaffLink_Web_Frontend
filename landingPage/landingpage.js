@@ -94,3 +94,10 @@ function getMessage(){
 function clearForm() {
     document.getElementById("myForm").reset();
 }
+
+function searchTransport(e){
+    e.preventDefault();
+    alert("Please login to search for transport.");
+    window.location.href = "./Passenger/login-register/index.html";
+    alert("Please login to search for transport.");
+}

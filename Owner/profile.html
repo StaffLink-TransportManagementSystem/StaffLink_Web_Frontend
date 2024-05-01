@@ -16,8 +16,8 @@
         <div class="container">
             <div class="card-header">
                 <div class="topic">Owner Profile</div>
-                <div style="display:flex; justify-content: space-between; width:200px">
-                <button class="delete-btn" id="notice" onclick="deleteAccount()">Delete Account</button>
+                <div style="display:flex; justify-content: space-between; width:70px">
+                <!-- <button class="delete-btn" id="notice" st onclick="deleteAccount()">Delete Account</button> -->
                 <a href="./ownerDashboard.html"><button class="cancel-btn" id="notice">Close</button></a>
             </div>
             </div>
@@ -110,7 +110,7 @@
       
             if(token == null){
                 console.log("No Cookie Found");
-                window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+                window.location.href = "../Owner/login.html";
               }
         
               const payload = getPayload(token);
@@ -121,19 +121,19 @@
               } 
               else if (payload.role === "admin") {
                 console.log("Admin");
-                window.location.href = "http://127.0.0.1:5558/Admin/dashboard.html";
+                window.location.href = "../Admin/dashboard.html";
               }
               else if (payload.role === "passenger") {
                 console.log("Passenger");
-                window.location.href = "http://127.0.0.1:5558/Passenger/dashboard.html";
+                window.location.href = "../Passenger/dashboard.html";
               }
               else if (payload.role === "driver") {
                 console.log("Driver");
-                window.location.href = "http://127.0.0.1:5558/Driver/dashboard.html";
+                window.location.href = "../Driver/dashboard.html";
               }
               else {
                 console.log("No Cookie Found");
-                window.location.href = "http://127.0.0.1:5558/Owner/login.html";
+                window.location.href = "../Owner/login.html";
                 
               }
               });

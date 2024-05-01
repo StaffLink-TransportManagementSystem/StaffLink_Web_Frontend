@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Get Current Location</title>
+</head>
+<body>
+    <h1>Get Current Location</h1>
+    <button onclick="getLocation()">Get Current Location</button>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+        }
+    </script>
+</body>
+</html>
